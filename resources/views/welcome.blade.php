@@ -56,7 +56,7 @@
                                 class="absolute max-h-96 overflow-auto z-10 grid hidden text-sm bg-white border border-gray-100 rounded-lg shadow-xl dark:border-gray-700 w-full lg:grid-cols-3  p-4 pt-0 xl:justify-center xl:items-center dark:bg-gray-700">
                                 <div
                                     class="order-2 px-10 py-4 text-base xl:text-xl font-bold text-center justify-center items-center lg:flex flex-col gap-4 text-gray-900 dark:text-white">
-                                    <img src="{{asset('images/kantor-ut-jambi.jpg')}}" alt="Kantor UT Jambi"
+                                    <img src="{{asset('images/kantor-ut-jambi.webp')}}" alt="Kantor UT Jambi"
                                         class="w-full lg:max-w-md mx-auto rounded-lg">
                                     <h5 class="py-4 lg:py-0">Kantor UT Daerah Jambi</h5>
                                     <a href=""
@@ -992,7 +992,7 @@
                             </a>
                         </div>
                         <img class="rounded-lg ml-auto h-96 lg:h-[640px] object-cover"
-                            src="{{asset('/images/mahasiswi-min.png')}}" alt="Mahasiswi UT">
+                            src="{{asset('/images/mahasiswi-min.webp')}}" alt="Mahasiswi UT">
                     </div>
                 </div>
             </div>
@@ -1398,7 +1398,7 @@
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="" class="flex items-center">
-                        <img src="{{asset('images/logo_utjambi.png')}}"
+                        <img src="{{asset('images/logo_utjambi.webp')}}"
                             class="h-14 bg-gray-100 dark:bg-white px-4 py-2 rounded-lg" alt="Logo UT Jambi" />
                     </a>
                     <p class="text-gray-100 dark:text-white mt-4">Jl. Gajah Mada No.51, Lb. Bandung, Kec. Jelutung, Kota
