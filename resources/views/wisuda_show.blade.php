@@ -11,7 +11,7 @@
 </head>
 
 <body class="m-0">
-    <section class="bg-gray-50 dark:bg-gray-900">
+    <section class="bg-gray-50 min-h-screen dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen lg:py-4">
             <div
                 class="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md lg:max-w-2xl dark:bg-gray-800 dark:border-gray-700 sm:p-8">
@@ -28,7 +28,7 @@
                             I <br />
                             Tahun Akademik 2023/2024</p>
                     </div>
-                    <div>
+                    <div class="text-black bg-white p-5">
                         {{QrCode::size(128)->generate($wisudawan->nim)}}
                     </div>
                 </div>

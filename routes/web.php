@@ -19,6 +19,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('wisuda')->group(function () {
     Route::get('/', [WisudaController::class, 'index'])->name('wisuda.index');
     Route::post('/show', [WisudaController::class, 'detail_peserta'])->name('wisuda.show');
+    Route::get('/scan/seminar', [WisudaController::class, 'seminar_scan'])->name('wisuda.seminar_scan');
+    Route::get('/scan/wisuda', [WisudaController::class, 'wisuda_scan'])->name('wisuda.wisuda_scan');
 });
 
 
