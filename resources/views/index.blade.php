@@ -1,6 +1,6 @@
 @extends('layouts.homepage')
 @section('content')
-<section class="bg-white min-h-screen dark:bg-gray-900">
+<section class="mt-4 flex flex-col dark:bg-gray-900">
     <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
         <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-center">
             <div class="w-full text-center lg:text-left pt-10 lg:pt-0">
@@ -73,7 +73,6 @@
             </div>
         </div>
     </div>
-
     <div class="bg-primary-700 dark:bg-primary-900">
         <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
             <dl class="grid max-w-screen-lg gap-8 mx-auto text-white sm:grid-cols-2 md:grid-cols-4 dark:text-white">
@@ -193,35 +192,6 @@
                 <p class="text-gray-500 dark:text-gray-400">Universitas Terbuka memberi kesempatan kepada siapa saja
                     yang ingin melanjutkan pendidikan tanpa memandang usia.</p>
             </div>
-            <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
-                <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                        class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
-                        <path
-                            d="M320 32c0-9.9-4.5-19.2-12.3-25.2S289.8-1.4 280.2 1l-179.9 45C79 51.3 64 70.5 64 92.5V448H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H96 288h32V480 32zM256 256c0 17.7-10.7 32-24 32s-24-14.3-24-32s10.7-32 24-32s24 14.3 24 32zm96-128h96V480c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H512V128c0-35.3-28.7-64-64-64H352v64z" />
-                    </svg>
-                </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Tidak Ada Sistem DO <span class="italic">(Drop
-                        Out)</span></h3>
-                <p class="text-gray-500 dark:text-gray-400">Di Universitas Terbuka kamu bisa mengambil cuti jika
-                    lelah dalam berkuliah dan kembali kapanpun kamu siap untuk melanjutkan perkuliahan.</p>
-            </div>
-            <div class="text-left flex flex-col justify-center gap-4 items-start p-4 rounded-lg">
-                <p class="text-gray-800 font-bold dark:text-white">Bergabung sekarang menjadi mahasiswa Universitas
-                    Terbuka, jangan tunda waktumu untuk kuliah!
-                </p>
-                <a href=""
-                    class="ml-auto flex gap-2 items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                    Registrasi
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                        class="w-3 h-3  lg:w-4 lg:h-4 dark:text-primary-300" fill="currentColor">
-                        <path
-                            d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
-                    </svg>
-                </a>
-            </div>
         </div>
     </div>
 </section>
@@ -232,8 +202,7 @@
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-100 dark:text-white">#AyooMasukUT</h2>
             <p class="mb-8 font-light text-gray-200 sm:text-xl dark:text-gray-100">Dapatkan informasi pendaftaran
                 Universitas Terbuka Daerah Jambi Melalui WhatsApp.</p>
-            <form action="" method="post"
-                class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 mb-5">
+            <form action="" method="post" class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 mb-5">
                 @csrf
                 <div class="relative">
                     <input type="text" id="nama"
@@ -261,19 +230,21 @@
             </form>
         </div>
         <div class="border-t lg:border-none w-full">
-            <div class="mt-5 flex flex-col justify-center items-center gap-4 ">
-                <h5
-                    class="text-xl lg:text-3xl text-center font-bold lg:font-extrabold text-gray-100 dark:text-white">
-                    Jalur Pendaftaran Universitas Terbuka Melalui:<h5>
-                        <div class="mt-2 lg:mt-5 grid grid-cols-3 gap-2">
-                            <a href="" type="button"
-                                class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Online</a>
-                            <a href="" type="button"
-                                class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Kantor
-                                UT Jambi</a>
-                            <a href="" type="button"
-                                class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Pokjar</a>
-                        </div>
+            <div class="py-4 px-8">
+                <div class="mt-5 flex flex-col justify-center items-center gap-4">
+                    <h5 class="text-xl lg:text-3xl text-center font-bold lg:font-extrabold text-gray-100 dark:text-white">
+                        Jalur Pendaftaran Universitas Terbuka Melalui:
+                    <h5>
+                    <div class="mt-2 lg:mt-5 grid grid-cols-3 gap-2">
+                        <a href="" type="button"
+                            class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Online</a>
+                        <a href="" type="button"
+                            class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Kantor
+                            UT Jambi</a>
+                        <a href="" type="button"
+                            class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Pokjar</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -463,7 +434,8 @@
         <div class="max-w-lg">
             <h2 class=" text-gray-900 dark:text-white md:text-4xl font-extrabold mb-4">Mitra Kerjasama Universitas
                 Terbuka</h2>
-            <p>Dalam penyelenggaraan pendidikan tinggi terbuka dan jarak jauh, UT bekerjasama dengan berbagai pihak dalam berbagai hal, seperti penyediaan beasiswa, fasilitas penunjang dan tenaga ahli</p>
+            <p>Dalam penyelenggaraan pendidikan tinggi terbuka dan jarak jauh, UT bekerjasama dengan berbagai pihak
+                dalam berbagai hal, seperti penyediaan beasiswa, fasilitas penunjang dan tenaga ahli</p>
         </div>
         <img src="{{asset('images/mitra.webp')}}" alt="" class="w-full max-w-screen-sm mx-auto">
     </div>

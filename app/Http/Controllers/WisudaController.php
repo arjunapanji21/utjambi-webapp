@@ -52,9 +52,8 @@ class WisudaController extends Controller
         if($request->has('nim')){
             try {
                 $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-                $wisudawan->update([
-                    'absen_seminar' => date(now()),
-                ]);
+                $wisudawan->absen_seminar = date(now());
+                $wisudawan->save();
                 $master = [
                     'title' => 'SEMINAR UT JAMBI',
                     'wisudawan' => $wisudawan,
@@ -79,9 +78,8 @@ class WisudaController extends Controller
         if($request->has('nim')){
            try {
             $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-            $wisudawan->update([
-                'absen_wisuda' => date(now()),
-            ]);
+            $wisudawan->absen_wisuda = date(now());
+            $wisudawan->save();
             $master = [
                 'title' => 'WISUDA UT JAMBI',
                 'wisudawan' => $wisudawan,
