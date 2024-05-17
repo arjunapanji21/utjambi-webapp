@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NumpangUjianController;
 use App\Http\Controllers\WisudaController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +11,7 @@ Route::get('/503', function(){
 })->name('503');
 
 Route::get('/', function () {
-    return view('index');
+    return view('homepage.index');
 })->name('homepage');
 
 Route::post('/login/auth', [AuthController::class, 'auth'])->name('auth');
@@ -21,6 +22,10 @@ Route::prefix('wisuda')->group(function () {
     Route::post('/show', [WisudaController::class, 'detail_peserta'])->name('wisuda.show');
     Route::get('/scan/seminar', [WisudaController::class, 'seminar_scan'])->name('wisuda.seminar_scan');
     Route::get('/scan/wisuda', [WisudaController::class, 'wisuda_scan'])->name('wisuda.wisuda_scan');
+});
+
+Route::prefix('ujian')->group(function () {
+    Route::get('/form-numpang-ujian', [NumpangUjianController::class, 'form_numpang_ujian'])->name('ujian.form_numpang_ujian');
 });
 
 

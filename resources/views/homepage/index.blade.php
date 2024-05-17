@@ -2,13 +2,13 @@
 @section('content')
 <section class="mt-4 flex flex-col dark:bg-gray-900">
     <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
-        <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-center">
-            <div class="w-full text-center lg:text-left pt-10 lg:pt-0">
+        <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-start">
+            <div class="w-full text-center lg:text-left pt-10 lg:pt-10">
                 <a href="#"
                     class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
                     role="alert">
                     <span class="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span
-                        class="text-sm font-medium">Pendaftaran Magister S2 Sedang Dibuka!</span>
+                        class="text-sm font-medium">Pendaftaran S1 & Diploma Sedang Dibuka!</span>
                     <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -29,9 +29,13 @@
                 </div>
                 <h2 class="mb-4 text-4xl lg:text-6xl tracking-tight font-bold text-gray-900 dark:text-white">
                     Universitas Terbuka Daerah Jambi</h2>
-                <p class="mb-8 lg:text-2xl text-gray-500 dark:text-gray-400">Perguruan Tinggi Negeri (PTN)
+                <p class="mb-4 lg:text-2xl text-gray-500 dark:text-gray-400">Perguruan Tinggi Negeri (PTN)
                     dengan sistem pembelajaran jarak jauh terbaik di Indonesia kini hadir di wilayah Provinsi Jambi.
                 </p>
+                <div id="masa-pendaftaran" class="mb-4">
+                    <h5 class="lg:text-lg text-gray-500 dark:text-gray-400">Pendaftaran Sarjana S1 & Diploma:</h5>
+                    <div id="countdown" class="text-lg lg:text-xl tracking-tight font-bold text-gray-900 dark:text-white"></div>
+                </div>
                 <div
                     class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0 sm:space-x-4">
                     <a href="#"
@@ -440,4 +444,46 @@
         <img src="{{asset('images/mitra.webp')}}" alt="" class="w-full max-w-screen-sm mx-auto">
     </div>
 </section>
+@endsection
+
+@section('script')
+<script>
+
+    CountDownTimer('07/11/2024 00:00 AM', 'countdown');
+
+    function CountDownTimer(dt, id)
+    {
+        var end = new Date(dt);
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+                
+                clearInterval(timer);
+                document.getElementById('masa-pendaftaran').classList.add("hidden");
+
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            document.getElementById(id).innerHTML = days + ' hari : ';
+            document.getElementById(id).innerHTML += hours + ' jam : ';
+            document.getElementById(id).innerHTML += minutes + ' menit : ';
+            document.getElementById(id).innerHTML += seconds + ' detik';
+        }
+
+        timer = setInterval(showRemaining, 1000);
+    }
+
+</script>
 @endsection
