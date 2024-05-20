@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{asset('images/logo_ut.ico')}}">
-    <title>UT Jambi | Dashboard</title>
+    <title>{{isset($title) ? $title : "UT Jambi"}}</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     @yield('head')
 </head>
 <body class="m-0">
-    <div class="antialiased bg-gray-50 dark:bg-gray-900">
-        <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+    <div class="antialiased bg-gray-50 min-h-screen dark:bg-gray-900">
+        <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 md:ml-52 z-40">
           <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               <button
@@ -22,7 +22,7 @@
               >
                 <svg
                   aria-hidden="true"
-                  class="w-6 h-6"
+                  class="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@
                 </svg>
                 <svg
                   aria-hidden="true"
-                  class="hidden w-6 h-6"
+                  class="hidden w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <a href="#" class="flex items-center justify-between mr-4">
+              <a href="#" class="flex md:hidden items-center justify-between mr-4">
                 <img
                   src="{{asset('images/logo_utjambi.webp')}}"
                   class="mr-3 h-8"
@@ -97,7 +97,7 @@
                 <!-- Bell icon -->
                 <svg
                   aria-hidden="true"
-                  class="w-6 h-6"
+                  class="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +113,7 @@
                 id="notification-dropdown"
               >
                 <div
-                  class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300"
+                  class="block py-2 px-4 text-sm font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300"
                 >
                   Notifications
                 </div>
@@ -505,7 +505,7 @@
                 >
                   <li>
                     <a
-                      href="#"
+                      href="{{route('logout')}}"
                       class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Sign out</a
                     >
@@ -519,11 +519,19 @@
         <!-- Sidebar -->
     
         <aside
-          class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+          class="fixed top-0 left-0 z-40 w-52 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
           aria-label="Sidenav"
           id="drawer-navigation"
         >
           <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
+            <a href="#" class="flex items-center justify-between mb-4">
+              <img
+                src="{{asset('images/logo_utjambi.webp')}}"
+                class="mr-3 h-8"
+                alt="UT Logo"
+              />
+              {{-- <span class="hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap dark:text-white">UT JAMBI</span> --}}
+            </a>
             <form action="#" method="GET" class="md:hidden mb-2">
               <label for="sidebar-search" class="sr-only">Search</label>
               <div class="relative">
@@ -555,12 +563,12 @@
             <ul class="space-y-2">
               <li>
                 <a
-                  href=""
-                  class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  href="{{route('admin.dashboard')}}"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Dashboard") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
                 >
                   <svg
                     aria-hidden="true"
-                    class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                    class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Dashboard") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -568,24 +576,24 @@
                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                   </svg>
-                  <span class="flex-1 ml-3 whitespace-nowrap">Dashboard</span>
-                  <span
-                    class="inline-flex justify-center items-center px-2 py-1 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800"
+                  <span class="flex-1 ml-3 whitespace-nowrap capitalize">dashboard</span>
+                  {{-- <span
+                    class="inline-flex justify-center items-center px-2 text-xs font-semibold rounded-full text-yellow-800 bg-yellow-100 dark:bg-yellow-200 dark:text-yellow-800"
                   >
                     New
-                  </span>
+                  </span> --}}
                 </a>
               </li>
               <li>
                 <button
                   type="button"
-                  class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="dropdown-articles"
-                  data-collapse-toggle="dropdown-articles"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Postingan") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
+                  aria-controls="dropdown-postingan"
+                  data-collapse-toggle="dropdown-postingan"
                 >
                   <svg
                     aria-hidden="true"
-                    class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                    class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Postingan") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -596,12 +604,12 @@
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                    >Articles</span
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
+                    >postingan</span
                   >
                   <svg
                     aria-hidden="true"
-                    class="w-6 h-6"
+                    class="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -613,25 +621,25 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-articles" class="hidden py-2 space-y-2">
+                <ul id="dropdown-postingan" class="hidden py-2 space-y-2">
                   <li>
                     <a
                       href=""
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >All Posts</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Categories</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Tags</a
                     >
                   </li>
@@ -640,71 +648,19 @@
               <li>
                 <button
                   type="button"
-                  class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="dropdown-mahasiswa"
-                  data-collapse-toggle="dropdown-mahasiswa"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
-                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                    fill="currentColor"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
-                  
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                    >Mahasiswa</span
-                  >
-                  <svg
-                    aria-hidden="true"
-                    class="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-                <ul id="dropdown-mahasiswa" class="hidden py-2 space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Seluruh Mahasiswa</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Mahasiswa Baru</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Mahasiswa Per Semester</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
                   aria-controls="dropdown-yudisium"
                   data-collapse-toggle="dropdown-yudisium"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
                 fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
                   
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                    >Wisuda</span
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
+                    >wisuda</span
                   >
                   <svg
                     aria-hidden="true"
-                    class="w-6 h-6"
+                    class="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -720,14 +676,14 @@
                   <li>
                     <a
                       href="{{route('admin.wisuda.peserta')}}"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Peserta Wisuda</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Seminar Wisuda</a
                     >
                   </li>
@@ -736,19 +692,18 @@
               <li>
                 <button
                   type="button"
-                  class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-controls="dropdown-admins"
-                  data-collapse-toggle="dropdown-admins"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Master Data") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
+                  aria-controls="dropdown-master-data"
+                  data-collapse-toggle="dropdown-master-data"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                fill="currentColor">><path d="M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z"/></svg>
-                  
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                    >Admins</span
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Master Data") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
+                fill="currentColor"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
+                    >master data</span
                   >
                   <svg
                     aria-hidden="true"
-                    class="w-6 h-6"
+                    class="w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -760,19 +715,19 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-admins" class="hidden py-2 space-y-2">
+                <ul id="dropdown-master-data" class="hidden py-2 space-y-2">
                   <li>
                     <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >All Admins</a
+                      href="{{route('admin.data.matakuliah')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Matakuliah</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Trash</a
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Admin</a
                     >
                   </li>
                 </ul>
@@ -784,11 +739,11 @@
               <li>
                 <a
                   href="#"
-                  class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                  class="flex items-center p-2 text-sm font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                 >
                 <svg
                 aria-hidden="true"
-                class="w-6 h-6"
+                class="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -809,15 +764,16 @@
           >
             
             <a
-              href="#"
-              class="inline-flex justify-center p-2 text-sm w-full bg-gray-300 dark:bg-gray-800 hover:bg-gray-600 hover:text-gray-100 rounded-lg cursor-pointer"
+              href="{{route('homepage')}}"
+              class="inline-flex justify-center items-center p-2 text-sm w-full bg-gray-300 dark:bg-gray-800 hover:bg-gray-600 hover:text-gray-100 rounded-lg cursor-pointer"
             >
-            Sign out
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-3.5 h-3.5 me-2" fill="currentColor"><path d="M543.8 287.6c17 0 32-14 32-32.1c1-9-3-17-11-24L512 185V64c0-17.7-14.3-32-32-32H448c-17.7 0-32 14.3-32 32v36.7L309.5 7c-6-5-14-7-21-7s-15 1-22 8L10 231.5c-7 7-10 15-10 24c0 18 14 32.1 32 32.1h32v69.7c-.1 .9-.1 1.8-.1 2.8V472c0 22.1 17.9 40 40 40h16c1.2 0 2.4-.1 3.6-.2c1.5 .1 3 .2 4.5 .2H160h24c22.1 0 40-17.9 40-40V448 384c0-17.7 14.3-32 32-32h64c17.7 0 32 14.3 32 32v64 24c0 22.1 17.9 40 40 40h24 32.5c1.4 0 2.8 0 4.2-.1c1.1 .1 2.2 .1 3.3 .1h16c22.1 0 40-17.9 40-40V455.8c.3-2.6 .5-5.3 .5-8.1l-.7-160.2h32z"/></svg>
+            Homepage
             </a>
           </div>
         </aside>
     
-        <main class="p-4 md:ml-64 h-auto pt-20">
+        <main class="p-4 md:ml-52 h-auto pt-20">
           @yield('content')
         </main>
       </div>
