@@ -11,6 +11,6 @@ class DashboardController extends Controller
             'title' => 'Dashboard',
             'active' => 'Dashboard',
         ];
-        return view('dashboard.index', $master);
+        return view('admin.dashboard', $master);
     }
 }

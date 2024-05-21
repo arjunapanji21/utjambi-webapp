@@ -720,6 +720,20 @@
                     <a
                       href="{{route('admin.data.matakuliah')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Peserta Ujian</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{{route('admin.data.matakuliah')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Wilayah Ujian</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{{route('admin.data.matakuliah')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Matakuliah</a
                     >
                   </li>

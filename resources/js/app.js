@@ -7,6 +7,9 @@ import 'tinymce/skins/content/default/content.css';
 import 'tinymce/icons/default/icons';
 import 'tinymce/themes/silver/theme';
 import 'tinymce/models/dom/model';
+import "/node_modules/select2/dist/css/select2.css";
+import select2 from 'select2';
+select2();
 
 import jQuery from 'jquery';
 window.$ = jQuery;

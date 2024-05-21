@@ -24,15 +24,15 @@ class PesertaUjianImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         return new PesertaUjian([
-            'nim' => $row[1],
-            'nama_mhs' => $row[2],
+            'kabko' => $row[1],
+            'kode_tpu' => $row[2],
             'prodi' => $row[3],
-            'telp' => $row[4],
-            'kode_mk' => $row[5],
-            'nama_mk' => $row[6],
-            'kode_tpu' => $row[7],
-            'nama_tpu' => $row[8],
-            'kabko' => $row[9],
+            'nim' => $row[4],
+            'nama_mhs' => $row[5],
+            'kode_mk' => $row[6],
+            'nama_mk' => $row[7],
+            'telp' => $row[8],
+            'nama_tpu' => $row[9],
         ]);
     }
 }
