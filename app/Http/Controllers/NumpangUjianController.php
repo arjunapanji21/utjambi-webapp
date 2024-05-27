@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matakuliah;
+use App\Models\NumpangUjian;
 use App\Models\PesertaUjian;
 use App\Models\WilayahUjian;
 use Illuminate\Http\Request;
@@ -10,20 +11,46 @@ use stdClass;
 
 class NumpangUjianController extends Controller
 {
+    public function status_numpang_ujian($nim){
+        $data = NumpangUjian::where('nim', $nim)->latest()->first();
+        $master = [
+            'title' => 'Status Numpang Ujian | UT Jambi',
+            'data' => $data,
+        ];
+        return view('forms.status_numpang_ujian', $master);
+    }
     public function form_numpang_ujian(Request $request){
         $mahasiswa = null;
         $utdaerah = [];
         foreach(WilayahUjian::all()->groupBy('kode_upbjj') as $row){
             array_push($utdaerah, ['kode_upbjj' => $row[0]->kode_upbjj, 'nama_upbjj' => $row[0]->nama_upbjj]);
         }
-        if($request->has('nim')){
-            $data = $request->validate([
-                'nim' => 'required',
-                'ut_daerah_tujuan' => 'required',
-            ]);
-            $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
-            $wilayah_ujian = WilayahUjian::where('kode_upbjj', $request['ut_daerah_tujuan'])->get();
+        if($request->has('alasan')){
+            $master = [
+                'title' => 'Form Numpang Ujian | UT Jambi',
+                'submit' => $request->all(),
+            ];
+            return view('forms.form_numpang_ujian', $master);
         }
+
+        if($request->has('nim')){
+            $request->validate([
+                'nim' => 'required',
+            ]);
+            try {
+                if(count(NumpangUjian::where('nim', $request['nim'])->get()) > 0){
+                    return redirect()->route('status.numpang_ujian', $request['nim']);
+                }
+                $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
+                $request->validate([
+                    'ut_daerah_tujuan' => 'required',
+                ]);
+                $wilayah_ujian = WilayahUjian::where('kode_upbjj', preg_replace('/\s+/', '', explode("/",$request['ut_daerah_tujuan'])[0]))->get();
+            } catch (\Throwable $th) {
+                dd($th);
+            }
+        }
+
         if(!empty($mahasiswa)){
             $mk = [];
             foreach($mahasiswa as $row){
@@ -46,7 +73,6 @@ class NumpangUjianController extends Controller
                 'ut_daerah_tujuan' => $request['ut_daerah_tujuan'],
                 'wilayah_ujian' => $wilayah_ujian,
             ];
-
             return view('forms.form_numpang_ujian', $master);
         }else{
             $master = [
@@ -55,5 +81,23 @@ class NumpangUjianController extends Controller
             ];
             return view('forms.form_numpang_ujian', $master);
         }
+    }
+
+    public function submit_form_numpang_ujian(Request $request){
+        NumpangUjian::create([
+            "nim" => $request['nim'],
+            "nama" => $request['nama'],
+            "prodi" => $request['prodi'],
+            "ut_daerah_asal" => $request['ut_daerah_asal'],
+            "ut_daerah_tujuan" => $request['ut_daerah_tujuan'],
+            "wilayah_ujian_asal" => $request['wilayah_ujian_asal'],
+            "wilayah_ujian_tujuan" => $request['wilayah_ujian_tujuan'],
+            "tgl_pindah_lokasi" => $request['tgl_pindah_lokasi'],
+            "matakuliah" => implode("|",$request['matakuliah']),
+            "alasan" => $request['alasan'],
+            "no_wa" => $request['no_wa'],
+            "status" => "Antrian",
+        ]);
+        return redirect()->route("form.numpang_ujian")->with("success", "Form numpang ujian berhasil di submit dan sedang dalam antrian.");
     }
 }
