@@ -37,11 +37,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
     });
 
-    Route::prefix('data')->group(function () {
-        Route::get('/matakuliah', [DataMasterController::class, 'matakuliah'])->name('admin.data.matakuliah');
-        Route::post('/matakuliah/import', [DataMasterController::class, 'matakuliah_import'])->name('admin.data.matakuliah.import');
-        Route::post('/wilayah-ujian/import', [DataMasterController::class, 'wilayah_ujian_import'])->name('admin.data.wilayah_ujian.import');
-        Route::post('/peserta-ujian/import', [DataMasterController::class, 'peserta_ujian_import'])->name('admin.data.peserta_ujian.import');
+    Route::prefix('numpang-ujian')->group(function () {
+        Route::get('/matakuliah', [DataMasterController::class, 'matakuliah'])->name('admin.numpang_ujian.matakuliah');
+        Route::post('/matakuliah/import', [DataMasterController::class, 'matakuliah_import'])->name('admin.numpang_ujian.matakuliah.import');
+        Route::post('/wilayah-ujian/import', [DataMasterController::class, 'wilayah_ujian_import'])->name('admin.numpang_ujian.wilayah_ujian.import');
+        Route::post('/peserta-ujian/import', [DataMasterController::class, 'peserta_ujian_import'])->name('admin.numpang_ujian.peserta_ujian.import');
     });
 
     Route::prefix('wisuda')->group(function () {

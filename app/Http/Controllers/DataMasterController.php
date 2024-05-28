@@ -18,16 +18,16 @@ class DataMasterController extends Controller
             'active' => 'Master Data',
             'data' => $data->get(),
         ];
-        return view('admin.master_data.matakuliah', $master);
+        return view('admin.numpang_ujian.matakuliah', $master);
     }
 
     public function matakuliah_import(Request $request){
         Excel::import(new MatakuliahImport(), $request['file']);
-        return redirect()->route('admin.data.matakuliah')->with('success', 'Data MK berhasil disimpan kedalam server!');
+        return redirect()->route('admin.numpang_ujian.matakuliah')->with('success', 'Data MK berhasil disimpan kedalam server!');
     }
     public function wilayah_ujian_import(Request $request){
         Excel::import(new WilayahUjianImport(), $request['file']);
-        return redirect()->route('admin.data.wilayah_ujian')->with('success', 'Data wilayah ujian berhasil disimpan kedalam server!');
+        return redirect()->route('admin.numpang_ujian.wilayah_ujian')->with('success', 'Data wilayah ujian berhasil disimpan kedalam server!');
     }
     public function peserta_ujian_import(Request $request){
         for($i=0;$i<5000;$i++){
@@ -35,6 +35,6 @@ class DataMasterController extends Controller
         }
         return back();
         Excel::import(new PesertaUjianImport(), $request['file']);
-        return redirect()->route('admin.data.peserta_ujian')->with('success', 'Data peserta ujian berhasil disimpan kedalam server!');
+        return redirect()->route('admin.numpang_ujian.peserta_ujian')->with('success', 'Data peserta ujian berhasil disimpan kedalam server!');
     }
 }

@@ -689,17 +689,22 @@
                   </li>
                 </ul>
               </li>
+            </ul>
+            <ul
+              class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
+            >
+              <h5 class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">Aplikasi</h5>
               <li>
                 <button
                   type="button"
-                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Master Data") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
-                  aria-controls="dropdown-master-data"
-                  data-collapse-toggle="dropdown-master-data"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Numpang Ujian") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
+                  aria-controls="dropdown-numpang-ujian"
+                  data-collapse-toggle="dropdown-numpang-ujian"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Master Data") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Numpang Ujian") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
                 fill="currentColor"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>
                   <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
-                    >master data</span
+                    >Numpang Ujian</span
                   >
                   <svg
                     aria-hidden="true"
@@ -715,41 +720,29 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-master-data" class="hidden py-2 space-y-2">
+                <ul id="dropdown-numpang-ujian" class="hidden py-2 space-y-2">
                   <li>
                     <a
-                      href="{{route('admin.data.matakuliah')}}"
+                      href="{{route('admin.numpang_ujian.matakuliah')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Peserta Ujian</a
+                      >Data NU</a
                     >
                   </li>
                   <li>
                     <a
-                      href="{{route('admin.data.matakuliah')}}"
+                      href="{{route('admin.numpang_ujian.matakuliah')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Wilayah Ujian</a
+                      >Data Master</a
                     >
                   </li>
-                  <li>
-                    <a
-                      href="{{route('admin.data.matakuliah')}}"
-                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Matakuliah</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Admin</a
-                    >
-                  </li>
+                  
                 </ul>
               </li>
             </ul>
             <ul
               class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
             >
+              <h5 class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">Lainnya</h5>
               <li>
                 <a
                   href="#"
