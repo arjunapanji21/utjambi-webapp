@@ -11,14 +11,14 @@
 </head>
 <body class="m-0">
     <div class="antialiased bg-gray-50 min-h-screen dark:bg-gray-900">
-        <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 md:ml-52 z-40">
+        <nav class="bg-primary-700 border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 md:ml-52 z-40">
           <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               <button
                 data-drawer-target="drawer-navigation"
                 data-drawer-toggle="drawer-navigation"
                 aria-controls="drawer-navigation"
-                class="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="p-2 mr-2 text-white border-2 border-white rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <svg
                   aria-hidden="true"
@@ -48,15 +48,15 @@
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <a href="#" class="flex md:hidden items-center justify-between mr-4">
+              <a href="#" class="flex md:hidden items-center justify-between bg-white p-2 rounded-lg">
                 <img
                   src="{{asset('images/logo_utjambi.webp')}}"
-                  class="mr-3 h-8"
+                  class="h-6"
                   alt="UT Logo"
                 />
                 {{-- <span class="hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap dark:text-white">UT JAMBI</span> --}}
               </a>
-              <form action="#" method="GET" class="hidden md:block md:pl-2">
+              <!-- <form action="#" method="GET" class="hidden md:block md:pl-2">
                 <label for="topbar-search" class="sr-only">Search</label>
                 <div class="relative md:w-64 lg:w-96">
                   <div
@@ -83,7 +83,7 @@
                     placeholder="Search"
                   />
                 </div>
-              </form>
+              </form> -->
             </div>
             <div class="flex items-center lg:order-2">
               
@@ -91,7 +91,7 @@
               <button
                 type="button"
                 data-dropdown-toggle="notification-dropdown"
-                class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                class="p-2 mr-1 text-white rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               >
                 <span class="sr-only">View notifications</span>
                 <!-- Bell icon -->
@@ -519,7 +519,7 @@
         <!-- Sidebar -->
     
         <aside
-          class="fixed top-0 left-0 z-40 w-52 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+          class="fixed top-0 left-0 z-40 w-2/3 md:w-52 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700 shadow-lg"
           aria-label="Sidenav"
           id="drawer-navigation"
         >
@@ -532,7 +532,7 @@
               />
               {{-- <span class="hidden lg:flex self-center text-2xl font-semibold whitespace-nowrap dark:text-white">UT JAMBI</span> --}}
             </a>
-            <form action="#" method="GET" class="md:hidden mb-2">
+            <!-- <form action="#" method="GET" class="md:hidden mb-2">
               <label for="sidebar-search" class="sr-only">Search</label>
               <div class="relative">
                 <div
@@ -559,7 +559,7 @@
                   placeholder="Search"
                 />
               </div>
-            </form>
+            </form> -->
             <ul class="space-y-2">
               <li>
                 <a
@@ -723,14 +723,14 @@
                 <ul id="dropdown-numpang-ujian" class="hidden py-2 space-y-2">
                   <li>
                     <a
-                      href="{{route('admin.numpang_ujian.matakuliah')}}"
+                      href="{{route('admin.numpang_ujian.data_nu')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Data NU</a
                     >
                   </li>
                   <li>
                     <a
-                      href="{{route('admin.numpang_ujian.matakuliah')}}"
+                      href="{{route('admin.aplikasi.numpang_ujian.matakuliah')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Data Master</a
                     >

@@ -43,10 +43,10 @@
             <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Peserja Ujian</a>
         </li>
         <li class="me-2">
-            <a href="#" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Wilayah Ujian</a>
+            <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Wilayah Ujian</a>
         </li>
         <li class="me-2">
-            <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Matakuliah</a>
+            <a href="{{route('admin.aplikasi.numpang_ujian.matakuliah')}}" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Matakuliah</a>
         </li>
     </ul>
 </div>
@@ -253,7 +253,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('admin.numpang_ujian.matakuliah.import')}}" method="post" enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="{{route('admin.aplikasi.numpang_ujian.matakuliah.import')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">

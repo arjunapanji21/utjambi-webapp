@@ -14,7 +14,7 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <img src="{{asset('images/logo_utjambi.webp')}}" class="h-14 mx-auto mb-8" alt="">
-            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white text-center">FORM NUMPANG UJIAN</h2>
+            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white text-center uppercase">Form Numpang Ujian Mahasiswa UT Jambi</h2>
 
             <div class="w-full mb-4">
                 <ol
@@ -57,173 +57,102 @@
             @if(isset($submit))
             <form action="{{route('form.numpang_ujian.submit')}}" method="post">
                 @csrf
-                <div class="relative overflow-x-auto">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Mahasiswa
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['nim']}} / {{$submit['nama']}}
-                                    <input type="hidden" name="nim" value="{{$submit['nim']}}" readonly>
-                                    <input type="hidden" name="nama" value="{{$submit['nama']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Program Studi
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['prodi']}}
-                                    <input type="hidden" name="prodi" value="{{$submit['prodi']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    UT Daerah Asal
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['ut_daerah_asal']}}
-                                    <input type="hidden" name="ut_daerah_asal" value="{{$submit['ut_daerah_asal']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    UT Daerah Tujuan
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['ut_daerah_tujuan']}}
-                                    <input type="hidden" name="ut_daerah_tujuan" value="{{$submit['ut_daerah_tujuan']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Wilayah Ujian Asal
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['wilayah_ujian_asal']}}
-                                    <input type="hidden" name="wilayah_ujian_asal" value="{{$submit['wilayah_ujian_asal']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Wilayah Ujian Tujuan
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['wilayah_ujian_tujuan']}}
-                                    <input type="hidden" name="wilayah_ujian_tujuan" value="{{$submit['wilayah_ujian_tujuan']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Tanggal Pindah Lokasi
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['tgl_pindah_lokasi']}}
-                                    <input type="hidden" name="tgl_pindah_lokasi" value="{{$submit['tgl_pindah_lokasi']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Matakuliah
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($submit['matakuliah'] as $row)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$row}}
-                                    <input type="hidden" name="matakuliah[]" value="{{$row}}" readonly>
-                                </th>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Alasan Pindah
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['alasan']}}
-                                    <textarea hidden name="alasan" readonly>{{$submit['alasan']}}</textarea>
-                                </th>
-                            </tr>
-                        </tbody>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    No. WhatsApp Mahasiswa
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <th scope="row"
-                                    class="px-6 py-4  text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{$submit['no_wa']}}
-                                    <input type="hidden" name="no_wa" value="{{$submit['no_wa']}}" readonly>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div hidden>
+                    <input type="hidden" name="nim" value="{{$submit['nim']}}" readonly>
+                    <input type="hidden" name="nama" value="{{$submit['nama']}}" readonly>
+                    <input type="hidden" name="prodi" value="{{$submit['prodi']}}" readonly>
+                    <input type="hidden" name="ut_daerah_asal" value="{{$submit['ut_daerah_asal']}}" readonly>
+                    <input type="hidden" name="ut_daerah_tujuan" value="{{$submit['ut_daerah_tujuan']}}" readonly>
+                    <input type="hidden" name="wilayah_ujian_asal" value="{{$submit['wilayah_ujian_asal']}}" readonly>
+                    <input type="hidden" name="wilayah_ujian_tujuan" value="{{$submit['wilayah_ujian_tujuan']}}" readonly>
+                    <input type="hidden" name="tgl_pindah_lokasi" value="{{$submit['tgl_pindah_lokasi']}}" readonly>
+                    @foreach($submit['matakuliah'] as $row)
+                    <input type="hidden" name="matakuliah[]" value="{{$row}}" readonly>
+                    @endforeach
+                    <textarea hidden name="alasan" readonly>{{$submit['alasan']}}</textarea>
+                    <input type="hidden" name="no_wa" value="{{$submit['no_wa']}}" readonly>
                 </div>
+
+                <div class="text-xs border shadow bg-white p-8 lg:p-14 leading-6">
+                    <h3 class="uppercase text-sm font-bold text-center mb-8">Surat Permohonan</h3>
+                    <div class="flex gap-4 justify-between">
+                        <div>
+                            <p>Nomor : </p>
+                            <p>Perihal : Permohonan Pindah Tempat UTM</p>
+                        </div>
+                        <div>
+                            <p>Kepada Yth. <br> Kepala UPBJJ-UT Jambi <br> <span>- Di Tempat</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-10 mb-4">
+                        <p>Saya yang bermohon di bawah ini:</p>
+                        <table class="leading-none my-2">
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td>{{$submit['nama']}}</td>
+                            </tr>
+                            <tr>
+                                <td>NIM</td>
+                                <td>:</td>
+                                <td>{{$submit['nim']}}</td>
+                            </tr>
+                            <tr>
+                                <td>Prodi</td>
+                                <td>:</td>
+                                <td>{{$submit['prodi']}}</td>
+                            </tr>
+                            <tr>
+                                <td>UPBJJ-UT</td>
+                                <td>:</td>
+                                <td>{{$submit["ut_daerah_asal"]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Prodi</td>
+                                <td>:</td>
+                                <td>{{$submit['no_wa']}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="flex flex-col gap-5">
+                        <p class="text-justify">
+                            Dengan ini mengajukan permohonan untuk dapat Pindah Tempat UTM Masa 2024.1 yang semula di <span class="font-bold underline">{{$submit['wilayah_ujian_asal']}}</span> menjadi <span class="font-bold underline">{{$submit['wilayah_ujian_tujuan']}}</span> untuk tanggal <span class="font-bold underline">{{$submit['tgl_pindah_lokasi']}}</span> dengan alasan <span class="font-bold underline capitalize">{{$submit['alasan']}}</span>. Adapun jadwal ujian saya adalah sebagai berikut:
+                        </p>
+                        <table class="w-full leading-none">
+                            <thead>
+                                <th class="border text-center">No.</th>
+                                <th class="border text-center">Kode MK</th>
+                                <th class="border text-center">Nama MK</th>
+                            </thead>
+                            <tbody>
+                                @foreach($submit['matakuliah'] as $row)
+                                <tr>
+                                    <td class="border text-center">{{$loop->iteration}}</td>
+                                    <td class="border text-center">{{explode('/',$row)[0]}}</td>
+                                    <td class="border text-center">{{explode('/',$row)[1]}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <p class="text-justify">
+                            Demikian surat permohonan ini saya ajukan, atas berkenan dikabulkannya permohonan ini saya ucapkan terima kasih.
+                        </p>
+                        <p class="ml-auto">
+                            Jambi, {{date('d M Y')}}
+                            <br>
+                            Pemohon,
+                            <br>
+                            <br>
+                            <br>
+                            <span class="font-bold underline">{{$submit['nama']}}</span>
+                            <br>
+                            NIM. {{$submit['nim']}}
+                        </p>
+                    </div>
+                </div>
+
+
                 <div class="flex gap-2 justify-center">
                     <a href="javascript:history.back()"
                         class="w-fit items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-900 hover:bg-gray-800">
@@ -256,7 +185,7 @@
                             Daerah</label>
                         <select name="ut_daerah_tujuan" id="ut_daerah_tujuan"
                             class="select2  text-sm rounded-lg  block w-full p-2.5 ">
-                            <option disabled selected="">Pilih UT Daerah</option>
+                            <option disabled selected="">Pilih UT Daerah Tujuan</option>
                             @foreach($ut_daerah_tujuan as $row)
                             <option value="{{$row['kode_upbjj']}} / UT {{$row['nama_upbjj']}}">UT {{$row['nama_upbjj']}}
                             </option>
@@ -339,21 +268,10 @@
                         <select name="tgl_pindah_lokasi" id="tgl_pindah_lokasi"
                             class="select2 text-sm rounded-lg  block w-full p-2.5 ">
                             <option disabled selected="">Pilih Tanggal Pindah</option>
-                            <option value="22 Juni 2024 (H1)">22 Juni 2024 (H1)</option>
-                            <option value="23 Juni 2024 (H2)">22 Juni 2024 (H2)</option>
-                            <option value="22-23 Juni 2024 (H1-H2)">22-23 Juni 2024 (H1-H2)</option>
+                            <option value="22-23 Juni 2024 / H1-H2">22-23 Juni 2024 / H1-H2</option>
+                            <option value="22 Juni 2024 / H1">22 Juni 2024 / H1</option>
+                            <option value="23 Juni 2024 / H2">23 Juni 2024 / H2</option>
                         </select>
-                    </div>
-
-                    <div class="md:col-span-2">
-                        @foreach($mahasiswa->mk as $key=>$row)
-                        <div class="flex items-center mb-4 bg-white p-2 w-full shadow">
-                            <input id="mk-row-{{$key}}" name="matakuliah[]" type="checkbox" value="{{$row}}"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="mk-row-{{$key}}"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$row}}</label>
-                        </div>
-                        @endforeach
                     </div>
 
                     <div class="sm:col-span-2">
@@ -362,6 +280,11 @@
                         <textarea id="alasan" name="alasan" rows="8"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Isi alasan mengajukan pindah ujian"></textarea>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Dokumen Pendukung Alasan</label>
+                        <input name="surat_permohonan" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                        text/plain, application/pdf, image/*">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="no_wa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
