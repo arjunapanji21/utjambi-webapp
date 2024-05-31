@@ -21,13 +21,12 @@ return new class extends Migration
             $table->string("wilayah_ujian_asal");
             $table->string("wilayah_ujian_tujuan");
             $table->string("tgl_pindah_lokasi");
-            $table->string("matakuliah");
+            $table->text("matakuliah");
             $table->string("skema");
             $table->string("alasan");
             $table->string("no_wa");
-            $table->string("ttd")->nullable();
+            $table->text("ttd")->nullable();
             $table->string("dokumen_pendukung_alasan")->nullable();
-            $table->string("no_surat_permohonan")->nullable();
             $table->string("surat_pengantar")->nullable();
             $table->enum("status", ["Antrian", "Diproses", "Diterima", "Ditolak"]);
             $table->string("keterangan")->nullable();

@@ -34,6 +34,14 @@ class NumpangUjianController extends Controller
         return view('forms.status_numpang_ujian', $master);
     }
 
+    public function surat_permohonan_numpang_ujian($id){
+        $master = [
+            'title' => 'Surat Permohonan Numpang Ujian',
+            'mahasiswa' => NumpangUjian::find($id),
+        ];
+        return view('forms.surat_permohonan_numpang_ujian', $master);
+    }
+
     public function form_numpang_ujian(Request $request){
         $mahasiswa = null;
         $utdaerah = [];
@@ -41,26 +49,26 @@ class NumpangUjianController extends Controller
             array_push($utdaerah, ['kode_upbjj' => $row[0]->kode_upbjj, 'nama_upbjj' => $row[0]->nama_upbjj]);
         }
         if($request->has('alasan')){
-            $mk = [];
-            $mahasiswa = $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
+            $kode_mk = [];
+            $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
             foreach($mahasiswa as $row){
-                $mk_mhs = Matakuliah::where('kode', $row['kode_mk'])->get()->first();
-                if(preg_replace('/\s+/', '', explode('/', $request['tgl_pindah_lokasi'])[1]) == "H1" && $mk_mhs->skema == "UTM" && $mk_mhs->kode_waktu_ujian[0] == "1"){
-                    array_push($mk, $row['kode_mk']." / ".$row['nama_mk']);
-                }
-                else if(preg_replace('/\s+/', '', explode('/', $request['tgl_pindah_lokasi'])[1]) == "H2" && $mk_mhs->skema == "UTM" && $mk_mhs->kode_waktu_ujian[0] == "2"){
-                    array_push($mk, $row['kode_mk']." / ".$row['nama_mk']);
-                }else if(preg_replace('/\s+/', '', explode('/', $request['tgl_pindah_lokasi'])[1]) == "H1-H2" && $mk_mhs->skema == "UTM"){
-                    array_push($mk, $row['kode_mk']." / ".$row['nama_mk']);
-                }
+                array_push($kode_mk, $row->kode_mk);
+            }
+            
+            if(preg_replace('/\s+/', '', explode('/', $request['tgl_pindah_lokasi'])[1]) == "H1"){
+                $request['matakuliah'] = Matakuliah::whereIn('kode', $kode_mk)->where('skema', 'UTM')->where('kode_waktu_ujian', 'like', '1%')->orderBy('kode_waktu_ujian', 'asc')->get();
+            }
+            else if(preg_replace('/\s+/', '', explode('/', $request['tgl_pindah_lokasi'])[1]) == "H2"){
+                $request['matakuliah'] = Matakuliah::whereIn('kode', $kode_mk)->where('skema', 'UTM')->where('kode_waktu_ujian', 'like', '2%')->orderBy('kode_waktu_ujian', 'asc')->get();
+            }else if(preg_replace('/\s+/', '', explode('/', $request['tgl_pindah_lokasi'])[1]) == "H1-H2"){
+                $request['matakuliah'] = Matakuliah::whereIn('kode', $kode_mk)->where('skema', 'UTM')->orderBy('kode_waktu_ujian', 'asc')->get();
             }
 
-            $request['matakuliah'] = $mk;
-            
             $master = [
                 'title' => 'Form Numpang Ujian | UT Jambi',
                 'submit' => $request->all(),
             ];
+            
             return view('forms.form_numpang_ujian', $master);
         }
 
@@ -78,12 +86,11 @@ class NumpangUjianController extends Controller
                 ]);
                 $wilayah_ujian = WilayahUjian::where('kode_upbjj', preg_replace('/\s+/', '', explode("/",$request['ut_daerah_tujuan'])[0]))->get();
             } catch (\Throwable $th) {
-                dd($th);
+                return back()->with('error', $th);
             }
         }
 
-        if(!empty($mahasiswa)){
-            
+        if(!empty($mahasiswa) && count($mahasiswa) > 0){
             $data = new stdClass();
             $data->nim = $mahasiswa[0]->nim;
             $data->nama = $mahasiswa[0]->nama_mhs;
@@ -109,16 +116,17 @@ class NumpangUjianController extends Controller
     }
 
     public function submit_form_numpang_ujian(Request $request){
-        $urutan = count(NumpangUjian::all())+1;
-        $no_urut = '';
-        if(strlen($urutan) < 4){
-            for($i=0;$i<(4-strlen($urutan));$i++){
-                $no_urut = $no_urut . '0';
-            }
-            $no_urut = $no_urut . $urutan;
+        if($request->has('file')){
+            $request->validate([
+                'file' => 'required|file|max:5120', // 5120 KB = 5 MB
+            ]);
+            $file = $request->file('file');
+            $folder = public_path('uploads/numpang_ujian/');
+            $file->move($folder, $request['nim'].".pdf");
+            $dokumen_pendukung_alasan = 'uploads/numpang_ujian/' . $request['nim'].".pdf";
+        }else{
+            $dokumen_pendukung_alasan = null;
         }
-        
-        $no_surat = $no_urut . '/NU-UTM/17/' . $this->getRomawi(date('n')) . '/' . date('Y') ;
 
         NumpangUjian::create([
             "nim" => $request['nim'],
@@ -132,8 +140,9 @@ class NumpangUjianController extends Controller
             "matakuliah" => implode("|",$request['matakuliah']),
             "skema" => "UTM",
             "alasan" => $request['alasan'],
-            "no_surat_permohonan" => $no_surat,
             "no_wa" => $request['no_wa'],
+            "ttd" => $request['ttd'],
+            "dokumen_pendukung_alasan" => $dokumen_pendukung_alasan,
             "status" => "Antrian",
         ]);
         return redirect()->route("form.numpang_ujian")->with("success", "Form numpang ujian berhasil di submit dan sedang dalam antrian.");

@@ -28,6 +28,7 @@ Route::prefix('wisuda')->group(function () {
 Route::prefix('form')->group(function () {
     Route::get('/numpang-ujian', [NumpangUjianController::class, 'form_numpang_ujian'])->name('form.numpang_ujian');
     Route::get('/numpang-ujian/{nim}', [NumpangUjianController::class, 'status_numpang_ujian'])->name('status.numpang_ujian');
+    Route::get('/numpang-ujian/{id}/surat-permohonan', [NumpangUjianController::class, 'surat_permohonan_numpang_ujian'])->name('surat.permohonan_numpang_ujian');
     Route::post('/numpang-ujian/submit', [NumpangUjianController::class, 'submit_form_numpang_ujian'])->name('form.numpang_ujian.submit');
 });
 
