@@ -136,7 +136,7 @@
             </div> --}}
         </div>
     </div>
-    <div class="min-h-screen max-h-screen overflow-auto p-4">
+    <div class="overflow-auto px-4">
         <table class="table w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="sticky top-0 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -230,47 +230,47 @@
                                     <form action="#">
                                         <div class="grid lg:grid-cols-2 items-start justify-between gap-4 mb-4">
                                             <div class="flex items-center gap-4">
-                                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">status</label>
+                                                <label for="status" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">status</label>
                                                 <input type="text" name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->status}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">NIM</label>
+                                                <label for="nim" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">NIM</label>
                                                 <input type="text" name="nim" id="nim" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->nim}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">nama</label>
+                                                <label for="nama" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">nama</label>
                                                 <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->nama}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="prodi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">prodi</label>
+                                                <label for="prodi" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">prodi</label>
                                                 <input type="text" name="prodi" id="prodi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->prodi}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="ut_daerah_asal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">UT Daerah Asal</label>
+                                                <label for="ut_daerah_asal" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">UT Daerah Asal</label>
                                                 <input type="text" name="ut_daerah_asal" id="ut_daerah_asal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->ut_daerah_asal}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="ut_daerah_tujuan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">UT Daerah tujuan</label>
+                                                <label for="ut_daerah_tujuan" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">UT Daerah tujuan</label>
                                                 <input type="text" name="ut_daerah_tujuan" id="ut_daerah_tujuan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->ut_daerah_tujuan}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="wilayah_ujian_asal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">Wilayah Ujian Asal</label>
+                                                <label for="wilayah_ujian_asal" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">Wilayah Ujian Asal</label>
                                                 <input type="text" name="wilayah_ujian_asal" id="wilayah_ujian_asal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->wilayah_ujian_asal}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="wilayah_ujian_tujuan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">Wilayah Ujian Tujuan</label>
+                                                <label for="wilayah_ujian_tujuan" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">Wilayah Ujian Tujuan</label>
                                                 <input type="text" name="wilayah_ujian_tujuan" id="wilayah_ujian_tujuan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->wilayah_ujian_tujuan}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="tgl_pindah_lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">Tgl. Pindah Lokasi</label>
+                                                <label for="tgl_pindah_lokasi" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">Tgl. Pindah Lokasi</label>
                                                 <input type="text" name="tgl_pindah_lokasi" id="tgl_pindah_lokasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->tgl_pindah_lokasi}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="alasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">alasan</label>
+                                                <label for="alasan" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">alasan</label>
                                                 <input type="text" name="alasan" id="alasan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->alasan}}" readonly>
                                             </div>
                                             <div class="flex items-center gap-4">
-                                                <label for="no_wa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">WhatsApp</label>
+                                                <label for="no_wa" class="block  text-sm font-medium text-gray-900 dark:text-white w-24 lg:w-48 capitalize">WhatsApp</label>
                                                 <input type="text" name="no_wa" id="no_wa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$row->no_wa}}" readonly>
                                             </div>
                                             <div class="grid grid-cols-2 items-center justify-between gap-4">
@@ -339,61 +339,7 @@
             </tbody>
         </table>
     </div>
-    <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-        aria-label="Table navigation">
-        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing
-            <span class="font-semibold text-gray-900 dark:text-white">{{count($data)}}</span>
-            of
-            <span class="font-semibold text-gray-900 dark:text-white">{{count($data)}}</span>
-        </span>
-        {{-- <ul class="inline-flex items-stretch -space-x-px">
-            <li>
-                <a href="#"
-                    class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                    <span class="sr-only">Previous</span>
-                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" aria-current="page"
-                    class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">1</a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">100</a>
-            </li>
-            <li>
-                <a href="#"
-                    class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                    <span class="sr-only">Next</span>
-                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </li>
-        </ul> --}}
-    </nav>
+    <x-pagination :data="$data"></x-pagination>
 </div>
 @endsection
 

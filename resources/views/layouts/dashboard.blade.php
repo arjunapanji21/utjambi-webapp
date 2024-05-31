@@ -645,50 +645,6 @@
                   </li>
                 </ul>
               </li>
-              <li>
-                <button
-                  type="button"
-                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
-                  aria-controls="dropdown-yudisium"
-                  data-collapse-toggle="dropdown-yudisium"
-                >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
-                fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
-                  
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
-                    >wisuda</span
-                  >
-                  <svg
-                    aria-hidden="true"
-                    class="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-                <ul id="dropdown-yudisium" class="hidden py-2 space-y-2">
-                  <li>
-                    <a
-                      href="{{route('admin.wisuda.peserta')}}"
-                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Peserta Wisuda</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Seminar Wisuda</a
-                    >
-                  </li>
-                </ul>
-              </li>
             </ul>
             <ul
               class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
@@ -701,8 +657,8 @@
                   aria-controls="dropdown-numpang-ujian"
                   data-collapse-toggle="dropdown-numpang-ujian"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Numpang Ujian") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
-                fill="currentColor"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Numpang Ujian") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
+                fill="currentColor"><path d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V160H352c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96h32V64c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 401.8 126.2 416 96 416H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H96c10.1 0 19.6-4.7 25.6-12.8L164 282.7zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V416H352c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H96c30.2 0 58.7 14.2 76.8 38.4L326.4 339.2c6 8.1 15.5 12.8 25.6 12.8h32V320c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z"/></svg>
                   <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
                     >Numpang Ujian</span
                   >
@@ -730,12 +686,49 @@
                   </li>
                   <li>
                     <a
-                      href="{{route('admin.numpang_ujian.matakuliah')}}"
+                      href="{{route('admin.numpang_ujian.wilayah')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Data Master</a
                     >
                   </li>
                   
+                </ul>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
+                  aria-controls="dropdown-yudisium"
+                  data-collapse-toggle="dropdown-yudisium"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
+                fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
+                  
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
+                    >Absensi wisuda</span
+                  >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul id="dropdown-yudisium" class="hidden py-2 space-y-2">
+                  <li>
+                    <a
+                      href="{{route('admin.wisuda.peserta')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Data Wisuda</a
+                    >
+                  </li>
                 </ul>
               </li>
             </ul>

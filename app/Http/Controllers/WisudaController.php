@@ -22,7 +22,7 @@ class WisudaController extends Controller
             'title' => 'Peserta Wisuda',
             'wisudawan' => Wisudawan::orderBy('id', 'asc')->get(),
         ];
-        return view('wisuda.peserta', $master);
+        return view('admin.aplikasi.wisuda.peserta_wisuda', $master);
     }
 
     public function detail_peserta(Request $request){

@@ -16,11 +16,11 @@ use stdClass;
 class NumpangUjianController extends Controller
 {
     public function data_numpang_ujian(Request $request){
-        $data = NumpangUjian::orderBy('created_at', 'asc')->get();
+        $data = NumpangUjian::orderBy('created_at', 'asc');
         $master = [
             'title' => 'Data Numpang Ujian | UT Jambi',
             'active' => 'Numpang Ujian',
-            'data' => $data,
+            'data' => $data->paginate(10),
         ];
         return view('admin.aplikasi.numpang_ujian.data_numpang_ujian', $master);
     }
@@ -152,10 +152,28 @@ class NumpangUjianController extends Controller
         $data = Matakuliah::orderBy('id', 'asc');
         $master = [
             'title' => 'Data Matakuliah',
-            'active' => 'Master Data',
-            'data' => $data->get(),
+            'active' => 'Numpang Ujian',
+            'data' => $data->paginate(10),
         ];
         return view('admin.aplikasi.numpang_ujian.matakuliah', $master);
+    }
+    public function wilayah(){
+        $data = WilayahUjian::orderBy('id', 'asc');
+        $master = [
+            'title' => 'Data Wilayah Ujian',
+            'active' => 'Numpang Ujian',
+            'data' => $data->paginate(10),
+        ];
+        return view('admin.aplikasi.numpang_ujian.wilayah_ujian', $master);
+    }
+    public function peserta(){
+        $data = PesertaUjian::orderBy('id', 'asc');
+        $master = [
+            'title' => 'Data Peserta Ujian',
+            'active' => 'Numpang Ujian',
+            'data' => $data->paginate(10),
+        ];
+        return view('admin.aplikasi.numpang_ujian.peserta_ujian', $master);
     }
 
     public function matakuliah_import(Request $request){
