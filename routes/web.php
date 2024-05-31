@@ -39,9 +39,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     });
 
     Route::prefix('numpang-ujian')->group(function () {
-        Route::get('/matakuliah', [NumpangUjianController::class, 'matakuliah'])->name('admin.aplikasi.numpang_ujian.matakuliah');
+        Route::get('/matakuliah', [NumpangUjianController::class, 'matakuliah'])->name('admin.numpang_ujian.matakuliah');
         Route::get('/data-nu', [NumpangUjianController::class, 'data_numpang_ujian'])->name('admin.numpang_ujian.data_nu');
-        Route::post('/matakuliah/import', [NumpangUjianController::class, 'matakuliah_import'])->name('admin.aplikasi.numpang_ujian.matakuliah.import');
+        Route::post('/matakuliah/import', [NumpangUjianController::class, 'matakuliah_import'])->name('admin.numpang_ujian.matakuliah.import');
         Route::post('/wilayah-ujian/import', [NumpangUjianController::class, 'wilayah_ujian_import'])->name('admin.numpang_ujian.wilayah_ujian.import');
         Route::post('/peserta-ujian/import', [NumpangUjianController::class, 'peserta_ujian_import'])->name('admin.numpang_ujian.peserta_ujian.import');
     });
