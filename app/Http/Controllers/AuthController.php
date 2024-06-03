@@ -18,8 +18,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $response = Http::post('https://api-srs.ut.ac.id/api-srs-mahasiswa/v1/auth', [
-                "email" => "ella.sunardi@ecampus.ut.ac.id",
-                "password" => "Sunardi1990"
+                // "email" => "ella.sunardi@ecampus.ut.ac.id",
+                // "password" => "Sunardi1990"
+                "email" => "api-testing-Bogor@ut.ac.id",
+                "password" => "Terbuka132"
             ]);
             $result = $response->json();
             try {

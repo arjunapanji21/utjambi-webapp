@@ -26,10 +26,13 @@ Route::prefix('wisuda')->group(function () {
 });
 
 Route::prefix('form')->group(function () {
-    Route::get('/numpang-ujian', [NumpangUjianController::class, 'form_numpang_ujian'])->name('form.numpang_ujian');
+    Route::get('/numpang-ujian', [NumpangUjianController::class, 'form_numpang_ujian_1'])->name('form.numpang_ujian_1');
+    Route::get('/numpang-ujian/ut-jambi', [NumpangUjianController::class, 'form_numpang_ujian_2'])->name('form.numpang_ujian_2');
+    Route::get('/numpang-ujian/ut-lain', [NumpangUjianController::class, 'form_numpang_ujian_3'])->name('form.numpang_ujian_3');
     Route::get('/numpang-ujian/{nim}', [NumpangUjianController::class, 'status_numpang_ujian'])->name('status.numpang_ujian');
     Route::get('/numpang-ujian/{id}/surat-permohonan', [NumpangUjianController::class, 'surat_permohonan_numpang_ujian'])->name('surat.permohonan_numpang_ujian');
-    Route::post('/numpang-ujian/submit', [NumpangUjianController::class, 'submit_form_numpang_ujian'])->name('form.numpang_ujian.submit');
+    Route::post('/numpang-ujian/ut-jambi/submit', [NumpangUjianController::class, 'submit_form_numpang_ujian'])->name('form.numpang_ujian.submit');
+    Route::post('/numpang-ujian/ut-lain/submit', [NumpangUjianController::class, 'submit_form_numpang_ujian_dari_luar'])->name('form.numpang_ujian.submit.dari_luar');
 });
 
 
