@@ -64,6 +64,9 @@ class NumpangUjianController extends Controller
             array_push($utdaerah, ['kode_upbjj' => $row[0]->kode_upbjj, 'nama_upbjj' => $row[0]->nama_upbjj]);
         }
         if ($request->has('alasan')) {
+            $request->validate([
+                'no_wa' => 'required|min:9|max:15',
+            ]);
             $kode_mk = [];
             $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
             foreach ($mahasiswa as $row) {
@@ -134,6 +137,10 @@ class NumpangUjianController extends Controller
         $mahasiswa = null;
 
         if ($request->has('alasan')) {
+            $request->validate([
+                'no_wa' => 'required|min:9|max:15',
+            ]);
+
             $kode_mk = [];
 
             $token = Token::where('nama', 'SRS')->get()->first()->token;
@@ -247,23 +254,41 @@ class NumpangUjianController extends Controller
             $dokumen_pendukung_alasan = null;
         }
 
-        NumpangUjian::create([
-            "nim" => $request['nim'],
-            "nama" => $request['nama'],
-            "prodi" => $request['prodi'],
-            "ut_daerah_asal" => $request['ut_daerah_asal'],
-            "ut_daerah_tujuan" => $request['ut_daerah_tujuan'],
-            "wilayah_ujian_asal" => $request['wilayah_ujian_asal'],
-            "wilayah_ujian_tujuan" => $request['wilayah_ujian_tujuan'],
-            "tgl_pindah_lokasi" => $request['tgl_pindah_lokasi'],
-            "matakuliah" => implode("|", $request['matakuliah']),
-            "skema" => "UTM",
-            "alasan" => $request['alasan'],
-            "no_wa" => $request['no_wa'],
-            "ttd" => $request['ttd'],
-            "dokumen_pendukung_alasan" => $dokumen_pendukung_alasan,
-            "status" => "Antrian",
-        ]);
+        $numpang = new NumpangUjian;
+        $numpang->nim = $request['nim'];
+        $numpang->nama = $request['nama'];
+        $numpang->prodi = $request['prodi'];
+        $numpang->ut_daerah_asal = $request['ut_daerah_asal'];
+        $numpang->ut_daerah_tujuan = $request['ut_daerah_tujuan'];
+        $numpang->wilayah_ujian_asal = $request['wilayah_ujian_asal'];
+        $numpang->wilayah_ujian_tujuan = $request['wilayah_ujian_tujuan'];
+        $numpang->tgl_pindah_lokasi = $request['tgl_pindah_lokasi'];
+        $numpang->matakuliah = implode("|", $request['matakuliah']);
+        $numpang->skema = "UTM";
+        $numpang->alasan = $request['alasan'];
+        $numpang->no_wa = $request['no_wa'];
+        $numpang->ttd = $request['ttd'];
+        $numpang->dokumen_pendukung_alasan = $dokumen_pendukung_alasan;
+        $numpang->status = "Antrian";
+        $numpang->save();
+
+        // NumpangUjian::create([
+        //     "nim" => $request['nim'],
+        //     "nama" => $request['nama'],
+        //     "prodi" => $request['prodi'],
+        //     "ut_daerah_asal" => $request['ut_daerah_asal'],
+        //     "ut_daerah_tujuan" => $request['ut_daerah_tujuan'],
+        //     "wilayah_ujian_asal" => $request['wilayah_ujian_asal'],
+        //     "wilayah_ujian_tujuan" => $request['wilayah_ujian_tujuan'],
+        //     "tgl_pindah_lokasi" => $request['tgl_pindah_lokasi'],
+        //     "matakuliah" => implode("|", $request['matakuliah']),
+        //     "skema" => "UTM",
+        //     "alasan" => $request['alasan'],
+        //     "no_wa" => $request['no_wa'],
+        //     "ttd" => $request['ttd'],
+        //     "dokumen_pendukung_alasan" => $dokumen_pendukung_alasan,
+        //     "status" => "Antrian",
+        // ]);
         return redirect()->route("status.numpang_ujian", $request['nim'])->with("success", "Form numpang ujian berhasil di submit dan sedang dalam antrian.");
     }
 
@@ -277,23 +302,41 @@ class NumpangUjianController extends Controller
         $file->move($folder, $request['nim'] . "_surat_pengantar.pdf");
         $surat_pengantar = 'uploads/numpang_ujian/' . $request['nim'] . "_surat_pengantar.pdf";
 
-        NumpangUjian::create([
-            "nim" => $request['nim'],
-            "nama" => $request['nama'],
-            "prodi" => $request['prodi'],
-            "ut_daerah_asal" => $request['ut_daerah_asal'],
-            "ut_daerah_tujuan" => $request['ut_daerah_tujuan'],
-            "wilayah_ujian_asal" => $request['wilayah_ujian_asal'],
-            "wilayah_ujian_tujuan" => $request['wilayah_ujian_tujuan'],
-            "tgl_pindah_lokasi" => $request['tgl_pindah_lokasi'],
-            "matakuliah" => implode("|", $request['matakuliah']),
-            "skema" => "UTM",
-            "alasan" => $request['alasan'],
-            "no_wa" => $request['no_wa'],
-            "ttd" => $request['ttd'],
-            "surat_pengantar" => $surat_pengantar,
-            "status" => "Antrian",
-        ]);
+        $numpang = new NumpangUjian;
+        $numpang->nim = $request['nim'];
+        $numpang->nama = $request['nama'];
+        $numpang->prodi = $request['prodi'];
+        $numpang->ut_daerah_asal = $request['ut_daerah_asal'];
+        $numpang->ut_daerah_tujuan = $request['ut_daerah_tujuan'];
+        $numpang->wilayah_ujian_asal = $request['wilayah_ujian_asal'];
+        $numpang->wilayah_ujian_tujuan = $request['wilayah_ujian_tujuan'];
+        $numpang->tgl_pindah_lokasi = $request['tgl_pindah_lokasi'];
+        $numpang->matakuliah = implode("|", $request['matakuliah']);
+        $numpang->skema = "UTM";
+        $numpang->alasan = $request['alasan'];
+        $numpang->no_wa = $request['no_wa'];
+        $numpang->ttd = $request['ttd'];
+        $numpang->surat_pengantar = $surat_pengantar;
+        $numpang->status = "Antrian";
+        $numpang->save();
+
+        // NumpangUjian::create([
+        //     "nim" => $request['nim'],
+        //     "nama" => $request['nama'],
+        //     "prodi" => $request['prodi'],
+        //     "ut_daerah_asal" => $request['ut_daerah_asal'],
+        //     "ut_daerah_tujuan" => $request['ut_daerah_tujuan'],
+        //     "wilayah_ujian_asal" => $request['wilayah_ujian_asal'],
+        //     "wilayah_ujian_tujuan" => $request['wilayah_ujian_tujuan'],
+        //     "tgl_pindah_lokasi" => $request['tgl_pindah_lokasi'],
+        //     "matakuliah" => implode("|", $request['matakuliah']),
+        //     "skema" => "UTM",
+        //     "alasan" => $request['alasan'],
+        //     "no_wa" => $request['no_wa'],
+        //     "ttd" => $request['ttd'],
+        //     "surat_pengantar" => $surat_pengantar,
+        //     "status" => "Antrian",
+        // ]);
         return redirect()->route("status.numpang_ujian", $request['nim'])->with("success", "Form numpang ujian berhasil di submit dan sedang dalam antrian.");
     }
 
