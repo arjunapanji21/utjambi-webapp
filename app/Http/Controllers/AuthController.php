@@ -9,10 +9,24 @@ use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
+    public function login(){
+        $props = [
+            'title' => "Login",
+        ];
+        return view('auth.login', $props);
+    }
+
+    public function reset_password(){
+        $props = [
+            'title' => "Reset Password",
+        ];
+        return view('auth.reset_password', $props);
+    }
+    
     public function auth(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required'],
+            'username' => ['required'],
             'password' => ['required'],
         ]);
 

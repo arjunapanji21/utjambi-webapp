@@ -95,7 +95,7 @@
                 </button>
                 <div id="main-menu"
                     class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-                    <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
+                    <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse items-center">
                         <li>
                             <button id="menu-profil-button"
                                 data-collapse-toggle="menu-profil-dropdown"
@@ -119,6 +119,12 @@
                         <li>
                             <a href="#"
                                 class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Hubungi Kami</a>
+                        </li>
+                        <li>
+                            <div class="flex flex-row gap-2 items-center justify-end">
+                                <button type="button" class="py-2.5 px-5 text-sm text-gray-400 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">Masuk</button>
+                                <button type="button" class="text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Registrasi</button>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -316,9 +322,8 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Quick Links</h2>
                         <ul class="text-gray-300  dark:text-white font-medium">
                             <li class="mb-4">
-                                <button data-modal-target="authentication-modal"
-                                    data-modal-toggle="authentication-modal"
-                                    class="hover:underline hover:text-gray-100">Login Admin</button>
+                                <a href="{{route('login')}}"
+                                    class="hover:underline hover:text-gray-100">Login</a>
                             </li>
                             <li>
                                 <a href="#" class="hover:underline hover:text-gray-100">Terms &amp; Conditions</a>

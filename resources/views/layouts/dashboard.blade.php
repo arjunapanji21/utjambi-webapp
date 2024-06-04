@@ -605,7 +605,7 @@
                     ></path>
                   </svg>
                   <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
-                    >postingan</span
+                    >Post</span
                   >
                   <svg
                     aria-hidden="true"
@@ -624,23 +624,16 @@
                 <ul id="dropdown-postingan" class="hidden py-2 space-y-2">
                   <li>
                     <a
-                      href=""
+                      href="{{route('admin.post.show_all_post')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >All Posts</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="{{route('admin.post.show_all_category')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Categories</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Tags</a
                     >
                   </li>
                 </ul>

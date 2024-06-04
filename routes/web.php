@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataMasterController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\NumpangUjianController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\WisudaController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,12 +13,13 @@ Route::get('/503', function(){
     return abort(503);
 })->name('503');
 
-Route::get('/', function () {
-    return view('homepage.index');
-})->name('homepage');
-
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/reset-password', [AuthController::class, 'reset_password'])->name('reset_password');
 Route::post('/login/auth', [AuthController::class, 'auth'])->name('auth');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+Route::get('/content/{category}/{slug}', [PostController::class, 'show_post_detail'])->name('show_post_detail');
 
 Route::prefix('wisuda')->group(function () {
     Route::get('/', [WisudaController::class, 'index'])->name('wisuda.index');
@@ -39,6 +42,15 @@ Route::prefix('form')->group(function () {
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    });
+
+    Route::prefix('post')->group(function () {
+        Route::get('/', [PostController::class, 'show_all_post'])->name('admin.post.show_all_post');
+        Route::get('/new', [PostController::class, 'create_new_post'])->name('admin.post.create_new_post');
+        Route::post('/new/draft', [PostController::class, 'post_to_draft'])->name('admin.post.draft');
+        Route::post('/new/publish', [PostController::class, 'post_to_publish'])->name('admin.post.publish');
+        Route::get('/category', [PostController::class, 'show_all_category'])->name('admin.post.show_all_category');
+        Route::post('/category/new', [PostController::class, 'add_new_category'])->name('admin.post.add_new_category');
     });
 
     Route::prefix('numpang-ujian')->group(function () {
