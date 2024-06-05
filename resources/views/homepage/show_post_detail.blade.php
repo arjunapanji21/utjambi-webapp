@@ -6,26 +6,33 @@
     <div class="flex justify-between px-4 mx-auto max-w-3xl shadow-lg bg-white py-10">
         <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header class="mb-4 lg:mb-6 not-format">
-                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white text-center">{{$post->title}}</h1>
+                {{-- featured image: <img {!!explode(' ', substr($post->content, strpos($post->content,'src="')))[0]!!} alt=""> --}}
+                <h1 class="mb-4 text-3xl font-extrabold leading-8 text-gray-900 lg:text-4xl dark:text-white text-center pb-4 border-b">{{$post->title}}</h1>
                 <address class="flex items-center mb-6 not-italic">
                     <div class="w-full text-sm text-gray-900 dark:text-white">
                         <div class="flex justify-between">
                             <div class="flex items-center">
-                                <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="author: {{$post->author->name}}">
+                                <div class="relative inline-flex items-center justify-center w-12 h-12 me-3 overflow-hidden bg-gray-900 rounded-full dark:bg-gray-600">
+                                    @foreach(explode(' ',$post->author->name) as $row)
+                                    <span class="font-medium text-xl text-gray-100 dark:text-white">
+                                        {{$row[0]}}
+                                    </span>
+                                    @endforeach
+                                </div>
                                 <div>
                                     <a href="#" rel="author" class="text-lg font-bold text-gray-900 dark:text-white capitalize">{{$post->author->name}}</a>
                                     <p class="text-base text-gray-500 dark:text-gray-400 capitalize">{{$post->author->role}}</p>
                                 </div>
                             </div>
                             <div>
-                                <p class="text-base text-gray-500 dark:text-gray-400">{{date('d M Y')}}</p>
+                                <p class="text-base text-gray-500 dark:text-gray-400">{{date('d M Y', strtotime($post->date))}}</p>
                                 <p class="text-base text-gray-500 dark:text-gray-400 text-right">{{$post->views}} views</p>
                             </div>
                         </div>
                     </div>
                 </address>
             </header>
-            <div class="leading-6">
+            <div class="leading-8 text-justify">
                 {!!$post->content!!}
             </div>
             <section class="not-format mt-10">
@@ -250,54 +257,20 @@
     <div class="px-4 mx-auto max-w-screen-xl">
         <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            @foreach($related as $row)
             <article class="max-w-xs">
                 <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
+                    <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" alt="Image 1">
                 </a>
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Our first office</a>
+                    <a href="#">{{$row->title}}</a>
                 </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
+                {{-- <p class="mb-4 text-gray-500 dark:text-gray-400">{{$row->excerpt}}</p> --}}
                 <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
-                    in Berita
+                    in {{$row->category->name}}
                 </a>
             </article>
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png" class="mb-5 rounded-lg" alt="Image 2">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Enterprise design tips</a>
-                </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
-                    in Berita
-                </a>
-            </article>
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png" class="mb-5 rounded-lg" alt="Image 3">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">We partnered with Google</a>
-                </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
-                    in Berita
-                </a>
-            </article>
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png" class="mb-5 rounded-lg" alt="Image 4">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Our first project with React</a>
-                </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
-                    in Berita
-                </a>
-            </article>
+            @endforeach
         </div>
     </div>
   </aside>

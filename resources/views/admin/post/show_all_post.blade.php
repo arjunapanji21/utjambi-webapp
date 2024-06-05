@@ -80,7 +80,7 @@
                     <th scope="col" class="px-4 py-3">title</th>
                     <th scope="col" class="px-4 py-3">author</th>
                     <th scope="col" class="px-4 py-3">category</th>
-                    <th scope="col" class="px-4 py-3">created_at</th>
+                    <th scope="col" class="px-4 py-3">publish at</th>
                     <th scope="col" class="px-4 py-3">status</th>
                     <th scope="col" class="px-4 py-3">views</th>
                     <th scope="col" class="px-4 py-3">
@@ -95,8 +95,8 @@
                     <td class="px-4 py-3 font-semibold">{{$post->title}}</td>
                     <td class="px-4 py-3">{{$post->author->name}}</td>
                     <td class="px-4 py-3">{{$post->category->name}}</td>
-                    <td class="px-4 py-3">{{$post->created_at}}</td>
-                    <td class="px-4 py-3">{{$post->status}}</td>
+                <td class="px-4 py-3">{{$post->status == "publish" ? date('d M Y', strtotime($post->date)) : ''}}</td>
+                    <td class="px-4 py-3 capitalize">{{$post->status}}</td>
                     <td class="px-4 py-3">{{$post->views}}</td>
                     <td class="px-4 py-3 flex items-center justify-end">
                         <a href="#" class="p-2 rounded-full hover:bg-gray-100">

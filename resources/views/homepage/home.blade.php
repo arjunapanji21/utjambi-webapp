@@ -4,7 +4,7 @@
     <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
         <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-start">
             <div class="w-full text-center lg:text-left pt-10 lg:pt-10">
-                <a href="#"
+                <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank"
                     class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
                     role="alert">
                     <span class="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span
@@ -38,8 +38,8 @@
                 </div>
                 <div
                     class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0 sm:space-x-4">
-                    <a href="#"
-                        class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 ">
+                    <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank"
+                        class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 hover:scale-95 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="mr-2 -ml-1 w-5 h-5"
                             fill="currentColor">
                             <path
@@ -47,8 +47,8 @@
                         </svg>
                         Daftar Sekarang
                     </a>
-                    <a href="#"
-                        class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ">
+                    <a href="https://web.whatsapp.com/send?text=&phone=6282259528388" target="_blank"
+                        class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600 hover:scale-95 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="mr-2 -ml-1 w-5 h-5"
                             fill="currentColor">
                             <path
@@ -111,7 +111,7 @@
         </div>
         <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
             <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
+                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-100 hover:cursor-pointer hover:scale-95 transition">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
@@ -125,7 +125,7 @@
                     dengan nilai A (unggul) & B (sangat baik).</p>
             </div>
             <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
+                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-100 hover:cursor-pointer hover:scale-95 transition">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
@@ -139,7 +139,7 @@
                     kampus lama kamu sehingga kamu tidak perlu mengulang perkuliahan dari awal lagi.</p>
             </div>
             <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
+                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-100 hover:cursor-pointer hover:scale-95 transition">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -153,7 +153,7 @@
                     sehingga tidak membuat kantong kering.</p>
             </div>
             <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
+                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-100 hover:cursor-pointer hover:scale-95 transition">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
@@ -167,7 +167,7 @@
                     menentukan waktu perkuliahan sehingga kamu bisa kuliah sesuai gayamu.</p>
             </div>
             <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
+                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-100 hover:cursor-pointer hover:scale-95 transition">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
@@ -183,7 +183,7 @@
                     darimana saja.</p>
             </div>
             <div
-                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-gray-100 hover:cursor-pointer">
+                class="flex flex-col justify-center items-center bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-100 hover:cursor-pointer hover:scale-95 transition">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
@@ -202,7 +202,7 @@
 
 <section class="bg-primary-700 dark:bg-primary-900 border-b-8 border-b-yellow-300">
     <div class="grid lg:grid-cols-2 py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="w-full lg:border-r">
+        <div class="w-full">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-100 dark:text-white">#AyooMasukUT</h2>
             <p class="mb-8 font-light text-gray-200 sm:text-xl dark:text-gray-100">Dapatkan informasi pendaftaran
                 Universitas Terbuka Daerah Jambi Melalui WhatsApp.</p>
@@ -224,7 +224,7 @@
                         WhatsApp</label>
                 </div>
                 <button type="submit"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium flex items-center justify-center text-primary-700 focus:outline-none bg-white rounded-lg  hover:bg-gray-300   focus:z-10 focus:ring-4 focus:ring-gray-100 ">
+                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium flex items-center justify-center text-primary-700 focus:outline-none bg-white rounded-lg  hover:bg-gray-300   focus:z-10 focus:ring-4 focus:ring-gray-100 hover:scale-95 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="mr-2 -ml-1 w-5 h-5"
                         fill="currentColor">
                         <path
@@ -233,20 +233,40 @@
                     Kirim</button>
             </form>
         </div>
-        <div class="border-t lg:border-none w-full">
+        <div class="w-full rounded-lg" style="background: linear-gradient(to right, rgba(225,225,225,0.85), rgba(225,225,225,0.85)),url('{{asset('images/kantor-ut-jambi.webp')}}')">
             <div class="py-4 px-8">
                 <div class="mt-5 flex flex-col justify-center items-center gap-4">
-                    <h5 class="text-xl lg:text-3xl text-center font-bold lg:font-extrabold text-gray-100 dark:text-white">
+                    <h5 class="text-xl lg:text-3xl text-center font-bold lg:font-extrabold text-primary-900 dark:text-white">
                         Jalur Pendaftaran Universitas Terbuka Melalui:
                     <h5>
-                    <div class="mt-2 lg:mt-5 grid grid-cols-3 gap-2">
-                        <a href="" type="button"
-                            class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Online</a>
-                        <a href="" type="button"
-                            class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Kantor
-                            UT Jambi</a>
-                        <a href="" type="button"
-                            class="text-blue-700 text-center flex justify-center items-center bg-gray-100 hover:bg-gray-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-white dark:hover:bg-gray-100 focus:outline-none dark:focus:ring-blue-900">Pokjar</a>
+                    <div class="my-2 grid grid-cols-3 gap-20">
+                        <div>
+                            <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank" data-tooltip-target="daftar_online" data-tooltip-placement="bottom"
+                            class="text-blue-900 font-bold text-center hover:scale-95 transition flex justify-center items-center bg-gray-100 hover:text-yellow-300 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm p-2.5 dark:bg-white dark:hover:bg-yellow-100 focus:outline-none dark:focus:ring-blue-900 uppercase">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-10 h-10" fill="currentColor"><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"/></svg></a>
+                            <div id="daftar_online" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Online
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="" data-tooltip-target="kantor_ut" data-tooltip-placement="bottom"
+                            class="text-blue-900 font-bold text-center hover:scale-95 transition flex justify-center items-center bg-gray-100 hover:text-yellow-300 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm p-2.5 dark:bg-white dark:hover:bg-yellow-100 focus:outline-none dark:focus:ring-blue-900 uppercase">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-10 h-10" fill="currentColor"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></a>
+                            <div id="kantor_ut" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Kantor UT Jambi
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="" data-tooltip-target="pokjar" data-tooltip-placement="bottom"
+                            class="text-blue-900 font-bold text-center hover:scale-95 transition flex justify-center items-center bg-gray-100 hover:text-yellow-300 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm p-2.5 dark:bg-white dark:hover:bg-yellow-100 focus:outline-none dark:focus:ring-blue-900 uppercase">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-10 h-10" fill="currentColor"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg></a>
+                            <div id="pokjar" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                POKJAR
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -262,37 +282,35 @@
             <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Ikuti perkembangan dan informasi
                 mengenai kehidupan kampus di Universitas Terbuka khususnya untuk daerah Jambi.</p>
         </div>
-        <div class="grid gap-8 lg:grid-cols-2">
+        <div class="max-w-2xl flex flex-col gap-10 mx-auto">
+            @foreach($posts as $post)
             <article
                 class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex justify-between items-center mb-5 text-gray-500">
+                <img src="{{explode('"', substr($post->content, strpos($post->content,'src="')))[1]}}" alt="">
+                <div class="flex justify-between items-center mb-5 text-gray-500 mt-5">
                     <span
                         class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                        <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z">
-                            </path>
-                        </svg>
-                        Tutorial
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-2.5 h-2.5 me-1" fill="currentColor"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>
+                        {{$post->category->name}}
                     </span>
-                    <span class="text-sm">14 days ago</span>
+                    <span class="text-sm">{{date('d/m/Y', strtotime($post->date))}}</span>
                 </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">How to
-                        quickly deploy a static website</a></h2>
-                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to
-                    bootstrap lots of websites and are becoming the basis for a variety of tools that even influence
-                    both web designers and developers influence both web designers and developers.</p>
+                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="{{route('show_post_detail', [$post->category->name, $post->slug])}}">{{$post->title}}</a></h2>
+                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{$post->excerpt}}</p>
                 <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-4">
-                        <img class="w-7 h-7 rounded-full"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                            alt="Jese Leos avatar" />
+                        <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-900 rounded-full dark:bg-gray-600">
+                            @foreach(explode(' ',$post->author->name) as $row)
+                            <span class="font-medium text-gray-100 dark:text-white">
+                                {{$row[0]}}
+                            </span>
+                            @endforeach
+                        </div>
                         <span class="font-medium dark:text-white">
-                            Jese Leos
+                            {{$post->author->name}}
                         </span>
                     </div>
-                    <a href="#"
+                    <a href="{{route('show_post_detail', [$post->category->name, $post->slug])}}"
                         class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
                         Read more
                         <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
@@ -304,131 +322,7 @@
                     </a>
                 </div>
             </article>
-            <article
-                class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex justify-between items-center mb-5 text-gray-500">
-                    <span
-                        class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                        <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                                clip-rule="evenodd"></path>
-                            <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
-                        </svg>
-                        Article
-                    </span>
-                    <span class="text-sm">14 days ago</span>
-                </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">Our
-                        first project with React</a></h2>
-                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to
-                    bootstrap lots of websites and are becoming the basis for a variety of tools that even influence
-                    both web designers and developers influence both web designers and developers.</p>
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center space-x-4">
-                        <img class="w-7 h-7 rounded-full"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                            alt="Bonnie Green avatar" />
-                        <span class="font-medium dark:text-white">
-                            Bonnie Green
-                        </span>
-                    </div>
-                    <a href="#"
-                        class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-                        Read more
-                        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </article>
-            <article
-                class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex justify-between items-center mb-5 text-gray-500">
-                    <span
-                        class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                        <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z">
-                            </path>
-                        </svg>
-                        Tutorial
-                    </span>
-                    <span class="text-sm">14 days ago</span>
-                </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">How to
-                        quickly deploy a static website</a></h2>
-                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to
-                    bootstrap lots of websites and are becoming the basis for a variety of tools that even influence
-                    both web designers and developers influence both web designers and developers.</p>
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center space-x-4">
-                        <img class="w-7 h-7 rounded-full"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                            alt="Jese Leos avatar" />
-                        <span class="font-medium dark:text-white">
-                            Jese Leos
-                        </span>
-                    </div>
-                    <a href="#"
-                        class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-                        Read more
-                        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </article>
-            <article
-                class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex justify-between items-center mb-5 text-gray-500">
-                    <span
-                        class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                        <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                                clip-rule="evenodd"></path>
-                            <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
-                        </svg>
-                        Article
-                    </span>
-                    <span class="text-sm">14 days ago</span>
-                </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">Our
-                        first project with React</a></h2>
-                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to
-                    bootstrap lots of websites and are becoming the basis for a variety of tools that even influence
-                    both web designers and developers influence both web designers and developers.</p>
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center space-x-4">
-                        <img class="w-7 h-7 rounded-full"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                            alt="Bonnie Green avatar" />
-                        <span class="font-medium dark:text-white">
-                            Bonnie Green
-                        </span>
-                    </div>
-                    <a href="#"
-                        class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-                        Read more
-                        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </article>
+            @endforeach
         </div>
     </div>
 </section>

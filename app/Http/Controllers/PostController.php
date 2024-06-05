@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         $props = [
             'title' => 'Posts',
-            'posts' => Post::orderBy('created_at', 'asc')->paginate(10),
+            'posts' => Post::orderBy('date', 'desc')->paginate(10),
         ];
         // dd($props['posts'][0]->category->name);
         return view('admin.post.show_all_post', $props);
@@ -31,7 +31,8 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['author_id'] = auth()->user()->id;
-        $data['status'] = "Draft";
+        $data['status'] = "draft";
+        // $data['featuredImage'] = base64_encode($request->file('featuredImage'));
         Post::create($data);
         return response()->json([
             'status' => 200,
@@ -43,7 +44,8 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['author_id'] = auth()->user()->id;
-        $data['status'] = "Publish";
+        $data['status'] = "publish";
+        // $data['featuredImage'] = base64_encode($request->file('featuredImage'));
         Post::create($data);
         return response()->json([
             'status' => 200,
@@ -53,10 +55,15 @@ class PostController extends Controller
 
     public function show_post_detail($category, $slug){
         $post_category_id = PostCategory::where('name', 'like', $category)->get()->first()->id;
-        $post = Post::where('post_category_id', $post_category_id)->where('slug', $slug)->get()->first();
+        $post = Post::where('post_category_id', $post_category_id);
+        $related = $post->get();
+        $post = $post->where('slug', $slug)->get()->first();
+        $post->views = $post->views += 1;
+        $post->save();
         $props = [
             'title' => $post->title,
             'post' => $post,
+            'related' => $related
         ];
         return view('homepage.show_post_detail', $props);   
     }

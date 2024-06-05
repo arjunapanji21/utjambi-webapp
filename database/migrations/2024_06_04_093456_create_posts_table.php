@@ -19,10 +19,11 @@ return new class extends Migration
             $table->text('excerpt')->nullable();
             $table->integer('post_category_id');
             $table->text('featuredImage')->nullable();
-            $table->enum('status', ['Draft', 'Publish']);
-            $table->enum('comment_status', ['Disabled', 'Enabled'])->default('Disabled');
+            $table->enum('status', ['draft', 'publish']);
+            $table->enum('comment_status', ['disabled', 'enabled'])->default('disabled');
             $table->integer('author_id');
             $table->integer('views')->default(0);
+            $table->string('date');
             $table->timestamps();
             $table->softDeletes();
         });

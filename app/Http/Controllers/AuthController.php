@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\Http;
 class AuthController extends Controller
 {
     public function login(){
-        $props = [
-            'title' => "Login",
-        ];
-        return view('auth.login', $props);
+        if(!Auth::check()){
+            $props = [
+                'title' => "Login",
+            ];
+            return view('auth.login', $props);
+        }
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function reset_password(){

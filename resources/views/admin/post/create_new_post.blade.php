@@ -79,6 +79,13 @@
                         placeholder="Add post excerpt" required></textarea>
                 </div>
                 <div class="mb-2">
+                    <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Date</label>
+                    <input type="date" name="date" id="date"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        required>
+                </div>
+                <div class="mb-2">
                     <label for="post_category_id"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                     <select id="post_category_id" name="post_category_id"
@@ -89,12 +96,12 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="mb-2">
-                    <label for="featured-image"
+                {{-- <div class="mb-2">
+                    <label for="featuredImage"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Featured Image</label>
 
                     <div class="flex items-center justify-center w-full">
-                        <label for="featured-image"
+                        <label for="featuredImage"
                             class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                 <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -107,11 +114,10 @@
                                         class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">JPG (MAX. 800x400px)</p>
                             </div>
-                            <input id="featuredImage" type="file" class="hidden" />
+                            <input id="featuredImage" type="file" class="" />
                         </label>
                     </div>
-
-                </div>
+                </div> --}}
             </div>
         </div>
         <button id="btnDraft"
@@ -139,6 +145,7 @@
         var title = $("#title").val();
         var content = tinymce.get('editor').getContent();
         var slug = $("#slug").val();
+        var date = $("#date").val();
         var excerpt = $("#excerpt").val();
         var post_category_id = $("#post_category_id").val();
         var featuredImage = $("#featuredImage").val();
@@ -147,6 +154,7 @@
             "title" : title,
             "content" : content,
             "slug" : slug,
+            "date" : date,
             "excerpt" : excerpt,
             "post_category_id" : post_category_id,
             "featuredImage" : featuredImage,
@@ -158,6 +166,7 @@
         $.ajax({
             url: '{{route("admin.post.draft")}}',
             type: 'POST',
+            enctype: 'multipart/form-data',
             headers: {
                 'X-CSRF-TOKEN': formData._token
             },
@@ -176,6 +185,7 @@
         var title = $("#title").val();
         var content = tinymce.get('editor').getContent();
         var slug = $("#slug").val();
+        var date = $("#date").val();
         var excerpt = $("#excerpt").val();
         var post_category_id = $("#post_category_id").val();
         var featuredImage = $("#featuredImage").val();
@@ -184,6 +194,7 @@
             "title" : title,
             "content" : content,
             "slug" : slug,
+            "date" : date,
             "excerpt" : excerpt,
             "post_category_id" : post_category_id,
             "featuredImage" : featuredImage,
@@ -195,6 +206,7 @@
         $.ajax({
             url: '{{route("admin.post.publish")}}',
             type: 'POST',
+            enctype: 'multipart/form-data',
             headers: {
                 'X-CSRF-TOKEN': formData._token
             },

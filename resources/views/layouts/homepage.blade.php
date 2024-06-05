@@ -80,7 +80,7 @@
     <header class="sticky top-0 z-40 ">
         <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="{{route('homepage')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{asset('images/logo_utjambi.webp')}}" class="h-9" alt="UT Jambi Logo" />
                 </a>
                 <button id="main-menu-drawer" data-collapse-toggle="main-menu" type="button"
@@ -122,8 +122,8 @@
                         </li>
                         <li>
                             <div class="flex flex-row gap-2 items-center justify-end">
-                                <button type="button" class="py-2.5 px-5 text-sm text-gray-400 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">Masuk</button>
-                                <button type="button" class="text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Registrasi</button>
+                                <a href="{{route('login')}}" class="py-2.5 px-5 text-sm text-gray-400 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">Masuk</a>
+                                <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank" class="text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Registrasi</a>
                             </div>
                         </li>
                     </ul>
