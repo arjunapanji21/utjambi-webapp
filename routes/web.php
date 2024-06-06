@@ -26,6 +26,7 @@ Route::prefix('profil')->group(function () {
     Route::get('/manajer-administrasi', [HomepageController::class, 'manajer_administrasi'])->name('profil.manajer_administrasi');
     Route::get('/manajer-marketing', [HomepageController::class, 'manajer_marketing'])->name('profil.manajer_marketing');
     Route::get('/manajer-pembelajaran', [HomepageController::class, 'manajer_pembelajaran'])->name('profil.manajer_pembelajaran');
+    Route::get('/staf', [HomepageController::class, 'staf'])->name('profil.staf');
 });
 
 Route::prefix('wisuda')->group(function () {

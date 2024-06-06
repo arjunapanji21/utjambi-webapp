@@ -202,7 +202,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                            <a href="{{route('profil.staf')}}" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
                                 Staf UT Jambi
                             </a>
                         </li>

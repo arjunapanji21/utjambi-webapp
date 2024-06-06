@@ -42,4 +42,11 @@ class HomepageController extends Controller
         ];
         return view('homepage.profil.manajer_pembelajaran', $props);
     }
+
+    public function staf(){
+        $props = [
+            'title' => 'Staf UT Jambi',
+        ];
+        return view('homepage.profil.staf', $props);
+    }
 }
