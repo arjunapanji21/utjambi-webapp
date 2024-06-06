@@ -21,6 +21,13 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 Route::get('/content/{category}/{slug}', [PostController::class, 'show_post_detail'])->name('show_post_detail');
 
+Route::prefix('profil')->group(function () {
+    Route::get('/direktur', [HomepageController::class, 'direktur'])->name('profil.direktur');
+    Route::get('/manajer-administrasi', [HomepageController::class, 'manajer_administrasi'])->name('profil.manajer_administrasi');
+    Route::get('/manajer-marketing', [HomepageController::class, 'manajer_marketing'])->name('profil.manajer_marketing');
+    Route::get('/manajer-pembelajaran', [HomepageController::class, 'manajer_pembelajaran'])->name('profil.manajer_pembelajaran');
+});
+
 Route::prefix('wisuda')->group(function () {
     Route::get('/', [WisudaController::class, 'index'])->name('wisuda.index');
     Route::post('/show', [WisudaController::class, 'detail_peserta'])->name('wisuda.show');

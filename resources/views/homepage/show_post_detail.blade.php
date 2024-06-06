@@ -35,22 +35,31 @@
             <div class="leading-8 text-justify">
                 {!!$post->content!!}
             </div>
+            <footer class="flex items-center pt-4 mt-6 not-italic border-t">
+                <div class="w-full text-sm text-gray-900 dark:text-white">
+                    <div class="flex justify-between">
+                        <div>
+                            <span class="bg-primary-100 text-primary-800 text-base font-medium px-3.5 py-2 rounded dark:bg-primary-900 dark:text-primary-300 flex flex-row gap-2 items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4 h-4"
+                                    fill="currentColor">
+                                    <path
+                                        d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z" />
+                                </svg>
+                                {{$post->category->name}}
+                            </span>
+                        </div>
+                        <div>
+                            <p class="text-base text-gray-500 dark:text-gray-400">{{date('d M Y', strtotime($post->date))}}</p>
+                            <p class="text-base text-gray-500 dark:text-gray-400 text-right">{{$post->views}} views</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            @if($post->comment_status == "enabled")
             <section class="not-format mt-10">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (20)</h2>
+                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Komentar (20)</h2>
                 </div>
-                <form class="mb-6">
-                    <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                        <label for="comment" class="sr-only">Your comment</label>
-                        <textarea id="comment" rows="6"
-                            class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                            placeholder="Write a comment..." required></textarea>
-                    </div>
-                    <button type="submit"
-                        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                        Post comment
-                    </button>
-                </form>
                 <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
                     <footer class="flex justify-between items-center mb-2">
                         <div class="flex items-center">
@@ -248,7 +257,31 @@
                         </button>
                     </div>
                 </article>
+                <form class="mt-6">
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                            <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama kamu" required />
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email kamu" required />
+                        </div>
+                    </div>
+                    <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                        <label for="comment" class="sr-only">Komentar Kamu</label>
+                        <textarea id="comment" rows="6"
+                            class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                            placeholder="Tulis komentar mu disini..." required></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full inline-flex justify-center items-center p-4 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+                        Kirim
+                    </button>
+                </form>
             </section>
+            @endif
         </article>
     </div>
   </main>

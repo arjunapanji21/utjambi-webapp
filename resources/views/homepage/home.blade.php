@@ -1,6 +1,6 @@
 @extends('layouts.homepage')
 @section('content')
-<section class="mt-4 flex flex-col dark:bg-gray-900">
+<section class="pt-8 flex flex-col dark:bg-gray-900">
     <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
         <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-start">
             <div class="w-full text-center lg:text-left pt-10 lg:pt-10">
@@ -101,7 +101,7 @@
     </div>
 </section>
 
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white dark:bg-gray-900 flex justify-between">
     <div class="py-8 px-4 mx-auto text-center max-w-screen-xl sm:py-16 lg:px-6">
         <div class="max-w-screen-md mx-auto mb-8 lg:mb-16">
             <h2 class="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
@@ -295,8 +295,10 @@
                     </span>
                     <span class="text-sm">{{date('d/m/Y', strtotime($post->date))}}</span>
                 </div>
-                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="{{route('show_post_detail', [$post->category->name, $post->slug])}}">{{$post->title}}</a></h2>
-                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{$post->excerpt}}</p>
+                <div class="px-4">
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white "><a href="{{route('show_post_detail', [$post->category->name, $post->slug])}}">{{$post->title}}</a></h2>
+                <p class="mb-5 font-light text-gray-500 dark:text-gray-400 ">{{$post->excerpt}}...</p>
+                </div>
                 <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-4">
                         <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-900 rounded-full dark:bg-gray-600">
@@ -323,19 +325,27 @@
                 </div>
             </article>
             @endforeach
+            <a href="{{route('show_post_detail', [$post->category->name, $post->slug])}}"
+                class="inline-flex items-center font-medium justify-center text-primary-600 dark:text-primary-500 hover:underline">
+                Artikel Lainnya
+                <svg class="ml-2 w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+            </a>
         </div>
     </div>
 </section>
 
-<section class="bg-white dark:bg-gray-900">
-    <div class="py-8 lg:py-16 lg:px-6 mx-auto max-w-screen-xl px-4 grid lg:grid-cols-2 gap-4">
-        <div class="max-w-lg">
-            <h2 class=" text-gray-900 dark:text-white md:text-4xl font-extrabold mb-4">Mitra Kerjasama Universitas
+<section class="bg-white dark:bg-gray-900 py-8 lg:py-16 lg:px-6 mx-auto max-w-screen-xl px-4 ">
+    <div class="grid lg:grid-cols-2 gap-4 mb-10">
+        <div class="max-w-lg flex flex-col gap-4">
+            <h2 class=" text-gray-900 dark:text-white md:text-4xl font-extrabold text-justify">Mitra Kerjasama Universitas
                 Terbuka</h2>
-            <p>Dalam penyelenggaraan pendidikan tinggi terbuka dan jarak jauh, UT bekerjasama dengan berbagai pihak
-                dalam berbagai hal, seperti penyediaan beasiswa, fasilitas penunjang dan tenaga ahli</p>
+            <p class="text-justify">Dalam penyelenggaraan pendidikan tinggi terbuka dan jarak jauh, UT bekerjasama dengan berbagai pihak
+                dalam berbagai hal, seperti penyediaan beasiswa, fasilitas penunjang dan tenaga ahli.</p>
+            <img src="{{asset('images/mitra.webp')}}" alt="" class="w-full max-w-screen-sm mx-auto">
         </div>
-        <img src="{{asset('images/mitra.webp')}}" alt="" class="w-full max-w-screen-sm mx-auto">
+        <div>
+            <iframe class="w-full h-full rounded-xl shadow-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.2384713124848!2d103.60367577404784!3d-1.6124386360676153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2588c61674acf1%3A0xd8b3792e2d51fc8!2sUniversitas%20Terbuka%20Jambi!5e0!3m2!1sid!2sid!4v1717656619076!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
 </section>
 @endsection

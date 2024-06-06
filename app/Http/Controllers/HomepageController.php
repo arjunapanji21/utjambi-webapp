@@ -14,4 +14,32 @@ class HomepageController extends Controller
         ];
         return view('homepage.home', $props);
     }
+
+    public function direktur(){
+        $props = [
+            'title' => 'Direktur UT Jambi',
+        ];
+        return view('homepage.profil.direktur', $props);
+    }
+
+    public function manajer_administrasi(){
+        $props = [
+            'title' => 'Manajer UT Jambi',
+        ];
+        return view('homepage.profil.manajer_administrasi', $props);
+    }
+
+    public function manajer_marketing(){
+        $props = [
+            'title' => 'Manajer UT Jambi',
+        ];
+        return view('homepage.profil.manajer_marketing', $props);
+    }
+
+    public function manajer_pembelajaran(){
+        $props = [
+            'title' => 'Manajer UT Jambi',
+        ];
+        return view('homepage.profil.manajer_pembelajaran', $props);
+    }
 }
