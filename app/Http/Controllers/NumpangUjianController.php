@@ -11,6 +11,7 @@ use App\Imports\PesertaUjianImport;
 use App\Imports\WilayahUjianImport;
 use App\Models\Token;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use stdClass;
@@ -19,13 +20,37 @@ class NumpangUjianController extends Controller
 {
     public function data_numpang_ujian(Request $request)
     {
-        $data = NumpangUjian::orderBy('created_at', 'asc');
+        if(isset($request['filter']) && !empty($request['search'])){
+            $data = NumpangUjian::where($request['filter'], 'like', '%'.$request['search'].'%')->orderBy('created_at', 'asc');
+            
+        }else if($request['filter'] == 'all'){
+            $data = NumpangUjian::orderBy('created_at', 'asc');
+        }else{
+            $data = null;
+        }
         $master = [
             'title' => 'Data Numpang Ujian | UT Jambi',
             'active' => 'Numpang Ujian',
-            'data' => $data->paginate(10),
+            'data' => $data != null ? $data->get() : $data,
+            'jumlahData' => count(NumpangUjian::all()),
         ];
         return view('admin.aplikasi.numpang_ujian.data_numpang_ujian', $master);
+    }
+
+    public function hapus_data_numpang_ujian(Request $request)
+    {
+        $data = NumpangUjian::find($request['id']);
+        File::delete($data->surat_pengantar, $data->dokumen_pendukung_alasan);
+        $data->delete();
+        return back()->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function update_data_numpang_ujian(Request $request)
+    {
+        $data = NumpangUjian::find($request['id']);
+        $data->status = $request['status'];
+        $data->save();
+        return back()->with('success', 'Data berhasil di update.');
     }
 
     public function status_numpang_ujian($nim)
@@ -60,12 +85,15 @@ class NumpangUjianController extends Controller
     {
         $mahasiswa = null;
         $utdaerah = [];
+        $wilayah_ujian = [];
         foreach (WilayahUjian::all()->groupBy('kode_upbjj') as $row) {
             array_push($utdaerah, ['kode_upbjj' => $row[0]->kode_upbjj, 'nama_upbjj' => $row[0]->nama_upbjj]);
         }
         if ($request->has('alasan')) {
             $request->validate([
                 'no_wa' => 'required|min:9|max:15',
+                'wilayah_ujian_tujuan' => 'required',
+                'tgl_pindah_lokasi' => 'required',
             ]);
             $kode_mk = [];
             $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
@@ -97,10 +125,10 @@ class NumpangUjianController extends Controller
                 if (count(NumpangUjian::where('nim', $request['nim'])->get()) > 0) {
                     return redirect()->route('status.numpang_ujian', $request['nim']);
                 }
+                if (!isset($request['ut_daerah_tujuan'])){
+                    return back()->with('error', "Silahkan pilih UT Daerah tujuan sebelum melanjutkan ke tahap berikutnya.");
+                }
                 $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
-                $request->validate([
-                    'ut_daerah_tujuan' => 'required',
-                ]);
                 $wilayah_ujian = WilayahUjian::where('kode_upbjj', preg_replace('/\s+/', '', explode("/", $request['ut_daerah_tujuan'])[0]))->get();
             } catch (\Throwable $th) {
                 return back()->with('error', $th);
@@ -213,6 +241,11 @@ class NumpangUjianController extends Controller
                         $mahasiswa['nim'] = $result['nim'];
                         $mahasiswa['nama'] = $result['nama_mahasiswa'];
                         $mahasiswa['ut_daerah_asal'] = $result['info_ut']['upbjj']['kode_upbjj'] . ' / ' . strtoupper($result['info_ut']['upbjj']['nama_upbjj']);
+
+                        if($mahasiswa['ut_daerah_asal'] == "17 / JAMBI"){
+                            return redirect()->route('form.numpang_ujian_2');
+                        }
+
                         $mahasiswa['prodi'] = $result['info_ut']['program_studi']['kode_program_studi'] . ' / ' . strtoupper($result['info_ut']['program_studi']['nama_program_studi']);
                     } else if ($response->status() != 200) {
                         return back()->with('alert', $response->json('message'));

@@ -274,6 +274,7 @@
     </div>
 </section>
 
+@if(count($posts) > 0)
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
@@ -325,7 +326,7 @@
                 </div>
             </article>
             @endforeach
-            <a href="{{route('show_post_detail', [$post->category->name, $post->slug])}}"
+            <a href="#"
                 class="inline-flex items-center font-medium justify-center text-primary-600 dark:text-primary-500 hover:underline">
                 Artikel Lainnya
                 <svg class="ml-2 w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
@@ -333,6 +334,7 @@
         </div>
     </div>
 </section>
+@endif
 
 <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 lg:px-6 mx-auto max-w-screen-xl px-4 ">
     <div class="grid lg:grid-cols-2 gap-4 mb-10">

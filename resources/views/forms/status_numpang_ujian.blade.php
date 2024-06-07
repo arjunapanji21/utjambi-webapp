@@ -67,10 +67,47 @@
                                 {{date('d M Y', strtotime($data->created_at))}}
                             </td>
                             <td class="px-6 py-4">
+                                @if($data->status == "Diproses")
                                 <span
-                                    class="bg-primary-100 text-primary-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-lg dark:bg-primary-900 dark:text-primary-300">{{$data->status}}</span>
+                                    class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{{$data->status}}</span>
+                                @elseif($data->status == "Diterima")
+                                <span
+                                    class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{$data->status}}</span>
+                                @elseif($data->status == "Ditolak")
+                                <span
+                                    class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{$data->status}}</span>
+                                @else
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{$data->status}}</span>
+                                @endif
                             </td>
                         </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="relative overflow-x-auto">
+                <table
+                    class="my-5 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead
+                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <th class="text-center">No.</th>
+                        <th class="text-center">Kode MK</th>
+                        <th class="text-center">Nama MK</th>
+                        <th class="text-center">Kode Waktu Ujian</th>
+                    </thead>
+                    <tbody>
+                        @foreach(explode('|',$data->matakuliah) as $mk)
+                        <tr>
+                            <td class="border text-center">{{$loop->iteration}}</td>
+                            <td class="border text-center">{{json_decode($mk)->kode}}
+                            </td>
+                            <td class="border text-center">{{json_decode($mk)->nama}}
+                            </td>
+                            <td class="border text-center">
+                                {{json_decode($mk)->kode_waktu_ujian}}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
