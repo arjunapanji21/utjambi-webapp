@@ -42,6 +42,8 @@ Route::prefix('form')->group(function () {
     Route::get('/numpang-ujian/ut-lain', [NumpangUjianController::class, 'form_numpang_ujian_3'])->name('form.numpang_ujian_3');
     Route::get('/numpang-ujian/{nim}', [NumpangUjianController::class, 'status_numpang_ujian'])->name('status.numpang_ujian');
     Route::get('/numpang-ujian/{id}/surat-permohonan', [NumpangUjianController::class, 'surat_permohonan_numpang_ujian'])->name('surat.permohonan_numpang_ujian');
+    Route::get('/numpang-ujian/{id}/surat-permohonan/panutan', [NumpangUjianController::class, 'surat_permohonan_numpang_ujian_panutan'])->name('surat.permohonan_numpang_ujian_panutan');
+    Route::get('/numpang-ujian/surat-permohonan/panutan/batch', [NumpangUjianController::class, 'surat_permohonan_numpang_ujian_panutan_batch'])->name('surat.permohonan_numpang_ujian_panutan_batch');
     Route::post('/numpang-ujian/ut-jambi/submit', [NumpangUjianController::class, 'submit_form_numpang_ujian'])->name('form.numpang_ujian.submit');
     Route::post('/numpang-ujian/ut-lain/submit', [NumpangUjianController::class, 'submit_form_numpang_ujian_dari_luar'])->name('form.numpang_ujian.submit.dari_luar');
 });
@@ -66,8 +68,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/wilayah', [NumpangUjianController::class, 'wilayah'])->name('admin.numpang_ujian.wilayah');
         Route::get('/peserta', [NumpangUjianController::class, 'peserta'])->name('admin.numpang_ujian.peserta');
         Route::get('/data-nu', [NumpangUjianController::class, 'data_numpang_ujian'])->name('admin.numpang_ujian.data_nu');
+        Route::get('/data-nu/get-matakuliah', [NumpangUjianController::class, 'tarik_data_matakuliah'])->name('admin.numpang_ujian.data_nu.tarik_data_matakuliah');
         Route::post('/data-nu/update', [NumpangUjianController::class, 'update_data_numpang_ujian'])->name('admin.numpang_ujian.data_nu.update');
         Route::post('/data-nu/delete', [NumpangUjianController::class, 'hapus_data_numpang_ujian'])->name('admin.numpang_ujian.data_nu.hapus');
+        Route::get('/surat-pengantar', [NumpangUjianController::class, 'surat_pengantar'])->name('admin.numpang_ujian.surat_pengantar');
         Route::post('/matakuliah/import', [NumpangUjianController::class, 'matakuliah_import'])->name('admin.numpang_ujian.matakuliah.import');
         Route::post('/wilayah-ujian/import', [NumpangUjianController::class, 'wilayah_ujian_import'])->name('admin.numpang_ujian.wilayah_ujian.import');
         Route::post('/peserta-ujian/import', [NumpangUjianController::class, 'peserta_ujian_import'])->name('admin.numpang_ujian.peserta_ujian.import');

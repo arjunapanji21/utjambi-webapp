@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\NumpangUjianExport;
 use App\Models\Matakuliah;
 use App\Models\NumpangUjian;
 use App\Models\PesertaUjian;
@@ -9,6 +10,7 @@ use App\Models\WilayahUjian;
 use App\Imports\MatakuliahImport;
 use App\Imports\PesertaUjianImport;
 use App\Imports\WilayahUjianImport;
+use App\Models\TambahNaskahMatakuliah;
 use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -18,14 +20,51 @@ use stdClass;
 
 class NumpangUjianController extends Controller
 {
+    public function tarik_data_matakuliah(){
+        // $data = NumpangUjian::whereIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->get()->groupBy('wilayah_ujian_tujuan');
+        // set_time_limit(0);
+        // TambahNaskahMatakuliah::query()->truncate();
+        // foreach($data as $wilayah=>$mahasiswa){
+        //     foreach($mahasiswa as $row){
+        //         foreach(explode("|", $row->matakuliah) as $mk){
+        //             $matakuliah = [];
+        //             $matakuliah["kode_wilayah"] = explode(" ", $wilayah)[0];
+        //             $matakuliah["kode_matakuliah"] = json_decode($mk)->kode;
+        //             TambahNaskahMatakuliah::create($matakuliah);
+        //         }
+        //     }
+        // }
+        // dd(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']));
+        // $result = [];
+        // $index = 0;
+        // foreach(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']) as $kode_wilayah=>$kode_matakuliah){
+        //     foreach($kode_matakuliah as $kode=>$matakuliah){
+        //         $result[$index]['kode_wilayah'] = $kode_wilayah;
+        //         $result[$index]['kode_matakuliah'] = $kode;
+        //         $result[$index]['jumlah'] = $matakuliah->count();
+        //         $index += 1;
+        //     }
+        // }
+        // dd($result);
+        return Excel::download(new NumpangUjianExport, 'data_numpang_ujian_'.date('Ymdhis').'.xlsx');
+    }
+
     public function data_numpang_ujian(Request $request)
     {
         if(isset($request['filter']) && !empty($request['search'])){
             $data = NumpangUjian::where($request['filter'], 'like', '%'.$request['search'].'%')->orderBy('created_at', 'asc');
             
-        }else if($request['filter'] == 'all'){
+        }
+        else if($request['filter'] == 'UT Lain Numpang Ke Jambi'){
+            $data = NumpangUjian::whereNotIn('ut_daerah_asal', ['17 / UT JAMBI', '17 / JAMBI'])->orderBy('created_at', 'asc');
+        }
+        else if($request['filter'] == 'UT Jambi Numpang Ke UT Lain'){
+            $data = NumpangUjian::whereNotIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->orderBy('ut_daerah_tujuan', 'asc');
+        }
+        else if($request['filter'] == 'all'){
             $data = NumpangUjian::orderBy('created_at', 'asc');
-        }else{
+        }
+        else{
             $data = null;
         }
         $master = [
@@ -37,10 +76,22 @@ class NumpangUjianController extends Controller
         return view('admin.aplikasi.numpang_ujian.data_numpang_ujian', $master);
     }
 
+    public function surat_pengantar(Request $request)
+    {
+        $data = NumpangUjian::whereNotIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->where('surat_pengantar', null)->orderBy('ut_daerah_tujuan', 'asc');
+        $master = [
+            'title' => 'Data Numpang Ujian | UT Jambi',
+            'active' => 'Numpang Ujian',
+            'data' => $data != null ? $data->get()->groupBy('ut_daerah_tujuan') : $data,
+            'jumlahData' => count(NumpangUjian::all()),
+        ];
+        return view('admin.aplikasi.numpang_ujian.surat_pengantar', $master);
+    }
+
     public function hapus_data_numpang_ujian(Request $request)
     {
         $data = NumpangUjian::find($request['id']);
-        File::delete($data->surat_pengantar, $data->dokumen_pendukung_alasan);
+        // File::delete($data->surat_pengantar, $data->dokumen_pendukung_alasan);
         $data->delete();
         return back()->with('success', 'Data berhasil dihapus.');
     }
@@ -70,6 +121,26 @@ class NumpangUjianController extends Controller
             'mahasiswa' => NumpangUjian::find($id),
         ];
         return view('forms.surat_permohonan_numpang_ujian', $master);
+    }
+
+    public function surat_permohonan_numpang_ujian_panutan($id)
+    {
+        $master = [
+            'title' => 'Surat Permohonan Numpang Ujian Ke Panutan',
+            'mahasiswa' => NumpangUjian::find($id),
+        ];
+        return view('forms.surat_permohonan_numpang_ujian_panutan', $master);
+    }
+
+    public function surat_permohonan_numpang_ujian_panutan_batch(Request $request)
+    {
+        $data = NumpangUjian::where('ut_daerah_tujuan', $request['ut_daerah_tujuan'])->where('surat_pengantar', null)->orderBy('nama', 'asc')->get();
+        $master = [
+            'title' => 'Surat Permohonan Numpang Ujian Ke Panutan (Batch)',
+            'ut_daerah_tujuan' => $request['ut_daerah_tujuan'],
+            'mahasiswa' => $data,
+        ];
+        return view('forms.surat_permohonan_numpang_ujian_panutan_batch', $master);
     }
 
     public function form_numpang_ujian_1()
