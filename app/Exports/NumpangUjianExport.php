@@ -32,19 +32,19 @@ class NumpangUjianExport implements FromCollection, WithHeadings
         //         //     $result[$key]["no_wa"] = $row;
         //         // }
         // }
-        // $result = [];
-        // $index = 0;
-        // foreach(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']) as $kode_wilayah=>$kode_matakuliah){
-        //     foreach($kode_matakuliah as $kode=>$matakuliah){
-        //         $result[$index]['kode_wilayah'] = $kode_wilayah;
-        //         $result[$index]['kode_matakuliah'] = $kode;
-        //         $result[$index]['jumlah'] = $matakuliah->count();
-        //         $index += 1;
-        //     }
-        // }
-        // return collect($result);
+        $result = [];
+        $index = 0;
+        foreach(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']) as $kode_wilayah=>$kode_matakuliah){
+            foreach($kode_matakuliah as $kode=>$matakuliah){
+                $result[$index]['kode_wilayah'] = $kode_wilayah;
+                $result[$index]['kode_matakuliah'] = $kode;
+                $result[$index]['jumlah'] = $matakuliah->count();
+                $index += 1;
+            }
+        }
+        return collect($result);
 
-        return NumpangUjian::orderBy('nama', 'asc')->get();
+        // return NumpangUjian::orderBy('nama', 'asc')->get();
     }
 
     /**

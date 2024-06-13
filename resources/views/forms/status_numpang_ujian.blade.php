@@ -16,7 +16,37 @@
             <img src="{{asset('images/logo_utjambi.webp')}}" class="h-14 mx-auto mb-8" alt="">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white text-center">STATUS NUMPANG UJIAN</h2>
 
-
+            @if($data->status == "Diterima")
+            <div id="alert-additional-content-3" class="p-4 mb-4 text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
+                <div class="flex items-center">
+                    <svg class="flex-shrink-0 w-4 h-4 me-2" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+                  <span class="sr-only">Info</span>
+                  <h3 class="text-lg font-medium">Pengajuan Numpang Ujian Diterima!</h3>
+                </div>
+                <div class="mt-2 mb-4 text-sm">
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li>Jadwal di KTPU memang tidak berubah dan tetap sama seperti sebelumnya.</li>
+                        <li>Segera melapor ke UT {{explode(" / ", $data->ut_daerah_tujuan)[1]}} untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.</li>
+                    </ul>
+                </div>
+                <div class="flex">
+                  <a href="{{asset($data->surat_pengantar)}}" target="_blank" download class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="me-2 h-3 w-3" aria-hidden="true" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
+                    Unduh Surat Pengantar
+                  </a>
+                </div>
+            </div>
+            @elseif($data->status == "Diproses")
+            <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800" role="alert">
+                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Info</span>
+                <div>
+                  Pengajuan numpang ujian <span class="font-medium">Sedang diproses!</span>.
+                </div>
+              </div>
+            @endif
 
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
