@@ -26,24 +26,79 @@
                 <div class="mt-2 mb-4 text-sm">
                     <ul class="mt-1.5 list-disc list-inside">
                         <li>Jadwal di KTPU memang tidak berubah dan tetap sama seperti sebelumnya.</li>
+                        @if($data->ut_daerah_asal == $data->ut_daerah_tujuan && $data->ut_daerah_asal == "17 / JAMBI")
+                        <li>Silahkan datang langsung ke lokasi ujian <b>(
+                            @if(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150111")
+                            SMAN 2 SUNGAI PENUH
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150261")
+                            SMPN 4 MERANGIN
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150311")
+                            SMPN 21 BATANGHARI
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150421")
+                            SMAN 1 TANJAB BARAT
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150422")
+                            SMKN 1 KOTA JAMBI
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150231")
+                            SMAN 2 TANJAB TIMUR
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "151102")
+                            SMKN 1 KOTA JAMBI
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "151103")
+                            SMKN 1 KOTA JAMBI
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "151104")
+                            SMKN 1 KOTA JAMBI
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "152001")
+                            SMAN 1 BUNGO
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "152511")
+                            SMAN 2 TEBO
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "152521")
+                            SMAN 2 TEBO
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "153811")
+                            SMAN 7 SAROLANGUN
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "157111")
+                            SMKN 1 KOTA JAMBI
+
+                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "157121")
+                            SMAN 2 SUNGAI PENUH
+                            @endif
+                            )</b>, sesuai jadwal yang ada di KTPU.</li>
+                        @else
                         <li>Segera melapor ke UT {{explode(" / ", $data->ut_daerah_tujuan)[1]}} untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.</li>
+                        @endif
                     </ul>
                 </div>
+                @if($data->ut_daerah_tujuan != "17 / JAMBI")
                 <div class="flex">
-                  <a href="{{asset($data->surat_pengantar)}}" target="_blank" download class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="me-2 h-3 w-3" aria-hidden="true" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
-                    Unduh Surat Pengantar
-                  </a>
-                </div>
+                    <a href="{{asset($data->surat_pengantar)}}" target="_blank" download class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="me-2 h-3 w-3" aria-hidden="true" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
+                      Unduh Surat Pengantar
+                    </a>
+                  </div>
+                @endif
             </div>
             @elseif($data->status == "Diproses")
             <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800" role="alert">
-                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                </svg>
                 <span class="sr-only">Info</span>
-                <div>
-                  Pengajuan numpang ujian <span class="font-medium">Sedang diproses!</span>.
+                <div class="mt-2 mb-4 text-sm">
+                  Pengajuan numpang ujian <span class="font-medium underline">sedang diproses</span> !
+                  <ul class="mt-1.5 list-disc list-inside">
+                        <li>KTPU UTM tidak akan berubah.</li>
+                        <li>Silahkan datang langsung ke lokasi UTM tujuan sesuai jadwal semula.</li>
+                        <li>Progress ajuan dapat di cek berkala melalui laman ini mulai 13 juni.</li>
+                        <li>Hanya pengajuan pindah UTM ke luar provinsi Jambi yang akan mendapatkan surat pengantar pindah untuk dgunakan ke UT tujuan.</li>
+                        <li>Surat pengantar bisa diunduh melalui laman pngajuan ini jika status pengajuan sudah <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Diterima</span>.</li>
+                  </ul>
                 </div>
               </div>
             @endif

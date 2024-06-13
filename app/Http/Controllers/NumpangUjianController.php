@@ -22,59 +22,55 @@ class NumpangUjianController extends Controller
 {
     public function tarik_data_matakuliah(){
         // $data = NumpangUjian::all();
-        // // $data = NumpangUjian::where('ut_daerah_asal', 'like', '%UT%')->get();
         // foreach($data as $row){
         //     $row->ut_daerah_asal = str_replace('UT ', '', $row->ut_daerah_asal);
         //     $row->ut_daerah_tujuan = str_replace('UT ', '', $row->ut_daerah_tujuan);
         //     $row->save();
         // }
-        // $data = NumpangUjian::whereIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->get()->groupBy('wilayah_ujian_tujuan');
-        // set_time_limit(0);
-        // TambahNaskahMatakuliah::query()->truncate();
-        // foreach($data as $wilayah=>$mahasiswa){
-        //     foreach($mahasiswa as $row){
-        //         foreach(explode("|", $row->matakuliah) as $mk){
-        //             $matakuliah = [];
-        //             $matakuliah["kode_wilayah"] = explode(" ", $wilayah)[0];
-        //             $matakuliah["kode_matakuliah"] = json_decode($mk)->kode;
-        //             TambahNaskahMatakuliah::create($matakuliah);
-        //         }
-        //     }
-        // }
-        // dd(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']));
-        // $result = [];
-        // $index = 0;
-        // foreach(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']) as $kode_wilayah=>$kode_matakuliah){
-        //     foreach($kode_matakuliah as $kode=>$matakuliah){
-        //         $result[$index]['kode_wilayah'] = $kode_wilayah;
-        //         $result[$index]['kode_matakuliah'] = $kode;
-        //         $result[$index]['jumlah'] = $matakuliah->count();
-        //         $index += 1;
-        //     }
-        // }
-        // dd($result);
-        // return Excel::download(new NumpangUjianExport, 'data_numpang_ujian_'.date('Ymdhis').'.xlsx');
-        foreach(NumpangUjian::where('id', '>', 0)->where('id', '<=', 293)->get() as $row){
-            $row->status = "Diproses";
-            $row->save();
+        // return back();
+        $data = NumpangUjian::where('status', 'Diproses')->get();
+        $data = NumpangUjian::whereIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->get()->groupBy('wilayah_ujian_tujuan');
+        set_time_limit(0);
+        TambahNaskahMatakuliah::query()->truncate();
+        foreach($data as $wilayah=>$mahasiswa){
+            foreach($mahasiswa as $row){
+                foreach(explode("|", $row->matakuliah) as $mk){
+                    $matakuliah = [];
+                    $matakuliah["kode_wilayah"] = explode(" ", $wilayah)[0];
+                    $matakuliah["kode_matakuliah"] = json_decode($mk)->kode;
+                    TambahNaskahMatakuliah::create($matakuliah);
+                }
+            }
         }
-        return back();
+        // // dd(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']));
+        // // $result = [];
+        // // $index = 0;
+        // // foreach(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']) as $kode_wilayah=>$kode_matakuliah){
+        // //     foreach($kode_matakuliah as $kode=>$matakuliah){
+        // //         $result[$index]['kode_wilayah'] = $kode_wilayah;
+        // //         $result[$index]['kode_matakuliah'] = $kode;
+        // //         $result[$index]['jumlah'] = $matakuliah->count();
+        // //         $index += 1;
+        // //     }
+        // // }
+        // // dd($result);
+        return Excel::download(new NumpangUjianExport, 'data_numpang_ujian_'.date('Ymdhis').'.xlsx');
     }
 
     public function data_numpang_ujian(Request $request)
     {
         if(isset($request['filter']) && !empty($request['search'])){
-            $data = NumpangUjian::where($request['filter'], 'like', '%'.$request['search'].'%')->orderBy('created_at', 'asc');
+            $data = NumpangUjian::where($request['filter'], 'like', '%'.$request['search'].'%')->orderBy('created_at', 'desc');
             
         }
         else if($request['filter'] == 'UT Lain Numpang Ke Jambi'){
-            $data = NumpangUjian::whereNotIn('ut_daerah_asal', ['17 / UT JAMBI', '17 / JAMBI'])->orderBy('created_at', 'asc');
+            $data = NumpangUjian::whereNotIn('ut_daerah_asal', ['17 / UT JAMBI', '17 / JAMBI'])->orderBy('created_at', 'desc');
         }
         else if($request['filter'] == 'UT Jambi Numpang Ke UT Lain'){
             $data = NumpangUjian::whereNotIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->orderBy('ut_daerah_tujuan', 'asc');
         }
         else if($request['filter'] == 'all'){
-            $data = NumpangUjian::orderBy('created_at', 'asc');
+            $data = NumpangUjian::orderBy('created_at', 'desc');
         }
         else{
             $data = null;
@@ -91,7 +87,7 @@ class NumpangUjianController extends Controller
     public function surat_pengantar(Request $request)
     {
         // $data = NumpangUjian::whereNotIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->where('surat_pengantar', null)->orderBy('ut_daerah_tujuan', 'asc');
-        $data = NumpangUjian::whereNotIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->orderBy('ut_daerah_tujuan', 'asc');
+        $data = NumpangUjian::whereNotIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->where('status', 'Diproses')->orderBy('ut_daerah_tujuan', 'asc');
         $master = [
             'title' => 'Data Numpang Ujian | UT Jambi',
             'active' => 'Numpang Ujian',
@@ -104,7 +100,7 @@ class NumpangUjianController extends Controller
     public function surat_pengantar_upload(Request $request)
     {
 
-        $data = NumpangUjian::where('ut_daerah_tujuan', $request['ut_daerah_tujuan'])->where('surat_pengantar', null)->get();
+        $data = NumpangUjian::where('ut_daerah_tujuan', $request['ut_daerah_tujuan'])->where('surat_pengantar', null)->where('status', 'Diproses')->get();
         $request->validate([
             'file' => 'required',
         ]);
@@ -244,7 +240,7 @@ class NumpangUjianController extends Controller
             $data->nama = $mahasiswa[0]->nama_mhs;
             $data->prodi = $mahasiswa[0]->prodi;
             $data->kabko = $mahasiswa[0]->kabko;
-            $data->upbjj = "17 / UT JAMBI";
+            $data->upbjj = "17 / JAMBI";
             $data->tpu = $mahasiswa[0]->kode_tpu . " / " . $mahasiswa[0]->nama_tpu;
 
             $master = [
