@@ -75,6 +75,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::post('/surat-pengantar/upload', [NumpangUjianController::class, 'surat_pengantar_upload'])->name('admin.numpang_ujian.surat_pengantar.upload');
         Route::post('/matakuliah/import', [NumpangUjianController::class, 'matakuliah_import'])->name('admin.numpang_ujian.matakuliah.import');
         Route::post('/wilayah-ujian/import', [NumpangUjianController::class, 'wilayah_ujian_import'])->name('admin.numpang_ujian.wilayah_ujian.import');
+        Route::post('/wilayah-ujian/update', [NumpangUjianController::class, 'wilayah_ujian_update'])->name('admin.numpang_ujian.wilayah_ujian.update');
         Route::post('/peserta-ujian/import', [NumpangUjianController::class, 'peserta_ujian_import'])->name('admin.numpang_ujian.peserta_ujian.import');
     });
 

@@ -78,7 +78,7 @@
                         Dimohon kesediaan Bapak/Ibu untuk memperlakukan mahasiswa tersebut sebagai mahasiswa yang menumpang ujian sesuai dengan ketentuan yang berlaku. 
                         <br>
                         <br>
-                        Kepada mahasiswa yang bersangkutan diharuskan melapor ke UT tujuan paling lambat 7 hari sebelum pelaksanaan ujian, untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.
+                        Kepada mahasiswa yang bersangkutan diharuskan melapor ke UT tujuan paling lambat 3 hari sebelum pelaksanaan ujian, untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.
                         <br>
                         <br>
                         Demikian permohonan ini kami sampaikan, atas perhatian dan kerja sama yang baik kami ucapkan terima kasih.

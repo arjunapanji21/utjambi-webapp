@@ -12,7 +12,7 @@ class HomepageController extends Controller
             'title' => 'Official Website UT Jambi',
             'posts' => Post::orderBy('date', 'desc')->limit(4)->get(),
         ];
-        return view('homepage.home', $props);
+        return view('homepage.index', $props);
     }
 
     public function direktur(){

@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('tambah_naskah_matakuliahs', function (Blueprint $table) {
             $table->id();
             $table->string('kode_wilayah');
+            $table->string('nama_wilayah');
             $table->string('kode_matakuliah');
+            $table->string('nama_matakuliah');
+            $table->string('kode_waktu_ujian');
             $table->timestamps();
         });
     }

@@ -28,20 +28,23 @@ class NumpangUjianController extends Controller
         //     $row->save();
         // }
         // return back();
-        $data = NumpangUjian::where('status', 'Diproses')->get();
-        $data = NumpangUjian::whereIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->get()->groupBy('wilayah_ujian_tujuan');
-        set_time_limit(0);
-        TambahNaskahMatakuliah::query()->truncate();
-        foreach($data as $wilayah=>$mahasiswa){
-            foreach($mahasiswa as $row){
-                foreach(explode("|", $row->matakuliah) as $mk){
-                    $matakuliah = [];
-                    $matakuliah["kode_wilayah"] = explode(" ", $wilayah)[0];
-                    $matakuliah["kode_matakuliah"] = json_decode($mk)->kode;
-                    TambahNaskahMatakuliah::create($matakuliah);
-                }
-            }
-        }
+        // $data = NumpangUjian::where('status', 'Diproses')->get();
+        // $data = NumpangUjian::whereIn('ut_daerah_tujuan', ['17 / UT JAMBI', '17 / JAMBI'])->where('status', 'Diproses')->get()->groupBy('wilayah_ujian_tujuan');
+        // set_time_limit(0);
+        // TambahNaskahMatakuliah::query()->truncate();
+        // foreach($data as $wilayah=>$mahasiswa){
+        //     foreach($mahasiswa as $row){
+        //         foreach(explode("|", $row->matakuliah) as $mk){
+        //             $matakuliah = new TambahNaskahMatakuliah();
+        //             $matakuliah->kode_wilayah = explode(" / ", $wilayah)[0];
+        //             $matakuliah->nama_wilayah = explode(" / ", $wilayah)[1];
+        //             $matakuliah->kode_matakuliah = json_decode($mk)->kode;
+        //             $matakuliah->nama_matakuliah = json_decode($mk)->nama;
+        //             $matakuliah->kode_waktu_ujian = json_decode($mk)->kode_waktu_ujian;
+        //             $matakuliah->save();
+        //         }
+        //     }
+        // }
         // // dd(TambahNaskahMatakuliah::all()->groupBy(['kode_wilayah', 'kode_matakuliah']));
         // // $result = [];
         // // $index = 0;
@@ -185,7 +188,7 @@ class NumpangUjianController extends Controller
         $mahasiswa = null;
         $utdaerah = [];
         $wilayah_ujian = [];
-        foreach (WilayahUjian::all()->groupBy('kode_upbjj') as $row) {
+        foreach (WilayahUjian::where('aktif', true)->get()->groupBy('kode_upbjj') as $row) {
             array_push($utdaerah, ['kode_upbjj' => $row[0]->kode_upbjj, 'nama_upbjj' => $row[0]->nama_upbjj]);
         }
         if ($request->has('alasan')) {
@@ -228,7 +231,7 @@ class NumpangUjianController extends Controller
                     return back()->with('error', "Silahkan pilih UT Daerah tujuan sebelum melanjutkan ke tahap berikutnya.");
                 }
                 $mahasiswa = PesertaUjian::where('nim', $request['nim'])->get();
-                $wilayah_ujian = WilayahUjian::where('kode_upbjj', preg_replace('/\s+/', '', explode("/", $request['ut_daerah_tujuan'])[0]))->get();
+                $wilayah_ujian = WilayahUjian::where('kode_upbjj', preg_replace('/\s+/', '', explode("/", $request['ut_daerah_tujuan'])[0]))->where('aktif', true)->get();
             } catch (\Throwable $th) {
                 return back()->with('error', $th);
             }
@@ -356,7 +359,7 @@ class NumpangUjianController extends Controller
         }
 
         if (!empty($mahasiswa) && count($mahasiswa) > 0) {
-            $wilayah_ujian = WilayahUjian::where('kode_upbjj', 17)->get();
+            $wilayah_ujian = WilayahUjian::where('kode_upbjj', 17)->where('aktif', true)->get();
             $master = [
                 'title' => 'Form Numpang Ujian | UT Jambi',
                 'mahasiswa' => $mahasiswa,
@@ -482,16 +485,41 @@ class NumpangUjianController extends Controller
         ];
         return view('admin.aplikasi.numpang_ujian.matakuliah', $master);
     }
-    public function wilayah()
+
+    public function wilayah(Request $request)
     {
-        $data = WilayahUjian::orderBy('id', 'asc');
+        $data = [];
+        if($request['filter'] == 'upbjj'){
+            $data = WilayahUjian::where('nama_upbjj', 'like', '%'.$request['search'].'%')->get();
+        }
+        else if($request['filter'] == 'wilayah'){
+            $data = WilayahUjian::where('nama_wilayah_ujian', 'like', '%'.$request['search'].'%')->get();
+        }
+        else if($request['filter'] == 'all'){
+            $data = WilayahUjian::all()->orderBy('kode_upbjj', 'asc')->get();
+        }
+        
         $master = [
             'title' => 'Data Wilayah Ujian',
             'active' => 'Numpang Ujian',
-            'data' => $data->paginate(10),
+            'data' => $data,
         ];
         return view('admin.aplikasi.numpang_ujian.wilayah_ujian', $master);
     }
+
+    public function wilayah_ujian_update(Request $request)
+    {
+        $data = WilayahUjian::find($request['id']);
+        if($data->aktif == 1){
+            $data->aktif = 0;
+        }else{
+            $data->aktif = 1;
+        }
+        $data->save();
+        
+        return back()->with('success', 'Wilayah Lokasi Ujian Berhasil Di Update!');
+    }
+
     public function peserta()
     {
         $data = PesertaUjian::orderBy('id', 'asc');

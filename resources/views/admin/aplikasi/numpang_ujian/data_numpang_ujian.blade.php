@@ -39,27 +39,27 @@
 
 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
     <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-        <div class="w-full md:w-1/2">     
-        <form action="{{route('admin.numpang_ujian.data_nu')}}" method="get" class="w-full flex items-center">   
-            @csrf
-            <label for="filter" class="block text-sm font-medium text-gray-900 dark:text-white me-2 w-fit">Filter:</label>
-            <select id="filter" name="filter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option disabled>Filter:</option>
-            <option value="nim" >NIM</option>
-            <option value="nama" >Nama Mahasiswa</option>
-            <option value="ut_daerah_asal" >UT Daerah Asal</option>
-            <option value="ut_daerah_tujuan" >UT Daerah Tujuan</option>
-            <option value="wilayah_ujian_asal" >Wilayah Ujian Asal</option>
-            <option value="wilayah_ujian_tujuan" >Wilayah Ujian Tujuan</option>
-            <option value="status" >Status Pengajuan</option>
-            <option value="UT Lain Numpang Ke Jambi" >UT Lain Numpang Ke Jambi</option>
-            <option value="UT Jambi Numpang Ke UT Lain" >UT Jambi Numpang Ke UT Lain</option>
-            <option value="all" >Tampilkan Semua</option>
-            </select>   
-            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-            <input type="text" id="search" name="search" class="block w-full p-2 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ketikkan sesuatu..." value="{{app('request')->input('search')}}"/>
-            <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-r-lg border border-primary-600 text-sm px-5 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Tampilkan</button>
-        </form>
+        <div class="w-full">     
+            <form action="{{route('admin.numpang_ujian.data_nu')}}" method="get" class="w-full flex flex-col gap-2 lg:gap-0 lg:flex-row items-center">   
+                @csrf
+                <label for="filter" class="block text-sm font-medium text-gray-900 dark:text-white me-2 w-full lg:w-fit">Filter:</label>
+                <select id="filter" name="filter" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option disabled>Filter:</option>
+                <option value="nim" >NIM</option>
+                <option value="nama" >Nama Mahasiswa</option>
+                <option value="ut_daerah_asal" >UT Daerah Asal</option>
+                <option value="ut_daerah_tujuan" >UT Daerah Tujuan</option>
+                <option value="wilayah_ujian_asal" >Wilayah Ujian Asal</option>
+                <option value="wilayah_ujian_tujuan" >Wilayah Ujian Tujuan</option>
+                <option value="status" >Status Pengajuan</option>
+                <option value="UT Lain Numpang Ke Jambi" >UT Lain Numpang Ke Jambi</option>
+                <option value="UT Jambi Numpang Ke UT Lain" >UT Jambi Numpang Ke UT Lain</option>
+                <option value="all" >Tampilkan Semua</option>
+                </select>   
+                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <input type="text" id="search" name="search" class="block w-full p-2 text-sm text-gray-900 border border-gray-300  bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ketikkan sesuatu..." value="{{app('request')->input('search')}}"/>
+                <button type="submit" class="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-r-lg border border-primary-600 text-sm px-5 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Tampilkan</button>
+            </form>
         </div>
         <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
@@ -423,6 +423,19 @@
                                 </div>
                             </div>
                         </div>
+                        @if($row->status == "Diproses")
+                        <div>
+                            <form action="{{route('admin.numpang_ujian.data_nu.update')}}" method="post">
+                                @csrf
+                                <input type="hidden" value="{{$row->id}}" name="id">
+                                <input type="hidden" value="Diterima" name="status">
+                                <button type="submit"
+                                    class="block text-emerald-700 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg p-2 text-sm text-center dark:text-emerald-600 dark:hover:text-emerald-700 dark:focus:ring-emerald-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4" fill="currentColor"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                                </button>
+                            </form>
+                        </div>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
