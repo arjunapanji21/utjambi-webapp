@@ -14,6 +14,5 @@
 <body class="m-0 min-h-screen bg-gradient-to-br from-white to-white via-gray-300 antialiased bg-no-repeat text-white">
     <x-navbar></x-navbar>
     <footer></footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
