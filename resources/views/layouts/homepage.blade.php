@@ -11,7 +11,7 @@
 </head>
 
 <body class="m-0">
-    <div class="hidden md:block bg-primary-700 text-white text-xs">
+    {{-- <div class="hidden md:block bg-primary-700 text-white text-xs">
         <div class="flex flex-wrap justify-between items-center max-w-screen-xl mx-auto px-6 py-2">
             <div class="flex flex-wrap justify-start gap-4">
                 <p class="flex gap-2 items-center">
@@ -530,7 +530,9 @@
             </div>
         </nav>
 
-    </header>
+        
+    </header> --}}
+    <x-navbar></x-navbar>
 
     @yield('content')
 
