@@ -56,7 +56,7 @@ class PostController extends Controller
     public function show_post_detail($category, $slug){
         $post_category_id = PostCategory::where('name', 'like', $category)->get()->first()->id;
         $post = Post::where('post_category_id', $post_category_id);
-        $related = $post->get();
+        $related = $post->limit(4)->get();
         $post = $post->where('slug', $slug)->get()->first();
         $post->views = $post->views += 1;
         $post->save();

@@ -72,7 +72,8 @@
 <nav class="sticky top-0 bg-white shadow z-50">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <a href="{{route('homepage')}}" class="flex items-center space-x-3 mt-2 rtl:space-x-reverse">
-            <img src="{{asset('images/logo_utjambi.webp')}}" class="h-9" alt="UT Jambi Logo" />
+            <img src="{{asset('images/logo_ut.png')}}" class="h-10" alt="Logo UT" />
+            <img src="{{asset('images/dies40.png')}}" class="h-10" alt="Logo DiesNatalis" />
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
             <a href="{{route('login')}}"
