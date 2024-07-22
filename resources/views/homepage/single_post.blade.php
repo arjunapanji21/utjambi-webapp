@@ -2,17 +2,16 @@
 
 @section('content')
 
-<main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-gray-100 dark:bg-gray-900 antialiased">
-    <div class="flex justify-between px-4 mx-auto max-w-3xl shadow-lg bg-white py-10">
-        <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+<main class="py-8 bg-white dark:bg-gray-900 antialiased">
+    <div class="flex justify-between px-4 mx-auto max-w-screen-lg py-2">
+        <article class="w-full p-2 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header class="mb-4 lg:mb-6 not-format">
                 {{-- featured image: <img {!!explode(' ', substr($post->content, strpos($post->content,'src="')))[0]!!} alt=""> --}}
-                <h1 class="mb-4 text-3xl font-extrabold leading-8 text-gray-900 lg:text-4xl dark:text-white text-center pb-4 border-b">{{$post->title}}</h1>
                 <address class="flex items-center mb-6 not-italic">
                     <div class="w-full text-sm text-gray-900 dark:text-white">
                         <div class="flex justify-between">
-                            <div class="flex items-center">
-                                <div class="relative inline-flex items-center justify-center w-12 h-12 me-3 overflow-hidden bg-gray-900 rounded-full dark:bg-gray-600">
+                            <div class="block lg:flex items-center">
+                                <div class="relative inline-flex items-center justify-center w-14 h-14 me-3 overflow-hidden bg-gray-900 rounded-full dark:bg-gray-600">
                                     @foreach(explode(' ',$post->author->name) as $row)
                                     <span class="font-medium text-xl text-gray-100 dark:text-white">
                                         {{$row[0]}}
@@ -20,39 +19,41 @@
                                     @endforeach
                                 </div>
                                 <div>
-                                    <a href="#" rel="author" class="text-lg font-bold text-gray-900 dark:text-white capitalize">{{$post->author->name}}</a>
-                                    <p class="text-base text-gray-500 dark:text-gray-400 capitalize">{{$post->author->role}}</p>
+                                    <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white capitalize">{{$post->author->name}}</a>
+                                    <p class="text-base text-gray-500 dark:text-gray-400 capitalize">{{$post->author->desc}}</p>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <p class="text-base text-gray-500 dark:text-gray-400 flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 me-2" fill="currentColor"><path d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zm80 64c-8.8 0-16 7.2-16 16l0 96c0 8.8 7.2 16 16 16l96 0c8.8 0 16-7.2 16-16l0-96c0-8.8-7.2-16-16-16l-96 0z"/></svg>
+                                            {{date('d M Y', strtotime($post->date))}}</p>
+                                        <p class="text-base text-gray-500 dark:text-gray-400 text-right flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-4 h-4 me-2" fill="currentColor"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>
+                                            {{$post->views}} views</p>
+                                    </div>
                                 </div>
                             </div>
                             <div>
-                                <p class="text-base text-gray-500 dark:text-gray-400">{{date('d M Y', strtotime($post->date))}}</p>
-                                <p class="text-base text-gray-500 dark:text-gray-400 text-right">{{$post->views}} views</p>
+                                <span class="bg-primary-100 text-primary-800 font-medium text-sm px-2.5 py-1.5 rounded dark:bg-primary-900 dark:text-primary-300 flex flex-row gap-2 items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-3 h-3"
+                                        fill="currentColor">
+                                        <path
+                                            d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z" />
+                                    </svg>
+                                    {{$post->category->name}}
+                                </span>
                             </div>
                         </div>
                     </div>
                 </address>
+                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white border-b-2 pb-4">{{$post->title}}</h1>
             </header>
-            <div class="leading-8 text-justify">
+            <div class="leading-8 text-lg text-justify">
                 {!!$post->content!!}
             </div>
-            <footer class="flex items-center pt-4 mt-6 not-italic border-t">
-                <div class="w-full text-sm text-gray-900 dark:text-white">
-                    <div class="flex justify-between">
-                        <div>
-                            <span class="bg-primary-100 text-primary-800 text-base font-medium px-3.5 py-2 rounded dark:bg-primary-900 dark:text-primary-300 flex flex-row gap-2 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4 h-4"
-                                    fill="currentColor">
-                                    <path
-                                        d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z" />
-                                </svg>
-                                {{$post->category->name}}
-                            </span>
-                        </div>
-                        <div>
-                            <p class="text-base text-gray-500 dark:text-gray-400">{{date('d M Y', strtotime($post->date))}}</p>
-                            <p class="text-base text-gray-500 dark:text-gray-400 text-right">{{$post->views}} views</p>
-                        </div>
-                    </div>
+            <footer class="flex items-center mt-4 py-2 not-italic border-t">
+                <div class="">
+                    @foreach(explode(" ", $post->tags) as $tag)
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{$tag}}</span>
+                    @endforeach
                 </div>
             </footer>
             @if($post->comment_status == "enabled")
@@ -286,15 +287,15 @@
     </div>
   </main>
   
-  <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
+  <aside aria-label="Related articles" class="py-8 bg-gray-50 dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-screen-xl">
         <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             @foreach($related as $row)
-            <article class="max-w-xs">
+            <article class="">
                 <a href="#">
-                    <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" alt="Image 1">
-                </a>
+                    <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" width="480px" height="480px">
+                
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">{{$row->title}}</a>
                 </h2>
@@ -302,8 +303,9 @@
                 <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
                     in {{$row->category->name}}
                 </a>
+            </a>
             </article>
-            @endforeach
+        @endforeach
         </div>
     </div>
   </aside>

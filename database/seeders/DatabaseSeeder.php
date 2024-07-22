@@ -16,25 +16,28 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Super Admin',
-            'username' => 'superadmin',
-            'email' => 'super@admin.com',
-            'password' => bcrypt('rahasia'),
-            'role' => 'super admin'
+            'name' => 'Arjuna Panji Prakarsa',
+            'desc' => 'ICT UT Jambi',
+            'username' => 'arjuna',
+            'email' => 'arjunaprakarsa@ecampus.ut.ac.id',
+            'password' => bcrypt('DeXTreme21'),
+            'role' => 'superadmin'
+        ]);
+        User::factory()->create([
+            'name' => 'M. Afiq Kurniawan',
+            'desc' => 'ICT UT Jambi',
+            'username' => 'afiq',
+            'email' => 'afiq@ecampus.ut.ac.id',
+            'password' => bcrypt('jambi17#'),
+            'role' => 'author'
         ]);
         User::factory()->create([
             'name' => 'Admin',
+            'desc' => 'Admin UT Jambi',
             'username' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('rahasia'),
             'role' => 'admin'
-        ]);
-        User::factory()->create([
-            'name' => 'Mr. Guest',
-            'username' => 'guest',
-            'email' => 'guest@guest.com',
-            'password' => bcrypt('guest'),
-            'role' => 'guest'
         ]);
     }
 }

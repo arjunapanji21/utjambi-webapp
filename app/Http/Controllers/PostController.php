@@ -12,10 +12,10 @@ class PostController extends Controller
     {
         $props = [
             'title' => 'Posts',
-            'posts' => Post::orderBy('date', 'desc')->paginate(10),
+            'posts' => Post::orderBy('date', 'desc')->paginate(20),
         ];
         // dd($props['posts'][0]->category->name);
-        return view('admin.post.show_all_post', $props);
+        return view('admin.post.post_index', $props);
     }
 
     public function create_new_post()
@@ -24,7 +24,17 @@ class PostController extends Controller
             'title' => 'New Post',
             'categories' => PostCategory::orderBy('name', 'asc')->get(),
         ];
-        return view('admin.post.create_new_post', $props);
+        return view('admin.post.post_create', $props);
+    }
+
+    public function edit_post($id)
+    {
+        $props = [
+            'title' => 'Edit Post',
+            'categories' => PostCategory::orderBy('name', 'asc')->get(),
+            'post' => Post::find($id),
+        ];
+        return view('admin.post.post_edit', $props);
     }
 
     public function post_to_draft(Request $request)
@@ -46,6 +56,7 @@ class PostController extends Controller
         $data['author_id'] = auth()->user()->id;
         $data['status'] = "publish";
         // $data['featuredImage'] = base64_encode($request->file('featuredImage'));
+        $data['views'] = rand(500, 2500);
         Post::create($data);
         return response()->json([
             'status' => 200,
@@ -65,7 +76,7 @@ class PostController extends Controller
             'post' => $post,
             'related' => $related
         ];
-        return view('homepage.show_post_detail', $props);   
+        return view('homepage.single_post', $props);   
     }
 
     public function show_all_category()
@@ -75,7 +86,7 @@ class PostController extends Controller
             'title' => 'Categories',
             'categories' => $categories,
         ];
-        return view('admin.post.show_all_category', $props);
+        return view('admin.post.category_show', $props);
     }
 
     public function add_new_category(Request $request)

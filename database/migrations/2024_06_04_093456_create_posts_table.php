@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('excerpt')->nullable();
             $table->integer('post_category_id');
+            $table->string('tags')->nullable();
             $table->text('featuredImage')->nullable();
             $table->enum('status', ['draft', 'publish']);
             $table->enum('comment_status', ['disabled', 'enabled'])->default('disabled');

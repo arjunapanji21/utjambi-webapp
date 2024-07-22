@@ -56,6 +56,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::prefix('post')->group(function () {
         Route::get('/', [PostController::class, 'show_all_post'])->name('admin.post.show_all_post');
+        Route::get('/{id}/edit', [PostController::class, 'edit_post'])->name('admin.post.edit');
         Route::get('/new', [PostController::class, 'create_new_post'])->name('admin.post.create_new_post');
         Route::post('/new/draft', [PostController::class, 'post_to_draft'])->name('admin.post.draft');
         Route::post('/new/publish', [PostController::class, 'post_to_publish'])->name('admin.post.publish');

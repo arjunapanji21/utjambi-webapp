@@ -10,7 +10,7 @@ class HomepageController extends Controller
     public function index(){
         $props = [
             'title' => 'Official Website UT Jambi',
-            'posts' => Post::orderBy('date', 'desc')->limit(4)->get(),
+            'posts' => Post::orderBy('date', 'desc')->limit(6)->get(),
         ];
         return view('homepage.home', $props);
     }
