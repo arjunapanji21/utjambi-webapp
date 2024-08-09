@@ -10,7 +10,7 @@
             <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Ikuti perkembangan dan informasi
                 mengenai kehidupan kampus di Universitas Terbuka khususnya untuk daerah Jambi.</p>
         </div>
-        <div class="grid grid-cols-3 gap-5">
+        <div class="grid lg:grid-cols-3 gap-5">
             @foreach($posts as $post)
             <article
                 class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
