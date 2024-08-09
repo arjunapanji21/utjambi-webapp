@@ -198,12 +198,12 @@
             </div>
         </div>
     </div>
-    <div class="py-8 px-4 mx-auto flex gap-5 justify-center items-center max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="max-w-md text-center">
+    <div class="py-8 px-4 mx-auto block lg:flex gap-5 justify-center items-center max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-md text-center p-8">
             <img class="mb-2" src="{{asset('images/dies40.png')}}">
-            <h2 class="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+            <h2 class="mb-4 text-2xl lg:text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Fakultas & Prodi</h2>
-            <p class="text-gray-500 sm:text-xl dark:text-gray-400">UT memiliki 4 Fakultas Program Sarjana/Diploma dan Sekolah Pascasarjana S2 Serta Doktoral S3 dengan jumlah total lebih dari 46 Program Studi yang Terakreditasi A & B.</p>
+            <p class="text-gray-500 sm:text-lg dark:text-gray-400">UT memiliki 4 Fakultas Program Sarjana/Diploma dan Sekolah Pascasarjana S2 Serta Doktoral S3 dengan jumlah total lebih dari 46 Program Studi yang Terakreditasi A & B.</p>
         </div>
         <div class="flex flex-col gap-5">
             <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
@@ -348,7 +348,7 @@
                     <h5 class="text-xl lg:text-3xl text-center font-bold lg:font-extrabold text-primary-900 dark:text-white">
                         Jalur Pendaftaran Universitas Terbuka Melalui:
                     <h5>
-                    <div class="my-2 grid grid-cols-3 gap-20">
+                    <div class="my-2 grid grid-cols-2 gap-20">
                         <div>
                             <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank" data-tooltip-target="daftar_online" data-tooltip-placement="bottom"
                             class="text-blue-900 font-bold text-center hover:scale-105 transition flex justify-center items-center bg-gray-100 hover:text-yellow-300 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm p-2.5 dark:bg-white dark:hover:bg-yellow-100 focus:outline-none dark:focus:ring-blue-900 uppercase">
@@ -359,7 +359,7 @@
                             </div>
                         </div>
                         <div>
-                            <a href="" data-tooltip-target="kantor_ut" data-tooltip-placement="bottom"
+                            <a href="https://maps.app.goo.gl/UKnAiiMB3CDAU3Aj9" target="_blank" data-tooltip-target="kantor_ut" data-tooltip-placement="bottom"
                             class="text-blue-900 font-bold text-center hover:scale-105 transition flex justify-center items-center bg-gray-100 hover:text-yellow-300 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm p-2.5 dark:bg-white dark:hover:bg-yellow-100 focus:outline-none dark:focus:ring-blue-900 uppercase">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-10 h-10" fill="currentColor"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></a>
                             <div id="kantor_ut" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -367,7 +367,7 @@
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                         </div>
-                        <div>
+                        {{-- <div>
                             <a href="" data-tooltip-target="pokjar" data-tooltip-placement="bottom"
                             class="text-blue-900 font-bold text-center hover:scale-105 transition flex justify-center items-center bg-gray-100 hover:text-yellow-300 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm p-2.5 dark:bg-white dark:hover:bg-yellow-100 focus:outline-none dark:focus:ring-blue-900 uppercase">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-10 h-10" fill="currentColor"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg></a>
@@ -375,7 +375,7 @@
                                 POKJAR
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
