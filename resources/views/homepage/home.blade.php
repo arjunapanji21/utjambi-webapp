@@ -1,11 +1,11 @@
 @extends('layouts.homepage')
 @section('content')
-<section class="pt-8 flex flex-col dark:bg-gray-900">
+<section class="pt-8 flex flex-col dark:bg-gray-900 bg-white bg-center bg-no-repeat bg-cover bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
     <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
         <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-start">
             <div class="w-full text-center lg:text-left pt-10 lg:pt-10">
                 <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank"
-                    class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+                    class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-blue-50 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 shadow"
                     role="alert">
                     <span class="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span
                         class="text-sm font-medium">Pendaftaran S1 & Diploma Sedang Dibuka!</span>
@@ -39,7 +39,7 @@
                 <div
                     class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0 sm:space-x-4">
                     <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank"
-                        class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 hover:scale-105 transition">
+                        class="inline-flex items-center justify-center shadow px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 hover:scale-105 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="mr-2 -ml-1 w-5 h-5"
                             fill="currentColor">
                             <path
@@ -48,7 +48,7 @@
                         Daftar Sekarang
                     </a>
                     <a href="https://web.whatsapp.com/send?text=&phone=6282259528388" target="_blank"
-                        class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600 hover:scale-105 transition">
+                        class="inline-flex items-center shadow justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600 hover:scale-105 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="mr-2 -ml-1 w-5 h-5"
                             fill="currentColor">
                             <path
@@ -89,11 +89,11 @@
                     <dd class="font-light text-gray-300 dark:text-gray-100">Mahasiswa Aktif</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">49</dt>
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">50</dt>
                     <dd class="font-light text-gray-300 dark:text-gray-100">Program Studi</dd>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">39</dt>
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">40</dt>
                     <dd class="font-light text-gray-300 dark:text-gray-100">UT Daerah</dd>
                 </div>
             </dl>
@@ -198,15 +198,16 @@
             </div>
         </div>
     </div>
-    <div class="py-8 px-4 mx-auto flex gap-5 justify-center max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="max-w-md">
+    <div class="py-8 px-4 mx-auto flex gap-5 justify-center items-center max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-md text-center">
+            <img class="mb-2" src="{{asset('images/dies40.png')}}">
             <h2 class="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Fakultas & Prodi</h2>
             <p class="text-gray-500 sm:text-xl dark:text-gray-400">UT memiliki 4 Fakultas Program Sarjana/Diploma dan Sekolah Pascasarjana S2 Serta Doktoral S3 dengan jumlah total lebih dari 46 Program Studi yang Terakreditasi A & B.</p>
         </div>
         <div class="flex flex-col gap-5">
             <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
-                <div
+                <a href="https://fkip.ut.ac.id" target="_blank"
                     class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-blue-50 hover:cursor-pointer hover:scale-105 transition">
                     <div class="flex justify-between items-start">
                         <div
@@ -221,8 +222,8 @@
                     </div>
                     <h3 class="mb-2 text-xl font-bold dark:text-white">FKIP</h3>
                     <p class="text-gray-500 dark:text-gray-400">Fakultas Keguruan dan Ilmu Pendidikan.</p>
-                </div>
-                <div
+                </a>
+                <a href="https://fhisip.ut.ac.id" target="_blank"
                     class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-blue-50 hover:cursor-pointer hover:scale-105 transition">
                     <div class="flex justify-between items-start">
                         <div
@@ -237,8 +238,8 @@
                     </div>
                     <h3 class="mb-2 text-xl font-bold dark:text-white">FHISIP</h3>
                     <p class="text-gray-500 dark:text-gray-400">Fakultas Hukum, Ilmu Sosial, dan Ilmu Politik.</p>
-                </div>
-                <div
+                </a>
+                <a href="https://fst.ut.ac.id" target="_blank"
                     class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-blue-50 hover:cursor-pointer hover:scale-105 transition">
                     <div class="flex justify-between items-start">
                         <div
@@ -253,9 +254,57 @@
                     </div>
                     <h3 class="mb-2 text-xl font-bold dark:text-white">FST</h3>
                     <p class="text-gray-500 dark:text-gray-400">Fakultas Sains dan Teknologi</p>
-                </div>
+                </a>
+                <a href="https://feb.ut.ac.id" target="_blank"
+                    class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-blue-50 hover:cursor-pointer hover:scale-105 transition">
+                    <div class="flex justify-between items-start">
+                        <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                            class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                            <path
+                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
+                        </svg>
+                    </div>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">6 Prodi</span>
+                    </div>
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">FEB</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Fakultas Ekonomi dan Bisnis</p>
+                </a>
+                <a
+                href="https://pascasarjana.ut.ac.id" target="_blank"
+                    class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-blue-50 hover:cursor-pointer hover:scale-105 transition">
+                    <div class="flex justify-between items-start">
+                        <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                            class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                            <path
+                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
+                        </svg>
+                    </div>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">7 Prodi</span>
+                    </div>
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">Pascasarjana</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Magister S2</p>
+                </a>
+                <a href="https://lppm.ut.ac.id/" target="_blank"
+                    class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-blue-50 hover:cursor-pointer hover:scale-105 transition">
+                    <div class="flex justify-between items-start">
+                        <div
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                            class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                            <path
+                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
+                        </svg>
+                    </div>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">5 Program</span>
+                    </div>
+                    <h3 class="mb-2 text-xl font-bold dark:text-white">Program</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Sertifikat</p>
+                </a>
             </div>
-            <a href="#" class="ml-auto py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none  rounded-lg  hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">Fakultas Lainnya</a>
         </div>
     </div>
 </section>
@@ -388,7 +437,7 @@
             @endforeach
         </div>
         <div class="text-center mt-10">
-            <a href="#"
+            <a href="{{route('blog')}}"
             class="inline-flex items-center font-medium justify-center text-primary-600 dark:text-primary-500 hover:underline">
             Artikel Lainnya
             <svg class="ml-2 w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
@@ -417,7 +466,7 @@
 @section('script')
 <script>
 
-    CountDownTimer('08/07/2024 00:00 AM', 'countdown');
+    CountDownTimer('08/27/2024 00:00 AM', 'countdown');
 
     function CountDownTimer(dt, id)
     {

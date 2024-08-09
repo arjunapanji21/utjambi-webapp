@@ -15,38 +15,32 @@ class HomepageController extends Controller
         return view('homepage.home', $props);
     }
 
-    public function direktur(){
+    public function profil_direktur(){
         $props = [
-            'title' => 'Direktur UT Jambi',
+            'title' => 'Direktur',
         ];
         return view('homepage.profil.direktur', $props);
     }
 
-    public function manajer_administrasi(){
+    public function pimpinan_staf(){
         $props = [
-            'title' => 'Manajer UT Jambi',
-        ];
-        return view('homepage.profil.manajer_administrasi', $props);
-    }
-
-    public function manajer_marketing(){
-        $props = [
-            'title' => 'Manajer UT Jambi',
-        ];
-        return view('homepage.profil.manajer_marketing', $props);
-    }
-
-    public function manajer_pembelajaran(){
-        $props = [
-            'title' => 'Manajer UT Jambi',
-        ];
-        return view('homepage.profil.manajer_pembelajaran', $props);
-    }
-
-    public function staf(){
-        $props = [
-            'title' => 'Staf UT Jambi',
+            'title' => 'Pimpinan & Staf',
         ];
         return view('homepage.profil.staf', $props);
+    }
+
+    public function visi_misi(){
+        $props = [
+            'title' => 'Visi & Misi',
+        ];
+        return view('homepage.profil.visi_misi', $props);
+    }
+
+    public function blog(){
+        $props = [
+            'title' => 'Blog',
+            'posts' => Post::orderBy('date', 'desc')->get(),
+        ];
+        return view('homepage.blog', $props);
     }
 }

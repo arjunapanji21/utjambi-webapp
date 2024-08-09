@@ -3,7 +3,7 @@
 @section('content')
 
 <main class="py-8 bg-white dark:bg-gray-900 antialiased">
-    <div class="flex justify-between px-4 mx-auto max-w-screen-lg py-2">
+    <div class="flex justify-between px-4 mx-auto max-w-screen-md py-2">
         <article class="w-full p-2 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header class="mb-4 lg:mb-6 not-format">
                 {{-- featured image: <img {!!explode(' ', substr($post->content, strpos($post->content,'src="')))[0]!!} alt=""> --}}
@@ -293,16 +293,16 @@
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             @foreach($related as $row)
             <article class="">
-                <a href="#">
+                <a href="{{route('show_post_detail', [$row->category->name, $row->slug])}}">
                     <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" width="480px" height="480px">
                 
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">{{$row->title}}</a>
+                    {{$row->title}}
                 </h2>
                 {{-- <p class="mb-4 text-gray-500 dark:text-gray-400">{{$row->excerpt}}</p> --}}
-                <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
+                <label class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 ">
                     in {{$row->category->name}}
-                </a>
+                </label>
             </a>
             </article>
         @endforeach

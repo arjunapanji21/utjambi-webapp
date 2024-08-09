@@ -56,7 +56,7 @@ class PostController extends Controller
         $data['author_id'] = auth()->user()->id;
         $data['status'] = "publish";
         // $data['featuredImage'] = base64_encode($request->file('featuredImage'));
-        $data['views'] = rand(500, 2500);
+        // $data['views'] = rand(500, 2500);
         Post::create($data);
         return response()->json([
             'status' => 200,
@@ -67,7 +67,7 @@ class PostController extends Controller
     public function show_post_detail($category, $slug){
         $post_category_id = PostCategory::where('name', 'like', $category)->get()->first()->id;
         $post = Post::where('post_category_id', $post_category_id);
-        $related = $post->limit(4)->get();
+        $related = $post->inRandomOrder()->limit(4)->get();
         $post = $post->where('slug', $slug)->get()->first();
         $post->views = $post->views += 1;
         $post->save();
