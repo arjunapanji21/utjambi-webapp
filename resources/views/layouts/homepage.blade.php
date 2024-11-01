@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="scroll-behavior: smooth;">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @yield('meta')
     <link rel="icon" type="image/x-icon" href="{{asset('images/logo_ut.ico')}}">
     <title>{{$title}} | UT Jambi</title>
 
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-
+<style>
+    .background {
+        background-color: #2F77F1;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.05'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
+    }
+</style>
 <body class="m-0">
     
     <x-navbar></x-navbar>
 
     @yield('content')
 
-    <footer class="border-t-8 border-t-yellow-300 bg-primary-700 dark:bg-primary-900">
+    <footer class="border-t-8 border-t-yellow-300 bg-cover bg-fixed bg-no-repeat" style="background-image: url('{{asset("images/background/blue1.webp")}}')">
         <div class="max-w-screen-xl mx-auto w-full p-4 py-6 lg:py-8 lg:px-6">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0 max-w-md">
@@ -46,6 +52,29 @@
                     </ul>
                 </div>
                 <div class="flex flex-col mt-10 lg:mt-0 lg:flex-row gap-10 lg:gap-20">
+                    <div class="flex flex-row gap-20">
+                        <div>
+                            <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Quick Links</h2>
+                            <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
+                                <li>
+                                    <a href="https://admisi-sia.ut.ac.id/" target="_blank"
+                                        class="hover:underline hover:text-gray-100">Admisi SIA</a>
+                                </li>
+                                <li>
+                                    <a href="https://ut.ac.id" target="_blank" class="hover:underline hover:text-gray-100">UT Pusat</a>
+                                </li>
+                                <li>
+                                    <a href="http://ecampus.ut.ac.id/" target="_blank" class="hover:underline hover:text-gray-100">WEBMAIL</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.kemdikbud.go.id/" target="_blank" class="hover:underline hover:text-gray-100">KEMDIKBUD</a>
+                                </li>
+                                <li>
+                                    <a href="https://pddikti.kemdikbud.go.id/" target="_blank" class="hover:underline hover:text-gray-100">PD-DIKTI</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Fakultas & Pascasarjana</h2>
                         <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
@@ -65,61 +94,6 @@
                                 <a href="https://pasca.ut.ac.id/" target="_blank" class="hover:underline hover:text-gray-100">Sekolah Pascasarjana</a>
                             </li>
                         </ul>
-                    </div>
-                    <div class="flex flex-row gap-20">
-                        <div>
-                            <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Follow us</h2>
-                            <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
-                                <li>
-                                    <a href="https://www.youtube.com/channel/UCxP2d1LhWCImVwz5I-aMSWA" target="_blank"
-                                        class="hover:underline hover:text-gray-100 ">YouTube</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/ut_jambi/" target="_blank"
-                                        class="hover:underline hover:text-gray-100 ">Instagram</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.facebook.com/UTDaerahJambi/" target="_blank"
-                                        class="hover:underline hover:text-gray-100">Facebook</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.tiktok.com/@ut_jambi17" target="_blank"
-                                        class="hover:underline hover:text-gray-100">Tiktok</a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/utjambi" target="_blank"
-                                        class="hover:underline hover:text-gray-100">X Twitter</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/ut-jambi" target="_blank"
-                                        class="hover:underline hover:text-gray-100">LinkedIn</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Quick Links</h2>
-                            <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
-                                <li>
-                                    <a href="https://admisi-sia.ut.ac.id/" target="_blank"
-                                        class="hover:underline hover:text-gray-100">Admisi SIA</a>
-                                </li>
-                                <li>
-                                    <a href="https://ut.ac.id" target="_blank" class="hover:underline hover:text-gray-100">UT Pusat</a>
-                                </li>
-                                <li>
-                                    <a href="https://aceh.ut.ac.id/ut-daerah" target="_blank" class="hover:underline hover:text-gray-100">UT Daerah</a>
-                                </li>
-                                <li>
-                                    <a href="http://ecampus.ut.ac.id/" target="_blank" class="hover:underline hover:text-gray-100">WEBMAIL</a>
-                                </li>
-                                <li>
-                                    <a href="http://www.kemdikbud.go.id/" target="_blank" class="hover:underline hover:text-gray-100">KEMDIKBUD</a>
-                                </li>
-                                <li>
-                                    <a href="https://pddikti.kemdikbud.go.id/" target="_blank" class="hover:underline hover:text-gray-100">PD-DIKTI</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

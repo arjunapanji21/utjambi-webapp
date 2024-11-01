@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 class AuthController extends Controller
 {
     public function login(){
+        app('App\Http\Controllers\HomepageController')->visitor();
         if(!Auth::check()){
             $props = [
                 'title' => "Login",
@@ -29,6 +30,7 @@ class AuthController extends Controller
     
     public function auth(Request $request)
     {
+        app('App\Http\Controllers\HomepageController')->visitor();
         $credentials = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
@@ -38,8 +40,8 @@ class AuthController extends Controller
             $response = Http::post('https://api-srs.ut.ac.id/api-srs-mahasiswa/v1/auth', [
                 // "email" => "ella.sunardi@ecampus.ut.ac.id",
                 // "password" => "Sunardi1990"
-                "email" => "api-testing-Bogor@ut.ac.id",
-                "password" => "Terbuka132"
+                "email" => "jambi@ecampus.ut.ac.id",
+                "password" => "UT176tJ4mb!!rf"
             ]);
             $result = $response->json();
             try {
@@ -61,6 +63,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        app('App\Http\Controllers\HomepageController')->visitor();
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

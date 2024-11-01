@@ -7,17 +7,17 @@
 @section('content')
 <section>
     <div class="mb-2">
-        <nav class="flex" aria-label="Breadcrumb">
+        <nav class="flex italic" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
                     <a href="#"
-                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white capitalize">
                         <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor" viewBox="0 0 20 20">
                             <path
                                 d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                         </svg>
-                        Admin
+                        {{auth()->user()->role}}
                     </a>
                 </li>
                 <li>
@@ -46,7 +46,6 @@
     </div>
 
     <h2 id="test" class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Edit Post</h2>
-
     <div class="bg-white p-4 rounded-lg dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
         <div class="flex flex-col lg:flex-row gap-4">
             <div class="w-full lg:w-3/4">
@@ -129,18 +128,22 @@
                         </label>
                     </div>
                 </div> --}}
-                <div class="grid lg:grid-cols-2 gap-2 mt-4">
+                <div class="grid lg:grid-cols-3 gap-2 mt-4">
+                        <a href="{{route('admin.post.delete', $post->id)}}" onclick="return confirm('This post will be deleted, are you sure?')"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                        Delete
+                    </a>
                         <button id="btnDraft"
-                        class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                         Draft
                     </button>
                     <button id="btnPublish"
-                        class="items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                        class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                         Publish
                     </button>
                 </div>
                 <div class="mt-4 border-t">
-                    <a href="{{route('admin.post.show_all_post')}}"
+                    <a href="{{route('admin.post.all')}}"
                         class="block text-center mt-2 py-2.5 px-5 text-sm font-medium text-gray-400 focus:outline-none bg-white rounded-lg  hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">
                         Cancel
                     </a>
@@ -161,6 +164,7 @@
     });
 
     $("#btnDraft").click(function () {
+        var post_id = $("#post_id").val();
         var title = $("#title").val();
         var content = tinymce.get('editor').getContent();
         var slug = $("#slug").val();
@@ -177,6 +181,7 @@
             "date" : date,
             "excerpt" : excerpt,
             "tags" : tags,
+            "status" : "draft",
             "post_category_id" : post_category_id,
             "featuredImage" : featuredImage,
         };
@@ -185,7 +190,7 @@
         formData._token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '{{route("admin.post.draft")}}',
+            url: '{{route("admin.post.update", $post->id)}}',
             type: 'POST',
             enctype: 'multipart/form-data',
             headers: {
@@ -194,7 +199,7 @@
             data: formData,
             success: function(response){
                 alert(response.msg);
-                window.location.href = "{{route('admin.post.show_all_post')}}";
+                window.location.href = "{{route('admin.post.all')}}";
             },
             error: function(xhr, status, error){
                 console.error(xhr.responseText);
@@ -219,6 +224,7 @@
             "date" : date,
             "excerpt" : excerpt,
             "tags" : tags,
+            "status" : "publish",
             "post_category_id" : post_category_id,
             "featuredImage" : featuredImage,
         };
@@ -227,7 +233,7 @@
         formData._token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '{{route("admin.post.publish")}}',
+            url: '{{route("admin.post.update", $post->id)}}',
             type: 'POST',
             enctype: 'multipart/form-data',
             headers: {
@@ -236,7 +242,7 @@
             data: formData,
             success: function(response){
                 alert(response.msg);
-                window.location.href = "{{route('admin.post.show_all_post')}}";
+                window.location.href = "{{route('admin.post.all')}}";
             },
             error: function(xhr, status, error){
                 console.error(xhr.responseText);

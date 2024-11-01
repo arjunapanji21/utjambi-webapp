@@ -399,8 +399,8 @@
                     >{{auth()->user()->name}}</span
                   >
                   <span
-                    class="block text-sm text-gray-900 truncate dark:text-white"
-                    >{{auth()->user()->email}}</span
+                    class="block text-sm text-gray-500 truncate dark:text-gray-800 italic"
+                    >{{auth()->user()->role}}</span
                   >
                 </div>
                 <ul
@@ -442,7 +442,7 @@
         <!-- Sidebar -->
     
         <aside
-          class="fixed top-0 left-0 z-40 w-2/3 md:w-52 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700 shadow-lg"
+          class="fixed top-0 left-0 z-40 w-2/3 md:w-60 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700 shadow-lg"
           aria-label="Sidenav"
           id="drawer-navigation"
         >
@@ -547,14 +547,14 @@
                 <ul id="dropdown-postingan" class="hidden py-2 space-y-2">
                   <li>
                     <a
-                      href="{{route('admin.post.show_all_post')}}"
+                      href="{{route('admin.post.all')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >All Posts</a
                     >
                   </li>
                   <li>
                     <a
-                      href="{{route('admin.post.show_all_category')}}"
+                      href="{{route('admin.post.category.all')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Categories</a
                     >
@@ -566,6 +566,107 @@
               class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
             >
               <h5 class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">Aplikasi</h5>
+              <li>
+                <button
+                  type="button"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "LPKBJJ") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
+                  aria-controls="dropdown-lpkbjj"
+                  data-collapse-toggle="dropdown-lpkbjj"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "LPKBJJ") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
+                fill="currentColor"><path d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zm64 80l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm128 0l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM64 400l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16z"/></svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
+                    >LPKBJJ</span
+                  >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul id="dropdown-lpkbjj" class="hidden py-2 space-y-2">
+                  <li>
+                    <a
+                      href="{{route('admin.lpkbjj.osmb_pkbjj')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >OSMB-PKBJJ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{{route('admin.lpkbjj.wt_ku')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >WT-KU</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Tutorial") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
+                  aria-controls="dropdown-tutorial"
+                  data-collapse-toggle="dropdown-tutorial"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="flex-shrink-0 w-5 h-4 transition duration-75 @if(isset($active) && $active == "Tutorial") text-primary-700 bg-primary-100 @else text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white @endif"
+                fill="currentColor"><path d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zm64 80l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm128 0l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM64 400l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16z"/></svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
+                    >Tutorial</span
+                  >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul id="dropdown-tutorial" class="hidden py-2 space-y-2">
+                  <li>
+                    <a
+                      href="{{route('admin.ttm.penjadwalan_tutorial')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Penjadwalan Tutorial</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{{route('admin.ttm.penjadwalan_kelas')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Penjadwalan Kelas</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{{route('admin.ttm.cek_jadwal_tutorial')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Cek Jadwal Tutorial</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="{{route('admin.ttm.data_tutor')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Data Master</a
+                    >
+                  </li>
+                  
+                </ul>
+              </li>
               <li>
                 <button
                   type="button"
@@ -628,7 +729,7 @@
                 fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
                   
                   <span class="flex-1 ml-3 text-left whitespace-nowrap capitalize"
-                    >Absensi wisuda</span
+                    >Wisuda</span
                   >
                   <svg
                     aria-hidden="true"
@@ -647,9 +748,16 @@
                 <ul id="dropdown-yudisium" class="hidden py-2 space-y-2">
                   <li>
                     <a
+                      href="{{route('admin.wisuda.pendaftaran')}}"
+                      class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      >Pendaftaran Wisuda</a
+                    >
+                  </li>
+                  <li>
+                    <a
                       href="{{route('admin.wisuda.peserta')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >Data Wisuda</a
+                      >Peserta Wisuda</a
                     >
                   </li>
                 </ul>
@@ -661,7 +769,7 @@
               <h5 class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">Lainnya</h5>
               <li>
                 <a
-                  href="#"
+                  href="{{route('admin.setting')}}"
                   class="flex items-center p-2 text-sm font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                 >
                 <svg
@@ -696,8 +804,60 @@
           </div>
         </aside>
     
-        <main class="p-4 md:ml-52 h-auto pt-20">
-          <div class="max-w-screen-xl mx-auto flex flex-col gap-5">
+        <main class="p-4 md:ml-60 h-auto pt-20">
+
+          @if(Session::has('success'))
+            <div id="toast-success" class="z-50 fixed bottom-5 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+              <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                  </svg>
+                  <span class="sr-only">Check icon</span>
+              </div>
+              <div class="ms-3 text-sm font-normal">{{ Session::get('success') }}</div>
+              <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                  <span class="sr-only">Close</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+              </button>
+          </div>
+          @elseif(Session::has('alert'))
+          <div id="toast-warning" class="fixed bottom-5 right-5 flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-700 dark:text-orange-200">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"/>
+                </svg>
+                <span class="sr-only">Warning icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal">{{ Session::get('alert') }}</div>
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-warning" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+          @elseif(Session::has('error'))
+          <div id="toast-danger" class="fixed bottom-5 right-5 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
+                </svg>
+                <span class="sr-only">Error icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal">{{ Session::get('error') }}</div>
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-danger" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+          @endif
+
+          <div class="max-w-screen-2xl mx-auto flex flex-col gap-5">
+            
             @yield('content')
           </div>
         </main>

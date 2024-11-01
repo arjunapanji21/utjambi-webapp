@@ -2,7 +2,7 @@
 @section('content')
 <div class="mb-2 flex flex-col-reverse lg:flex-row justify-between">
     <h1 class="text-xl font-bold text-gray-700 dark:text-gray-400">Data Master Numpang Ujian</h1>
-    <nav class="flex" aria-label="Breadcrumb">
+    <nav class="flex italic" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
                 <a href="#"

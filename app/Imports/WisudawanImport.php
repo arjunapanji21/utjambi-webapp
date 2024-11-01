@@ -35,13 +35,13 @@ class WisudawanImport implements ToModel, WithStartRow
         $this->gmap = $gmap;
     }
 
-    /**
-     * @return int
-     */
-    public function startRow(): int
-    {
-        return 2;
-    }
+/**
+ * @return int
+ */
+public function startRow(): int
+{
+    return 2;
+}
 
     
     /**

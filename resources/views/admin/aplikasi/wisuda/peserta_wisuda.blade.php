@@ -2,7 +2,7 @@
 @section('content')
 <div class="mb-2 flex flex-col-reverse lg:flex-row justify-between">
     <h1 class="text-xl font-bold text-gray-700 dark:text-gray-400">Data Peserta Wisuda</h1>
-    <nav class="flex" aria-label="Breadcrumb">
+    <nav class="flex italic" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
                 <a href="#"
@@ -260,7 +260,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('admin.wisuda.import')}}" method="post" enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="{{route('admin.wisuda.peserta.import')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">

@@ -294,7 +294,7 @@
             @foreach($related as $row)
             <article class="">
                 <a href="{{route('show_post_detail', [$row->category->name, $row->slug])}}">
-                    <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" width="480px" height="480px">
+                    <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" width="480" height="480">
                 
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     {{$row->title}}

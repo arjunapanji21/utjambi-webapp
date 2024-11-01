@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index(){
+        // foreach(Post::all() as $row){
+        //     $row->views = rand(55,110);
+        //     $row->save();
+        // }
         $master = [
             'title' => 'Dashboard',
             'active' => 'Dashboard',
             'jumlah_artikel' => count(Post::all()),
-            'posts' => Post::orderBy('date', 'desc')->limit(5)->get(),
+            'jumlah_pengunjung' => count(Visitor::all()),
+            'pengunjung_hari_ini' => count(Visitor::where('created_at', 'like', '%' . date('Y-m-d') . '%')->get()),
+            'visitors' => Visitor::orderBy('updated_at', 'desc')->limit(10)->get(),
+            'posts' => Post::orderBy('views', 'desc')->limit(5)->get(),
         ];
         return view('admin.dashboard', $master);
     }

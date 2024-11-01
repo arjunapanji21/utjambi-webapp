@@ -176,6 +176,7 @@ class NumpangUjianController extends Controller
 
     public function form_numpang_ujian_1()
     {
+        app('App\Http\Controllers\HomepageController')->visitor();
         $master = [
             'title' => 'Form Numpang Ujian | UT Jambi',
         ];
@@ -185,6 +186,7 @@ class NumpangUjianController extends Controller
 
     public function form_numpang_ujian_2(Request $request)
     {
+        app('App\Http\Controllers\HomepageController')->visitor();
         $mahasiswa = null;
         $utdaerah = [];
         $wilayah_ujian = [];
@@ -264,6 +266,7 @@ class NumpangUjianController extends Controller
 
     public function form_numpang_ujian_3(Request $request)
     {
+        app('App\Http\Controllers\HomepageController')->visitor();
         $mahasiswa = null;
 
         if ($request->has('alasan')) {
@@ -285,7 +288,7 @@ class NumpangUjianController extends Controller
                 $request['nobilling'] = $result['nobilling'];
                 $request['wilayah_ujian_asal'] = $result['billing_info'][0]['wilayah_ujian']['kode_wilayah_ujian'] . " / " . $result['billing_info'][0]['wilayah_ujian']['nama_wilayah_ujian'];
             } else if ($response->status() != 200) {
-                return back()->with('alert', $response->json('message'));
+                return back()->with('error', $response->json('message'));
             }
 
             // get detail billing from api
@@ -301,7 +304,7 @@ class NumpangUjianController extends Controller
                     array_push($kode_mk, $row['mata_kuliah']['kode_matakuliah']);
                 }
             } else if ($response->status() != 200) {
-                return back()->with('alert', $response->json('message'));
+                return back()->with('error', $response->json('message'));
             }
 
             
@@ -350,7 +353,7 @@ class NumpangUjianController extends Controller
 
                         $mahasiswa['prodi'] = $result['info_ut']['program_studi']['kode_program_studi'] . ' / ' . strtoupper($result['info_ut']['program_studi']['nama_program_studi']);
                     } else if ($response->status() != 200) {
-                        return back()->with('alert', $response->json('message'));
+                        return back()->with('error', $response->json('message'));
                     }
                 }
             } catch (\Throwable $th) {

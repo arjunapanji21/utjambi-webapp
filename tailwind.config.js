@@ -22,7 +22,7 @@ module.exports = {
     },
     fontFamily: {
       'body': [
-        'Inter', 
+        'Noto Sans', 
         'ui-sans-serif', 
         'system-ui', 
         '-apple-system', 
@@ -31,15 +31,14 @@ module.exports = {
         'Roboto', 
         'Helvetica Neue', 
         'Arial', 
-        'Noto Sans', 
         'sans-serif', 
         'Apple Color Emoji', 
         'Segoe UI Emoji', 
         'Segoe UI Symbol', 
         'Noto Color Emoji'
       ],
-          'sans': [
-        'Inter', 
+      'sans': [
+        'Noto Sans', 
         'ui-sans-serif', 
         'system-ui', 
         '-apple-system', 
@@ -48,7 +47,6 @@ module.exports = {
         'Roboto', 
         'Helvetica Neue', 
         'Arial', 
-        'Noto Sans', 
         'sans-serif', 
         'Apple Color Emoji', 
         'Segoe UI Emoji', 

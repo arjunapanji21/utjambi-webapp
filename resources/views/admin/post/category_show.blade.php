@@ -1,6 +1,6 @@
 @extends('layouts.dashboard') @section('content')
 <div class="mb-2">
-    <nav class="flex" aria-label="Breadcrumb">
+    <nav class="flex italic" aria-label="Breadcrumb">
         <ol
             class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
         >
@@ -165,8 +165,8 @@
                     <td class="px-4 py-3">{{count($category->posts)}}</td>
                     <td class="px-4 py-3 flex items-center justify-end">
                         <button
-                            data-modal-target="modal-edit"
-                            data-modal-toggle="modal-edit"
+                            data-modal-target="modal-edit-category-{{$category->id}}"
+                            data-modal-toggle="modal-edit-category-{{$category->id}}"
                             class="p-2 rounded-full hover:bg-gray-100"
                         >
                             <svg
@@ -183,7 +183,7 @@
 
                         <!-- Modal Edit Category -->
                         <div
-                            id="modal-edit"
+                            id="modal-edit-category-{{$category->id}}"
                             tabindex="-1"
                             aria-hidden="true"
                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -207,7 +207,7 @@
                                         <button
                                             type="button"
                                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                            data-modal-toggle="modal-edit"
+                                            data-modal-toggle="modal-edit-category-{{$category->id}}"
                                         >
                                             <svg
                                                 class="w-3 h-3"
@@ -230,7 +230,8 @@
                                         </button>
                                     </div>
                                     <!-- Modal body -->
-                                    <form class="p-4 md:p-5">
+                                    <form class="p-4 md:p-5" action="{{route('admin.post.category.update', $category->id)}}" method="post">
+                                        @csrf
                                         <div
                                             class="grid gap-4 mb-4 grid-cols-2"
                                         >
@@ -265,8 +266,8 @@
                         </div>
 
                         <button
-                            data-modal-target="modal-delete"
-                            data-modal-toggle="modal-delete"
+                            data-modal-target="modal-delete-category-{{$category->id}}"
+                            data-modal-toggle="modal-delete-category-{{$category->id}}"
                             class="p-2 rounded-full hover:bg-gray-100 text-red-400"
                         >
                             <svg
@@ -283,7 +284,7 @@
 
                         <!-- modal delete -->
                         <div
-                            id="modal-delete"
+                            id="modal-delete-category-{{$category->id}}"
                             tabindex="-1"
                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
                         >
@@ -296,7 +297,7 @@
                                     <button
                                         type="button"
                                         class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="modal-delete"
+                                        data-modal-hide="modal-delete-category-{{$category->id}}"
                                     >
                                         <svg
                                             class="w-3 h-3"
@@ -337,15 +338,15 @@
                                             Are you sure you want to delete
                                             {{$category->name}} from categories?
                                         </h3>
-                                        <button
-                                            data-modal-hide="modal-delete"
+                                        <a href="{{route('admin.post.category.delete', $category->id)}}"
+                                            data-modal-hide="modal-delete-category-{{$category->id}}"
                                             type="button"
                                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
                                         >
                                             Yes, I'm sure
-                                        </button>
+                                        </a>
                                         <button
-                                            data-modal-hide="modal-delete"
+                                            data-modal-hide="modal-delete-category-{{$category->id}}"
                                             type="button"
                                             class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                                         >
@@ -407,7 +408,7 @@
             <!-- Modal body -->
             <form
                 class="p-4 md:p-5"
-                action="{{ route('admin.post.add_new_category') }}"
+                action="{{ route('admin.post.category.new') }}"
                 method="post"
             >
                 @csrf

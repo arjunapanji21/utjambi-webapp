@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         $props = [
             'title' => 'Posts',
-            'posts' => Post::orderBy('date', 'desc')->paginate(20),
+            'posts' => Post::orderBy('date', 'desc')->get(),
         ];
         // dd($props['posts'][0]->category->name);
         return view('admin.post.post_index', $props);
@@ -37,37 +37,60 @@ class PostController extends Controller
         return view('admin.post.post_edit', $props);
     }
 
-    public function post_to_draft(Request $request)
+    public function save_new_post(Request $request)
     {
         $data = $request->all();
         $data['author_id'] = auth()->user()->id;
-        $data['status'] = "draft";
         // $data['featuredImage'] = base64_encode($request->file('featuredImage'));
-        Post::create($data);
+        // $data['views'] = rand(500, 2500);
+        $post = new Post;
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->slug = $data['slug'];
+        $post->excerpt = $data['excerpt'];
+        $post->post_category_id = $data['post_category_id'];
+        $post->tags = $data['tags'];
+        $post->status = $data['status'];
+        $post->author_id = $data['author_id'];
+        $post->date = $data['date'];
+        $post->save();
         return response()->json([
             'status' => 200,
-            'msg' => 'Post has been saved to draft.',
+            'msg' => 'A new post has been saved to database!',
         ]);
     }
 
-    public function post_to_publish(Request $request)
+    public function update_post($id, Request $request)
     {
         $data = $request->all();
-        $data['author_id'] = auth()->user()->id;
-        $data['status'] = "publish";
-        // $data['featuredImage'] = base64_encode($request->file('featuredImage'));
-        // $data['views'] = rand(500, 2500);
-        Post::create($data);
+        $post = Post::find($id);
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->slug = $data['slug'];
+        $post->excerpt = $data['excerpt'];
+        $post->post_category_id = $data['post_category_id'];
+        $post->tags = $data['tags'];
+        $post->status = $data['status'];
+        $post->date = $data['date'];
+        $post->save();
         return response()->json([
             'status' => 200,
-            'msg' => 'Post has been saved to publish.',
+            'msg' => 'Post updated successfully.',
         ]);
+    }
+
+    public function delete_post($id){
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('admin.post.all')->with('success', 'Post deleted successfully.');
+
     }
 
     public function show_post_detail($category, $slug){
+        app('App\Http\Controllers\HomepageController')->visitor();
         $post_category_id = PostCategory::where('name', 'like', $category)->get()->first()->id;
         $post = Post::where('post_category_id', $post_category_id);
-        $related = $post->inRandomOrder()->limit(4)->get();
+        $related = $post->where('status', 'publish')->inRandomOrder()->limit(4)->get();
         $post = $post->where('slug', $slug)->get()->first();
         $post->views = $post->views += 1;
         $post->save();
@@ -91,16 +114,30 @@ class PostController extends Controller
 
     public function add_new_category(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required',
         ]);
-        PostCategory::create($data);
+        $category = new PostCategory;
+        $category->name = $request['name'];
+        $category->save();
         return back()->with('success', 'A new category has been added to database.');
     }
 
     public function update_category(Request $request, $id)
     {
-        $request->all();
+        $category = PostCategory::find($id);
+        $category->name = $request['name'];
+        $category->save();
         return back()->with('success', 'Category updated successfully.');
+    }
+
+    public function delete_category($id)
+    {
+        $category = PostCategory::find($id);
+        if(count($category->posts) > 0){
+            return back()->with('alert', 'Cannot delete this category, it has one or more posts!');
+        }
+        $category->delete();
+        return back()->with('success', 'Category deleted successfully.');
     }
 }

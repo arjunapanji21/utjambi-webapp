@@ -7,7 +7,7 @@
 @section('content')
 <section>
     <div class="mb-2">
-        <nav class="flex" aria-label="Breadcrumb">
+        <nav class="flex italic" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
                     <a href="#"
@@ -165,6 +165,7 @@
             "date" : date,
             "excerpt" : excerpt,
             "tags" : tags,
+            "status" : "draft",
             "post_category_id" : post_category_id,
             "featuredImage" : featuredImage,
         };
@@ -173,7 +174,7 @@
         formData._token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '{{route("admin.post.draft")}}',
+            url: '{{route("admin.post.save")}}',
             type: 'POST',
             enctype: 'multipart/form-data',
             headers: {
@@ -182,7 +183,7 @@
             data: formData,
             success: function(response){
                 alert(response.msg);
-                window.location.href = "{{route('admin.post.show_all_post')}}";
+                window.location.href = "{{route('admin.post.all')}}";
             },
             error: function(xhr, status, error){
                 console.error(xhr.responseText);
@@ -207,6 +208,7 @@
             "date" : date,
             "excerpt" : excerpt,
             "tags" : tags,
+            "status" : "publish",
             "post_category_id" : post_category_id,
             "featuredImage" : featuredImage,
         };
@@ -215,7 +217,7 @@
         formData._token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
-            url: '{{route("admin.post.publish")}}',
+            url: '{{route("admin.post.save")}}',
             type: 'POST',
             enctype: 'multipart/form-data',
             headers: {
@@ -224,7 +226,7 @@
             data: formData,
             success: function(response){
                 alert(response.msg);
-                window.location.href = "{{route('admin.post.show_all_post')}}";
+                window.location.href = "{{route('admin.post.all')}}";
             },
             error: function(xhr, status, error){
                 console.error(xhr.responseText);
