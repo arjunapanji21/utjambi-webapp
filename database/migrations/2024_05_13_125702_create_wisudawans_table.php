@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('waktu_seminar');
             $table->string('tgl_wisuda');
             $table->string('waktu_wisuda');
-            $table->string('absen_seminar')->nullable();
-            $table->string('absen_wisuda')->nullable();
+            $table->string('konfirmasi_kehadiran')->nullable();
+            $table->string('hadir_seminar')->nullable();
+            $table->string('hadir_wisuda')->nullable();
             $table->string('lokasi');
             $table->string('gmap');
             $table->timestamps();

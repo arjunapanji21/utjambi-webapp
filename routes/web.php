@@ -33,6 +33,8 @@ Route::get('/signage', function(){
     return view('signage', $props);
 })->name('signage');
 
+Route::get('/d/{folder}/{nama_file}', [HomepageController::class, 'download_file'])->name('download_file');
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/reset-password', [AuthController::class, 'reset_password'])->name('reset_password');
 Route::post('/login/auth', [AuthController::class, 'auth'])->name('auth');
@@ -64,6 +66,8 @@ Route::middleware([Maintenance::class])->group(function () {
             Route::post('/pendaftaran/upload-bukti-bayar', [WisudaController::class, 'upload_bukti_bayar_wisuda'])->name('kegiatan.wisuda.pendaftaran.upload_bukti_bayar_wisuda');
             Route::post('/pendaftaran/tolak-bukti-bayar', [WisudaController::class, 'tolak_bukti_bayar_wisuda'])->name('kegiatan.wisuda.pendaftaran.tolak_bukti_bayar_wisuda');
             Route::get('/pendaftaran/konfirmasi/{id}', [WisudaController::class, 'konfirmasi_pendaftaran_wisuda'])->name('kegiatan.wisuda.pendaftaran.konfirmasi');
+            Route::get('/konfirmasi-kehadiran', [WisudaController::class, 'konfirmasi_kehadiran'])->name('kegiatan.wisuda.konfirmasi_kehadiran');
+            Route::post('/konfirmasi-kehadiran/submit', [WisudaController::class, 'submit_konfirmasi_kehadiran'])->name('kegiatan.wisuda.submit_konfirmasi_kehadiran');
             Route::get('/cari-data', [WisudaController::class, 'cari_data_wisudawan'])->name('wisuda.cari_data_wisudawan');
             Route::post('/show', [WisudaController::class, 'detail_peserta'])->name('wisuda.show');
             Route::get('/scan/seminar', [WisudaController::class, 'seminar_scan'])->name('wisuda.seminar_scan');
@@ -162,7 +166,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('wisuda')->group(function () {
         Route::get('/pendaftaran', [WisudaController::class, 'pendaftaran'])->name('admin.wisuda.pendaftaran');
         Route::post('/pendaftaran/import', [WisudaController::class, 'import_calon_wisuda'])->name('admin.wisuda.pendaftaran.import');
-        Route::get('/peserta', [WisudaController::class, 'peserta'])->name('admin.wisuda.peserta');
-        Route::post('/peserta/import', [WisudaController::class, 'import_peserta_wisuda'])->name('admin.wisuda.peserta.import');
+        Route::get('/kehadiran', [WisudaController::class, 'kehadiran'])->name('admin.wisuda.kehadiran');
+        Route::post('/kehadiran/import', [WisudaController::class, 'import_kehadiran_wisuda'])->name('admin.wisuda.kehadiran.import');
     });
 });

@@ -33,7 +33,7 @@
 </section>
 
 <section id="more" class="lg:pt-20 bg-gray-50 min-h-screen flex justify-center items-center">
-    <div class="py-8 px-4 lg:py-16 lg:px-6 max-w-screen-xl mx-auto">
+    <div class="py-8 px-4 max-w-screen-xl mx-auto">
         {{-- <h1
             class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
             Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode II</span> Tahun 2024.</h1>
@@ -41,12 +41,13 @@
             <strong>diwajibkan untuk mendaftar secara online</strong> melalui form yang sudah disediakan, ijazah
             diberikan langsung pada saat hari wisuda. Peserta wisuda adalah yang telah terjaring Yudisium dan Ijazah
             sudah sampai di kantor Universitas Terbuka Daerah Jambi.</p> --}}
-        <div class="flex flex-col justify-center items-center space-y-4 max-w-3xl">
+        <div class="bg-white rounded-lg shadow-lg p-5 lg:p-10 flex flex-col justify-center items-center space-y-4 mb-8 max-w-screen-lg">
             <h1
             class="mb-4 text-2xl font-extrabold text-center leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
             Pendaftaran Wisuda UT Jambi <br>Periode II Tahun 2024 <br><span class="text-red-600 dark:text-red-500">Telah Memenuhi Kuota</span></h1>
-        <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">Bagi calon wisudawan
-            <strong>yang belum mendaftar dan ingin mengikuti acara wisuda</strong> silahkan langsung menghubungi kantor UT Jambi.</p>
+            <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">Bagi calon wisudawan<strong>yang belum mendaftar dan ingin mengikuti acara wisuda</strong> silahkan langsung menghubungi kantor UT Jambi.</p>
+            <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">Untuk wisudawan yang sudah mendaftar, silahkan lakukan konfirmasi kehadiran seminar dan wisuda pada link berikut ini:</p>
+            <a href="{{route('kegiatan.wisuda.konfirmasi_kehadiran')}}" target="_blank" class="font-semibold bg-primary-800 hover:bg-primary-600 px-4 py-2 text-gray-100 rounded-lg hover:underline">sl.ut.ac.id/kehadiran-wisuda17</a>
             <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">Hitung Mundur Menuju Wisuda Universitas Terbuka Daerah Jambi:</p>
             <div id="countdown" class="animate-pulse bg-gray-100 font-extrabold text-3xl lg:text-6xl text-gray-600 inline-flex items-center px-3.5 py-1.5 rounded-lg dark:bg-gray-700 dark:text-gray-400 border border-gray-400"></div>
         </div>

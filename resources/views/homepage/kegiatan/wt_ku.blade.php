@@ -56,7 +56,8 @@
                         <thead class="sticky top-0 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-4 py-3 uppercase">MAHASISWA</th>
-                                <th scope="col" class="px-4 py-3 uppercase">TANGGAL & LOKASI</th>
+                                <th scope="col" class="px-4 py-3 uppercase">Workshop Tugas</th>
+                                <th scope="col" class="px-4 py-3 uppercase">Klinik Ujian</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,8 +66,23 @@
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">{{$row->nim}}</br><span class="font-bold">{{$row->nama}}</span></td>
                                 <td class="px-4 py-3">
-                                    {{date('d/m/Y', strtotime($row->tanggal))}}</br>
-                                    <a href="{{$row->link_gmap_lokasi}}" target="_blank" class="text-primary-600 hover:text-primary-900 hover:underline">{{$row->lokasi}}</a></br>
+                                    {{date('d/m/Y', strtotime($row->tgl_wt))}} 16:00 WIB</br>
+                                    @if($row->gmap_wt != null)
+                                    <a href="{{$row->gmap_wt}}" target="_blank" class="text-primary-600 hover:text-primary-900 hover:underline">{{$row->lokasi_wt}}</a></br>
+                                    @endif
+                                    @if($row->zoom_wt != null)
+                                    <a href="{{$row->zoom_wt}}" target="_blank" class="text-primary-600 hover:text-primary-900 hover:underline">{{$row->zoom_wt}}</a></br>
+                                    @endif
+                                    KELAS: <span class="font-bold">{{$row->kelas}}</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    {{date('d/m/Y', strtotime($row->tgl_ku))}} 16:00 WIB</br>
+                                    @if($row->gmap_ku != null)
+                                    <a href="{{$row->gmap_ku}}" target="_blank" class="text-primary-600 hover:text-primary-900 hover:underline">{{$row->lokasi_ku}}</a></br>
+                                    @endif
+                                    @if($row->zoom_ku != null)
+                                    <a href="{{$row->zoom_ku}}" target="_blank" class="text-primary-600 hover:text-primary-900 hover:underline">{{$row->zoom_ku}}</a></br>
+                                    @endif
                                     KELAS: <span class="font-bold">{{$row->kelas}}</span>
                                 </td>
                             </tr>

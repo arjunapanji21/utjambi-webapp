@@ -152,4 +152,9 @@ class HomepageController extends Controller
             }
         }
     }
+
+    public function download_file($folder, $nama_file){
+        $file = public_path("docs/".$folder."/".$nama_file);
+        return response()->download($file);
+    }
 }

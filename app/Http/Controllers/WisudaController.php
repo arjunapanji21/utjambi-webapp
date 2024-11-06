@@ -103,13 +103,13 @@ class WisudaController extends Controller
         return redirect(route('admin.wisuda.pendaftaran'))->with('success', 'Data Calon Wisudawan Berhasil Di Upload!');
     }
 
-    public function peserta(){
+    public function kehadiran(){
         $master = [
-            'title' => 'Peserta Wisuda',
+            'title' => 'Kehadiran Wisudawan',
             'active' => 'Wisuda',
             'wisudawan' => Wisudawan::orderBy('id', 'asc')->get(),
         ];
-        return view('admin.aplikasi.wisuda.peserta_wisuda', $master);
+        return view('admin.aplikasi.wisuda.kehadiran_wisuda', $master);
     }
 
     public function detail_peserta(Request $request){
@@ -123,7 +123,8 @@ class WisudaController extends Controller
         return view('wisuda_show', $master);
     }
 
-    public function import_peserta_wisuda(Request $request){
+    public function import_kehadiran_wisuda(Request $request){
+        Wisudawan::truncate();
         $request['masa'] = $request['tahun']." ".$request['periode'];
         Excel::import(new WisudawanImport(
             $request['masa'], 
@@ -132,9 +133,28 @@ class WisudaController extends Controller
             $request['tgl_wisuda'],
             $request['waktu_wisuda'],
             $request['lokasi'],
-            $request['gmap']
+            $request['gmap'],
         ), $request['file']);
-        return redirect(route('admin.wisuda.peserta'))->with('success', 'Data Wisudawan Berhasil Di Upload!');
+        return redirect(route('admin.wisuda.kehadiran'))->with('success', 'Data Wisudawan Berhasil Di Upload!');
+    }
+
+    public function konfirmasi_kehadiran(){
+        app('App\Http\Controllers\HomepageController')->visitor();
+        $props = [
+            'title' => "Form Konfirmasi Kesediaan Hadir Seminar & Wisuda"
+        ];
+        return view('forms.form_konfirmasi_wisuda', $props);
+    }
+
+    public function submit_konfirmasi_kehadiran(Request $request){
+        try {
+            $data = Wisudawan::where('nim', $request['nim'])->first();
+            $data->konfirmasi_kehadiran = $request['konfirmasi_kehadiran'];
+            $data->save();
+        } catch (\Throwable $th) {
+            return back()->with('error', $th);
+        }
+        return redirect()->route('kegiatan.wisuda')->with('success', 'Konfirmasi kehadiran berhasil dikirim.');
     }
 
     public function seminar_scan(Request $request){
@@ -148,7 +168,7 @@ class WisudaController extends Controller
                     'active' => 'Wisuda',
                     'wisudawan' => $wisudawan,
                     'data' => Wisudawan::all(),
-                    'hadir' => Wisudawan::where('absen_seminar', '!=', NULL)->get(),
+                    'hadir' => Wisudawan::where('hadir_seminar', '!=', NULL)->get(),
                 ];
                 return view('scan_seminar', $master);
             } catch (\Throwable $th) {
@@ -159,7 +179,7 @@ class WisudaController extends Controller
                 'title' => 'SEMINAR UT JAMBI',
                 'active' => 'Wisuda',
                 'data' => Wisudawan::all(),
-                'hadir' => Wisudawan::where('absen_seminar', '!=', NULL)->get(),
+                'hadir' => Wisudawan::where('hadir_seminar', '!=', NULL)->get(),
             ];
             return view('scan_seminar', $master);
         }

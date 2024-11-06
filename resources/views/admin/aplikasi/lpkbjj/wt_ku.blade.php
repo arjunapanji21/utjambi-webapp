@@ -133,11 +133,9 @@
                 <tr>
                     <th scope="col" class="px-4 py-3 uppercase">#</th>
                     <th scope="col" class="px-4 py-3 uppercase">Masa</th>
-                    <th scope="col" class="px-4 py-3 uppercase">NIM</th>
-                    <th scope="col" class="px-4 py-3 uppercase">Nama Mahasiswa</th>
-                    <th scope="col" class="px-4 py-3 uppercase">Kelas</th>
-                    <th scope="col" class="px-4 py-3 uppercase">Lokasi</th>
-                    <th scope="col" class="px-4 py-3 uppercase">Tanggal</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Mahasiswa</th>
+                    <th scope="col" class="px-4 py-3 uppercase">WT</th>
+                    <th scope="col" class="px-4 py-3 uppercase">KU</th>
                     <th scope="col" class="px-4 py-3 uppercase">No. HP</th>
                 </tr>
             </thead>
@@ -149,11 +147,20 @@
                         {{$loop->iteration}}
                     </th>
                     <td class="px-4 py-3">{{$row->masa}}</td>
-                    <td class="px-4 py-3">{{$row->nim}}</td>
-                    <td class="px-4 py-3">{{$row->nama}}</td>
-                    <td class="px-4 py-3">{{$row->kelas}}</td>
-                    <td class="px-4 py-3">{{$row->lokasi}}</td>
-                    <td class="px-4 py-3">{{date('d/m/Y', strtotime($row->tanggal))}}</td>
+                    <td class="px-4 py-3">
+                        <strong>{{$row->nama}}</strong><br>
+                        {{$row->nim}}<br>
+                        {{$row->fakultas}}<br>
+                        {{$row->prodi}}
+                    </td>
+                    <td class="px-4 py-3">
+                        {{date('d/m/Y', strtotime($row->tgl_wt))}}<br>
+                        {{$row->lokasi_wt}}
+                    </td>
+                    <td class="px-4 py-3">
+                        {{date('d/m/Y', strtotime($row->tgl_ku))}}<br>
+                        {{$row->lokasi_ku}}
+                    </td>
                     <td class="px-4 py-3">{{$row->telp}}</td>
                 </tr>
                 @endforeach

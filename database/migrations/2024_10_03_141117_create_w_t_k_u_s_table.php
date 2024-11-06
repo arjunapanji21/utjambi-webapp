@@ -17,12 +17,19 @@ return new class extends Migration
             $table->string('nim');
             $table->string('nama');
             $table->string('kelas');
-            $table->string('lokasi');
-            $table->string('link_gmap_lokasi');
-            $table->string('tanggal');
-            $table->string('telp')->nullable();
+            $table->string('tgl_wt');
+            $table->string('lokasi_wt');
+            $table->string('gmap_wt')->nullable();
+            $table->string('zoom_wt')->nullable();
             $table->string('hadir_wt')->nullable();
+            $table->string('tgl_ku');
+            $table->string('lokasi_ku');
+            $table->string('gmap_ku')->nullable();
+            $table->string('zoom_ku')->nullable();
             $table->string('hadir_ku')->nullable();
+            $table->string('fakultas')->nullable();
+            $table->string('prodi')->nullable();
+            $table->string('telp')->nullable();
             $table->timestamps();
         });
     }

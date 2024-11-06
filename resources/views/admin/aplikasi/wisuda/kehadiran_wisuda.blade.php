@@ -76,7 +76,7 @@
                     <path clip-rule="evenodd" fill-rule="evenodd"
                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                 </svg>
-                Peserta
+                Import
             </button>
             {{-- <div class="flex items-center space-x-3 w-full md:w-auto">
                 <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown"
@@ -142,11 +142,12 @@
         <table class="table w-full text-sm text-left text-gray-500  dark:text-gray-400">
             <thead class="sticky top-0 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-4 py-3">Masa</th>
+                    <th scope="col" class="px-4 py-3">NO.</th>
                     <th scope="col" class="px-4 py-3">NIM</th>
                     <th scope="col" class="px-4 py-3">NAMA</th>
                     <th scope="col" class="px-4 py-3">FAKULTAS</th>
                     <th scope="col" class="px-4 py-3">KABKO</th>
+                    <th scope="col" class="px-4 py-3">RESERVASI</th>
                     <th scope="col" class="px-4 py-3">SEMINAR</th>
                     <th scope="col" class="px-4 py-3">WISUDA</th>
                     <th scope="col" class="px-4 py-3">
@@ -157,24 +158,23 @@
             <tbody>
                 @foreach($wisudawan as $row)
                 <tr class="border-b dark:border-gray-700">
-                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$row->id}}</th>
+                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$row->no_bangku}}</th>
                     <td class="px-4 py-3">{{$row->nim}}</td>
                     <td class="px-4 py-3">{{$row->nama}}</td>
                     <td class="px-4 py-3">{{$row->fakultas}}</td>
                     <td class="px-4 py-3">{{$row->kabko}}</td>
                     <td class="px-4 py-3">
-                        @if($row->absen_seminar != null)
-                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Hadir</span>
-                        @else
-                        <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">Tidak Hadir</span>
+                        @if($row->konfirmasi_kehadiran == "Ya")
+                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Ya</span>
+                        @elseif($row->konfirmasi_kehadiran == "Tidak")
+                        <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">Tidak</span>
                         @endif
                     </td>
                     <td class="px-4 py-3">
-                        @if($row->absen_wisuda != null)
-                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Hadir</span>
-                        @else
-                        <span class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">Tidak Hadir</span>
-                        @endif</td>
+                        {{$row->hadir_seminar}}
+                    </td>
+                    <td class="px-4 py-3">
+                        {{$row->hadir_wisuda}}
                     <td class="px-4 py-3 flex items-center justify-end">
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5 hover:text-primary-700" fill="currentColor"><path d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
@@ -250,7 +250,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Tambah Peserta Wisuda
+                    Import Data Wisudawan
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -260,7 +260,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('admin.wisuda.peserta.import')}}" method="post" enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="{{route('admin.wisuda.kehadiran.import')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">

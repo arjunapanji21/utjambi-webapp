@@ -114,87 +114,87 @@
             <p class="text-gray-500 sm:text-xl dark:text-gray-400">Universitas Terbuka hadir membantu masyarakat
                 hingga Polosok Negeri untuk dapat melanjutkan Pendidikan di Perguruan Tinggi Negeri.</p>
         </div>
-        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
+        <div class="space-y-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:space-y-0">
             <div
-                class="border border-gray-300 flex flex-col justify-center items-center bg-white   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-primary-600 flex flex-col justify-center items-center bg-primary-100   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
                 <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                        class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                        class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
                         <path
                             d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Terakreditasi A & B</h3>
-                <p class="text-gray-500 dark:text-gray-400">Universitas Terbuka telah terakreditasi oleh BAN-PT
+                <h3 class="mb-2 text-xl text-primary-800 font-bold dark:text-white">Terakreditasi A & B</h3>
+                <p class="text-primary-700 dark:text-gray-400">Universitas Terbuka telah terakreditasi oleh BAN-PT
                     dengan nilai A (unggul) & B (sangat baik).</p>
             </div>
             <div
-                class="border border-gray-300 flex flex-col justify-center items-center bg-white   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
                 <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-yellow-500 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                        class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                        class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
                         <path
                             d="M112 0C99.1 0 87.4 7.8 82.5 19.7l-66.7 160-13.3 32c-6.8 16.3 .9 35 17.2 41.8s35-.9 41.8-17.2L66.7 224h90.7l5.1 12.3c6.8 16.3 25.5 24 41.8 17.2s24-25.5 17.2-41.8l-13.3-32-66.7-160C136.6 7.8 124.9 0 112 0zm18.7 160H93.3L112 115.2 130.7 160zM256 32v96 96c0 17.7 14.3 32 32 32h80c44.2 0 80-35.8 80-80c0-23.1-9.8-43.8-25.4-58.4c6-11.2 9.4-24 9.4-37.6c0-44.2-35.8-80-80-80H288c-17.7 0-32 14.3-32 32zm96 64H320V64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16zm-32 64h32 16c8.8 0 16 7.2 16 16s-7.2 16-16 16H320V160zM566.6 310.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L352 434.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l192-192z" />
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Bisa Alih Kredit</h3>
-                <p class="text-gray-500 dark:text-gray-400">Universitas Terbuka menerima peralihan kredit dari
+                <h3 class="mb-2 text-xl text-yellow-700 font-bold dark:text-white">Bisa Alih Kredit</h3>
+                <p class="text-yellow-500 dark:text-gray-400">Universitas Terbuka menerima peralihan kredit dari
                     kampus lama kamu sehingga kamu tidak perlu mengulang perkuliahan dari awal lagi.</p>
             </div>
             <div
-                class="border border-gray-300 flex flex-col justify-center items-center bg-white   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-primary-700 flex flex-col justify-center items-center bg-primary-100 p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
                 <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                        class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                        class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
                         <path
                             d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H80c-8.8 0-16-7.2-16-16s7.2-16 16-16H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H64zM416 272a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Biaya Terjangkau</h3>
-                <p class="text-gray-500 dark:text-gray-400">Biaya kuliah di Universitas Terbuka sangat terjangkau
+                <h3 class="mb-2 text-xl text-primary-800 font-bold dark:text-white">Biaya Terjangkau</h3>
+                <p class="text-primary-700 dark:text-gray-400">Biaya kuliah di Universitas Terbuka sangat terjangkau
                     sehingga tidak membuat kantong kering.</p>
             </div>
             <div
-                class="border border-gray-300 flex flex-col justify-center items-center bg-white   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
                 <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-yellow-500 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
-                        class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                        class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
                         <path
                             d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 352h8.2c32.3-39.1 81.1-64 135.8-64c5.4 0 10.7 .2 16 .7V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM320 352H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H360.2C335.1 449.6 320 410.5 320 368c0-5.4 .2-10.7 .7-16l-.7 0zm320 16a144 144 0 1 0 -288 0 144 144 0 1 0 288 0zM496 288c8.8 0 16 7.2 16 16v48h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H496c-8.8 0-16-7.2-16-16V304c0-8.8 7.2-16 16-16z" />
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Waktu Kuliah Fleksibel</h3>
-                <p class="text-gray-500 dark:text-gray-400">Universitas Terbuka memberikan kebebasan dalam
+                <h3 class="mb-2 text-xl text-yellow-700 font-bold dark:text-white">Waktu Kuliah Fleksibel</h3>
+                <p class="text-yellow-500 dark:text-gray-400">Universitas Terbuka memberikan kebebasan dalam
                     menentukan waktu perkuliahan sehingga kamu bisa kuliah sesuai gayamu.</p>
             </div>
             <div
-                class="border border-gray-300 flex flex-col justify-center items-center bg-white   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-primary-700 flex flex-col justify-center items-center bg-primary-100 p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
                 <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
-                        class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                        class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
                         <path
                             d="M218.3 8.5c12.3-11.3 31.2-11.3 43.4 0l208 192c6.7 6.2 10.3 14.8 10.3 23.5H336c-19.1 0-36.3 8.4-48 21.7V208c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h64V416H112c-26.5 0-48-21.5-48-48V256H32c-13.2 0-25-8.1-29.8-20.3s-1.6-26.2 8.1-35.2l208-192zM352 304V448H544V304H352zm-48-16c0-17.7 14.3-32 32-32H560c17.7 0 32 14.3 32 32V448h32c8.8 0 16 7.2 16 16c0 26.5-21.5 48-48 48H544 352 304c-26.5 0-48-21.5-48-48c0-8.8 7.2-16 16-16h32V288z" />
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Bisa Kuliah <span class="italic">Full
+                <h3 class="mb-2 text-xl text-primary-800 font-bold dark:text-white">Bisa Kuliah <span class="italic">Full
                         Online</span></h3>
-                <p class="text-gray-500 dark:text-gray-400">Universitas Terbuka memiliki sistem pembelajaran <span
+                <p class="text-primary-700 dark:text-gray-400">Universitas Terbuka memiliki sistem pembelajaran <span
                         class="italic font-semibold">full online</span> sehingga kamu bisa kuliah dari rumah ataupun
                     darimana saja.</p>
             </div>
             <div
-                class="border border-gray-300 flex flex-col justify-center items-center bg-white   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
                 <div
-                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9l0 57.1c0 70.7-57.3 128-128 128s-128-57.3-128-128l0-57.1L48 93.3l0 65.1 15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9l-32 0c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4l0-71.8C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7L30.7 512C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
+                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-yellow-500 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9l0 57.1c0 70.7-57.3 128-128 128s-128-57.3-128-128l0-57.1L48 93.3l0 65.1 15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9l-32 0c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4l0-71.8C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7L30.7 512C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Tanpa Batasan Usia</h3>
-                <p class="text-gray-500 dark:text-gray-400">Universitas Terbuka memberi kesempatan kepada siapa saja
+                <h3 class="mb-2 text-xl text-yellow-700 font-bold dark:text-white">Tanpa Batasan Usia</h3>
+                <p class="text-yellow-500 dark:text-gray-400">Universitas Terbuka memberi kesempatan kepada siapa saja
                     yang ingin melanjutkan pendidikan tanpa memandang usia.</p>
             </div>
         </div>
@@ -207,7 +207,7 @@
             <p class="text-gray-500 dark:text-gray-400">UT memiliki 4 Fakultas Program Sarjana/Diploma dan Sekolah Pascasarjana S2 Serta Doktoral S3 dengan jumlah total lebih dari 46 Program Studi yang Terakreditasi A & B.</p>
         </div>
         <div class="flex flex-col gap-5">
-            <div class="lg:space-y-8 grid gap-2 grid-cols-2 lg:grid-cols-3 md:gap-8">
+            <div class="space-y-2 grid gap-2 grid-cols-2 lg:grid-cols-3 md:gap-4">
                 <a href="https://fkip.ut.ac.id" target="_blank"
                     class="flex flex-col  bg-white border border-purple-300  p-4 rounded-lg hover:bg-purple-50 hover:cursor-pointer hover:scale-105 transition">
                     <div class="flex justify-between items-start">
@@ -244,9 +244,9 @@
                     class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-50 hover:cursor-pointer hover:scale-105 transition">
                     <div class="flex justify-between items-start">
                         <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
+                            class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
                             <path
                                 d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
                         </svg>
@@ -344,9 +344,9 @@
                     Jalur Pendaftaran<br/>Universitas Terbuka Melalui:
                 <h5>
                 <div class="grid grid-cols-3 gap-8 p-4">
-                    <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/" target="_blank" class="text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center">Online</a>
-                    <a href="https://maps.app.goo.gl/UKnAiiMB3CDAU3Aj9" target="_blank" class="text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Kantor UT Jambi</a>
-                    <a href="#" target="_blank" class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">POKJAR & SALUT</a>
+                    <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Online</a>
+                    <a href="https://maps.app.goo.gl/UKnAiiMB3CDAU3Aj9" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Kantor UT Jambi</a>
+                    <a href="#" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">SALUT</a>
                 </div>
             </div>
         </div>
@@ -419,16 +419,16 @@
 @endif
 
 <section class="bg-white px-4 py-8 antialiased dark:bg-gray-900">
-    <div class="mx-auto flex flex-col lg:flex-row justify-center items-center gap-10 max-w-screen-xl rounded-lg bg-gradient-to-br from-yellow-100 to-yellow-300 p-8 dark:bg-gray-800">
+    <div class="mx-auto flex flex-col lg:flex-row justify-center items-center gap-10 max-w-screen-xl rounded-lg bg-gradient-to-r from-yellow-100 to-yellow-200 dark:bg-gray-800 shadow-lg">
       <div class="lg:mt-0">
-          <img class="rounded-3xl shadow-lg border-8 border-white" src="{{asset('images/karunika.webp')}}" alt="Karunika UT Jambi Store" />
+          <img class="rounded-l-lg" src="{{asset('images/karunika.webp')}}" alt="Karunika UT Jambi Store" />
       </div>
-      <div class="me-auto">
+      <div class="me-auto p-4">
         <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-yellow-800 dark:text-white md:text-4xl">
           Karunika UT Jambi Store Telah Dibuka!
         </h1>
         <p class="mb-6 text-yellow-800">Merchandise Universitas Terbuka kini dapat kamu miliki dengan berbelanja di Karunika UT Jambi Store, kunjungi kami sekarang juga!</p>
-        <a href="https://www.instagram.com/karunika.utjambi/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white shadow-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"> Shop Now! </a>
+        <a href="https://www.instagram.com/karunika.utjambi/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"> Shop Now! </a>
       </div>
     </div>
 </section>
