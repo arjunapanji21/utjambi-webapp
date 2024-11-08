@@ -35,6 +35,33 @@
     </nav>
 </div>
 
+<div class="grid lg:grid-cols-4 gap-4 text-sm font-semibold">
+    <div class="flex justify-between items-center bg-white shadow rounded-lg p-4">
+        <span class="bg-primary-600 px-3 py-1.5 inline-flex rounded-full text-white">Total Wisudawan</span>
+        <span class="text-right text-4xl font-bold">{{count($wisudawan)}}</span>
+    </div>
+    <div class="flex justify-between items-center bg-white shadow rounded-lg p-4">
+        <span class="bg-green-600 px-3 py-1.5 inline-flex rounded-full text-white">Konfirmasi Hadir</span>
+        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('konfirmasi_kehadiran')['Ya'])}}</span>
+    </div>
+    <div class="flex justify-between items-center bg-white shadow rounded-lg p-4">
+        <span class="bg-red-600 px-3 py-1.5 inline-flex rounded-full text-white">Konfirmasi Tidak Hadir</span>
+        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('konfirmasi_kehadiran')['Tidak'])}}</span>
+    </div>
+    <div class="flex justify-between items-center bg-white shadow rounded-lg p-4">
+        <span class="bg-yellow-400 px-3 py-1.5 inline-flex rounded-full text-white">Belum Konfirmasi</span>
+        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('konfirmasi_kehadiran')[''])}}</span>
+    </div>
+    <div class="lg:col-span-2 flex justify-between items-center bg-white shadow rounded-lg p-4">
+        <span class="bg-purple-400 px-3 py-1.5 inline-flex rounded-full text-white">Scan QR Seminar</span>
+        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('hadir_seminar')['']) - count($wisudawan)}}</span>
+    </div>
+    <div class="lg:col-span-2 flex justify-between items-center bg-white shadow rounded-lg p-4">
+        <span class="bg-pink-400 px-3 py-1.5 inline-flex rounded-full text-white">Scan QR Wisuda</span>
+        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('hadir_wisuda')['']) - count($wisudawan)}}</span>
+    </div>
+</div>
+
 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
     <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
         <div class="w-full md:w-1/2">
@@ -176,9 +203,9 @@
                     <td class="px-4 py-3">
                         {{$row->hadir_wisuda}}
                     <td class="px-4 py-3 flex items-center justify-end">
-                        <button>
+                        <a href="{{route('wisuda.show').'?nim='.$row->nim}}" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5 hover:text-primary-700" fill="currentColor"><path d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

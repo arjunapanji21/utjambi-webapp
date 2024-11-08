@@ -51,20 +51,21 @@ public function startRow(): int
     */
     public function model(array $row)
     {
-        return new Wisudawan([
-            'masa' => $this->masa,
-            'nim' => $row[1],
-            'nama' => $row[2],
-            'fakultas' => $row[3],
-            'prodi' => $row[4],
-            'kabko' => $row[5],
-            'no_bangku' => $row[0],
-            'tgl_seminar' => $this->tgl_seminar,
-            'waktu_seminar' => $this->waktu_seminar,
-            'tgl_wisuda' => $this->tgl_wisuda,
-            'waktu_wisuda' => $this->waktu_wisuda,
-            'lokasi' => $this->lokasi,
-            'gmap' => $this->gmap,
-        ]);
+        $data = new Wisudawan();
+        $data->masa = $this->masa;
+        $data->no_bangku = $row[0];
+        $data->nim = $row[1];
+        $data->nama = $row[2];
+        $data->kabko = $row[3];
+        $data->fakultas = $row[4];
+        $data->prodi = $row[5];
+        $data->tgl_seminar = $this->tgl_seminar;
+        $data->waktu_seminar = $this->waktu_seminar;
+        $data->tgl_wisuda = $this->tgl_wisuda;
+        $data->waktu_wisuda = $this->waktu_wisuda;
+        $data->lokasi = $this->lokasi;
+        $data->gmap = $this->gmap;
+        $data->save();
+        return $data;
     }
 }

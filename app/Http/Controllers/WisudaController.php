@@ -104,27 +104,37 @@ class WisudaController extends Controller
     }
 
     public function kehadiran(){
+        $wisudawan = Wisudawan::orderBy('id', 'asc')->get();
         $master = [
             'title' => 'Kehadiran Wisudawan',
             'active' => 'Wisuda',
-            'wisudawan' => Wisudawan::orderBy('id', 'asc')->get(),
+            'wisudawan' => $wisudawan,
         ];
         return view('admin.aplikasi.wisuda.kehadiran_wisuda', $master);
     }
 
     public function detail_peserta(Request $request){
         app('App\Http\Controllers\HomepageController')->visitor();
-        $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-        $master = [
-            'title' => 'Peserta Wisuda',
-            'active' => 'Wisuda',
-            'wisudawan' => $wisudawan,
-        ];
-        return view('wisuda_show', $master);
+        try {
+            $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
+            if($wisudawan != null){
+                $master = [
+                    'title' => 'Peserta Wisuda',
+                    'active' => 'Wisuda',
+                    'wisudawan' => $wisudawan,
+                ];
+                return view('wisuda_show', $master);
+            }else{
+                return back()->with('error', 'NIM tidak terdaftar atau salah, silahkan periksa kembali nim anda.');
+            }
+
+        } catch (\Throwable $th) {
+            return back()->with('error', $th);
+        }
     }
 
     public function import_kehadiran_wisuda(Request $request){
-        Wisudawan::truncate();
+        // Wisudawan::truncate();
         $request['masa'] = $request['tahun']." ".$request['periode'];
         Excel::import(new WisudawanImport(
             $request['masa'], 

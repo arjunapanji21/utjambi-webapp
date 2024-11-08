@@ -69,7 +69,7 @@ Route::middleware([Maintenance::class])->group(function () {
             Route::get('/konfirmasi-kehadiran', [WisudaController::class, 'konfirmasi_kehadiran'])->name('kegiatan.wisuda.konfirmasi_kehadiran');
             Route::post('/konfirmasi-kehadiran/submit', [WisudaController::class, 'submit_konfirmasi_kehadiran'])->name('kegiatan.wisuda.submit_konfirmasi_kehadiran');
             Route::get('/cari-data', [WisudaController::class, 'cari_data_wisudawan'])->name('wisuda.cari_data_wisudawan');
-            Route::post('/show', [WisudaController::class, 'detail_peserta'])->name('wisuda.show');
+            Route::get('/cari-data/show', [WisudaController::class, 'detail_peserta'])->name('wisuda.show');
             Route::get('/scan/seminar', [WisudaController::class, 'seminar_scan'])->name('wisuda.seminar_scan');
             Route::get('/scan/wisuda', [WisudaController::class, 'wisuda_scan'])->name('wisuda.wisuda_scan');
         });
