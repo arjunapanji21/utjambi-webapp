@@ -54,11 +54,11 @@
     </div>
     <div class="lg:col-span-2 flex justify-between items-center bg-white shadow rounded-lg p-4">
         <span class="bg-purple-400 px-3 py-1.5 inline-flex rounded-full text-white">Scan QR Seminar</span>
-        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('hadir_seminar')['']) - count($wisudawan)}}</span>
+        <span class="text-right text-4xl font-bold">{{abs(count($wisudawan->groupBy('hadir_seminar')['']) - count($wisudawan))}}</span>
     </div>
     <div class="lg:col-span-2 flex justify-between items-center bg-white shadow rounded-lg p-4">
         <span class="bg-pink-400 px-3 py-1.5 inline-flex rounded-full text-white">Scan QR Wisuda</span>
-        <span class="text-right text-4xl font-bold">{{count($wisudawan->groupBy('hadir_wisuda')['']) - count($wisudawan)}}</span>
+        <span class="text-right text-4xl font-bold">{{abs(count($wisudawan->groupBy('hadir_wisuda')['']) - count($wisudawan))}}</span>
     </div>
 </div>
 

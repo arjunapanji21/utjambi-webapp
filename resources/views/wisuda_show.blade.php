@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-<body class="m-0">
+<body class="m-0 bg-white">
     <section class="bg-gray-50 min-h-screen dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen lg:py-4">
             <div
@@ -111,8 +111,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{$wisudawan->absensi_seminar != null ? $wisudawan->absensi_seminar : "-"}}</td>
-                                <td>{{$wisudawan->absensi_wisuda != null ? $wisudawan->absensi_wisuda : "-"}}</td>
+                                <td>{{$wisudawan->hadir_seminar != null ? $wisudawan->hadir_seminar : "-"}}</td>
+                                <td>{{$wisudawan->hadir_wisuda != null ? $wisudawan->hadir_wisuda : "-"}}</td>
                             </tr>    
                         </tbody>
                     </table>

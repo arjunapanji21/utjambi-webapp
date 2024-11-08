@@ -171,7 +171,7 @@ class WisudaController extends Controller
         if($request->has('nim')){
             try {
                 $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-                $wisudawan->absen_seminar = date(now());
+                $wisudawan->hadir_seminar = date(now());
                 $wisudawan->save();
                 $master = [
                     'title' => 'SEMINAR UT JAMBI',
@@ -199,14 +199,14 @@ class WisudaController extends Controller
         if($request->has('nim')){
            try {
             $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-            $wisudawan->absen_wisuda = date(now());
+            $wisudawan->hadir_wisuda = date(now());
             $wisudawan->save();
             $master = [
                 'title' => 'WISUDA UT JAMBI',
                 'active' => 'Wisuda',
                 'wisudawan' => $wisudawan,
                 'data' => Wisudawan::all(),
-                'hadir' => Wisudawan::where('absen_wisuda', '!=', NULL)->get(),
+                'hadir' => Wisudawan::where('hadir_wisuda', '!=', NULL)->get(),
             ];
             return view('scan_wisuda', $master);
            } catch (\Throwable $th) {
@@ -217,7 +217,7 @@ class WisudaController extends Controller
                 'title' => 'WISUDA UT JAMBI',
                 'active' => 'Wisuda',
                 'data' => Wisudawan::all(),
-                'hadir' => Wisudawan::where('absen_wisuda', '!=', NULL)->get(),
+                'hadir' => Wisudawan::where('hadir_wisuda', '!=', NULL)->get(),
             ];
             return view('scan_wisuda', $master);
         }
