@@ -85,7 +85,7 @@ class WisudaController extends Controller
             'title' => 'Wisuda UT Jambi',
             'active' => 'Wisuda',
         ];
-        return view('wisuda', $master);
+        return view('qr_wisuda', $master);
     }
 
     public function pendaftaran(){
@@ -118,6 +118,12 @@ class WisudaController extends Controller
         try {
             $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
             if($wisudawan != null){
+                if($wisudawan->konfirmasi_kehadiran == null){
+                    return redirect(route('kegiatan.wisuda.konfirmasi_kehadiran'))->with('error', 'Silahkan konfirmasi kehadiran terlebih dahulu!');
+                }
+                else if($wisudawan->konfirmasi_kehadiran == "Tidak"){
+                    return back()->with('error', 'Anda tidak bisa melakukan cetak QR-Code Presensi karena telah mengkonfirmasi untuk tidak bisa hadir.');
+                }
                 $master = [
                     'title' => 'Peserta Wisuda',
                     'active' => 'Wisuda',
@@ -164,7 +170,7 @@ class WisudaController extends Controller
         } catch (\Throwable $th) {
             return back()->with('error', $th);
         }
-        return redirect()->route('kegiatan.wisuda')->with('success', 'Konfirmasi kehadiran berhasil dikirim.');
+        return redirect(route('wisuda.cari_data_wisudawan'))->with('success', 'Konfirmasi kehadiran berhasil dikirim.');
     }
 
     public function seminar_scan(Request $request){

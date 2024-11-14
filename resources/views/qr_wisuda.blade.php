@@ -66,7 +66,7 @@
             </a>
             <div class="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
                 <h1 class="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Data Wisudawan
+                    QR-Code Wisudawan
                 </h1> 
                 <p class="font-light text-gray-500 dark:text-gray-400">Universitas Terbuka Daerah Jambi Periode
                     II <br />

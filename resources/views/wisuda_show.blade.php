@@ -151,6 +151,11 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            localStorage.theme = 'light';
+        });
+    </script>
 </body>
 
 </html>
