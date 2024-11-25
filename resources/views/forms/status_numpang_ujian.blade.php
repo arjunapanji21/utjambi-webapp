@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.homepage')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{{asset('images/logo_ut.ico')}}">
-    <title>{{$title}}</title>
-
-    @vite(['resources/css/app.css','resources/js/app.js'])
-</head>
-
-<body class="m-0">
+@section('content')
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-lg lg:py-16">
             <img src="{{asset('images/logo_utjambi.webp')}}" class="h-14 mx-auto mb-8" alt="">
@@ -26,56 +16,7 @@
                 <div class="mt-2 mb-4 text-sm">
                     <ul class="mt-1.5 list-disc list-inside">
                         <li>Jadwal di KTPU memang tidak berubah dan tetap sama seperti sebelumnya.</li>
-                        @if($data->ut_daerah_asal == $data->ut_daerah_tujuan && $data->ut_daerah_asal == "17 / JAMBI")
-                        <li>Silahkan datang langsung ke lokasi ujian <b>(
-                            @if(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150111")
-                            SMAN 2 SUNGAI PENUH
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150261")
-                            SMPN 4 MERANGIN
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150311")
-                            SMPN 21 BATANGHARI
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150421")
-                            SMAN 1 TANJAB BARAT
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150422")
-                            SMKN 1 KOTA JAMBI
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "150231")
-                            SMAN 2 TANJAB TIMUR
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "151102")
-                            SMKN 1 KOTA JAMBI
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "151103")
-                            SMKN 1 KOTA JAMBI
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "151104")
-                            SMKN 1 KOTA JAMBI
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "152001")
-                            SMAN 1 BUNGO
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "152511")
-                            SMAN 2 TEBO
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "152521")
-                            SMAN 2 TEBO
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "153811")
-                            SMAN 7 SAROLANGUN
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "157111")
-                            SMKN 1 KOTA JAMBI
-
-                            @elseif(explode(" / ", $data->wilayah_ujian_tujuan)[0] == "157121")
-                            SMAN 2 SUNGAI PENUH
-                            @endif
-                            )</b>, sesuai jadwal yang ada di KTPU.</li>
-                        @else
                         <li>Segera melapor ke UT {{explode(" / ", $data->ut_daerah_tujuan)[1]}} untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.</li>
-                        @endif
                     </ul>
                 </div>
                 @if($data->ut_daerah_tujuan != "17 / JAMBI")
@@ -108,19 +49,13 @@
                     <thead class="text-xs text-gray-700 text-center bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                NIM
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Nama Mahasiswa
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                UT Daerah Tujuan
+                                Mahasiswa
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Wilayah Ujian Tujuan
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Tgl. Pindah Lokasi
+                                Tgl. Ujian UTM
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Tgl. Pengajuan
@@ -134,22 +69,18 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$data->nim}}
+                                {{$data->nama}}<br>
+                                <span class="text-xs text-gray-500">{{$data->nim}}</span>
                             </th>
                             <td class="px-6 py-4">
-                                {{$data->nama}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{explode('/', $data->ut_daerah_tujuan)[1]}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{explode('/',$data->wilayah_ujian_tujuan)[1]}}
+                                UT {{explode(' / ', $data->ut_daerah_tujuan)[1]}}<br>
+                                <span class="text-xs text-gray-500">{{explode(' / ',$data->wilayah_ujian_tujuan)[1]}}</span>
                             </td>
                             <td class="px-6 py-4">
                                 {{$data->tgl_pindah_lokasi}}
                             </td>
                             <td class="px-6 py-4">
-                                {{date('d M Y', strtotime($data->created_at))}}
+                                {{date('d/m/Y', strtotime($data->created_at))}}
                             </td>
                             <td class="px-6 py-4">
                                 @if($data->status == "Diproses")
@@ -182,15 +113,15 @@
                         <th class="text-center">Kode Waktu Ujian</th>
                     </thead>
                     <tbody>
-                        @foreach(explode('|',$data->matakuliah) as $mk)
+                        @foreach($matakuliah as $mk)
                         <tr>
                             <td class="border text-center">{{$loop->iteration}}</td>
-                            <td class="border text-center">{{json_decode($mk)->kode}}
+                            <td class="border text-center">{{$mk->kode}}
                             </td>
-                            <td class="border text-center">{{json_decode($mk)->nama}}
+                            <td class="border text-center">{{$mk->nama}}
                             </td>
                             <td class="border text-center">
-                                {{json_decode($mk)->kode_waktu_ujian}}</td>
+                                {{$mk->kode_waktu_ujian}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -199,16 +130,20 @@
             
             
             <div class="mt-5 text-center">
-                <a href="{{route('form.numpang_ujian_1')}}"
+                <a href="{{route('mahasiswa.ujian')}}"
                 class="w-full items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                 Kembali
             </a>
             </div>
         </div>
     </section>
-</body>
-<script type="module">
-    $(".select2").select2();
-</script>
+    
+@endsection
 
-</html>
+@section('script')
+<script type="module">
+    $(document).ready(function () {
+        $(".select2").select2();
+    });
+</script>
+@endsection

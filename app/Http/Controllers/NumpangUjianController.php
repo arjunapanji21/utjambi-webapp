@@ -20,7 +20,7 @@ use stdClass;
 
 class NumpangUjianController extends Controller
 {
-    public function tarik_data_matakuliah(){
+    public function data_numpang_ujian_export(){
         // $data = NumpangUjian::all();
         // foreach($data as $row){
         //     $row->ut_daerah_asal = str_replace('UT ', '', $row->ut_daerah_asal);
@@ -138,9 +138,11 @@ class NumpangUjianController extends Controller
     public function status_numpang_ujian($nim)
     {
         $data = NumpangUjian::where('nim', $nim)->latest()->first();
+        $matakuliah = Matakuliah::whereIn('kode', explode(", ", $data['matakuliah']))->orderBy('kode_waktu_ujian', 'asc')->get();
         $master = [
             'title' => 'Status Numpang Ujian | UT Jambi',
             'data' => $data,
+            'matakuliah' => $matakuliah,
         ];
         return view('forms.status_numpang_ujian', $master);
     }
@@ -188,8 +190,8 @@ class NumpangUjianController extends Controller
     {
         app('App\Http\Controllers\HomepageController')->visitor();
         $mahasiswa = null;
-        $utdaerah = [];
         $wilayah_ujian = [];
+        $utdaerah = [];
         foreach (WilayahUjian::where('aktif', true)->get()->groupBy('kode_upbjj') as $row) {
             array_push($utdaerah, ['kode_upbjj' => $row[0]->kode_upbjj, 'nama_upbjj' => $row[0]->nama_upbjj]);
         }
@@ -278,11 +280,25 @@ class NumpangUjianController extends Controller
 
             $token = Token::where('nama', 'SRS')->get()->first()->token;
 
+            // get masa aktif
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+            ])->get('https://api-mahasiswa-srs.ut.ac.id/api-srs-mahasiswa/v1/masa-aktif?kodeKegiatan=AKRG');
+            if ($response->status() == 200) {
+                dd($response->json('data'));
+                $result = $response->json('data')['dataBilling'][0];
+                $request['nobilling'] = $result['nobilling'];
+                $request['wilayah_ujian_asal'] = $result['billing_info'][0]['wilayah_ujian']['kode_wilayah_ujian'] . " / " . $result['billing_info'][0]['wilayah_ujian']['nama_wilayah_ujian'];
+            } else if ($response->status() != 200) {
+                return back()->with('error', $response->json('message'));
+            }
+
             // get billing mahasiswa from api
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
-            ])->get('https://api-srs.ut.ac.id/api-srs-mahasiswa/v1/data-billing?nim=' . $request['nim'] . '&masa=20232');
+            ])->get('https://api-mahasiswa-srs.ut.ac.id/api-srs-mahasiswa/v1/data-matakuliah?nim=' . $request['nim'] . '&masa=20232');
             if ($response->status() == 200) {
                 $result = $response->json('data')['dataBilling'][0];
                 $request['nobilling'] = $result['nobilling'];
@@ -484,7 +500,7 @@ class NumpangUjianController extends Controller
         $master = [
             'title' => 'Data Matakuliah',
             'active' => 'Numpang Ujian',
-            'data' => $data->paginate(10),
+            'data' => $data->get(),
         ];
         return view('admin.aplikasi.numpang_ujian.matakuliah', $master);
     }
@@ -499,7 +515,7 @@ class NumpangUjianController extends Controller
             $data = WilayahUjian::where('nama_wilayah_ujian', 'like', '%'.$request['search'].'%')->get();
         }
         else if($request['filter'] == 'all'){
-            $data = WilayahUjian::all()->orderBy('kode_upbjj', 'asc')->get();
+            $data = WilayahUjian::orderBy('kode_upbjj', 'asc')->get();
         }
         
         $master = [
@@ -523,19 +539,9 @@ class NumpangUjianController extends Controller
         return back()->with('success', 'Wilayah Lokasi Ujian Berhasil Di Update!');
     }
 
-    public function peserta()
-    {
-        $data = PesertaUjian::orderBy('id', 'asc');
-        $master = [
-            'title' => 'Data Peserta Ujian',
-            'active' => 'Numpang Ujian',
-            'data' => $data->paginate(10),
-        ];
-        return view('admin.aplikasi.numpang_ujian.peserta_ujian', $master);
-    }
-
     public function matakuliah_import(Request $request)
     {
+        Matakuliah::truncate();
         Excel::import(new MatakuliahImport(), $request['file']);
         return redirect()->route('admin.numpang_ujian.matakuliah')->with('success', 'Data MK berhasil disimpan kedalam server!');
     }
@@ -543,15 +549,6 @@ class NumpangUjianController extends Controller
     {
         Excel::import(new WilayahUjianImport(), $request['file']);
         return redirect()->route('admin.numpang_ujian.wilayah_ujian')->with('success', 'Data wilayah ujian berhasil disimpan kedalam server!');
-    }
-    public function peserta_ujian_import(Request $request)
-    {
-        // for($i=0;$i<5000;$i++){
-
-        // }
-        // return back();
-        Excel::import(new PesertaUjianImport(), $request['file']);
-        return redirect()->route('admin.numpang_ujian.peserta_ujian')->with('success', 'Data peserta ujian berhasil disimpan kedalam server!');
     }
 
     function getRomawi($bulan)

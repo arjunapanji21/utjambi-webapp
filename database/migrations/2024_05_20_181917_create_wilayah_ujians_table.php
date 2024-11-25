@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_wilayah_ujian');
             $table->boolean('aktif')->default(1);
             $table->string('wilayah_utm');
+            $table->string('lokasi_utm')->nullable();
             $table->timestamps();
         });
     }

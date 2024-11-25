@@ -50,7 +50,8 @@ class NumpangUjianExport implements FromCollection, WithHeadings
         $data = [];
         $i = 0;
         foreach(NumpangUjian::all() as $row){
-            foreach(explode("|", $row->matakuliah) as $mk){
+            foreach(explode("|", $row->matakuliah) as $key=>$mk){
+                $data[$i]['no'] = $i + 1;
                 $data[$i]['nim'] = $row->nim;
                 $data[$i]['nama'] = $row->nama;
                 $data[$i]['prodi'] = $row->prodi;
@@ -81,6 +82,7 @@ class NumpangUjianExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
+            'no',
             'nim',
             'nama',
             'prodi',

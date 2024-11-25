@@ -15,6 +15,10 @@
       <h3 class="font-semibold text-lg">Jumlah Pengunjung</h3>
       <p class="font-bold text-4xl text-right">{{$jumlah_pengunjung}}</p>
     </div>
+    <div class="bg-white p-4 rounded-lg shadow">
+      <h3 class="font-semibold text-lg">Total Views</h3>
+      <p class="font-bold text-4xl text-right">{{$total_views}}</p>
+    </div>
   </div>
 </section>
 

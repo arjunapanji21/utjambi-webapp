@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\WisudawanExport;
 use App\Imports\PendaftaranWisudaImport;
 use App\Imports\WisudawanImport;
 use App\Models\PendaftaranWisuda;
@@ -152,6 +153,10 @@ class WisudaController extends Controller
             $request['gmap'],
         ), $request['file']);
         return redirect(route('admin.wisuda.kehadiran'))->with('success', 'Data Wisudawan Berhasil Di Upload!');
+    }
+
+    public function export_kehadiran_wisuda(){
+        return Excel::download(new WisudawanExport, 'kehadiran_wisudawan_'.date('dmY').'.xlsx');
     }
 
     public function konfirmasi_kehadiran(){

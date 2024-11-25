@@ -13,12 +13,17 @@ class DashboardController extends Controller
         //     $row->views = rand(55,110);
         //     $row->save();
         // }
+        $totalViews = 0;
+        foreach(Visitor::all() as $row){
+            $totalViews += $row->visits;
+        }
         $master = [
             'title' => 'Dashboard',
             'active' => 'Dashboard',
             'jumlah_artikel' => count(Post::all()),
             'jumlah_pengunjung' => count(Visitor::all()),
             'pengunjung_hari_ini' => count(Visitor::where('created_at', 'like', '%' . date('Y-m-d') . '%')->get()),
+            'total_views' => $totalViews,
             'visitors' => Visitor::orderBy('updated_at', 'desc')->limit(10)->get(),
             'posts' => Post::orderBy('views', 'desc')->limit(5)->get(),
         ];

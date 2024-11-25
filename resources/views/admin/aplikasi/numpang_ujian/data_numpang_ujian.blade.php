@@ -63,7 +63,7 @@
         </div>
         <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-            <a href="{{route('admin.numpang_ujian.data_nu.tarik_data_matakuliah')}}" target="_blank"
+            <a href="" target="_blank"
                 class="flex items-center justify-center text-purple-700 bg-purple-100 hover:bg-purple-200 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-200 dark:hover:bg-purple-300 focus:outline-none dark:focus:ring-purple-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-4 w-4 mr-2" fill="currentColor">
                     <path
@@ -71,7 +71,7 @@
                 </svg>
                 Tarik Data MK
             </a>
-            <a href="{{route('form.numpang_ujian_1')}}" target="_blank"
+            <a href="{{route('mahasiswa.ujian')}}" target="_blank"
                 class="flex items-center justify-center text-primary-700 bg-primary-100 hover:bg-primary-200 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-200 dark:hover:bg-primary-300 focus:outline-none dark:focus:ring-primary-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-4 w-4 mr-2" fill="currentColor">
                     <path
@@ -79,7 +79,7 @@
                 </svg>
                 Form Input
             </a>
-            <button type="button"
+            <a href="{{route('admin.numpang_ujian.data_nu.export')}}" target="_blank"
                 class="flex items-center justify-center text-emerald-700 bg-emerald-100 hover:bg-emerald-200 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-emerald-200 dark:hover:bg-emerald-200 focus:outline-none dark:focus:ring-emerald-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-3.5 w-3.5 mr-2"
                     fill="currentColor">
@@ -87,7 +87,7 @@
                         d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z" />
                 </svg>
                 Export
-            </button>
+            </a>
         </div>
     </div>
     @if($data != null)
@@ -107,9 +107,6 @@
                     </th>
                     <th scope="col" class="px-6 py-3">
                         UT Daerah Tujuan
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Wilayah Ujian Asal
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Wilayah Ujian Tujuan
@@ -145,9 +142,6 @@
                     </td>
                     <td class="px-6 py-4">
                         {{explode('/', $row->ut_daerah_tujuan)[1]}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{explode('/',$row->wilayah_ujian_asal)[1]}}
                     </td>
                     <td class="px-6 py-4">
                         {{explode('/',$row->wilayah_ujian_tujuan)[1]}}
@@ -361,17 +355,7 @@
                                                         <th class="text-center">Kode Waktu Ujian</th>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach(explode('|',$row->matakuliah) as $mk)
-                                                        <tr>
-                                                            <td class="border text-center">{{$loop->iteration}}</td>
-                                                            <td class="border text-center">{{json_decode($mk)->kode}}
-                                                            </td>
-                                                            <td class="border text-center">{{json_decode($mk)->nama}}
-                                                            </td>
-                                                            <td class="border text-center">
-                                                                {{json_decode($mk)->kode_waktu_ujian}}</td>
-                                                        </tr>
-                                                        @endforeach
+                                                        
                                                     </tbody>
                                                 </table>
                                             </div>

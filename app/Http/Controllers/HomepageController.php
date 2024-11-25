@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\CekJadwalTutorial;
 use App\Models\DataPesertaTutorial;
+use App\Models\Matakuliah;
+use App\Models\NumpangUjian;
 use App\Models\Post;
+use App\Models\Token;
 use App\Models\Visitor;
+use App\Models\WilayahUjian;
 use App\Models\WTKU;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class HomepageController extends Controller
 {
@@ -156,5 +161,134 @@ class HomepageController extends Controller
     public function download_file($folder, $nama_file){
         $file = public_path("docs/".$folder."/".$nama_file);
         return response()->download($file);
+    }
+
+    public function ujian(Request $request){
+        if($request->has('nim')){
+            $cekNumpang = NumpangUjian::where('nim', $request['nim'])->latest()->first();
+            if(is_null($cekNumpang)){
+                $token = Token::where('nama', 'SRS')->get()->first()->token;
+                // get masa aktif
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $token,
+                    'Accept' => 'application/json',
+                ])->get('https://api-mahasiswa-srs.ut.ac.id/api-srs-mahasiswa/v1/masa-aktif?kodeKegiatan=AKRG');
+                if ($response->status() == 200) {
+                    $masa = $response->json('data')['masa'];
+                    if($masa[-1] == "2"){
+                        $masa[-1] = $masa[-1]-1;
+                    }else{
+                        $masa[-2] = $masa[-2]-1;
+                        $masa[-1] = 2;
+                    }
+                    $response = Http::withHeaders([
+                        'Authorization' => 'Bearer ' . $token,
+                        'Accept' => 'application/json',
+                    ])->get('https://api-mahasiswa-srs.ut.ac.id/api-srs-mahasiswa/v1/data-matakuliah?nim=' . $request['nim'] . '&masa='.$masa);
+                    if ($response->status() == 200) {
+                        $result = $response->json('data')[0];
+                        $data['masa'] = $masa;
+                        $data['nim'] = $result['nim'];
+                        $data['nama_mahasiswa'] = $result['nama_mahasiswa'];
+                        $data['kode_upbjj'] = $result['info_ut']['upbjj']['kode_upbjj'];
+                        $data['nama_upbjj'] = $result['info_ut']['upbjj']['nama_upbjj'];
+                        $data['alamat_upbjj'] = $result['info_ut']['upbjj']['alamat_upbjj'];
+                        $data['nomor_telepon_upbjj'] = $result['info_ut']['upbjj']['nomor_telepon_upbjj'];
+                        $data['email_upbjj'] = $result['info_ut']['upbjj']['email_upbjj'];
+                        $data['kode_prodi'] = $result['info_ut']['program_studi']['kode_program_studi'];
+                        $data['nama_prodi'] = $result['info_ut']['program_studi']['nama_program_studi'];
+                        $data['fakultas'] = $result['info_ut']['program_studi']['fakultas']['nama_fakultas'];
+                        $data['billing'] = $result['billing'];
+                        $data['kode_mk'] = [];
+                        foreach($data['billing'] as $billing){
+                            foreach($billing['billing_detail'] as $row){
+                                array_push($data['kode_mk'], $row['mata_kuliah']['kode_matakuliah']);
+                            }
+                        }
+                    } else if ($response->status() != 200) {
+                        return back()->with('error', $response->json('message'));
+                    }
+                } else if ($response->status() != 200) {
+                    return back()->with('error', $response->json('message'));
+                }
+                $data['mk_utm'] = [];
+                foreach($data['kode_mk'] as $kode_mk){
+                    $mk = Matakuliah::where('kode', $kode_mk)->first();
+                    if($mk->skema == "UTM"){
+                        array_push($data['mk_utm'], $kode_mk);
+                    }
+                }
+                if($data['kode_upbjj'] == "17"){
+                    $wilayah_ujian = WilayahUjian::where('aktif', true)->orderBy('nama_upbjj')->get();
+                }else{
+                    $wilayah_ujian = WilayahUjian::where('aktif', true)->where('kode_upbjj', "17")->orderBy('nama_wilayah_ujian')->get();
+                }
+                $props = [
+                    'title' => 'Ujian',
+                    'wilayah_ujian' => $wilayah_ujian,
+                    'mahasiswa' => $data
+                ];
+            }else{
+                return redirect(route('status.numpang_ujian', $request['nim']));
+            }
+            
+        }else{
+            $props = [
+                'title' => 'Ujian',
+            ];
+        }
+
+        return view('homepage/mahasiswa/ujian', $props);
+    }
+
+    public function submit_numpang_utm(Request $request){
+        $request->validate([
+            'lokasi_ujian_tujuan' => 'required',
+            'alasan' => 'required',
+            'ttd' => 'required',
+            'no_wa' => 'required|min:9|max:15',
+        ]);
+
+        if ($request->has('file')) {
+            $request->validate([
+                'file' => 'required|file|max:5120', // 5120 KB = 5 MB
+            ]);
+            $file = $request->file('file');
+            $folder = public_path('uploads/numpang_ujian/');
+            if($request['upbjj_asal'] == "17 / JAMBI"){
+                $file->move($folder, $request['nim'] . "_dokumen_pendukung_alasan.pdf");
+                $dokumen_pendukung_alasan = 'uploads/numpang_ujian/' . $request['nim'] . "_dokumen_pendukung_alasan.pdf";
+            }else{
+                $file->move($folder, $request['nim'] . "_surat_pengantar.pdf");
+                $surat_pengantar = 'uploads/numpang_ujian/' . $request['nim'] . "_surat_pengantar.pdf";
+            }
+        }
+
+        $upbjj_tujuan = WilayahUjian::find($request['lokasi_ujian_tujuan']);
+
+        $numpang = new NumpangUjian();
+        $numpang->masa = $request['masa'];
+        $numpang->nim = $request['nim'];
+        $numpang->nama = $request['nama'];
+        $numpang->prodi = $request['prodi'];
+        $numpang->ut_daerah_asal = $request['upbjj_asal'];
+        $numpang->ut_daerah_tujuan = $upbjj_tujuan->kode_upbjj . " / " . $upbjj_tujuan->nama_upbjj;
+        $numpang->wilayah_ujian_asal = "-";
+        $numpang->wilayah_ujian_tujuan = $upbjj_tujuan->kode_wilayah_ujian . " / " . $upbjj_tujuan->nama_wilayah_ujian . " " . $upbjj_tujuan->lokasi_utm;
+        $numpang->tgl_pindah_lokasi = $request['tgl_pindah_lokasi'];
+        $numpang->matakuliah = $request['mk_utm'];
+        $numpang->skema = "UTM";
+        $numpang->alasan = $request['alasan'];
+        $numpang->no_wa = $request['no_wa'];
+        $numpang->ttd = $request['ttd'];
+        if($request['upbjj_asal'] == "17 / JAMBI"){
+            $numpang->dokumen_pendukung_alasan = $dokumen_pendukung_alasan;
+        } else {
+            $numpang->surat_pengantar = $surat_pengantar;
+        }
+        $numpang->status = "Antrian";
+        $numpang->save();
+
+        return back()->with('success', "Form numpang ujian berhasil di submit dan sedang dalam antrian.");
     }
 }

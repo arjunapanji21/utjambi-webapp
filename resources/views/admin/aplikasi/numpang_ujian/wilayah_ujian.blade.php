@@ -45,9 +45,6 @@
         <li class="me-2">
             <a href="{{route('admin.numpang_ujian.matakuliah')}}" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Matakuliah</a>
         </li>
-        <li class="me-2">
-            <a href="{{route('admin.numpang_ujian.peserta')}}" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Peserja Ujian</a>
-        </li>
     </ul>
 </div>
 
@@ -71,7 +68,7 @@
         </div>
         <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-            <a href="{{route('admin.numpang_ujian.data_nu.tarik_data_matakuliah')}}" target="_blank"
+            <a href="{{route('admin.numpang_ujian.data_nu.export')}}" target="_blank"
                 class="flex items-center justify-center text-purple-700 bg-purple-100 hover:bg-purple-200 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-200 dark:hover:bg-purple-300 focus:outline-none dark:focus:ring-purple-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-4 w-4 mr-2" fill="currentColor">
                     <path
@@ -79,7 +76,7 @@
                 </svg>
                 Tarik Data MK
             </a>
-            <a href="{{route('form.numpang_ujian_1')}}" target="_blank"
+            <a href="{{route('mahasiswa.ujian')}}" target="_blank"
                 class="flex items-center justify-center text-primary-700 bg-primary-100 hover:bg-primary-200 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-200 dark:hover:bg-primary-300 focus:outline-none dark:focus:ring-primary-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-4 w-4 mr-2" fill="currentColor">
                     <path
@@ -158,7 +155,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('admin.numpang_ujian.peserta_ujian.import')}}" method="post" enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="{{route('admin.numpang_ujian.wilayah_ujian.import')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">

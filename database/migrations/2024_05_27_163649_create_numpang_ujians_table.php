@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('numpang_ujians', function (Blueprint $table) {
             $table->id();
+            $table->string("masa");
             $table->string("nim");
             $table->string("nama");
             $table->string("prodi");
             $table->string("ut_daerah_asal");
             $table->string("ut_daerah_tujuan");
-            $table->string("wilayah_ujian_asal");
+            $table->string("wilayah_ujian_asal")->nullable();
             $table->string("wilayah_ujian_tujuan");
             $table->string("tgl_pindah_lokasi");
             $table->text("matakuliah");

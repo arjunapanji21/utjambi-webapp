@@ -23,12 +23,13 @@ class MatakuliahImport implements ToModel, WithStartRow
     */
     public function model(array $row)
     {
-        return new Matakuliah([
-            'kode' => $row[1],
-            'nama' => $row[2],
-            'skema' => $row[3],
-            'sifat_ujian' => $row[4],
-            'kode_waktu_ujian' => $row[5],
-        ]);
+        $matkul = new Matakuliah();
+        $matkul->kode = $row[1];
+        $matkul->nama = $row[2];
+        $matkul->skema = $row[3];
+        $matkul->sifat_ujian = $row[4];
+        $matkul->kode_waktu_ujian = $row[5];
+        $matkul->save();
+        return $matkul;
     }
 }

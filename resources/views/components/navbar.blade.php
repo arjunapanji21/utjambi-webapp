@@ -627,7 +627,7 @@
                                 <a href="{{route('mahasiswa.pembayaran_spp')}}" class="text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-lime-600 dark:hover:bg-lime-700 focus:outline-none dark:focus:ring-lime-800">Pembayaran SPP</a>
                                 </div>
                                 <a href="{{route('kegiatan.jadwal_perkuliahan')}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-center rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Jadwal Perkuliahan</a>
-                                <a href="{{route('form.numpang_ujian_1')}}" target="_blank" class="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium text-center rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Numpang Ujian</a>
+                                <a href="{{route('mahasiswa.ujian')}}" class="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium text-center rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Numpang Ujian</a>
                             </div>
                             <ul class="space-x-5 flex justify-evenly flex-row">
                                 <li>

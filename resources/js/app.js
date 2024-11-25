@@ -11,8 +11,8 @@ import "/node_modules/select2/dist/css/select2.css";
 import select2 from 'select2';
 select2();
 
-import jQuery from 'jquery';
-window.$ = jQuery;
+// import jQuery from 'jquery';
+// window.$ = jQuery;
 
 // .. After imports init TinyMCE ..
 window.addEventListener('DOMContentLoaded', () => {

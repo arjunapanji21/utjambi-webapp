@@ -45,9 +45,6 @@
         <li class="me-2">
             <a href="{{route('admin.numpang_ujian.matakuliah')}}" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Matakuliah</a>
         </li>
-        <li class="me-2">
-            <a href="{{route('admin.numpang_ujian.peserta')}}" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Peserja Ujian</a>
-        </li>
     </ul>
 </div>
 
@@ -149,10 +146,11 @@
             <thead class="sticky top-0 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-4 py-3 uppercase">#</th>
-                    <th scope="col" class="px-4 py-3 uppercase">nim</th>
-                    <th scope="col" class="px-4 py-3 uppercase">nama</th>
-                    <th scope="col" class="px-4 py-3 uppercase">prodi</th>
-                    <th scope="col" class="px-4 py-3 uppercase">matakuliah</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Kode MK</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Nama MK</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Skema</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Sifat Ujian</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Waktu Ujian</th>
                     <th scope="col" class="px-4 py-3 uppercase">
                         <span class="sr-only">Actions</span>
                     </th>
@@ -167,6 +165,7 @@
                     <td class="px-4 py-3">{{$row->nama}}</td>
                     <td class="px-4 py-3">{{$row->skema}}</td>
                     <td class="px-4 py-3">{{$row->sifat_ujian}}</td>
+                    <td class="px-4 py-3">{{$row->kode_waktu_ujian}}</td>
                     <td class="px-4 py-3 flex items-center justify-end">
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 hover:text-primary-700" fill="currentColor"><path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></svg>
@@ -178,7 +177,7 @@
             </tbody>
         </table>
     </div>
-    <x-pagination :data="$data"></x-pagination>
+    {{-- <x-pagination :data="$data"></x-pagination> --}}
 </div>
 
 <!-- modal import data -->
@@ -199,7 +198,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{route('admin.numpang_ujian.peserta_ujian.import')}}" method="post" enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="{{route('admin.numpang_ujian.matakuliah.import')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
