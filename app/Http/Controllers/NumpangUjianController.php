@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MatakuliahNumpangUjianExport;
 use App\Exports\NumpangUjianExport;
 use App\Models\Matakuliah;
 use App\Models\NumpangUjian;
@@ -60,6 +61,41 @@ class NumpangUjianController extends Controller
         return Excel::download(new NumpangUjianExport, 'data_numpang_ujian_'.date('Ymdhis').'.xlsx');
     }
 
+    public function matakuliah_numpang_ujian_export(){
+        set_time_limit(0);
+        TambahNaskahMatakuliah::truncate();
+        $numpang = NumpangUjian::where('ut_daerah_tujuan', '17 / JAMBI')->where('status', 'Diproses')->orderBy('wilayah_ujian_tujuan', 'asc')->get();
+        foreach($numpang as $row){
+            $mk = Matakuliah::whereIn('kode', explode(", ", $row->matakuliah))->orderBy('kode_waktu_ujian', 'asc')->get();
+            foreach($mk as $item){
+                $naskah = new TambahNaskahMatakuliah();
+                $naskah->kode_wilayah = explode(" / ",$row->wilayah_ujian_tujuan)[0];
+                $naskah->nama_wilayah = explode(" / ",$row->wilayah_ujian_tujuan)[1];
+                $naskah->kode_waktu_ujian = $item->kode_waktu_ujian;
+                $naskah->kode_matakuliah = $item->kode;
+                $naskah->nama_matakuliah = $item->nama;
+                $naskah->save();
+            }
+        }
+        return Excel::download(new MatakuliahNumpangUjianExport, 'matakuliah_numpang_ujian_'.date('Ymdhis').'.xlsx');
+    }
+
+    public function batch_ubah_status(Request $request){
+        if($request['status'] == "Diproses"){
+            foreach(NumpangUjian::where('status', "Antrian")->get() as $row){
+                $row->status = $request['status'];
+                $row->save();
+            }
+        }
+        else if($request['status'] == "Diterima"){
+            foreach(NumpangUjian::where('status', "Diproses")->get() as $row){
+                $row->status = $request['status'];
+                $row->save();
+            }
+        }
+        return back()->with('success', 'Batch Update Status Pengajuan Berhasil!');
+    }
+
     public function data_numpang_ujian(Request $request)
     {
         if(isset($request['filter']) && !empty($request['search'])){
@@ -78,6 +114,22 @@ class NumpangUjianController extends Controller
         else{
             $data = null;
         }
+
+        if(!is_null($data)){
+            foreach($data->get()->groupBy('nim') as $key=>$row){
+                if(count($row) > 1)
+                {
+                    for($i=0;$i<count($row)-1;$i++)
+                    {
+                        $duplikat = NumpangUjian::find($row[$i]->id);
+                        if($duplikat->status == "Antrian"){
+                            $duplikat->delete();
+                        }
+                    }
+                }
+            }
+        }
+
         $master = [
             'title' => 'Data Numpang Ujian | UT Jambi',
             'active' => 'Numpang Ujian',
@@ -131,6 +183,7 @@ class NumpangUjianController extends Controller
     {
         $data = NumpangUjian::find($request['id']);
         $data->status = $request['status'];
+        $data->keterangan = $request['keterangan'];
         $data->save();
         return back()->with('success', 'Data berhasil di update.');
     }
@@ -138,7 +191,7 @@ class NumpangUjianController extends Controller
     public function status_numpang_ujian($nim)
     {
         $data = NumpangUjian::where('nim', $nim)->latest()->first();
-        $matakuliah = Matakuliah::whereIn('kode', explode(", ", $data['matakuliah']))->orderBy('kode_waktu_ujian', 'asc')->get();
+        $matakuliah = Matakuliah::whereIn('kode', explode(", ", $data->matakuliah))->orderBy('kode_waktu_ujian', 'asc')->get();
         $master = [
             'title' => 'Status Numpang Ujian | UT Jambi',
             'data' => $data,
@@ -168,6 +221,10 @@ class NumpangUjianController extends Controller
     public function surat_permohonan_numpang_ujian_panutan_batch(Request $request)
     {
         $data = NumpangUjian::where('ut_daerah_tujuan', $request['ut_daerah_tujuan'])->where('surat_pengantar', null)->orderBy('nama', 'asc')->get();
+        foreach($data as $row){
+            $mk = Matakuliah::whereIn('kode', explode(', ', $row->matakuliah))->orderBy('kode_waktu_ujian')->get();
+            $row->matakuliah = $mk;
+        }
         $master = [
             'title' => 'Surat Permohonan Numpang Ujian Ke Panutan (Batch)',
             'ut_daerah_tujuan' => $request['ut_daerah_tujuan'],

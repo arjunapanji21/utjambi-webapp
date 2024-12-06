@@ -79,16 +79,12 @@
                         <thead>
                             <th class="border text-center">No.</th>
                             <th class="border text-center">Kode MK</th>
-                            <th class="border text-center">Nama MK</th>
-                            <th class="border text-center">Kode Waktu Ujian</th>
                         </thead>
                         <tbody>
-                            @foreach(explode('|',$mahasiswa->matakuliah) as $row)
+                            @foreach(explode(',',$mahasiswa->matakuliah) as $mk)
                             <tr>
                                 <td class="border text-center">{{$loop->iteration}}</td>
-                                <td class="border text-center">{{json_decode($row)->kode}}</td>
-                                <td class="border text-center">{{json_decode($row)->nama}}</td>
-                                <td class="border text-center">{{json_decode($row)->kode_waktu_ujian}}</td>
+                                <td class="border text-center">{{$mk}}</td>
                             </tr>
                             @endforeach
                         </tbody>

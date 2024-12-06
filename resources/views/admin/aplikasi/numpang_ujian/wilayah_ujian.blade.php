@@ -103,7 +103,7 @@
                     <th scope="col" class="px-4 py-3 uppercase">#</th>
                     <th scope="col" class="px-4 py-3 uppercase">UPBJJ</th>
                     <th scope="col" class="px-4 py-3 uppercase">Wilayah Ujian</th>
-                    <th scope="col" class="px-4 py-3 uppercase">Wilayah UTM</th>
+                    <th scope="col" class="px-4 py-3 uppercase">Lokasi UTM</th>
                     <th scope="col" class="px-4 py-3 uppercase">Status</th>
                     <th scope="col" class="px-4 py-3 uppercase">
                         <span class="sr-only">Actions</span>
@@ -117,7 +117,7 @@
                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$loop->iteration}}</th>
                     <td class="px-4 py-3">{{$row->kode_upbjj.' / '.$row->nama_upbjj}}</td>
                     <td class="px-4 py-3">{{$row->kode_wilayah_ujian.' / '.$row->nama_wilayah_ujian}}</td>
-                    <td class="px-4 py-3">{{$row->wilayah_utm}}</td>
+                    <td class="px-4 py-3">{{$row->lokasi_utm}}</td>
                     <td class="px-4 py-3">{{$row->aktif == 1 ? 'Aktif' : 'Non-Aktif'}}</td>
                     <td class="px-4 py-3 flex items-center justify-end">
                         <form action="{{route('admin.numpang_ujian.wilayah_ujian.update')}}" method="post">

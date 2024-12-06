@@ -101,7 +101,7 @@ class HomepageController extends Controller
     }
 
     public function jadwal_perkuliahan(Request $request) {
-        // return redirect()->route('maintenance');
+        $this->visitor();
         if($request->has('input')){
             if(strlen($request['input']) == 8){
                 $data = CekJadwalTutorial::where('kode_tutor', $request['input'])->get();
@@ -163,7 +163,17 @@ class HomepageController extends Controller
         return response()->download($file);
     }
 
-    public function ujian(Request $request){
+    public function ujian(){
+        $this->visitor();
+        $props = [
+            'title' => 'Numpang Ujian',
+        ];
+
+        return view('homepage/mahasiswa/ujian', $props);
+    }
+
+    public function numpang_utm(Request $request){
+        $this->visitor();
         if($request->has('nim')){
             $cekNumpang = NumpangUjian::where('nim', $request['nim'])->latest()->first();
             if(is_null($cekNumpang)){
@@ -234,11 +244,11 @@ class HomepageController extends Controller
             
         }else{
             $props = [
-                'title' => 'Ujian',
+                'title' => 'Pengajuan Numpang Ujian',
             ];
         }
 
-        return view('homepage/mahasiswa/ujian', $props);
+        return view('homepage/mahasiswa/numpang_utm', $props);
     }
 
     public function submit_numpang_utm(Request $request){
@@ -266,29 +276,32 @@ class HomepageController extends Controller
 
         $upbjj_tujuan = WilayahUjian::find($request['lokasi_ujian_tujuan']);
 
-        $numpang = new NumpangUjian();
-        $numpang->masa = $request['masa'];
-        $numpang->nim = $request['nim'];
-        $numpang->nama = $request['nama'];
-        $numpang->prodi = $request['prodi'];
-        $numpang->ut_daerah_asal = $request['upbjj_asal'];
-        $numpang->ut_daerah_tujuan = $upbjj_tujuan->kode_upbjj . " / " . $upbjj_tujuan->nama_upbjj;
-        $numpang->wilayah_ujian_asal = "-";
-        $numpang->wilayah_ujian_tujuan = $upbjj_tujuan->kode_wilayah_ujian . " / " . $upbjj_tujuan->nama_wilayah_ujian . " " . $upbjj_tujuan->lokasi_utm;
-        $numpang->tgl_pindah_lokasi = $request['tgl_pindah_lokasi'];
-        $numpang->matakuliah = $request['mk_utm'];
-        $numpang->skema = "UTM";
-        $numpang->alasan = $request['alasan'];
-        $numpang->no_wa = $request['no_wa'];
-        $numpang->ttd = $request['ttd'];
-        if($request['upbjj_asal'] == "17 / JAMBI"){
-            $numpang->dokumen_pendukung_alasan = $dokumen_pendukung_alasan;
-        } else {
-            $numpang->surat_pengantar = $surat_pengantar;
-        }
-        $numpang->status = "Antrian";
-        $numpang->save();
+        $cekNumpang = NumpangUjian::where('nim', $request['nim'])->latest()->first();
 
-        return back()->with('success', "Form numpang ujian berhasil di submit dan sedang dalam antrian.");
+        if(is_null($cekNumpang)){
+            $numpang = new NumpangUjian();
+            $numpang->masa = $request['masa'];
+            $numpang->nim = $request['nim'];
+            $numpang->nama = $request['nama'];
+            $numpang->prodi = $request['prodi'];
+            $numpang->ut_daerah_asal = $request['upbjj_asal'];
+            $numpang->ut_daerah_tujuan = $upbjj_tujuan->kode_upbjj . " / " . $upbjj_tujuan->nama_upbjj;
+            $numpang->wilayah_ujian_asal = "-";
+            $numpang->wilayah_ujian_tujuan = $upbjj_tujuan->kode_wilayah_ujian . " / " . $upbjj_tujuan->nama_wilayah_ujian . " " . $upbjj_tujuan->lokasi_utm;
+            $numpang->tgl_pindah_lokasi = $request['tgl_pindah_lokasi'];
+            $numpang->matakuliah = $request['mk_utm'];
+            $numpang->skema = "UTM";
+            $numpang->alasan = $request['alasan'];
+            $numpang->no_wa = $request['no_wa'];
+            $numpang->ttd = $request['ttd'];
+            if($request['upbjj_asal'] == "17 / JAMBI"){
+                $numpang->dokumen_pendukung_alasan = $dokumen_pendukung_alasan;
+            } else {
+                $numpang->surat_pengantar = $surat_pengantar;
+            }
+            $numpang->status = "Antrian";
+            $numpang->save();
+        }
+        return redirect(route('status.numpang_ujian', $request['nim']))->with('success', "Form numpang ujian berhasil di submit dan sedang dalam antrian.");
     }
 }

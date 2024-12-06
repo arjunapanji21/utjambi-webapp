@@ -41,8 +41,7 @@
 
                 <div class="flex flex-col gap-4">
                     <p class="text-justify">
-                        Bersama ini kami sampaikan permohonan untuk menumpang Ujian Akhir Semester (UAS) 2023/2024 Genap
-                        di wilayah UT {{explode("/", $ut_daerah_tujuan)[1]}}, dengan data mahasiswa sebagai berikut:
+                        Bersama ini kami sampaikan permohonan untuk mengikuti Ujian Tatap Muka (UTM) di wilayah UT {{explode("/", $ut_daerah_tujuan)[1]}}, dengan data mahasiswa sebagai berikut:
                     </p>
                     <table class="leading-none mx-auto" style="border: 1px solid black ;">
                         <thead>
@@ -61,13 +60,13 @@
                                 <td class="border text-left" style="border: 1px solid black ;">{{$row->nama}}</td>
                                 <td class="border text-left" style="border: 1px solid black ;">{{$row->wilayah_ujian_tujuan}}</td>
                                 <td class="border text-center" style="border: 1px solid black ;">
-                                    @foreach(explode('|',$row->matakuliah) as $mk)
-                                    {{json_decode($mk)->kode}}<br>
+                                    @foreach($row->matakuliah as $mk)
+                                    {{$mk->kode}}<br>
                                     @endforeach
                                 </td>
                                 <td class="border text-center" style="border: 1px solid black ;">
-                                    @foreach(explode('|',$row->matakuliah) as $mk)
-                                    {{json_decode($mk)->kode_waktu_ujian}}<br>
+                                    @foreach($row->matakuliah as $mk)
+                                    {{$mk->kode_waktu_ujian}}<br>
                                     @endforeach
                                 </td>
                             </tr>
@@ -78,7 +77,7 @@
                         Dimohon kesediaan Bapak/Ibu untuk memperlakukan mahasiswa tersebut sebagai mahasiswa yang menumpang ujian sesuai dengan ketentuan yang berlaku. 
                         <br>
                         <br>
-                        Kepada mahasiswa yang bersangkutan diharuskan melapor ke UT tujuan paling lambat 3 hari sebelum pelaksanaan ujian, untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.
+                        Kepada mahasiswa yang bersangkutan diharuskan melapor ke UT tujuan paling lambat 10 hari sebelum pelaksanaan ujian, untuk mengkonfirmasi lokasi dan jadwal pelaksanaan ujian.
                         <br>
                         <br>
                         Demikian permohonan ini kami sampaikan, atas perhatian dan kerja sama yang baik kami ucapkan terima kasih.

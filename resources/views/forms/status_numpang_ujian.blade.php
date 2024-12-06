@@ -36,11 +36,23 @@
                   <ul class="mt-1.5 list-disc list-inside">
                         <li>KTPU UTM tidak akan berubah.</li>
                         <li>Silahkan datang langsung ke lokasi UTM tujuan sesuai jadwal semula.</li>
-                        <li>Progress ajuan dapat di cek berkala melalui laman ini mulai 13 juni.</li>
-                        <li>Hanya pengajuan pindah UTM ke luar provinsi Jambi yang akan mendapatkan surat pengantar pindah untuk dgunakan ke UT tujuan.</li>
-                        <li>Surat pengantar bisa diunduh melalui laman pngajuan ini jika status pengajuan sudah <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Diterima</span>.</li>
+                        <li>Progress ajuan dapat dicek berkala melalui laman ini.</li>
+                        <li>Hanya pengajuan pindah UTM ke luar provinsi Jambi yang akan mendapatkan surat pengantar pindah untuk digunakan ke UT tujuan.</li>
+                        <li>Surat pengantar bisa diunduh melalui laman pengajuan ini jika status pengajuan sudah <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Diterima</span>.</li>
                   </ul>
                 </div>
+              </div>
+
+            @elseif($data->status == "Ditolak")
+            <div class="p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-300 dark:border-red-800" role="alert">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="flex-shrink-0 w-4 h-4 me-2" fill="currentColor" aria-hidden="true"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+                  <span class="sr-only">Info</span>
+                  <h3 class="text-lg font-medium">Pengajuan Numpang Ujian Ditolak!</h3>
+                </div>
+                <p>
+                  {{$data->keterangan}}
+                </p>
               </div>
             @endif
 

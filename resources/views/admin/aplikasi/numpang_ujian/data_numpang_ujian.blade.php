@@ -61,9 +61,21 @@
                 <button type="submit" class="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-r-lg border border-primary-600 text-sm px-5 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Tampilkan</button>
             </form>
         </div>
+        <div class="w-full">
+            <form action="{{route('admin.numpang_ujian.data_nu.batch_ubah_status')}}" method="post" class="w-full flex flex-col gap-2 lg:gap-0 lg:flex-row items-center">   
+                @csrf
+                <label for="status" class="block text-sm font-medium text-gray-900 dark:text-white me-2 w-full lg:w-fit">Status:</label>
+                <select id="status" name="status" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option disabled>Status:</option>
+                <option value="Diproses" >Diproses</option>
+                <option value="Diterima" >Diterima</option>
+                </select>
+                <button type="submit" class="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-r-lg border border-primary-600 text-sm px-5 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Update</button>
+            </form>
+        </div>
         <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-            <a href="" target="_blank"
+            <a href="{{route('admin.numpang_ujian.data_nu.matakuliah.export')}}" target="_blank"
                 class="flex items-center justify-center text-purple-700 bg-purple-100 hover:bg-purple-200 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-200 dark:hover:bg-purple-300 focus:outline-none dark:focus:ring-purple-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-4 w-4 mr-2" fill="currentColor">
                     <path
@@ -351,21 +363,16 @@
                                                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                                         <th class="text-center">No.</th>
                                                         <th class="text-center">Kode MK</th>
-                                                        <th class="text-center">Nama MK</th>
-                                                        <th class="text-center">Kode Waktu Ujian</th>
                                                     </thead>
                                                     <tbody>
-                                                        
+                                                        @foreach(explode(",", $row->matakuliah) as $mk)
+                                                        <tr class="text-center border-b">
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$mk}}</td>
+                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                            <div class="lg:col-span-2">
-                                                <label for="keterangan{{$row->id}}"
-                                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan
-                                                    Untuk Mahasiswa</label>
-                                                <textarea  id="keterangan{{$row->id}}" name="keterangan" rows="8"
-                                                    class="block px-2.5 py-1 w-full text-sm text-gray-900 bg-gray-50 h-20 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                    placeholder="Tinggalkan catatan/keterangan untuk mahasiswa"></textarea>
                                             </div>
                                         </div>
                                         <div class="flex justify-end items-center gap-4">
@@ -384,15 +391,20 @@
                                             </form>
                                             <form class="flex justify-center items-center gap-4 w-full" action="{{route('admin.numpang_ujian.data_nu.update')}}" method="post">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{$row->id}}">
-                                                <select name="status" 
-                                                    class="select2 text-sm rounded-lg  block w-full p-2.5 ">
-                                                    <option disabled selected="">Pilih status pengajuan:</option>
-                                                    <option value="Antrian">Antrian</option>
-                                                    <option value="Diproses">Diproses</option>
-                                                    <option value="Diterima">Diterima</option>
-                                                    <option value="Ditolak">Ditolak</option>
-                                                </select>
+                                                <div class="w-full flex gap-4">
+                                                    <input type="hidden" name="id" value="{{$row->id}}">
+                                                    <select name="status" 
+                                                        class="select2 text-sm rounded-lg  block p-2.5 ">
+                                                        <option disabled selected="">Pilih status pengajuan:</option>
+                                                        <option @if($row->status == "Antrian") selected @endif value="Antrian">Antrian</option>
+                                                        <option @if($row->status == "Diproses") selected @endif value="Diproses">Diproses</option>
+                                                        <option @if($row->status == "Diterima") selected @endif value="Diterima">Diterima</option>
+                                                        <option @if($row->status == "Ditolak") selected @endif value="Ditolak">Ditolak</option>
+                                                    </select>
+                                                    <textarea  id="keterangan{{$row->id}}" name="keterangan" rows="1"
+                                                        class="block px-2.5 py-1 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        placeholder="Tinggalkan catatan/keterangan untuk mahasiswa">{{$row->keterangan}}</textarea>
+                                                </div>
                                                 <button type="submit"
                                                     class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 w-fit text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
@@ -407,19 +419,6 @@
                                 </div>
                             </div>
                         </div>
-                        @if($row->status == "Diproses")
-                        <div>
-                            <form action="{{route('admin.numpang_ujian.data_nu.update')}}" method="post">
-                                @csrf
-                                <input type="hidden" value="{{$row->id}}" name="id">
-                                <input type="hidden" value="Diterima" name="status">
-                                <button type="submit"
-                                    class="block text-emerald-700 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg p-2 text-sm text-center dark:text-emerald-600 dark:hover:text-emerald-700 dark:focus:ring-emerald-800">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4" fill="currentColor"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                                </button>
-                            </form>
-                        </div>
-                        @endif
                     </td>
                 </tr>
                 @endforeach

@@ -54,6 +54,7 @@ Route::middleware([Maintenance::class])->group(function () {
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/pembayaran-spp', [HomepageController::class, 'pembayaran_spp'])->name('mahasiswa.pembayaran_spp');
         Route::get('/ujian', [HomepageController::class, 'ujian'])->name('mahasiswa.ujian');
+        Route::get('/ujian/numpang-utm', [HomepageController::class, 'numpang_utm'])->name('mahasiswa.numpang_utm');
         Route::post('/ujian/numpang-utm/submit', [HomepageController::class, 'submit_numpang_utm'])->name('mahasiswa.submit_numpang_utm');
     });
 
@@ -149,6 +150,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/wilayah', [NumpangUjianController::class, 'wilayah'])->name('admin.numpang_ujian.wilayah');
         Route::get('/data-nu', [NumpangUjianController::class, 'data_numpang_ujian'])->name('admin.numpang_ujian.data_nu');
         Route::get('/data-nu/export', [NumpangUjianController::class, 'data_numpang_ujian_export'])->name('admin.numpang_ujian.data_nu.export');
+        Route::get('/data-nu/matakuliah/export', [NumpangUjianController::class, 'matakuliah_numpang_ujian_export'])->name('admin.numpang_ujian.data_nu.matakuliah.export');
+        Route::post('/data-nu/batch/update', [NumpangUjianController::class, 'batch_ubah_status'])->name('admin.numpang_ujian.data_nu.batch_ubah_status');
         Route::post('/data-nu/update', [NumpangUjianController::class, 'update_data_numpang_ujian'])->name('admin.numpang_ujian.data_nu.update');
         Route::post('/data-nu/delete', [NumpangUjianController::class, 'hapus_data_numpang_ujian'])->name('admin.numpang_ujian.data_nu.hapus');
         Route::get('/surat-pengantar', [NumpangUjianController::class, 'surat_pengantar'])->name('admin.numpang_ujian.surat_pengantar');
