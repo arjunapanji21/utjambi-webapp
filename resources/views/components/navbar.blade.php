@@ -39,7 +39,7 @@
             </button>
         </div>
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full xl:flex xl:w-auto xl:order-1">
-            <ul class="flex flex-col mt-4 font-medium xl:flex-row xl:mt-0 xl:space-x-8 rtl:space-x-reverse">
+            <ul class="flex flex-col mt-4 font-medium xl:flex-row xl:mt-0 xl:space-x-8 rtl:space-x-reverse list-none">
                 <!-- <li>
                     <a href="{{route('homepage')}}"
                         class="block py-2 px-3 text-blue-600 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
@@ -68,7 +68,7 @@
                             </a>
                         </div>
                         <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5" aria-labelledby="profil-button">
+                            <ul class="space-y-5 list-none" aria-labelledby="profil-button">
                                 <li>
                                     <a href="{{route('profil.direktur')}}"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -165,7 +165,7 @@
                             </ul>
                         </div>
                         {{-- <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5">
+                            <ul class="space-y-5 list-none">
                                 <li>
                                     <a href="{{route('profil.visi_misi')}}"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -259,7 +259,7 @@
                             </a>
                         </div>
                         <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5" aria-labelledby="akademik-button">
+                            <ul class="space-y-5 list-none" aria-labelledby="akademik-button">
                                 <li>
                                     <a href="https://fkip.ut.ac.id" target="_blank"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -335,7 +335,7 @@
                             </ul>
                         </div>
                         <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5">
+                            <ul class="space-y-5 list-none">
                                 <li>
                                     <a href="https://www.ut.ac.id/sistem-pembelajaran/" target="_blank"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -418,7 +418,7 @@
                     <div id="mahasiswa"
                         class="absolute z-10 w-full flex flex-col lg:flex-row p-4 hidden lg:w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
                         {{-- <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5" aria-labelledby="mahasiswa-button">
+                            <ul class="space-y-5 list-none" aria-labelledby="mahasiswa-button">
                                 <li>
                                     <a href="#"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -522,7 +522,7 @@
                             </ul>
                         </div> --}}
                         <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5">
+                            <ul class="space-y-5 list-none">
                                 <li>
                                     <a href="https://silayar.ut.ac.id/" target="_blank"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -629,7 +629,7 @@
                                 <a href="{{route('kegiatan.jadwal_perkuliahan')}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-center rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Jadwal Perkuliahan</a>
                                 <a href="{{route('mahasiswa.ujian')}}" class="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium text-center rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Numpang Ujian</a>
                             </div>
-                            <ul class="space-x-5 flex justify-evenly flex-row">
+                            <ul class="space-x-5 list-none flex justify-evenly flex-row">
                                 <li>
                                     <a href="https://www.ut.ac.id/panduan" target="_blank"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -677,7 +677,7 @@
                     <div id="layanan"
                         class="absolute z-10 w-full flex flex-col lg:flex-row p-4 hidden lg:w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
                         <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5">
+                            <ul class="space-y-5 list-none">
                                 <li>
                                     <a href="https://chatbot.ut.ac.id/" target="_blank"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">
@@ -760,7 +760,7 @@
                     <div id="kegiatan"
                         class="absolute z-10 w-full flex flex-col lg:flex-row p-4 hidden lg:w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
                         <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-5" aria-labelledby="kegiatan-button">
+                            <ul class="space-y-5 list-none" aria-labelledby="kegiatan-button">
                                 <li>
                                     <a href="{{route('kegiatan.osmb')}}"
                                         class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group hover:scale-105 transition-all">

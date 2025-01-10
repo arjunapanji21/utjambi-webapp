@@ -1,16 +1,6 @@
 @extends('layouts.homepage')
 
 @section('content')
-
-<style>
-    a {
-        color: #2563eb;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
-
 <main class="py-8 bg-white dark:bg-gray-900 antialiased">
     <div class="flex justify-between px-4 mx-auto max-w-screen-md py-2">
         <article class="w-full p-2 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
