@@ -8,7 +8,7 @@
 <section>
     <div class="mb-2">
         <nav class="flex italic" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse list-none">
                 <li class="inline-flex items-center">
                     <a href="#"
                         class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -47,7 +47,8 @@
 
     <h2 id="test" class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add New Post</h2>
 
-    <div class="bg-white p-4 rounded-lg dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+    <form class="bg-white p-4 rounded-lg dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden" method="post" enctype="multipart/form-data" action="{{route('admin.post.save')}}">
+        @csrf
         <div class="flex flex-col lg:flex-row gap-4">
             <div class="w-full lg:w-3/4">
                 <div class="mb-2">
@@ -60,7 +61,7 @@
                 <div class="mb-2">
                     <label for="content"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Content</label>
-                    <textarea id="editor" class="tinyMce min-h-screen" name="content" required></textarea>
+                    <textarea id="summernote" name="content" required></textarea>
                 </div>
             </div>
             <div class="w-full lg:w-1/4">
@@ -103,6 +104,16 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-2">
+                    <label for="status"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Set status</label>
+                    <select id="status" name="status"
+                        class="select2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option disabled>Set status:</option>
+                        <option selected value="draft">Draft</option>
+                        <option value="publish">Publish</option>
+                    </select>
+                </div>
                 {{-- <div class="mb-2">
                     <label for="featuredImage"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Featured Image</label>
@@ -125,17 +136,19 @@
                         </label>
                     </div>
                 </div> --}}
+                <div class="flex items-center gap-3">
+                    <button type="submit"
+                        class="w-full text-center px-5 py-2.5 text-sm font-medium text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                        Submit
+                    </button>
+                    <a href="{{route('admin.post.all')}}"
+                        class="py-2.5 w-full text-center px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        Cancel
+                    </a>
+                </div>
             </div>
         </div>
-        <button id="btnDraft"
-            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-            Save to draft
-        </button>
-        <button id="btnPublish"
-            class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-            Publish
-        </button>
-    </div>
+    </form>
 </section>
 @endsection
 
@@ -145,94 +158,8 @@
         $(".select2").select2();
 
         $("#title").change(function () {
-        $("#slug").val(this.value.toLowerCase().replace(/\s+/g, '-'));
-    });
-
-    $("#btnDraft").click(function () {
-        var title = $("#title").val();
-        var content = tinymce.get('editor').getContent();
-        var slug = $("#slug").val();
-        var date = $("#date").val();
-        var excerpt = $("#excerpt").val();
-        var tags = $("#tags").val();
-        var post_category_id = $("#post_category_id").val();
-        var featuredImage = $("#featuredImage").val();
-
-        var formData = {
-            "title" : title,
-            "content" : content,
-            "slug" : slug,
-            "date" : date,
-            "excerpt" : excerpt,
-            "tags" : tags,
-            "status" : "draft",
-            "post_category_id" : post_category_id,
-            "featuredImage" : featuredImage,
-        };
-
-        // append csrf token to formData
-        formData._token = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: '{{route("admin.post.save")}}',
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            headers: {
-                'X-CSRF-TOKEN': formData._token
-            },
-            data: formData,
-            success: function(response){
-                alert(response.msg);
-                window.location.href = "{{route('admin.post.all')}}";
-            },
-            error: function(xhr, status, error){
-                console.error(xhr.responseText);
-            }
+            $("#slug").val(this.value.toLowerCase().replace(/\s+/g, '-'));
         });
-    });
-
-    $("#btnPublish").click(function () {
-        var title = $("#title").val();
-        var content = tinymce.get('editor').getContent();
-        var slug = $("#slug").val();
-        var date = $("#date").val();
-        var excerpt = $("#excerpt").val();
-        var tags = $("#tags").val();
-        var post_category_id = $("#post_category_id").val();
-        var featuredImage = $("#featuredImage").val();
-
-        var formData = {
-            "title" : title,
-            "content" : content,
-            "slug" : slug,
-            "date" : date,
-            "excerpt" : excerpt,
-            "tags" : tags,
-            "status" : "publish",
-            "post_category_id" : post_category_id,
-            "featuredImage" : featuredImage,
-        };
-
-        // append csrf token to formData
-        formData._token = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: '{{route("admin.post.save")}}',
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            headers: {
-                'X-CSRF-TOKEN': formData._token
-            },
-            data: formData,
-            success: function(response){
-                alert(response.msg);
-                window.location.href = "{{route('admin.post.all')}}";
-            },
-            error: function(xhr, status, error){
-                console.error(xhr.responseText);
-            }
-        });
-    });
     });
 </script>
 @endsection

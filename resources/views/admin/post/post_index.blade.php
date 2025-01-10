@@ -2,7 +2,7 @@
 @section('content')
 <div class="mb-2">
     <nav class="flex italic" aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse list-none">
             <li class="inline-flex items-center">
                 <a href="#"
                     class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -77,6 +77,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-4 py-3">no</th>
+                    <th scope="col" class="px-4 py-3">thumbnail</th>
                     <th scope="col" class="px-4 py-3">title</th>
                     <th scope="col" class="px-4 py-3">author</th>
                     <th scope="col" class="px-4 py-3">category</th>
@@ -90,28 +91,44 @@
             </thead>
             <tbody>
                 @foreach($posts as $post)
+                @php
+                $firstImageSrc = null;
+                // Parse the HTML
+                $dom = new DOMDocument();
+                libxml_use_internal_errors(true); // Suppress warnings for malformed HTML
+                $dom->loadHTML($post->content);
+                libxml_clear_errors();
+                $images = $dom->getElementsByTagName('img');
+                if ($images->length > 0) {
+                    $firstImageSrc = $images->item(0)->getAttribute('src');
+                }else{
+                    $firstImageSrc = asset('images/no-cover.jpg');
+                }
+            @endphp
                 <tr class="border-b dark:border-gray-700">
                     {{-- <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$loop->iteration + $posts->firstItem() - 1}}</th> --}}
                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$loop->iteration}}</th>
-                    <td class="px-4 py-3 font-semibold">{{$post->title}}</td>
+                    <td class="px-4 py-3 font-semibold"><img src="{{$firstImageSrc}}" alt="" class="h-20 w-20 rounded-lg w-full object-cover transform transition duration-500 group-hover:scale-110"></td>
+                    <td class="px-4 py-3 font-semibold">
+                        <a href="{{route('show_post_detail', [strtolower($post->category->name), $post->slug])}}" class="text-primary-600 hover:text-primary-800 hover:underline" target="_blank">
+                            {{$post->title}}
+                        </a>
+                    </td>
                     <td class="px-4 py-3">{{$post->author->name}}</td>
                     <td class="px-4 py-3">{{$post->category->name}}</td>
                 <td class="px-4 py-3">{{$post->status == "publish" ? date('d/m/Y', strtotime($post->date)) : ''}}</td>
                     <td class="px-4 py-3 capitalize">{{$post->status}}</td>
                     <td class="px-4 py-3">{{$post->views}}</td>
-                    <td class="px-4 py-3 flex items-center justify-end">
+                    <td class="px-4 py-3">
                         @if(auth()->user()->role == "author" && $post->author_id == auth()->user()->id)
-                        <a href="{{route('admin.post.edit', $post->id)}}" class="p-2 rounded-full hover:bg-gray-100">
+                        <a href="{{route('admin.post.edit', $post->id)}}" class="inline-flex p-2 rounded-full hover:bg-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4" fill="currentColor"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
                         </a>
                         @elseif(auth()->user()->role == "superadmin" || auth()->user()->role == "admin")
-                        <a href="{{route('admin.post.edit', $post->id)}}" class="p-2 rounded-full hover:bg-gray-100">
+                        <a href="{{route('admin.post.edit', $post->id)}}" class="inline-flex p-2 rounded-full hover:bg-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4" fill="currentColor"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
                         </a>
                         @endif
-                        <a href="{{route('show_post_detail', [strtolower($post->category->name), $post->slug])}}" class="p-2 rounded-full hover:bg-gray-100" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-3.5 h-3.5" fill="currentColor"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
-                        </a>
                     </td>
                 </tr>
                 @endforeach

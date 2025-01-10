@@ -82,7 +82,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                         <img src="{{asset('images/logo_utjambi.webp')}}"
                             class="h-14 bg-gray-100 dark:bg-white px-4 py-2 rounded-lg" alt="Logo UT Jambi" />
                     </a>
-                    <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
+                    <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4 list-none">
                         <li>
                             <a href="https://maps.app.goo.gl/PXbNFdXnyaAY6uwy9" target="_blank" class="flex flex-row gap-3 items-center hover:underline hover:text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4 h-4" fill="currentColor"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
@@ -107,7 +107,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                     <div class="flex flex-row gap-20">
                         <div>
                             <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Quick Links</h2>
-                            <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
+                            <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4 list-none">
                                 <li>
                                     <a href="https://admisi-sia.ut.ac.id/" target="_blank"
                                         class="hover:underline hover:text-gray-100">Admisi SIA</a>
@@ -129,7 +129,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                     </div>
                     <div>
                         <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Fakultas & Pascasarjana</h2>
-                        <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4">
+                        <ul class="text-gray-300  dark:text-white font-medium flex flex-col gap-4 list-none">
                             <li>
                                 <a href="https://fkip.ut.ac.id/" target="_blank" class="hover:underline hover:text-gray-100">Fakultas Keguruan dan Ilmu Pendidikan</a>
                             </li>

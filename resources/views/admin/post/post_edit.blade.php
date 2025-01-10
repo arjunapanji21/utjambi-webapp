@@ -8,7 +8,7 @@
 <section>
     <div class="mb-2">
         <nav class="flex italic" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse list-none">
                 <li class="inline-flex items-center">
                     <a href="#"
                         class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white capitalize">
@@ -46,7 +46,8 @@
     </div>
 
     <h2 id="test" class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Edit Post</h2>
-    <div class="bg-white p-4 rounded-lg dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+    <form class="bg-white p-4 rounded-lg dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden" method="post" enctype="multipart/form-data" action="{{route('admin.post.update', $post->id)}}">
+        @csrf
         <div class="flex flex-col lg:flex-row gap-4">
             <div class="w-full lg:w-3/4">
                 <div class="mb-2">
@@ -59,7 +60,7 @@
                 <div class="mb-2">
                     <label for="content"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Content</label>
-                    <textarea id="editor" class="tinyMce min-h-screen" name="content" required>{{$post->content}}</textarea>
+                    <textarea id="summernote" name="content" required>{!!$post->content!!}</textarea>
                 </div>
             </div>
             <div class="w-full lg:w-1/4">
@@ -88,8 +89,8 @@
                     <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Date</label>
                     <input type="date" name="date" id="date"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        required value="{{$post->date}}">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{$post->date}}"
+                        required>
                 </div>
                 <div class="mb-2">
                     <label for="post_category_id"
@@ -98,12 +99,18 @@
                         class="select2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option disabled>Post category:</option>
                         @foreach($categories as $category)
-                        @if($category->id == $post->post_category_id)
-                        <option selected value="{{$category->id}}">{{$category->name}}</option>
-                        @else
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endif
+                        <option @if($post->post_category_id == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="status"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Set status</label>
+                    <select id="status" name="status"
+                        class="select2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option disabled>Set status:</option>
+                        <option @if($post->status == 'draft') selected @endif value="draft">Draft</option>
+                        <option @if($post->status == 'publish') selected @endif value="publish">Publish</option>
                     </select>
                 </div>
                 {{-- <div class="mb-2">
@@ -128,29 +135,23 @@
                         </label>
                     </div>
                 </div> --}}
-                <div class="grid lg:grid-cols-3 gap-2 mt-4">
-                        <a href="{{route('admin.post.delete', $post->id)}}" onclick="return confirm('This post will be deleted, are you sure?')"
-                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                <div class="w-full grid lg:grid-cols-2 gap-3 mt-5">
+                    <button type="submit"
+                        class="w-full text-center px-5 py-2.5 text-sm font-medium text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                        Submit
+                    </button>
+                    <a href="{{route('admin.post.delete', $post->id)}}" onclick="return confirm('Artikel akan dihapus, apa anda yakin?')"
+                        class="py-2.5 w-full text-center px-5 text-sm font-medium text-gray-100 focus:outline-none bg-red-600 rounded-lg border border-red-200 hover:bg-red-800  focus:z-10 focus:ring-4 focus:ring-red-100 dark:focus:ring-red-700 dark:bg-red-800 dark:text-red-400 dark:border-red-600 dark:hover:text-white dark:hover:bg-gray-700">
                         Delete
                     </a>
-                        <button id="btnDraft"
-                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                        Draft
-                    </button>
-                    <button id="btnPublish"
-                        class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                        Publish
-                    </button>
-                </div>
-                <div class="mt-4 border-t">
                     <a href="{{route('admin.post.all')}}"
-                        class="block text-center mt-2 py-2.5 px-5 text-sm font-medium text-gray-400 focus:outline-none bg-white rounded-lg  hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">
+                        class="lg:col-span-2 py-2.5 w-full text-center px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                         Cancel
                     </a>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </section>
 @endsection
 
@@ -160,95 +161,8 @@
         $(".select2").select2();
 
         $("#title").change(function () {
-        $("#slug").val(this.value.toLowerCase().replace(/\s+/g, '-'));
-    });
-
-    $("#btnDraft").click(function () {
-        var post_id = $("#post_id").val();
-        var title = $("#title").val();
-        var content = tinymce.get('editor').getContent();
-        var slug = $("#slug").val();
-        var date = $("#date").val();
-        var excerpt = $("#excerpt").val();
-        var tags = $("#tags").val();
-        var post_category_id = $("#post_category_id").val();
-        var featuredImage = $("#featuredImage").val();
-
-        var formData = {
-            "title" : title,
-            "content" : content,
-            "slug" : slug,
-            "date" : date,
-            "excerpt" : excerpt,
-            "tags" : tags,
-            "status" : "draft",
-            "post_category_id" : post_category_id,
-            "featuredImage" : featuredImage,
-        };
-
-        // append csrf token to formData
-        formData._token = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: '{{route("admin.post.update", $post->id)}}',
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            headers: {
-                'X-CSRF-TOKEN': formData._token
-            },
-            data: formData,
-            success: function(response){
-                alert(response.msg);
-                window.location.href = "{{route('admin.post.all')}}";
-            },
-            error: function(xhr, status, error){
-                console.error(xhr.responseText);
-            }
+            $("#slug").val(this.value.toLowerCase().replace(/\s+/g, '-'));
         });
-    });
-
-    $("#btnPublish").click(function () {
-        var title = $("#title").val();
-        var content = tinymce.get('editor').getContent();
-        var slug = $("#slug").val();
-        var date = $("#date").val();
-        var excerpt = $("#excerpt").val();
-        var tags = $("#tags").val();
-        var post_category_id = $("#post_category_id").val();
-        var featuredImage = $("#featuredImage").val();
-
-        var formData = {
-            "title" : title,
-            "content" : content,
-            "slug" : slug,
-            "date" : date,
-            "excerpt" : excerpt,
-            "tags" : tags,
-            "status" : "publish",
-            "post_category_id" : post_category_id,
-            "featuredImage" : featuredImage,
-        };
-
-        // append csrf token to formData
-        formData._token = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: '{{route("admin.post.update", $post->id)}}',
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            headers: {
-                'X-CSRF-TOKEN': formData._token
-            },
-            data: formData,
-            success: function(response){
-                alert(response.msg);
-                window.location.href = "{{route('admin.post.all')}}";
-            },
-            error: function(xhr, status, error){
-                console.error(xhr.responseText);
-            }
-        });
-    });
     });
 </script>
 @endsection

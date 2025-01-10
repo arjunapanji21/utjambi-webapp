@@ -54,10 +54,12 @@ class PostController extends Controller
         $post->author_id = $data['author_id'];
         $post->date = $data['date'];
         $post->save();
-        return response()->json([
-            'status' => 200,
-            'msg' => 'A new post has been saved to database!',
-        ]);
+        // return response()->json([
+        //     'status' => 200,
+        //     'message' => 'A new post has been saved to database!',
+        //     'redirect_url' => route('admin.post.all'),
+        // ]);
+        return redirect()->route('admin.post.all')->with('success', 'A new post has been saved to database!');
     }
 
     public function update_post($id, Request $request)
@@ -73,10 +75,11 @@ class PostController extends Controller
         $post->status = $data['status'];
         $post->date = $data['date'];
         $post->save();
-        return response()->json([
-            'status' => 200,
-            'msg' => 'Post updated successfully.',
-        ]);
+        // return response()->json([
+        //     'status' => 200,
+        //     'msg' => 'Post updated successfully.',
+        // ]);
+        return redirect()->route('admin.post.all')->with('success', 'Post updated successfully!');
     }
 
     public function delete_post($id){

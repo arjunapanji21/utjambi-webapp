@@ -7,8 +7,9 @@
     },
     "devDependencies": {
         "autoprefixer": "^10.4.19",
-        "axios": "^1.6.4",
+        "axios": "^1.7.9",
         "flowbite": "^2.3.0",
+        "flowbite-typography": "^1.0.5",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.38",
         "select2": "^4.1.0-rc.0",
@@ -17,6 +18,7 @@
     },
     "dependencies": {
         "jquery": "^3.7.1",
-        "tinymce": "^7.1.0"
+        "simple-datatables": "^9.2.1",
+        "summernote": "^0.9.1"
     }
 }

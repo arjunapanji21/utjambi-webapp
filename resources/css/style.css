@@ -1,0 +1,6 @@
+ul {
+    list-style-type: disc; /* Untuk menampilkan bullet */
+}
+ol {
+    list-style-type: decimal; /* Untuk daftar bernomor */
+}

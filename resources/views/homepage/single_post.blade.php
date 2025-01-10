@@ -2,6 +2,15 @@
 
 @section('content')
 
+<style>
+    a {
+        color: #2563eb;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
 <main class="py-8 bg-white dark:bg-gray-900 antialiased">
     <div class="flex justify-between px-4 mx-auto max-w-screen-md py-2">
         <article class="w-full p-2 format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
@@ -292,9 +301,23 @@
         <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             @foreach($related as $row)
+            @php
+                $firstImageSrc = null;
+                // Parse the HTML
+                $dom = new DOMDocument();
+                libxml_use_internal_errors(true); // Suppress warnings for malformed HTML
+                $dom->loadHTML($row->content);
+                libxml_clear_errors();
+                $images = $dom->getElementsByTagName('img');
+                if ($images->length > 0) {
+                    $firstImageSrc = $images->item(0)->getAttribute('src');
+                }else{
+                    $firstImageSrc = asset('images/no-cover.jpg');
+                }
+            @endphp
             <article class="">
                 <a href="{{route('show_post_detail', [$row->category->name, $row->slug])}}">
-                    <img src="{{explode('"', substr($row->content, strpos($row->content,'src="')))[1]}}" class="mb-5 rounded-lg" width="480" height="480">
+                    <img src="{{$firstImageSrc}}" class="mb-5 rounded-lg" width="480" height="480">
                 
                 <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     {{$row->title}}

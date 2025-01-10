@@ -40,7 +40,7 @@
                 @endif
             @if($calon_wisuda != "")
             <div class="p-4">
-                <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                <ol class="relative border-s border-gray-200 dark:border-gray-700 list-none">
                     <li class="mb-10 ms-6">
                         <span
                             class="absolute flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-green-900">

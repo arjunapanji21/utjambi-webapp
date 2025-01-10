@@ -2,7 +2,7 @@
 <div class="mb-2">
     <nav class="flex italic" aria-label="Breadcrumb">
         <ol
-            class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+            class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse list-none"
         >
             <li class="inline-flex items-center">
                 <a

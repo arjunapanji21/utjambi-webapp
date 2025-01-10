@@ -109,7 +109,7 @@
               </button>
               <!-- Dropdown menu -->
               <div
-                class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
+                class="hidden overflow-hidden z-50 my-4 max-w-sm text-base  bg-white divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
                 id="notification-dropdown"
               >
                 <div
@@ -390,7 +390,7 @@
               </button>
               <!-- Dropdown menu -->
               <div
-                class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+                class="hidden z-50 my-4 w-56 text-base  bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
                 id="dropdown"
               >
                 <div class="py-3 px-4">
@@ -404,17 +404,17 @@
                   >
                 </div>
                 <ul
-                  class="py-1 text-gray-700 dark:text-gray-300"
+                  class="py-1 text-gray-700 dark:text-gray-300 list-none"
                   aria-labelledby="dropdown"
                 >
-                  <li>
+                  <li class="">
                     <a
                       href="#"
                       class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                       >My profile</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="#"
                       class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
@@ -423,10 +423,10 @@
                   </li>
                 </ul>
                 <ul
-                  class="py-1 text-gray-700 dark:text-gray-300"
+                  class="py-1 text-gray-700 dark:text-gray-300 list-none"
                   aria-labelledby="dropdown"
                 >
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('logout')}}"
                       class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -483,8 +483,8 @@
                 />
               </div>
             </form> -->
-            <ul class="space-y-2">
-              <li>
+            <ul class="space-y-2 list-none">
+              <li class="">
                 <a
                   href="{{route('admin.dashboard')}}"
                   class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Dashboard") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
@@ -507,7 +507,7 @@
                   </span> --}}
                 </a>
               </li>
-              <li>
+              <li class="">
                 <button
                   type="button"
                   class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Postingan") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
@@ -544,15 +544,15 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-postingan" class="hidden py-2 space-y-2">
-                  <li>
+                <ul id="dropdown-postingan" class="hidden py-2 space-y-2 list-none">
+                  <li class="">
                     <a
                       href="{{route('admin.post.all')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >All Posts</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.post.category.all')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -563,10 +563,10 @@
               </li>
             </ul>
             <ul
-              class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
+              class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700 list-none"
             >
               <h5 class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">Aplikasi</h5>
-              <li>
+              <li class="">
                 <button
                   type="button"
                   class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "LPKBJJ") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
@@ -592,15 +592,15 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-lpkbjj" class="hidden py-2 space-y-2">
-                  <li>
+                <ul id="dropdown-lpkbjj" class="hidden py-2 space-y-2 list-none">
+                  <li class="">
                     <a
                       href="{{route('admin.lpkbjj.osmb_pkbjj')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >OSMB-PKBJJ</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.lpkbjj.wt_ku')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -609,7 +609,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li class="">
                 <button
                   type="button"
                   class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Tutorial") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
@@ -635,29 +635,29 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-tutorial" class="hidden py-2 space-y-2">
-                  <li>
+                <ul id="dropdown-tutorial" class="hidden py-2 space-y-2 list-none">
+                  <li class="">
                     <a
                       href="{{route('admin.ttm.penjadwalan_tutorial')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Penjadwalan Tutorial</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.ttm.penjadwalan_kelas')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Penjadwalan Kelas</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.ttm.cek_jadwal_tutorial')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Cek Jadwal Tutorial</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.ttm.data_tutor')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -667,7 +667,7 @@
                   
                 </ul>
               </li>
-              <li>
+              <li class="">
                 <button
                   type="button"
                   class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Numpang Ujian") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
@@ -693,22 +693,22 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-numpang-ujian" class="hidden py-2 space-y-2">
-                  <li>
+                <ul id="dropdown-numpang-ujian" class="hidden py-2 space-y-2 list-none">
+                  <li class="">
                     <a
                       href="{{route('admin.numpang_ujian.data_nu')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Data NU</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.numpang_ujian.surat_pengantar')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Surat Pengantar</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.numpang_ujian.wilayah')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -718,7 +718,7 @@
                   
                 </ul>
               </li>
-              <li>
+              <li class="">
                 <button
                   type="button"
                   class="flex items-center p-2 w-full text-sm font-medium rounded-lg transition duration-75 group @if(isset($active) && $active == "Wisuda") text-primary-700 bg-primary-100 @else text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 @endif"
@@ -745,15 +745,15 @@
                     ></path>
                   </svg>
                 </button>
-                <ul id="dropdown-yudisium" class="hidden py-2 space-y-2">
-                  <li>
+                <ul id="dropdown-yudisium" class="hidden py-2 space-y-2 list-none">
+                  <li class="">
                     <a
                       href="{{route('admin.wisuda.pendaftaran')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                       >Pendaftaran Wisuda</a
                     >
                   </li>
-                  <li>
+                  <li class="">
                     <a
                       href="{{route('admin.wisuda.kehadiran')}}"
                       class="flex items-center p-2 pl-11 w-full text-sm font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -764,10 +764,10 @@
               </li>
             </ul>
             <ul
-              class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
+              class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700 list-none"
             >
               <h5 class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-400">Lainnya</h5>
-              <li>
+              <li class="">
                 <a
                   href="{{route('admin.setting')}}"
                   class="flex items-center p-2 text-sm font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
