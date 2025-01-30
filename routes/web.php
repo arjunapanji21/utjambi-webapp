@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomepageController;
@@ -12,6 +13,13 @@ use App\Http\Controllers\WisudaController;
 use App\Http\Middleware\Maintenance;
 use App\Models\WebSetting;
 use Illuminate\Support\Facades\Route;
+
+// Route API
+Route::prefix('api')->group(function (){
+    Route::get('post', [APIController::class, 'get_post']);
+    Route::get('slug', [APIController::class, 'get_slug']);
+});
+// End of Route API
 
 Route::get('/503', function(){
     return abort(503);
