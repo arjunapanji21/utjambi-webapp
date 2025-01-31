@@ -9,9 +9,8 @@ class APIController extends Controller
 {
     public function get_post(Request $request){
 
-        $post = Post::where('status', 'publish')->orderBy('date', 'desc');
-
         if($request->has('slug')){
+            $post = Post::select('id', 'title', 'slug', 'date', 'content', 'tags', 'views')->where('status', 'publish')->orderBy('date', 'desc');
             $post->where('slug', $request['slug']);
             return response()->json([
                 'status' => 200,
@@ -21,10 +20,27 @@ class APIController extends Controller
         }
 
         if($request->has('post_category_id')){
+            $post = Post::select('id', 'title', 'slug', 'date', 'excerpt', 'content', 'tags', 'views')->where('status', 'publish')->orderBy('date', 'desc');
             $post->where('post_category_id', $request['post_category_id']);
+            return response()->json([
+                'status' => 200,
+                'message' => 'success',
+                'data' => $post->get(),
+            ]);
+        }
+
+        if($request->has('random')){
+            $post = Post::select('id', 'title', 'slug', 'date', 'views')->where('status', 'publish')->orderBy('date', 'desc');
+            $post->inRandomOrder()->take($request['random']);
+            return response()->json([
+                'status' => 200,
+                'message' => 'success',
+                'data' => $post->get(),
+            ]);
         }
         
         if($request->has('limit')){
+            $post = Post::select('id', 'title', 'slug', 'date', 'excerpt', 'content', 'tags', 'views')->where('status', 'publish')->orderBy('date', 'desc');
             $post->limit($request['limit']);
             return response()->json([
                 'status' => 200,
@@ -34,6 +50,7 @@ class APIController extends Controller
         }
 
         if($request->has('paginate')){
+            $post = Post::select('id', 'title', 'slug', 'date', 'excerpt', 'content', 'tags', 'views')->where('status', 'publish')->orderBy('date', 'desc');
             return response()->json([
                 'status' => 200,
                 'message' => 'success',
@@ -41,10 +58,19 @@ class APIController extends Controller
             ]);
         }
 
+        if($request->has('all')){
+            $post = Post::select('id', 'title', 'slug', 'date', 'views')->where('status', 'publish')->orderBy('date', 'desc');
+            return response()->json([
+                'status' => 200,
+                'message' => 'success',
+                'data' => $post->get(),
+            ]);
+        }
+
         return response()->json([
-            'status' => 200,
-            'message' => 'success',
-            'data' => $post->get(),
+            'status' => 404,
+            'message' => 'parameter undefined',
+            'data' => [],
         ]);
     }
 
