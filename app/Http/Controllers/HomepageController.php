@@ -6,6 +6,7 @@ use App\Models\CekJadwalTutorial;
 use App\Models\DataPesertaTutorial;
 use App\Models\Matakuliah;
 use App\Models\NumpangUjian;
+use App\Models\PesertaOsmbPkbjj;
 use App\Models\Post;
 use App\Models\Token;
 use App\Models\Visitor;
@@ -75,12 +76,31 @@ class HomepageController extends Controller
         return view('homepage.blog', $props);
     }
 
-    public function osmb(){
+    public function osmb_pkbjj(){
         $this->visitor();
         $props = [
-            'title' => 'OSMB',
+            'title' => 'OSMB & PKBJJ',
         ];
-        return view('homepage.kegiatan.osmb', $props);
+        return view('homepage.kegiatan.osmb_pkbjj', $props);
+    }
+
+    public function osmb_pkbjj_show(Request $request){
+        $this->visitor();
+        $data = PesertaOsmbPkbjj::where('nim', $request['nim'])->get()->first();
+        $props = [
+            'title' => 'OSMB & PKBJJ',
+            'data' => $data,
+        ];
+        return view('homepage.kegiatan.osmb_pkbjj_show', $props);
+    }
+
+    public function osmb_pkbjj_konfirmasi($id, Request $request){
+        $this->visitor();
+        $data = PesertaOsmbPkbjj::find($id);
+        $data->hadir_osmb = $request['hadir_osmb'];
+        $data->hadir_pkbjj = $request['hadir_pkbjj'];
+        $data->save();
+        return back()->with('success', "Konfirmasi kehadiran berhasil disimpan!");
     }
 
     public function wt_ku(Request $request){

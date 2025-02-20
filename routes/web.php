@@ -67,7 +67,9 @@ Route::middleware([Maintenance::class])->group(function () {
     });
 
     Route::prefix('kegiatan')->group(function () {
-        Route::get('/osmb', [HomepageController::class, 'osmb'])->name('kegiatan.osmb');
+        Route::get('/osmb-pkbjj', [HomepageController::class, 'osmb_pkbjj'])->name('kegiatan.osmb');
+        Route::get('/osmb-pkbjj/show', [HomepageController::class, 'osmb_pkbjj_show'])->name('kegiatan.osmb.show');
+        Route::post('/osmb-pkbjj/{id}/konfirmasi', [HomepageController::class, 'osmb_pkbjj_konfirmasi'])->name('kegiatan.osmb.konfirmasi');
         Route::get('/wt-ku', [HomepageController::class, 'wt_ku'])->name('kegiatan.wt_ku');
         Route::get('/jadwal/perkuliahan', [HomepageController::class, 'jadwal_perkuliahan'])->name('kegiatan.jadwal_perkuliahan');
         Route::get('/jadwal/perkuliahan/{kode_kelas}/pemberkasan', [HomepageController::class, 'download_pemberkasan'])->name('kegiatan.download_pemberkasan');
