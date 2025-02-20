@@ -11,7 +11,7 @@ import axios from 'axios';
 
 // Set Axios default headers
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.baseURL = '/'; // Optional: Base URL for your API
+axios.defaults.baseURL = '/v2/'; // Optional: Base URL for your API
 const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
