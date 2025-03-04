@@ -16,6 +16,12 @@ class LPKBJJController extends Controller
             'title' => 'OSMB-PKBJJ',
             'active' => 'LPKBJJ',
             'data' => PesertaOsmbPkbjj::orderBy('masa', 'desc')->orderBy('kelas', 'asc')->orderBy('nama', 'asc')->get(),
+            'akan_hadir_osmb' => count(PesertaOsmbPkbjj::where('hadir_osmb', 'Hadir')->get()),
+            'akan_hadir_pkbjj' => count(PesertaOsmbPkbjj::where('hadir_pkbjj', 'Hadir')->get()),
+            'tidak_hadir_osmb' => count(PesertaOsmbPkbjj::where('hadir_osmb', 'Tidak Hadir')->get()),
+            'tidak_hadir_pkbjj' => count(PesertaOsmbPkbjj::where('hadir_pkbjj', 'Tidak Hadir')->get()),
+            'belum_konfirmasi_osmb' => count(PesertaOsmbPkbjj::where('hadir_osmb', null)->get()),
+            'belum_konfirmasi_pkbjj' => count(PesertaOsmbPkbjj::where('hadir_pkbjj', null)->get()),
         ];
         return view('admin.aplikasi.lpkbjj.osmb_pkbjj', $props);
     }

@@ -158,9 +158,9 @@
                     <td class="px-4 py-3">
                         {{date('d M Y', strtotime($row->tgl_osmb))}}<br>
                         {{$row->lokasi_osmb}}<br>
-                        @if($row->hadir_osmb == "Ya")
+                        @if($row->hadir_osmb == "Hadir")
                         <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Akan Hadir</span>
-                        @elseif($row->hadir_osmb == "Tidak")
+                        @elseif($row->hadir_osmb == "Tidak Hadir")
                         <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Tidak Hadir</span>
                         @else
                         <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Belum Konfirmasi</span>
@@ -170,9 +170,9 @@
                     <td class="px-4 py-3">
                         {{date('d/m/Y', strtotime($row->tgl_pkbjj))}}<br>
                         {{$row->lokasi_pkbjj}}<br>
-                        @if($row->hadir_pkbjj == "Ya")
+                        @if($row->hadir_pkbjj == "Hadir")
                         <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Akan Hadir</span>
-                        @elseif($row->hadir_pkbjj == "Tidak")
+                        @elseif($row->hadir_pkbjj == "Tidak Hadir")
                         <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Tidak Hadir</span>
                         @else
                         <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Belum Konfirmasi</span>
@@ -192,6 +192,20 @@
         </table>
     </div>
     {{-- <x-pagination :data="$data"></x-pagination> --}}
+</div>
+<div class="grid lg:grid-cols-2 gap-4">
+    <div class="bg-white shadow rounded-lg p-4">
+        <h3 class="font-bold text-xl">Data OSMB</h3>
+        <p class="font-medium text-green-600">Akan Hadir: {{$akan_hadir_osmb}} Mahasiswa</p>
+        <p class="font-medium text-yellow-600">Tidak Hadir: {{$tidak_hadir_osmb}} Mahasiswa</p>
+        <p class="font-medium text-red-600">Belum Konfirmasi: {{$belum_konfirmasi_osmb}} Mahasiswa</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-4">
+        <h3 class="font-bold text-xl">Data PKBJJ</h3>
+        <p class="font-medium text-green-600">Akan Hadir: {{$akan_hadir_pkbjj}} Mahasiswa</p>
+        <p class="font-medium text-yellow-600">Tidak Hadir: {{$tidak_hadir_pkbjj}} Mahasiswa</p>
+        <p class="font-medium text-red-600">Belum Konfirmasi: {{$belum_konfirmasi_pkbjj}} Mahasiswa</p>
+    </div>
 </div>
 
 <!-- modal import data -->
