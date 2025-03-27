@@ -140,6 +140,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::post('/penjadwalan/tutorial/edit/peserta', [TutorialController::class, 'penjadwalan_tutorial_edit_peserta'])->name('admin.ttm.penjadwalan_tutorial_edit_peserta');
         Route::get('/penjadwalan/kelas', [TutorialController::class, 'penjadwalan_kelas'])->name('admin.ttm.penjadwalan_kelas');
         Route::post('/penjadwalan/kelas/create', [TutorialController::class, 'penjadwalan_kelas_create'])->name('admin.ttm.penjadwalan_kelas_create');
+        Route::post('/penjadwalan/kelas/reset', [TutorialController::class, 'penjadwalan_kelas_reset'])->name('admin.ttm.penjadwalan_kelas_reset');
         Route::get('/data/tutor', [TutorialController::class, 'data_tutor'])->name('admin.ttm.data_tutor');
         Route::post('/data/tutor/import', [TutorialController::class, 'data_tutor_import'])->name('admin.ttm.data_tutor_import');
         Route::get('/data/jadwal', [TutorialController::class, 'data_jadwal'])->name('admin.ttm.data_jadwal');

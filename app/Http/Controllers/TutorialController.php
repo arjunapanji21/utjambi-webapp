@@ -126,9 +126,13 @@ class TutorialController extends Controller
         return view('admin.aplikasi.tutorial.penjadwalan_kelas', $props);
     }
 
-    public function penjadwalan_kelas_reset(){
-        PenjadwalanKelas::truncate();
-        return back()->with('success', 'Penjadwalan Kelas Berhasil Direset!');
+    public function penjadwalan_kelas_reset() {
+        try {
+            PenjadwalanKelas::truncate();
+            return back()->with('success', 'Semua data penjadwalan kelas berhasil direset.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mereset data penjadwalan kelas.');
+        }
     }
 
     public function penjadwalan_kelas_create(Request $request){
@@ -444,6 +448,8 @@ class TutorialController extends Controller
         // }
         return back()->with('success', 'Penjadwalan Kelas Berhasil!');
     }
+
+    
 
     public function penjadwalan_tutorial_import(Request $request) {
         // PenjadwalanTutorial::truncate();
