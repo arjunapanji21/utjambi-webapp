@@ -24,7 +24,7 @@ class DashboardController extends Controller
             'jumlah_pengunjung' => count(Visitor::all()),
             'pengunjung_hari_ini' => count(Visitor::where('created_at', 'like', '%' . date('Y-m-d') . '%')->get()),
             'total_views' => $totalViews,
-            'visitors' => Visitor::orderBy('updated_at', 'desc')->limit(10)->get(),
+            'visitors' => Visitor::orderBy('updated_at', 'desc')->limit(5)->get(),
             'posts' => Post::orderBy('views', 'desc')->limit(5)->get(),
         ];
         return view('admin.dashboard', $master);

@@ -23,25 +23,24 @@ class DataPesertaTutorialImport implements ToModel, WithStartRow
     */
     public function model(array $row)
     {
-        return new DataPesertaTutorial([
-            'upbjj' => $row[1],
-            'kabko' => $row[2],
-            'pos' => $row[3],
-            'pokjar' => $row[4],
-            'wilayah_ujian' => $row[5],
-            'fakultas' => $row[6],
-            'prodi' => $row[7],
-            'agama' => $row[8],
-            'sipas' => $row[9],
-            'nim' => $row[10],
-            'nama_mahasiswa' => $row[11],
-            'masa' => $row[12],
-            'semester' => $row[13],
-            'MRI' => $row[14],
-            'MRA' => $row[15],
-            'alamat' => $row[16],
-            'telp' => $row[17],
-            'email' => $row[18],
-        ]);
+        $data = new DataPesertaTutorial();
+        $data->upbjj = $row[1];
+        $data->kabko = $row[2];
+        $data->pos = $row[3];
+        $data->pokjar = $row[4];
+        $data->wilayah_ujian = $row[5];
+        $data->fakultas = $row[6];
+        $data->prodi = $row[7];
+        $data->agama = $row[8];
+        $data->sipas = $row[9];
+        $data->nim = $row[10];
+        $data->nama_mahasiswa = $row[11];
+        $data->masa = $row[12];
+        $data->semester = $row[13];
+        $data->MRI = $row[14];
+        $data->MRA = $row[15];
+        $data->alamat = $row[16];
+        $data->telp = $row[17];
+        $data->email = $row[18];
     }
 }

@@ -1,28 +1,44 @@
 @extends('layouts.homepage')
 
 @section('content')
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center px-4">
+    <div class="max-w-lg w-full space-y-8 text-center">
+        <div class="space-y-6">
+            <!-- Modern wrench icon -->
+            <svg class="h-16 w-16 mx-auto text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
+                {{isset($description) ? $description : "Under Maintenance"}}
+            </h1>
+            
+            <div class="space-y-2">
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Our team is performing scheduled maintenance to improve your experience.
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300">Expected completion:</p>
+            </div>
+        </div>
 
-<section class="bg-white dark:bg-gray-900 min-h-screen flex justify-center items-center">
-    <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
-        <svg class="mx-auto mb-4 w-10 h-10 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M331.8 224.1c28.29 0 54.88 10.99 74.86 30.97l19.59 19.59c40.01-17.74 71.25-53.3 81.62-96.65c5.725-23.92 5.34-47.08 .2148-68.4c-2.613-10.88-16.43-14.51-24.34-6.604l-68.9 68.9h-75.6V97.2l68.9-68.9c7.912-7.912 4.275-21.73-6.604-24.34c-21.32-5.125-44.48-5.51-68.4 .2148c-55.3 13.23-98.39 60.22-107.2 116.4C224.5 128.9 224.2 137 224.3 145l82.78 82.86C315.2 225.1 323.5 224.1 331.8 224.1zM384 278.6c-23.16-23.16-57.57-27.57-85.39-13.9L191.1 158L191.1 95.99l-127.1-95.99L0 63.1l96 127.1l62.04 .0077l106.7 106.6c-13.67 27.82-9.251 62.23 13.91 85.39l117 117.1c14.62 14.5 38.21 14.5 52.71-.0016l52.75-52.75c14.5-14.5 14.5-38.08-.0016-52.71L384 278.6zM227.9 307L168.7 247.9l-148.9 148.9c-26.37 26.37-26.37 69.08 0 95.45C32.96 505.4 50.21 512 67.5 512s34.54-6.592 47.72-19.78l119.1-119.1C225.5 352.3 222.6 329.4 227.9 307zM64 472c-13.25 0-24-10.75-24-24c0-13.26 10.75-24 24-24S88 434.7 88 448C88 461.3 77.25 472 64 472z"/></svg>
-        <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-6xl dark:text-white">Under Maintenance</h1>
-        <p class="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">Our Enterprise administrators are performing scheduled maintenance.</p>
-        <p class="font-light text-gray-500 md:text-lg xl:text-xl dark:text-gray-400">Please wait until:</p>
-        <div id="countdown" class="animate-pulse bg-red-100 font-extrabold text-3xl lg:text-6xl text-red-600 inline-flex items-center px-3.5 py-1.5 rounded-lg dark:bg-gray-700 dark:text-red-400 border border-red-400"></div>
+        <div id="countdown" class="inline-flex items-center justify-center space-x-2 text-2xl sm:text-3xl md:text-4xl font-mono font-bold bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 py-4 px-6 rounded-xl shadow-sm"></div>
+        
+        <div class="pt-6">
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                Thank you for your patience.
+            </p>
+        </div>
     </div>
-</section>
-    
+</div>
 @endsection
 
 @section('script')
 <script>
-
     CountDownTimer('{{$until}}', 'countdown');
 
-    function CountDownTimer(dt, id)
-    {
+    function CountDownTimer(dt, id) {
         var end = new Date(dt);
-
         var _second = 1000;
         var _minute = _second * 60;
         var _hour = _minute * 60;
@@ -32,26 +48,29 @@
         function showRemaining() {
             var now = new Date();
             var distance = end - now;
+            
             if (distance < 0) {
-                
                 clearInterval(timer);
-                document.getElementById('masa-pendaftaran').classList.add("hidden");
-
+                document.getElementById(id).innerHTML = "Maintenance Complete";
                 return;
             }
+
             var days = Math.floor(distance / _day);
             var hours = Math.floor((distance % _day) / _hour);
             var minutes = Math.floor((distance % _hour) / _minute);
             var seconds = Math.floor((distance % _minute) / _second);
 
-            document.getElementById(id).innerHTML = days + 'd : ';
-            document.getElementById(id).innerHTML += hours + 'h : ';
-            document.getElementById(id).innerHTML += minutes + 'm : ';
-            document.getElementById(id).innerHTML += seconds + 's';
+            var timeString = [
+                days + 'd',
+                hours + 'h',
+                minutes + 'm',
+                seconds + 's'
+            ].join(' : ');
+
+            document.getElementById(id).innerHTML = timeString;
         }
 
         timer = setInterval(showRemaining, 1000);
     }
-
 </script>
 @endsection

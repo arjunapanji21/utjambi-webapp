@@ -12,8 +12,12 @@ import axios from 'axios';
 // Set Axios default headers
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.baseURL = '/v2/'; // Optional: Base URL for your API
-const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+
+// Get CSRF token safely
+const tokenElement = document.querySelector('meta[name="csrf-token"]');
+if (tokenElement) {
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = tokenElement.getAttribute('content');
+}
 
 import 'summernote/dist/summernote-lite.min.css';
 import 'summernote/dist/summernote-lite.min.js';

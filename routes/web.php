@@ -135,6 +135,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::get('/penjadwalan/tutorial/cek', [TutorialController::class, 'cek_jadwal_tutorial'])->name('admin.ttm.cek_jadwal_tutorial');
         Route::post('/penjadwalan/tutorial/cek/import', [TutorialController::class, 'cek_jadwal_tutorial_import'])->name('admin.ttm.cek_jadwal_tutorial_import');
         Route::get('/penjadwalan/tutorial/export/{penjadwalan_tutorial_id}', [TutorialController::class, 'penjadwalan_kelas_export'])->name('admin.ttm.penjadwalan_tutorial_export');
+        Route::get('/penjadwalan/tutorial/export', [TutorialController::class, 'penjadwalan_tutorial_export'])->name('admin.ttm.all_penjadwalan_tutorial_export');
         Route::post('/penjadwalan/tutorial/edit/info', [TutorialController::class, 'penjadwalan_tutorial_edit_info'])->name('admin.ttm.penjadwalan_tutorial_edit_info');
         Route::post('/penjadwalan/tutorial/edit/peserta', [TutorialController::class, 'penjadwalan_tutorial_edit_peserta'])->name('admin.ttm.penjadwalan_tutorial_edit_peserta');
         Route::get('/penjadwalan/kelas', [TutorialController::class, 'penjadwalan_kelas'])->name('admin.ttm.penjadwalan_kelas');

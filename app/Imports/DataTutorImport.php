@@ -23,29 +23,30 @@ class DataTutorImport implements ToModel, WithStartRow
     */
     public function model(array $row)
     {
-        return new DataTutor([
-           'kode_tutor' => $row[1],
-           'nip' => $row[2],
-           'nama' => $row[3],
-           'nik' => $row[4],
-           'verif_ktp' => $row[5],
-           'nidn' => $row[6],
-           'jk' => $row[7],
-           'tgl_lahir' => $row[8],
-           'telp' => $row[9],
-           'email' => $row[10],
-           'alamat' => $row[11],
-           'kode_pos' => $row[12],
-           'kabko' => $row[13],
-           'provinsi' => $row[14],
-           'tgl_sk' => $row[15],
-           'npwp' => $row[16],
-           'institusi' => $row[17],
-           'norek' => $row[18],
-           'bank' => $row[19],
-           'nama_rekening' => $row[20],
-           'pendidikan' => $row[21],
-           'pelatihan' => $row[22],
-        ]);
+        $data = new DataTutor();
+        $data->kode_tutor = $row[1];
+        $data->nip = $row[2];
+        $data->nama = $row[3];
+        $data->nik = $row[4];
+        $data->verif_ktp = $row[5];
+        $data->nidn = $row[6];
+        $data->jk = $row[7];
+        $data->tgl_lahir = $row[8];
+        $data->telp = $row[9];
+        $data->email = $row[10];
+        $data->alamat = $row[11];
+        $data->kode_pos = $row[12];
+        $data->kabko = $row[13];
+        $data->provinsi = $row[14];
+        $data->tgl_sk = $row[15];
+        $data->npwp = $row[16];
+        $data->institusi = $row[17];
+        $data->norek = $row[18];
+        $data->bank = $row[19];
+        $data->nama_rekening = $row[20];
+        $data->pendidikan = $row[21];
+        $data->pelatihan = $row[22];
+        $data->save();
+        return $data;
     }
 }

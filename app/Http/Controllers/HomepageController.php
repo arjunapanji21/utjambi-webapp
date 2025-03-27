@@ -122,48 +122,55 @@ class HomepageController extends Controller
 
     public function jadwal_perkuliahan(Request $request) {
         $this->visitor();
-        if($request->has('input')){
-            if(strlen($request['input']) == 8){
-                $data = CekJadwalTutorial::where('kode_tutor', $request['input'])->get();
+        // if($request->has('input')){
+        //     if(strlen($request['input']) == 8){
+        //         $data = CekJadwalTutorial::where('kode_tutor', $request['input'])->get();
 
-                if(count($data) <= 0){
-                    return back()->with('alert', 'Kode yang dimasukkan salah atau tidak terdaftar pada sistem.');
-                }
+        //         if(count($data) <= 0){
+        //             return back()->with('alert', 'Kode yang dimasukkan salah atau tidak terdaftar pada sistem.');
+        //         }
 
-                $tutor['kode'] = $data[0]->kode_tutor;
-                $tutor['nama'] = $data[0]->nama_tutor;
+        //         $tutor['kode'] = $data[0]->kode_tutor;
+        //         $tutor['nama'] = $data[0]->nama_tutor;
 
-                $props = [
-                    'title' => 'Cek Jadwal Tutorial',
-                    'active' => 'Tutorial',
-                    'data' => $data->groupBy('kode_kelas'),
-                    'guest' => 'tutor',
-                    'tutor' => $tutor,
-                ];
-            }
-            else if(strlen($request['input']) == 9){
-                $data = CekJadwalTutorial::where('nim', $request['input'])->get();
+        //         $props = [
+        //             'title' => 'Cek Jadwal Tutorial',
+        //             'active' => 'Tutorial',
+        //             'data' => $data->groupBy('kode_kelas'),
+        //             'guest' => 'tutor',
+        //             'tutor' => $tutor,
+        //         ];
+        //     }
+        //     else if(strlen($request['input']) == 9){
+        //         $data = CekJadwalTutorial::where('nim', $request['input'])->get();
 
-                if(count($data) <= 0){
-                    return back()->with('alert', 'Kode yang dimasukkan salah atau tidak terdaftar pada sistem.');
-                }
+        //         if(count($data) <= 0){
+        //             return back()->with('alert', 'Kode yang dimasukkan salah atau tidak terdaftar pada sistem.');
+        //         }
 
-                $props = [
-                    'title' => 'Cek Jadwal Tutorial',
-                    'active' => 'Tutorial',
-                    'data' => $data,
-                    'guest' => 'mahasiswa',
-                ];
-            }else{
-                return back()->with('alert', 'Kode yang dimasukkan salah atau tidak terdaftar pada sistem.');
-            }
-        }else{
-            $props = [
-                'title' => 'Cek Jadwal Tutorial',
-                'active' => 'Tutorial',
-            ];
-        }
-        return view('homepage.mahasiswa.jadwal_perkuliahan', $props);
+        //         $props = [
+        //             'title' => 'Cek Jadwal Tutorial',
+        //             'active' => 'Tutorial',
+        //             'data' => $data,
+        //             'guest' => 'mahasiswa',
+        //         ];
+        //     }else{
+        //         return back()->with('alert', 'Kode yang dimasukkan salah atau tidak terdaftar pada sistem.');
+        //     }
+        // }else{
+        //     $props = [
+        //         'title' => 'Cek Jadwal Tutorial',
+        //         'active' => 'Tutorial',
+        //     ];
+        // }
+        // return view('homepage.mahasiswa.jadwal_perkuliahan', $props);
+        $until = date('m/d/Y', strtotime("2025-04-11"));
+        $props = [
+            'title' => 'Jadwal TTM sedang diproses | UT Jambi',
+            'description' => 'Jadwal TTM sedang diproses...',
+            'until' => $until,
+        ];
+        return view('maintenance', $props);
     }
 
     public function download_pemberkasan($kode_kelas){

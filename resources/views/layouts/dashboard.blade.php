@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{asset('images/logo_ut.ico')}}">
     <title>{{isset($title) ? $title : "UT Jambi"}}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css','resources/js/app.js'])
     @yield('head')
 </head>

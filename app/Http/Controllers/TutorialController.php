@@ -22,16 +22,34 @@ use App\Models\PenjadwalanKelas;
 use App\Models\PenjadwalanTutorial;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AllPenjadwalanTutorialExport;
 
 class TutorialController extends Controller
 {
-    public function penjadwalan_tutorial() {
-        // $nama_file = "1 FARID IMAM KHOLIDIN - 118 smt 5 @ IDIK4008.170001";
-        // dd(explode('@ ', $nama_file)[1]);
+    public function penjadwalan_tutorial(Request $request) {
+        $query = PenjadwalanTutorial::query();
+        
+        if ($request->has('search')) {
+            $search = $request->get('search');
+            $query->where(function($q) use ($search) {
+                $q->where('masa', 'like', "%{$search}%")
+                  ->orWhere('kode_kelas', 'like', "%{$search}%")
+                  ->orWhereHas('tutor', function($q2) use ($search) {
+                      $q2->where('nama', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        // Fixed whereHas clause to properly count related records
+        if ($request->filter_peserta === 'with_students') {
+            $query->has('peserta');
+        }
+    
         $props = [
             'title' => 'Penjadwalan Tutorial',
             'active' => 'Tutorial',
-            'data' => PenjadwalanTutorial::orderBy('kode_kelas', 'asc')->paginate(500),
+            'data' => $query->orderBy('id', 'asc')->paginate(20),
+            'search' => $request->get('search')
         ];
         return view('admin.aplikasi.tutorial.penjadwalan_tutorial', $props);
     }
@@ -106,6 +124,11 @@ class TutorialController extends Controller
             'prodi' => $prodi,
         ];
         return view('admin.aplikasi.tutorial.penjadwalan_kelas', $props);
+    }
+
+    public function penjadwalan_kelas_reset(){
+        PenjadwalanKelas::truncate();
+        return back()->with('success', 'Penjadwalan Kelas Berhasil Direset!');
     }
 
     public function penjadwalan_kelas_create(Request $request){
@@ -209,6 +232,9 @@ class TutorialController extends Controller
                         if($smt == 5){
                             $kode_mk = ['PAUD4102', 'PAUD4408', 'PAUD4105'];
                         }
+                        else if($smt == 6){
+                            $kode_mk = ['PAUD4102', 'PAUD4408', 'PAUD4105'];
+                        }
                         foreach($kode_mk as $mk){
                             $tutorial = DataTutorial::where('kode_lokasi', $kode_lokasi)->where('kode_prodi', $kode_prodi)->where('kode_matakuliah', $mk)->first();
                             $kode_tutorial = $tutorial->kode_tutorial;
@@ -239,6 +265,9 @@ class TutorialController extends Controller
                     foreach($semester as $smt=>$mahasiswa){
                         if($smt == 7){
                             $kode_mk = ['HKUM4404', 'HKUM4302', 'HKUM4303', 'HKUM4408', 'HKUM4500'];
+                        }
+                        else if($smt == 8){
+                            $kode_mk = ['HKUM4311', 'HKUM4308', 'HKUM4307', 'HKUM4310'];
                         }
                         foreach($kode_mk as $mk){
                             $tutorial = DataTutorial::where('kode_lokasi', $kode_lokasi)->where('kode_prodi', $kode_prodi)->where('kode_matakuliah', $mk)->first();
@@ -271,6 +300,9 @@ class TutorialController extends Controller
                         if($smt == 5){
                             $kode_mk = ['ASIP4404', 'ASIP4325', 'ASIP4304', 'ASIP4312', 'ASIP4436', 'ASIP4311'];
                         }
+                        else if($smt == 6){
+                            $kode_mk = ['ASIP4320', 'ASIP4318', 'ASIP4202', 'ASIP4429', 'SKOM4437', 'ASIP4208', 'ASIP4426'];
+                        }
                         foreach($kode_mk as $mk){
                             $tutorial = DataTutorial::where('kode_lokasi', $kode_lokasi)->where('kode_prodi', $kode_prodi)->where('kode_matakuliah', $mk)->first();
                             $kode_tutorial = $tutorial->kode_tutorial;
@@ -301,6 +333,9 @@ class TutorialController extends Controller
                     foreach($semester as $smt=>$mahasiswa){
                         if($smt == 3){
                             $kode_mk = ['MKWI4201', 'MKWI4202', 'EKMA4158', 'SPAR4207', 'SPAR4204'];
+                        }
+                        else if($smt == 3){
+                            $kode_mk = ['MKKI4201', 'SPAR4305'];
                         }
                         foreach($kode_mk as $mk){
                             $tutorial = DataTutorial::where('kode_lokasi', $kode_lokasi)->where('kode_prodi', $kode_prodi)->where('kode_matakuliah', $mk)->first();
@@ -333,6 +368,9 @@ class TutorialController extends Controller
                         if($smt == 1){
                             $kode_mk = ['ADBI4201', 'ISIP4130', 'MKWI4201'];
                         }
+                        else if($smt == 2){
+                            $kode_mk = ['ISIP4211', 'ISIP4112', 'ISIP4310'];
+                        }
                         foreach($kode_mk as $mk){
                             $tutorial = DataTutorial::where('kode_lokasi', $kode_lokasi)->where('kode_prodi', $kode_prodi)->where('kode_matakuliah', $mk)->first();
                             $kode_tutorial = $tutorial->kode_tutorial;
@@ -363,6 +401,9 @@ class TutorialController extends Controller
                     foreach($semester as $smt=>$mahasiswa){
                         if($smt == 3){
                             $kode_mk = ['ADBI4201', 'EKMA4157', 'ESPA4110', 'EKMA4316', 'EKMA4434'];
+                        }
+                        else if($smt == 4){
+                            $kode_mk = ['EKMA4216', 'EKMA4413', 'EKMA4214', 'ESPA4227', 'EKMA4312'];
                         }
                         foreach($kode_mk as $mk){
                             $tutorial = DataTutorial::where('kode_lokasi', $kode_lokasi)->where('kode_prodi', $kode_prodi)->where('kode_matakuliah', $mk)->first();
@@ -502,7 +543,7 @@ class TutorialController extends Controller
 
     public function penjadwalan_kelas_export($penjadwalan_tutorial_id){
         $data = PenjadwalanTutorial::find($penjadwalan_tutorial_id);
-        return Excel::download(new PenjadwalanKelasExport($data), $data->kode_kelas.'.xlsx');
+        return Excel::download(new PenjadwalanKelasExport($data), $data->id."_".$data->kode_kelas.'.xlsx');
     }
 
     public function cek_jadwal_tutorial(Request $request) {

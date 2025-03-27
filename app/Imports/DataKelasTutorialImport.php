@@ -23,11 +23,12 @@ class DataKelasTutorialImport implements ToModel, WithStartRow
     */
     public function model(array $row)
     {
-        return new DataKelasTutorial([
-            'upbjj' => $row[1],
-            'matakuliah' => $row[2],
-            'kode_kelas' => $row[3],
-            'nama_kelas' => $row[4],
-        ]);
+        $data = new DataKelasTutorial();
+        $data->upbjj = $row[1];
+        $data->matakuliah = $row[2];
+        $data->kode_kelas = $row[3];
+        $data->nama_kelas = $row[4];
+        $data->save();
+        return $data;
     }
 }
