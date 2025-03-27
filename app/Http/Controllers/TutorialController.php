@@ -547,10 +547,25 @@ class TutorialController extends Controller
     }
 
     public function cek_jadwal_tutorial(Request $request) {
+        $query = CekJadwalTutorial::query();
+        
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nim', 'like', "%{$search}%")
+                  ->orWhere('nama_mahasiswa', 'like', "%{$search}%")
+                  ->orWhere('kode_kelas', 'like', "%{$search}%")
+                  ->orWhere('nama_matakuliah', 'like', "%{$search}%")
+                  ->orWhere('nama_tutor', 'like', "%{$search}%")
+                  ->orWhere('lokasi', 'like', "%{$search}%");
+            });
+        }
+
         $props = [
             'title' => 'Cek Jadwal Tutorial',
             'active' => 'Tutorial',
-            'data' => CekJadwalTutorial::orderBy('tutor', 'asc')->paginate(500),
+            'data' => $query->orderBy('tutor', 'asc')->paginate(20),
+            'search' => $request->search
         ];
         return view('admin.aplikasi.tutorial.cek_jadwal_tutorial', $props);
     }

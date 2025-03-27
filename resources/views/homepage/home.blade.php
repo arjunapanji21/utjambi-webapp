@@ -1,80 +1,71 @@
 @extends('layouts.homepage')
 @section('content')
-<section class="pt-8 flex flex-col dark:bg-gray-900 bg-white bg-center bg-no-repeat bg-cover" style="background-image: url({{asset('images/background/hero-pattern.svg')}})">
-    <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
-        <div class="w-full grid lg:grid-cols-2 gap-10 justify-center items-start">
-            <div class="w-full text-center lg:text-left pt-2 lg:pt-10">
+<section class="relative flex flex-col dark:bg-gray-900 bg-gradient-to-br from-white to-gray-50">
+    <div class="absolute inset-0 bg-center bg-no-repeat bg-cover opacity-10" style="background-image: url({{asset('images/background/hero-pattern.svg')}})"></div>
+    
+    <div class="relative px-4 mx-auto max-w-screen-xl lg:px-6 py-12 lg:py-16">
+        <div class="w-full grid lg:grid-cols-2 gap-12 justify-between items-center">
+            <div class="w-full space-y-8">
+                {{-- <!-- Alert Banner -->
                 <a href="{{route('kegiatan.wisuda')}}"
-                    class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-primary-50 rounded-lg dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 shadow animate-bounce"
+                    class="group inline-flex items-center gap-2 py-2 px-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition duration-300"
                     role="alert">
-                    <span class="text-sm bg-gradient-to-r from-yellow-100 to-yellow-300 rounded-lg font-medium text-yellow-600 px-4 py-1.5 mr-3">#FYI</span> <span
-                        class="text-sm font-medium">Penerimaan Mahasiswa Baru Telah Dibuka!</span>
-                    <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"></path>
+                    <span class="px-3 py-1 text-sm font-medium text-yellow-700 bg-yellow-100 rounded-lg">#PMB2025</span>
+                    <span class="text-sm font-medium text-gray-700">Penerimaan Mahasiswa Baru</span>
+                    <svg class="w-5 h-5 text-gray-700 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
                     </svg>
-                </a>
-                <div class="flex justify-center lg:justify-start items-center gap-2 italic text-sm lg:text-lg">
-                    <p>
-                        <span class="font-extrabold">#</span>KuliahOnline
+                </a> --}}
+
+                <!-- Main Content -->
+                <div class="space-y-6 text-center lg:text-left">
+                    <h1 class="text-4xl lg:text-6xl font-bold text-primary-600 leading-tight">
+                        Universitas Terbuka <span class="text-yellow-300">Jambi</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                        PTN dengan sistem pembelajaran jarak jauh terbaik di Indonesia, kini hadir di Provinsi Jambi.
                     </p>
-                    <p>
-                        <span class="font-extrabold">#</span>KampusNegeri
-                    </p>
-                    <p>
-                        <span class="font-extrabold">#</span>KualitasDunia
-                    </p>
+                    <!-- Hashtags -->
+                <div class="flex flex-wrap gap-4 text-sm justify-center lg:justify-start lg:text-base text-gray-600">
+                    <span class="font-medium">#KuliahOnline</span>
+                    <span class="font-medium">#KampusNegeri</span>
+                    <span class="font-medium">#KualitasDunia</span>
                 </div>
-                <h2 class="mb-2 text-4xl lg:text-6xl tracking-tight font-extrabold text-primary-500">
-                    Universitas Terbuka Daerah Jambi</h2>
-                <p class="mb-4 lg:text-xl text-gray-500 dark:text-gray-400">Perguruan Tinggi Negeri (PTN)
-                    dengan sistem pembelajaran jarak jauh terbaik di Indonesia kini hadir di wilayah Provinsi Jambi.
-                </p>
-                <div id="masa-pendaftaran" class="my-8">
-                    <div class="text-yellow-500 font-medium mb-2">
-                        <span class="text-lg font-bold">Penerimaan Mahasiswa Baru</span></br/>Program Sarjana & Diploma Telah Dibuka:
+                </div>
+
+                <!-- Countdown -->
+                {{-- <div class="space-y-4">
+                    <div class="text-lg font-semibold text-primary-600">
+                        Pendaftaran Batch 1 ditutup dalam:
                     </div>
-                    <div id="countdown" class="animate-pulse bg-primary-100 font-bold text-xl text-primary-600 inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-primary-400 border border-primary-400"></div>
-                </div>
-                <div
-                    class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0 sm:space-x-4">
+                    <div id="countdown" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-lg text-primary-700 font-mono text-xl"></div>
+                </div> --}}
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
                     <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank"
-                        class="inline-flex items-center justify-center shadow px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 hover:scale-105 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="mr-2 -ml-1 w-5 h-5"
-                            fill="currentColor">
-                            <path
-                                d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z" />
+                        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 shadow-lg hover:shadow-xl transition duration-300">
+                        <svg class="mr-2 w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/>
                         </svg>
                         Daftar Sekarang
                     </a>
                     <a href="https://web.whatsapp.com/send?text=&phone=6282259528388" target="_blank"
-                        class="inline-flex items-center shadow justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600 hover:scale-105 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="mr-2 -ml-1 w-5 h-5"
-                            fill="currentColor">
-                            <path
-                                d="M256 48C141.1 48 48 141.1 48 256v40c0 13.3-10.7 24-24 24s-24-10.7-24-24V256C0 114.6 114.6 0 256 0S512 114.6 512 256V400.1c0 48.6-39.4 88-88.1 88L313.6 488c-8.3 14.3-23.8 24-41.6 24H240c-26.5 0-48-21.5-48-48s21.5-48 48-48h32c17.8 0 33.3 9.7 41.6 24l110.4 .1c22.1 0 40-17.9 40-40V256c0-114.9-93.1-208-208-208zM144 208h16c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H144c-35.3 0-64-28.7-64-64V272c0-35.3 28.7-64 64-64zm224 0c35.3 0 64 28.7 64 64v48c0 35.3-28.7 64-64 64H352c-17.7 0-32-14.3-32-32V240c0-17.7 14.3-32 32-32h16z" />
+                        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-700 bg-white rounded-xl border-2 border-gray-200 hover:bg-gray-50 shadow-lg hover:shadow-xl transition duration-300">
+                        <svg class="mr-2 w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
                         </svg>
-                        Tanya Admin
+                        Hubungi Admin
                     </a>
                 </div>
             </div>
-            <div class="flex justify-end items-center">
-                <div class="relative w-full">
-                    <div
-                        class="hover:-translate-y-4 transition-all absolute right-52 top-8 md:right-52 md:top-14 lg:right-72 lg:top-28 xl:right-80 xl:top-32 ">
-                        <a href="#"
-                            class="block max-w-sm p-4 bg-gradient-to-br from-white via-primary-100 to-primary-50 rounded-lg shadow  border border-primary-100">
-                            <h5
-                                class="mb-2 text-sm lg:text-base font-bold tracking-tight text-primary-900 dark:text-white">
-                                Biaya Terjangkau!</h5>
-                            <p class="text-xs lg:text-sm text-primary-800 dark:text-primary-500">SPP Mulai
-                                Dari <span class="font-bold text-red-600">Rp. 1,3 Jt</span></p>
-                        </a>
-                    </div>
-                    <img class="rounded-lg ml-auto h-96 lg:h-[640px] object-cover"
-                        src="{{asset('/images/mahasiswi-min.webp')}}" alt="Mahasiswi UT">
+
+            <!-- Hero Image -->
+            <div class="hidden lg:block relative w-full">
+                <img class="w-full max-w-md ml-auto rounded-2xl shadow-2xl bg-gradient-to-b from-primary-50 via-primary-200 to-primary-400 animate-float" src="{{asset('/images/mahasiswi-min.webp')}}" alt="Mahasiswi UT">
+                <div class="absolute top-1/4 transform -translate-y-1/2 bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-xl animate-float-delayed">
+                    <h3 class="text-lg font-bold text-primary-700 mb-2">Biaya Terjangkau!</h3>
+                    <p class="text-gray-700">SPP Mulai Dari <span class="font-bold text-red-600">Rp. 1,3 Jt</span></p>
                 </div>
             </div>
         </div>
@@ -438,6 +429,64 @@
         </div>
     </div>
 </section>
+
+<!-- Floating Buttons -->
+<div class="fixed bottom-4 right-4 z-50 flex flex-col gap-4">
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="p-3 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 translate-y-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+    
+    <!-- AI Chat Button -->
+    <a href="https://sl.ut.ac.id/TanyaUTJambi" target="_blank" 
+        class="group p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 640 512">
+            <path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/>
+        </svg>
+        <!-- Tooltip -->
+        <span class="absolute right-full mr-2 py-1 px-2 text-sm text-white bg-gray-900 rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap">
+            Chat with AI Assistant
+        </span>
+    </a>
+</div>
+
+<style>
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes float-delayed {
+        0% {
+            transform: translateY(-50%) translateX(0px);
+        }
+        50% {
+            transform: translateY(-50%) translateX(-10px);
+        }
+        100% {
+            transform: translateY(-50%) translateX(0px);
+        }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float-delayed 3s ease-in-out infinite;
+        animation-delay: 0.5s;
+    }
+</style>
+
 @endsection
 
 @section('script')
@@ -479,5 +528,22 @@
         timer = setInterval(showRemaining, 1000);
     }
 
+    // Back to Top Button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.remove('opacity-0', 'translate-y-10');
+        } else {
+            backToTopButton.classList.add('opacity-0', 'translate-y-10');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 </script>
 @endsection
