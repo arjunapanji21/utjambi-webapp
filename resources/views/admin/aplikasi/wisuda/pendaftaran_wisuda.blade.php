@@ -68,7 +68,8 @@
 
 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-4">
     <div
-        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700"
+        data-filter="request-lip"
+        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
     >
         <div class="flex flex-col">
             <div class="flex items-center justify-between mb-2">
@@ -76,12 +77,12 @@
                     <p
                         class="text-sm font-medium text-gray-500 dark:text-gray-400"
                     >
-                        Total Wisudawan
+                        Request LIP Wisuda
                     </p>
                     <h3
                         class="text-2xl font-bold text-gray-700 dark:text-white"
                     >
-                        {{$stats['total']}}
+                        {{$stats['request_lip']}}
                     </h3>
                 </div>
                 <div
@@ -102,17 +103,20 @@
                     </svg>
                 </div>
             </div>
-            <div class="flex items-center justify-between text-sm">
-                <span class="text-gray-500">Periode:</span>
-                <span
-                    class="font-medium"
-                    >{{$stats['masa_yudisium'] ?? '-'}}</span
-                >
+            <div class="inline-flex items-center text-sm">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                        class="bg-red-500 h-2 rounded-full"
+                        style="width: {{$stats['request_lip_percentage']}}%"
+                    ></div>
+                </div>
+                <span class="ml-2 text-gray-500">{{$stats['request_lip_percentage']}}%</span>
             </div>
         </div>
     </div>
     <div
-        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700"
+        data-filter="sudah-bayar"
+        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
     >
         <div class="flex flex-col">
             <div class="flex items-center justify-between mb-2">
@@ -123,16 +127,16 @@
                         Sudah Bayar
                     </p>
                     <h3
-                        class="text-2xl font-bold text-red-600 dark:text-red-400"
+                        class="text-2xl font-bold text-yellow-600 dark:text-yellow-400"
                     >
                         {{$stats['sudah_bayar']}}
                     </h3>
                 </div>
                 <div
-                    class="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 dark:bg-red-900"
+                    class="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-50 dark:bg-yellow-900"
                 >
-                    <svg
-                        class="w-6 h-6 text-red-600 dark:text-red-300"
+                    <svg 
+                        class="w-6 h-6 text-yellow-600 dark:text-yellow-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -141,7 +145,7 @@
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                     </svg>
                 </div>
@@ -149,7 +153,7 @@
             <div class="inline-flex items-center text-sm">
                 <div class="w-full bg-gray-200 rounded-full h-2">
                     <div
-                        class="bg-red-500 h-2 rounded-full"
+                        class="bg-yellow-500 h-2 rounded-full"
                         style="width: {{$stats['sudah_bayar_percentage']}}%"
                     ></div>
                 </div>
@@ -158,7 +162,8 @@
         </div>
     </div>
     <div
-        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700"
+        data-filter="belum-verifikasi"
+        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
     >
         <div class="flex flex-col">
             <div class="flex items-center justify-between mb-2">
@@ -169,16 +174,16 @@
                         Belum Diverifikasi
                     </p>
                     <h3
-                        class="text-2xl font-bold text-yellow-600 dark:text-yellow-400"
+                        class="text-2xl font-bold text-red-600 dark:text-red-400"
                     >
                         {{$stats['belum_verifikasi']}}
                     </h3>
                 </div>
                 <div
-                    class="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-50 dark:bg-yellow-900"
+                    class="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 dark:bg-red-900"
                 >
                     <svg
-                        class="w-6 h-6 text-yellow-600 dark:text-yellow-300"
+                        class="w-6 h-6 text-red-600 dark:text-red-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -195,7 +200,7 @@
             <div class="inline-flex items-center text-sm">
                 <div class="w-full bg-gray-200 rounded-full h-2">
                     <div
-                        class="bg-yellow-400 h-2 rounded-full"
+                        class="bg-red-400 h-2 rounded-full"
                         style="width: {{$stats['belum_verifikasi_percentage']}}%"
                     ></div>
                 </div>
@@ -204,7 +209,8 @@
         </div>
     </div>
     <div
-        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700"
+        data-filter="terverifikasi"
+        class="bg-white border border-gray-200 rounded-lg shadow p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
     >
         <div class="flex flex-col">
             <div class="flex items-center justify-between mb-2">
@@ -296,9 +302,19 @@
         <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
         >
+            <a 
+                href="{{ route('admin.wisuda.pendaftaran.export', ['filter' => request('filter'), 'search' => request('search')]) }}"
+                class="flex items-center justify-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800"
+            >
+                <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 5v2h3l-4 4-4-4h3V5h2zm-2 9h2v-2H8l4 4 4-4h-3v-2h-2v4z"/>
+                </svg>
+                Export Data
+            </a>
+
             <button
                 type="button"
-                data-modal-target="crud-modal"
+                data-modal-target="crud-modal" 
                 data-modal-toggle="crud-modal"
                 class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >
@@ -331,9 +347,8 @@
                     <th scope="col" class="px-4 py-3">Yudisium</th>
                     <th scope="col" class="px-4 py-3">NIM</th>
                     <th scope="col" class="px-4 py-3">NAMA</th>
-                    <th scope="col" class="px-4 py-3">BUKTI BAYAR</th>
-                    <th scope="col" class="px-4 py-3">IKUT SEMINAR</th>
-                    <th scope="col" class="px-4 py-3">KONFIRMASI</th>
+                    <th scope="col" class="px-4 py-3">IKUT SEMINAR({{$stats['ikut_seminar']}}/{{$stats['total']}})</th>
+                    <th scope="col" class="px-4 py-3">STATUS</th>
                     <th scope="col" class="px-4 py-3">
                         <span class="sr-only">Actions</span>
                     </th>
@@ -351,39 +366,6 @@
                     <td class="px-4 py-3">{{$row->masa_yudisium}}</td>
                     <td class="px-4 py-3">{{$row->nim}}</td>
                     <td class="px-4 py-3">{{$row->nama}}</td>
-                    <td class="px-4 py-3">
-                        @if($row->bukti_pembayaran == null)
-                        <span
-                            class="flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-red-900"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 384 512"
-                                class="w-3.5 h-3.5"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8-12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-                                />
-                            </svg>
-                        </span>
-                        @else
-                        <span
-                            class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-green-900"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512"
-                                class="w-3.5 h-3.5"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
-                                />
-                            </svg>
-                        </span>
-                        @endif
-                    </td>
                     <td class="px-4 py-3">
                         @if($row->ikut_seminar == 0)
                         <span
@@ -418,40 +400,16 @@
                         @endif
                     </td>
                     <td class="px-4 py-3">
-                        @if($row->konfirmasi_lip == 0)
-                        <span
-                            class="flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-red-900"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 384 512"
-                                class="w-3.5 h-3.5"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8-12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-                                />
-                            </svg>
-                        </span>
-                        @else
-                        <span
-                            class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-green-900"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512"
-                                class="w-3.5 h-3.5"
-                                fill="currentColor"
-                            >
-                                <path
-                                    d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
-                                />
-                            </svg>
-                        </span>
+                        @if($row->bukti_pembayaran == 'Request LIP')
+                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">Request LIP</span>
+                        @elseif($row->bukti_pembayaran != null && $row->bukti_pembayaran != 'Request LIP' && $row->konfirmasi_lip == 0)
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">Menunggu Verifikasi</span>
+                        @elseif($row->bukti_pembayaran != null && $row->bukti_pembayaran != 'Request LIP' && $row->konfirmasi_lip == 1)
+                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">Terverifikasi</span>
                         @endif
                     </td>
                     <td class="px-4 py-3 flex gap-2 items-center justify-end">
-                        @if($row->bukti_pembayaran != null)
+                        @if($row->bukti_pembayaran != null && $row->bukti_pembayaran != 'Request LIP')
                         <a
                             href="{{asset('uploads/wisuda/bukti_bayar/'.$row->bukti_pembayaran)}}"
                             target="_blank"
@@ -878,5 +836,55 @@
         filePreview.classList.add("hidden");
         form.reset();
     }
+
+    // Replace the filter implementation with URL-based filtering
+    function applyFilter(filterType) {
+        // Get current URL and params
+        const url = new URL(window.location.href);
+        const params = new URLSearchParams(url.search);
+        
+        // If clicking the same filter again, remove the filter
+        if (params.get('filter') === filterType) {
+            params.delete('filter');
+            document.querySelectorAll('[data-filter]').forEach(card => {
+                card.classList.remove('ring-2', 'ring-blue-500');
+            });
+        } else {
+            // Set new filter
+            params.set('filter', filterType);
+            
+            // Update card styles
+            document.querySelectorAll('[data-filter]').forEach(card => {
+                if (card.dataset.filter === filterType) {
+                    card.classList.add('ring-2', 'ring-blue-500');
+                } else {
+                    card.classList.remove('ring-2', 'ring-blue-500');
+                }
+            });
+        }
+
+        // Update URL with new params and navigate
+        window.location.href = `${url.pathname}?${params.toString()}`;
+    }
+
+    // Add click handlers to filter cards
+    document.querySelectorAll('[data-filter]').forEach(card => {
+        card.addEventListener('click', () => {
+            applyFilter(card.dataset.filter);
+        });
+    });
+
+    // Highlight active filter on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeFilter = urlParams.get('filter');
+        
+        if (activeFilter) {
+            const activeCard = document.querySelector(`[data-filter="${activeFilter}"]`);
+            if (activeCard) {
+                activeCard.classList.add('ring-2', 'ring-blue-500');
+            }
+        }
+    });
 </script>
 @endsection

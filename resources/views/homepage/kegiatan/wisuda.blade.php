@@ -34,13 +34,22 @@
 
 <section id="more" class="lg:pt-20 bg-gray-50 min-h-screen flex justify-center items-center">
     <div class="py-8 px-4 max-w-screen-lg mx-auto">
-        <h1
-            class="mb-4 text-2xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
-            Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode I</span> Tahun 2025.</h1>
-        <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">bagi calon wisudawan
-            <strong>diwajibkan untuk mendaftar secara online</strong> melalui form yang sudah disediakan, ijazah
-            diberikan langsung pada saat hari wisuda. Peserta wisuda adalah yang telah terjaring Yudisium dan Ijazah
-            sudah sampai di kantor Universitas Terbuka Daerah Jambi.</p>
+        <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
+            Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode I</span> Tahun 2025
+        </h1>
+        
+        <div class="space-y-4">
+            <p class="font-normal text-gray-500 lg:text-lg text-justify dark:text-gray-400">
+                Bagi calon wisudawan <strong>diwajibkan untuk mendaftar secara online</strong> melalui form yang sudah disediakan, ijazah
+                diberikan langsung pada saat hari wisuda. Peserta wisuda adalah yang telah terjaring Yudisium dengan SK Rektor:
+            </p>
+
+            <ul class="list-disc pl-8 text-gray-500 lg:text-lg space-y-1">
+                @foreach($sk_rektor as $sk)
+                    <li>{{ $sk }}</li>
+                @endforeach
+            </ul>
+        </div>
         {{-- <div class="bg-white rounded-lg shadow-lg p-5 lg:p-10 flex flex-col justify-center items-center space-y-4 mb-8 max-w-screen-lg">
             <h1
             class="mb-4 text-2xl font-extrabold text-center leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">

@@ -176,6 +176,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('wisuda')->group(function () {
         Route::get('/pendaftaran', [WisudaController::class, 'pendaftaran'])->name('admin.wisuda.pendaftaran');
         Route::post('/pendaftaran/import', [WisudaController::class, 'import_calon_wisuda'])->name('admin.wisuda.pendaftaran.import');
+        Route::get('/pendaftaran/export', [WisudaController::class, 'export_pendaftaran'])->name('admin.wisuda.pendaftaran.export');
         Route::get('/kehadiran', [WisudaController::class, 'kehadiran'])->name('admin.wisuda.kehadiran');
         Route::post('/kehadiran/import', [WisudaController::class, 'import_kehadiran_wisuda'])->name('admin.wisuda.kehadiran.import');
         Route::get('/kehadiran/export', [WisudaController::class, 'export_kehadiran_wisuda'])->name('admin.wisuda.kehadiran.export');

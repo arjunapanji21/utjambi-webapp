@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\WisudawanExport;
+use App\Exports\PendaftaranWisudaExport;
 use App\Imports\PendaftaranWisudaImport;
 use App\Imports\WisudawanImport;
 use App\Models\PendaftaranWisuda;
@@ -19,6 +20,10 @@ class WisudaController extends Controller
         $props = [
             'title' => 'Wisuda UT Jambi',
             'active' => 'Wisuda',
+            'sk_rektor' => PendaftaranWisuda::orderBy('no_sk_rektor', 'asc')
+                ->pluck('no_sk_rektor')
+                ->unique()
+                ->values(),
         ];
         return view('homepage.kegiatan.wisuda', $props);
     }
@@ -29,7 +34,19 @@ class WisudaController extends Controller
         $request->validate([
             'nim' => 'required'
         ]);
-        $calon_wisuda = PendaftaranWisuda::where('nim', $request['nim'])->first();
+    
+        $nim = $request['nim'];
+
+        if ($nim[0] == "0") {
+          $nim = substr($nim, 1);
+        }
+    
+        $calon_wisuda = PendaftaranWisuda::where('nim', $nim)->first();
+        // dd($calon_wisuda->bukti_pembayaran);
+        if($calon_wisuda->bukti_pembayaran == null){
+            $calon_wisuda->bukti_pembayaran = "Request LIP";
+            $calon_wisuda->save();
+        }
         $props = [
             'title' => 'Wisuda UT Jambi',
             'active' => 'Wisuda',
@@ -101,11 +118,15 @@ class WisudaController extends Controller
         $total = $allData->count() ?: 1; // Prevent division by zero
 
         $belumVerifikasi = $allData->where('bukti_pembayaran', '!=', null)
+            ->where('bukti_pembayaran', '!=', "Request LIP")
             ->where('konfirmasi_lip', 0)
             ->count();
 
         $terverifikasi = $allData->where('konfirmasi_lip', 1)->count();
-        $sudah_bayar = $allData->where('bukti_pembayaran', '!=', null)->count();
+        $sudah_bayar = $allData->where('bukti_pembayaran', '!=', null)->where('bukti_pembayaran', '!=', "Request LIP")->count();
+
+        $request_lip = $allData->where('bukti_pembayaran', 'Request LIP')->count();
+        $ikut_seminar = $allData->where('ikut_seminar', 1)->count();
 
         return [
             'total' => $total,
@@ -113,9 +134,12 @@ class WisudaController extends Controller
             'belum_verifikasi' => $belumVerifikasi,
             'terverifikasi' => $terverifikasi,
             'sudah_bayar' => $sudah_bayar,
+            'ikut_seminar' => $ikut_seminar,
+            'request_lip' => $request_lip,
             'belum_verifikasi_percentage' => number_format(($belumVerifikasi / $total) * 100, 1),
             'terverifikasi_percentage' => number_format(($terverifikasi / $total) * 100, 1),
-            'sudah_bayar_percentage' => number_format(($sudah_bayar / $total) * 100, 1)
+            'sudah_bayar_percentage' => number_format(($sudah_bayar / $total) * 100, 1),
+            'request_lip_percentage' => number_format(($request_lip / $total) * 100, 1),
         ];
     }
 
@@ -131,12 +155,34 @@ class WisudaController extends Controller
             });
         }
 
+        // Handle filters
+        if ($request->has('filter')) {
+            switch ($request->filter) {
+                case 'request-lip':
+                    $query->where('bukti_pembayaran', 'Request LIP');
+                    break;
+                case 'sudah-bayar':
+                    $query->where('bukti_pembayaran', '!=', null)
+                          ->where('bukti_pembayaran', '!=', 'Request LIP');
+                    break;
+                case 'belum-verifikasi':
+                    $query->where('bukti_pembayaran', '!=', null)
+                          ->where('bukti_pembayaran', '!=', 'Request LIP')
+                          ->where('konfirmasi_lip', 0);
+                    break;
+                case 'terverifikasi':
+                    $query->where('konfirmasi_lip', 1);
+                    break;
+            }
+        }
+
         $stats = $this->calculateStats(PendaftaranWisuda::query());
-        $wisudawan = $query->paginate(10);
+        $wisudawan = $query->paginate(10)->withQueryString();
 
         return view('admin.aplikasi.wisuda.pendaftaran_wisuda', [
             'paginator' => $wisudawan,
-            'stats' => $stats
+            'stats' => $stats,
+            'activeFilter' => $request->filter
         ]);
     }
 
@@ -145,6 +191,14 @@ class WisudaController extends Controller
         // PendaftaranWisuda::truncate();
         Excel::import(new PendaftaranWisudaImport(), $request['file']);
         return redirect(route('admin.wisuda.pendaftaran'))->with('success', 'Data Calon Wisudawan Berhasil Di Upload!');
+    }
+
+    public function export_pendaftaran(Request $request)
+    {
+        return (new PendaftaranWisudaExport(
+            $request->filter,
+            $request->search
+        ))->download('pendaftaran_wisuda_'.date('Y-m-d').'.xlsx');
     }
 
     public function kehadiran()

@@ -3,14 +3,26 @@
 @section('content')
 <section id="more" class="lg:pt-20 bg-gray-50">
     <div class="py-8 px-6 max-w-screen-xl mx-auto">
-        <h1
-            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
-            Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode I</span> Tahun 2025.</h1>
-        <p class="font-normal text-gray-500 lg:text-lg text-justify dark:text-gray-400">bagi calon wisudawan
-            <strong>diwajibkan untuk mendaftar secara online</strong> melalui form yang sudah disediakan, ijazah
-            diberikan langsung pada saat hari wisuda. Peserta wisuda adalah yang telah terjaring Yudisium dan Ijazah
-            sudah sampai di kantor Universitas Terbuka Daerah Jambi.
-        </p>
+        <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
+            Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode I</span> Tahun 2025
+        </h1>
+        
+        <div class="space-y-4">
+            <p class="font-normal text-gray-500 lg:text-lg text-justify dark:text-gray-400">
+                Bagi calon wisudawan <strong>diwajibkan untuk mendaftar secara online</strong> melalui form yang sudah disediakan, ijazah
+                diberikan langsung pada saat hari wisuda. Peserta wisuda adalah yang telah terjaring Yudisium dengan SK Rektor:
+            </p>
+
+            <ul class="list-disc pl-8 text-gray-500 lg:text-lg space-y-1">
+                @foreach($sk_rektor as $sk)
+                    <li>{{ $sk }}</li>
+                @endforeach
+            </ul>
+
+            <p class="font-normal text-gray-500 lg:text-lg text-justify dark:text-gray-400">
+                dan Ijazah sudah sampai di kantor Universitas Terbuka Daerah Jambi.
+            </p>
+        </div>
 
         <div class="bg-white rounded shadow-lg p-8 my-10">
             <h2
@@ -30,7 +42,7 @@
                 @elseif(Session::has('success'))
                 <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
                     <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 9.5 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                     </svg>
                     <span class="sr-only">Info</span>
                     <div>
@@ -67,7 +79,7 @@
                             </a>
                         </div>
                     </li>
-                    @if($calon_wisuda->bukti_pembayaran == null)
+                    @if($calon_wisuda->bukti_pembayaran == "Request LIP")
                     <li class="mb-10 ms-6">
                         <span
                             class="absolute flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-red-900">
