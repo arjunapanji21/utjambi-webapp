@@ -17,32 +17,32 @@ class PendaftaranWisudaImport implements ToModel, WithStartRow
     }
 
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         $wisudawan = new PendaftaranWisuda();
-        $wisudawan->masa_yudisium = $row[2];
-        $wisudawan->no_sk_rektor = $row[3];
-        $wisudawan->mr_awal = $row[4];
-        $wisudawan->mr_akhir = $row[5];
-        $wisudawan->jenis_program = $row[6];
-        $wisudawan->nim = $row[7];
-        $wisudawan->nama = $row[8];
-        $wisudawan->kabko = $row[9];
-        $wisudawan->fakultas = $row[10];
-        $wisudawan->prodi = $row[11];
-        $wisudawan->nik = $row[12];
-        $wisudawan->tmp_lahir = $row[13];
-        $wisudawan->tgl_lahir = $row[14];
-        $wisudawan->nama_ibu = $row[15];
-        $wisudawan->ipk = $row[16];
-        $wisudawan->telp = $row[17];
-        $wisudawan->email = $row[18];
-        $wisudawan->alamat_ktp = $row[19];
-        $wisudawan->alamat_kirim = $row[20];
+        $wisudawan->masa_yudisium = $row[1];
+        $wisudawan->no_sk_rektor = $row[2];
+        $wisudawan->mr_awal = $row[3];
+        $wisudawan->mr_akhir = $row[4];
+        $wisudawan->jenis_program = $row[5];
+        $wisudawan->nim = $row[6];
+        $wisudawan->nama = $row[7];
+        $wisudawan->kabko = $row[8];
+        $wisudawan->fakultas = $row[9];
+        $wisudawan->prodi = $row[10];
+        $wisudawan->nik = $row[11];
+        $wisudawan->tmp_lahir = $row[12];
+        $wisudawan->tgl_lahir = $row[13];
+        $wisudawan->nama_ibu = $row[14];
+        $wisudawan->ipk = $row[15];
+        $wisudawan->telp = $row[16];
+        $wisudawan->email = $row[17];
+        $wisudawan->alamat_ktp = $row[18];
+        $wisudawan->alamat_kirim = $row[19];
         $wisudawan->save();
         return $wisudawan;
     }

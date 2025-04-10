@@ -1,50 +1,67 @@
-<nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-        Showing
-        <span class="font-semibold text-gray-900 dark:text-white">{{$data->firstItem() ?? 0}}-{{$data->lastItem() ?? 0}}</span>
-        of
-        <span class="font-semibold text-gray-900 dark:text-white">{{$data->total()}}</span>
-    </span>
+@if ($paginator && method_exists($paginator, 'hasPages') && $paginator->hasPages())
+    <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between px-4 py-3 border-t border-gray-200 sm:px-6">
+        <div class="flex justify-between flex-1 sm:hidden">
+            {{-- Mobile Previous/Next --}}
+            @if ($paginator->onFirstPage())
+                <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default rounded-md">Previous</span>
+            @else
+                <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Previous</a>
+            @endif
+            
+            <div class="flex items-center">
+                <span class="text-sm text-gray-700">Page {{ $paginator->currentPage() }}</span>
+            </div>
 
-    @if($data->hasPages())
-    <ul class="inline-flex items-stretch -space-x-px">
-        {{-- Previous Page --}}
-        <li>
-            <a href="{{ $data->previousPageUrl() }}" 
-               class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white {{ !$data->onFirstPage() ? '' : 'opacity-50 cursor-not-allowed' }}"
-               @if($data->onFirstPage()) aria-disabled="true" tabindex="-1" @endif>
-                <span class="sr-only">Previous</span>
-                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </li>
+            @if ($paginator->hasMorePages())
+                <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Next</a>
+            @else
+                <span class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default rounded-md">Next</span>
+            @endif
+        </div>
 
-        {{-- Page Numbers --}}
-        @foreach ($data->getUrlRange(max(1, $data->currentPage() - 2), min($data->lastPage(), $data->currentPage() + 2)) as $page => $url)
-            <li>
-                <a href="{{ $url }}"
-                   @if($page == $data->currentPage()) aria-current="page" @endif
-                   class="flex items-center justify-center text-sm py-2 px-3 leading-tight {{ $page == $data->currentPage() 
-                       ? 'z-10 text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white'
-                       : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
-                   }}">
-                    {{ $page }}
-                </a>
-            </li>
-        @endforeach
+        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+            <div>
+                <p class="text-sm text-gray-700">
+                    Showing
+                    <span class="font-medium">{{ $paginator->firstItem() }}</span>
+                    to
+                    <span class="font-medium">{{ $paginator->lastItem() }}</span>
+                    of
+                    <span class="font-medium">{{ $paginator->total() }}</span>
+                    results
+                </p>
+            </div>
 
-        {{-- Next Page --}}
-        <li>
-            <a href="{{ $data->nextPageUrl() }}"
-               class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white {{ $data->hasMorePages() ? '' : 'opacity-50 cursor-not-allowed' }}"
-               @if(!$data->hasMorePages()) aria-disabled="true" tabindex="-1" @endif>
-                <span class="sr-only">Next</span>
-                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                </svg>
-            </a>
-        </li>
-    </ul>
-    @endif
-</nav>
+            <div class="flex items-center space-x-3">
+                {{-- Previous/Next Navigation --}}
+                <div class="flex">
+                    @if ($paginator->onFirstPage())
+                        <span class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default rounded-l-md">Previous</span>
+                    @else
+                        <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50">Previous</a>
+                    @endif
+
+                    {{-- Page Number Display --}}
+                    <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border-t border-b border-gray-300">
+                        {{ $paginator->currentPage() }} / {{ $paginator->lastPage() }}
+                    </span>
+
+                    @if ($paginator->hasMorePages())
+                        <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50">Next</a>
+                    @else
+                        <span class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default rounded-r-md">Next</span>
+                    @endif
+                </div>
+
+                {{-- Go to Page Input --}}
+                <form method="GET" action="{{ url()->current() }}" class="flex items-center space-x-2">
+                    <input type="number" name="page" min="1" max="{{ $paginator->lastPage() }}" value="{{ $paginator->currentPage() }}" 
+                        class="w-16 px-2 py-1 text-sm border border-gray-300 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                    <button type="submit" class="px-3 py-1 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Go
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+@endif

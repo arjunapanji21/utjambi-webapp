@@ -15,17 +15,17 @@ use App\Models\WebSetting;
 use Illuminate\Support\Facades\Route;
 
 // Route API
-Route::prefix('api')->group(function (){
+Route::prefix('api')->group(function () {
     Route::get('post', [APIController::class, 'get_post']);
     Route::get('slug', [APIController::class, 'get_slug']);
 });
 // End of Route API
 
-Route::get('/503', function(){
+Route::get('/503', function () {
     return abort(503);
 })->name('503');
 
-Route::get('/maintenance', function(){
+Route::get('/maintenance', function () {
     $until = date('m/d/Y', strtotime(WebSetting::find(1)->updated_at)) . " 06:00 PM";
     $props = [
         'title' => 'Web Under Maintenance | UT Jambi',
@@ -34,7 +34,7 @@ Route::get('/maintenance', function(){
     return view('maintenance', $props);
 })->name('maintenance');
 
-Route::get('/signage', function(){
+Route::get('/signage', function () {
     $props = [
         'title' => 'Digital Signage | UT Jambi',
     ];

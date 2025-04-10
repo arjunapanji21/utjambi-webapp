@@ -18,19 +18,19 @@
                 </a> --}}
 
                 <!-- Main Content -->
-                <div class="space-y-6 text-center lg:text-left">
-                    <h1 class="text-4xl lg:text-6xl font-bold text-primary-600 leading-tight">
-                        Universitas Terbuka <span class="text-yellow-300">Jambi</span>
-                    </h1>
-                    <p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
-                        PTN dengan sistem pembelajaran jarak jauh terbaik di Indonesia, kini hadir di Provinsi Jambi.
-                    </p>
-                    <!-- Hashtags -->
+                <div class="space-y-5 text-center lg:text-left">
+                        <!-- Hashtags -->
                 <div class="flex flex-wrap gap-4 text-sm justify-center lg:justify-start lg:text-base text-gray-600">
                     <span class="font-medium">#KuliahOnline</span>
                     <span class="font-medium">#KampusNegeri</span>
                     <span class="font-medium">#KualitasDunia</span>
                 </div>
+                    <h1 class="text-4xl lg:text-6xl drop-shadow-md font-bold text-primary-600 leading-tight">
+                        Universitas Terbuka <span class="text-yellow-300">Jambi</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                        PTN dengan sistem pembelajaran jarak jauh terbaik di Indonesia, kini hadir di Provinsi Jambi.
+                    </p>
                 </div>
 
                 <!-- Countdown -->

@@ -13,7 +13,8 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class WisudaController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         app('App\Http\Controllers\HomepageController')->visitor();
         $props = [
             'title' => 'Wisuda UT Jambi',
@@ -22,7 +23,8 @@ class WisudaController extends Controller
         return view('homepage.kegiatan.wisuda', $props);
     }
 
-    public function pendaftaran_wisuda(Request $request){
+    public function pendaftaran_wisuda(Request $request)
+    {
         app('App\Http\Controllers\HomepageController')->visitor();
         $request->validate([
             'nim' => 'required'
@@ -33,13 +35,14 @@ class WisudaController extends Controller
             'active' => 'Wisuda',
             'calon_wisuda' => $calon_wisuda
         ];
-        if($calon_wisuda == null){
+        if ($calon_wisuda == null) {
             return back()->with('alert', 'NIM yang anda masukkan belum terdaftar pada Yudisium saat ini.');
         }
         return view('homepage.kegiatan.pendaftaran_wisuda', $props);
     }
 
-    public function upload_bukti_bayar_wisuda(Request $request){
+    public function upload_bukti_bayar_wisuda(Request $request)
+    {
         app('App\Http\Controllers\HomepageController')->visitor();
         $request->validate([
             'file' => 'required'
@@ -53,14 +56,15 @@ class WisudaController extends Controller
         $calon_wisuda = PendaftaranWisuda::where('nim', $request['nim'])->first();
         $calon_wisuda->bukti_pembayaran = $bukti_pembayaran;
         $calon_wisuda->tgl_upload_bukti = date(now());
-        if($request->has('ikut_seminar')){
+        if ($request->has('ikut_seminar')) {
             $calon_wisuda->ikut_seminar = $request['ikut_seminar'];
         }
         $calon_wisuda->save();
         return back()->with('success', 'Berhasil mengupload bukti pembayaran LIP wisuda');
     }
 
-    public function tolak_bukti_bayar_wisuda(Request $request){
+    public function tolak_bukti_bayar_wisuda(Request $request)
+    {
         $request->validate([
             'keterangan' => 'required'
         ]);
@@ -72,7 +76,8 @@ class WisudaController extends Controller
         return back()->with('success', 'Data berhasil di update.');
     }
 
-    public function konfirmasi_pendaftaran_wisuda($id){
+    public function konfirmasi_pendaftaran_wisuda($id)
+    {
         $calon_wisuda = PendaftaranWisuda::find($id);
         $calon_wisuda->konfirmasi_lip = 1;
         $calon_wisuda->tgl_konfirmasi = date(now());
@@ -80,7 +85,8 @@ class WisudaController extends Controller
         return back()->with('success', "Data berhasil di update.");
     }
 
-    public function cari_data_wisudawan(){
+    public function cari_data_wisudawan()
+    {
         app('App\Http\Controllers\HomepageController')->visitor();
         $master = [
             'title' => 'Wisuda UT Jambi',
@@ -89,23 +95,61 @@ class WisudaController extends Controller
         return view('qr_wisuda', $master);
     }
 
-    public function pendaftaran(){
-        $master = [
-            'title' => 'Pendaftaran Wisuda UT Jambi',
-            'active' => 'Wisuda',
-            'wisudawan' => PendaftaranWisuda::orderBy('updated_at', 'desc')->get(),
+    protected function calculateStats($wisudawan)
+    {
+        $allData = $wisudawan->get();
+        $total = $allData->count() ?: 1; // Prevent division by zero
+
+        $belumVerifikasi = $allData->where('bukti_pembayaran', '!=', null)
+            ->where('konfirmasi_lip', 0)
+            ->count();
+
+        $terverifikasi = $allData->where('konfirmasi_lip', 1)->count();
+        $sudah_bayar = $allData->where('bukti_pembayaran', '!=', null)->count();
+
+        return [
+            'total' => $total,
+            'masa_yudisium' => $allData->first()?->masa_yudisium,
+            'belum_verifikasi' => $belumVerifikasi,
+            'terverifikasi' => $terverifikasi,
+            'sudah_bayar' => $sudah_bayar,
+            'belum_verifikasi_percentage' => number_format(($belumVerifikasi / $total) * 100, 1),
+            'terverifikasi_percentage' => number_format(($terverifikasi / $total) * 100, 1),
+            'sudah_bayar_percentage' => number_format(($sudah_bayar / $total) * 100, 1)
         ];
-        return view('admin.aplikasi.wisuda.pendaftaran_wisuda', $master);
     }
 
-    public function import_calon_wisuda(Request $request){
+    public function pendaftaran(Request $request)
+    {
+        $query = PendaftaranWisuda::query();
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nim', 'like', "%{$search}%")
+                    ->orWhere('nama', 'like', "%{$search}%");
+            });
+        }
+
+        $stats = $this->calculateStats(PendaftaranWisuda::query());
+        $wisudawan = $query->paginate(10);
+
+        return view('admin.aplikasi.wisuda.pendaftaran_wisuda', [
+            'paginator' => $wisudawan,
+            'stats' => $stats
+        ]);
+    }
+
+    public function import_calon_wisuda(Request $request)
+    {
         // PendaftaranWisuda::truncate();
         Excel::import(new PendaftaranWisudaImport(), $request['file']);
         return redirect(route('admin.wisuda.pendaftaran'))->with('success', 'Data Calon Wisudawan Berhasil Di Upload!');
     }
 
-    public function kehadiran(){
-        $wisudawan = Wisudawan::orderBy('id', 'asc')->get();
+    public function kehadiran()
+    {
+        $wisudawan = Wisudawan::orderBy('id', 'asc')->paginate(10);
         $master = [
             'title' => 'Kehadiran Wisudawan',
             'active' => 'Wisuda',
@@ -114,15 +158,15 @@ class WisudaController extends Controller
         return view('admin.aplikasi.wisuda.kehadiran_wisuda', $master);
     }
 
-    public function detail_peserta(Request $request){
+    public function detail_peserta(Request $request)
+    {
         app('App\Http\Controllers\HomepageController')->visitor();
         try {
             $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-            if($wisudawan != null){
-                if($wisudawan->konfirmasi_kehadiran == null){
+            if ($wisudawan != null) {
+                if ($wisudawan->konfirmasi_kehadiran == null) {
                     return redirect(route('kegiatan.wisuda.konfirmasi_kehadiran'))->with('error', 'Silahkan konfirmasi kehadiran terlebih dahulu!');
-                }
-                else if($wisudawan->konfirmasi_kehadiran == "Tidak"){
+                } else if ($wisudawan->konfirmasi_kehadiran == "Tidak") {
                     return back()->with('error', 'Anda tidak bisa melakukan cetak QR-Code Presensi karena telah mengkonfirmasi untuk tidak bisa hadir.');
                 }
                 $master = [
@@ -131,21 +175,21 @@ class WisudaController extends Controller
                     'wisudawan' => $wisudawan,
                 ];
                 return view('wisuda_show', $master);
-            }else{
+            } else {
                 return back()->with('error', 'NIM tidak terdaftar atau salah, silahkan periksa kembali nim anda.');
             }
-
         } catch (\Throwable $th) {
             return back()->with('error', $th);
         }
     }
 
-    public function import_kehadiran_wisuda(Request $request){
+    public function import_kehadiran_wisuda(Request $request)
+    {
         // Wisudawan::truncate();
-        $request['masa'] = $request['tahun']." ".$request['periode'];
+        $request['masa'] = $request['tahun'] . " " . $request['periode'];
         Excel::import(new WisudawanImport(
-            $request['masa'], 
-            $request['tgl_seminar'], 
+            $request['masa'],
+            $request['tgl_seminar'],
             $request['waktu_seminar'],
             $request['tgl_wisuda'],
             $request['waktu_wisuda'],
@@ -155,11 +199,13 @@ class WisudaController extends Controller
         return redirect(route('admin.wisuda.kehadiran'))->with('success', 'Data Wisudawan Berhasil Di Upload!');
     }
 
-    public function export_kehadiran_wisuda(){
-        return Excel::download(new WisudawanExport, 'kehadiran_wisudawan_'.date('dmY').'.xlsx');
+    public function export_kehadiran_wisuda()
+    {
+        return Excel::download(new WisudawanExport, 'kehadiran_wisudawan_' . date('dmY') . '.xlsx');
     }
 
-    public function konfirmasi_kehadiran(){
+    public function konfirmasi_kehadiran()
+    {
         app('App\Http\Controllers\HomepageController')->visitor();
         $props = [
             'title' => "Form Konfirmasi Kesediaan Hadir Seminar & Wisuda"
@@ -167,7 +213,8 @@ class WisudaController extends Controller
         return view('forms.form_konfirmasi_wisuda', $props);
     }
 
-    public function submit_konfirmasi_kehadiran(Request $request){
+    public function submit_konfirmasi_kehadiran(Request $request)
+    {
         try {
             $data = Wisudawan::where('nim', $request['nim'])->first();
             $data->konfirmasi_kehadiran = $request['konfirmasi_kehadiran'];
@@ -178,8 +225,9 @@ class WisudaController extends Controller
         return redirect(route('wisuda.cari_data_wisudawan'))->with('success', 'Konfirmasi kehadiran berhasil dikirim.');
     }
 
-    public function seminar_scan(Request $request){
-        if($request->has('nim')){
+    public function seminar_scan(Request $request)
+    {
+        if ($request->has('nim')) {
             try {
                 $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
                 $wisudawan->hadir_seminar = date(now());
@@ -195,7 +243,7 @@ class WisudaController extends Controller
             } catch (\Throwable $th) {
                 return back();
             }
-        }else{
+        } else {
             $master = [
                 'title' => 'SEMINAR UT JAMBI',
                 'active' => 'Wisuda',
@@ -206,24 +254,25 @@ class WisudaController extends Controller
         }
     }
 
-    public function wisuda_scan(Request $request){
-        if($request->has('nim')){
-           try {
-            $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
-            $wisudawan->hadir_wisuda = date(now());
-            $wisudawan->save();
-            $master = [
-                'title' => 'WISUDA UT JAMBI',
-                'active' => 'Wisuda',
-                'wisudawan' => $wisudawan,
-                'data' => Wisudawan::all(),
-                'hadir' => Wisudawan::where('hadir_wisuda', '!=', NULL)->get(),
-            ];
-            return view('scan_wisuda', $master);
-           } catch (\Throwable $th) {
-            return back();
-           }
-        }else{
+    public function wisuda_scan(Request $request)
+    {
+        if ($request->has('nim')) {
+            try {
+                $wisudawan = Wisudawan::where('nim', $request['nim'])->first();
+                $wisudawan->hadir_wisuda = date(now());
+                $wisudawan->save();
+                $master = [
+                    'title' => 'WISUDA UT JAMBI',
+                    'active' => 'Wisuda',
+                    'wisudawan' => $wisudawan,
+                    'data' => Wisudawan::all(),
+                    'hadir' => Wisudawan::where('hadir_wisuda', '!=', NULL)->get(),
+                ];
+                return view('scan_wisuda', $master);
+            } catch (\Throwable $th) {
+                return back();
+            }
+        } else {
             $master = [
                 'title' => 'WISUDA UT JAMBI',
                 'active' => 'Wisuda',

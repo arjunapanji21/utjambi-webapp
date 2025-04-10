@@ -33,15 +33,15 @@
 </section>
 
 <section id="more" class="lg:pt-20 bg-gray-50 min-h-screen flex justify-center items-center">
-    <div class="py-8 px-4 max-w-screen-xl mx-auto">
-        {{-- <h1
-            class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
-            Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode II</span> Tahun 2024.</h1>
-        <p class="font-normal text-gray-500 lg:text-lg text-justify dark:text-gray-400">bagi calon wisudawan
+    <div class="py-8 px-4 max-w-screen-lg mx-auto">
+        <h1
+            class="mb-4 text-2xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
+            Wisuda UT Jambi <span class="text-blue-600 dark:text-blue-500">Periode I</span> Tahun 2025.</h1>
+        <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">bagi calon wisudawan
             <strong>diwajibkan untuk mendaftar secara online</strong> melalui form yang sudah disediakan, ijazah
             diberikan langsung pada saat hari wisuda. Peserta wisuda adalah yang telah terjaring Yudisium dan Ijazah
-            sudah sampai di kantor Universitas Terbuka Daerah Jambi.</p> --}}
-        <div class="bg-white rounded-lg shadow-lg p-5 lg:p-10 flex flex-col justify-center items-center space-y-4 mb-8 max-w-screen-lg">
+            sudah sampai di kantor Universitas Terbuka Daerah Jambi.</p>
+        {{-- <div class="bg-white rounded-lg shadow-lg p-5 lg:p-10 flex flex-col justify-center items-center space-y-4 mb-8 max-w-screen-lg">
             <h1
             class="mb-4 text-2xl font-extrabold text-center leading-none tracking-tight text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
             Pendaftaran Wisuda UT Jambi <br>Periode II Tahun 2024 <br><span class="text-red-600 dark:text-red-500">Telah Memenuhi Kuota</span></h1>
@@ -50,9 +50,9 @@
             <a href="{{route('kegiatan.wisuda.konfirmasi_kehadiran')}}" target="_blank" class="font-semibold bg-primary-800 hover:bg-primary-600 px-4 py-2 text-gray-100 rounded-lg hover:underline">sl.ut.ac.id/kehadiran-wisuda17</a>
             <p class="font-normal text-gray-500 lg:text-lg text-center dark:text-gray-400">Hitung Mundur Menuju Wisuda Universitas Terbuka Daerah Jambi:</p>
             <div id="countdown" class="animate-pulse bg-gray-100 font-extrabold text-3xl lg:text-6xl text-gray-600 inline-flex items-center px-3.5 py-1.5 rounded-lg dark:bg-gray-700 dark:text-gray-400 border border-gray-400"></div>
-        </div>
+        </div> --}}
 
-        <div class="bg-white rounded-lg shadow-lg p-10 my-10" hidden>
+        <div class="bg-white rounded-lg shadow-lg p-10 my-10" >
             <h2
                 class="mb-4 text-lg font-bold leading-none tracking-tight text-gray-900 md:text-xl lg:text-2xl dark:text-white">
                 Pendaftaran Calon Peserta Wisuda</h2>
@@ -87,7 +87,7 @@
 
 @section('script')
 <script>
-    CountDownTimer('11/16/2024 07:00 AM', 'countdown');
+    CountDownTimer('05/10/2025 07:00 AM', 'countdown');
     function CountDownTimer(dt, id)
     {
         var end = new Date(dt);

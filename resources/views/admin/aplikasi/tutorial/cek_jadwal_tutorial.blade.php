@@ -92,10 +92,10 @@
                 </tr>
             </thead>
             <tbody>
-                @if(isset($data))
-                @foreach($data as $key=>$row)
+                @if(isset($paginator))
+                @foreach($paginator as $key=>$row)
                 <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$data->firstItem() + $key}}</th>
+                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$paginator->firstItem() + $key}}</th>
                     <td class="px-4 py-3">{{$row->masa}}</td>
                     <td class="px-4 py-3">{{$row->nim}}</td>
                     <td class="px-4 py-3">{{$row->nama_mahasiswa}}</td>
@@ -110,7 +110,7 @@
             </tbody>
         </table>
     </div>
-    <x-pagination :data="$data"></x-pagination>
+    <x-pagination :paginator="$paginator"></x-pagination>
 </div>
 
 <!-- modal import data -->
