@@ -1,57 +1,38 @@
 @extends('layouts.homepage')
 @section('content')
-<section class="relative flex flex-col dark:bg-gray-900 bg-gradient-to-br from-white to-gray-50">
-    <div class="absolute inset-0 bg-center bg-no-repeat bg-cover opacity-10" style="background-image: url({{asset('images/background/hero-pattern.svg')}})"></div>
+<section class="relative flex flex-col bg-gradient-to-br from-gray-50 to-primary-50 min-h-[90vh] overflow-hidden">
+    <div class="absolute inset-0 bg-center bg-no-repeat bg-cover opacity-[0.03]" style="background-image: url({{asset('images/background/hero-pattern.svg')}})"></div>
     
-    <div class="relative px-4 mx-auto max-w-screen-xl lg:px-6 py-12 lg:py-16">
-        <div class="w-full grid lg:grid-cols-2 gap-12 justify-between items-center">
-            <div class="w-full space-y-8">
-                {{-- <!-- Alert Banner -->
-                <a href="{{route('kegiatan.wisuda')}}"
-                    class="group inline-flex items-center gap-2 py-2 px-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition duration-300"
-                    role="alert">
-                    <span class="px-3 py-1 text-sm font-medium text-yellow-700 bg-yellow-100 rounded-lg">#PMB2025</span>
-                    <span class="text-sm font-medium text-gray-700">Penerimaan Mahasiswa Baru</span>
-                    <svg class="w-5 h-5 text-gray-700 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
-                    </svg>
-                </a> --}}
-
+    <div class="relative px-4 mx-auto mt-20 max-w-screen-xl lg:px-6 py-8 lg:py-16 flex items-center min-h-[90vh]">
+        <div class="w-full grid lg:grid-cols-2 gap-12 lg:gap-16 justify-between items-center">
+            <div class="w-full space-y-8 fade-in">
                 <!-- Main Content -->
-                <div class="space-y-5 text-center lg:text-left">
-                        <!-- Hashtags -->
-                <div class="flex flex-wrap gap-4 text-sm justify-center lg:justify-start lg:text-base text-gray-600">
-                    <span class="font-medium">#KuliahOnline</span>
-                    <span class="font-medium">#KampusNegeri</span>
-                    <span class="font-medium">#KualitasDunia</span>
-                </div>
-                    <h1 class="text-4xl lg:text-6xl drop-shadow-md font-bold text-primary-600 leading-tight">
-                        Universitas Terbuka <span class="text-yellow-300">Jambi</span>
+                <div class="space-y-6 text-center lg:text-left">
+                    <!-- Hashtags -->
+                    <div class="flex flex-wrap gap-4 text-sm justify-center lg:justify-start lg:text-base">
+                        <span class="px-4 py-1 rounded-full bg-primary-100 text-primary-700 font-medium">#KuliahOnline</span>
+                        <span class="px-4 py-1 rounded-full bg-yellow-100 text-yellow-700 font-medium">#KampusNegeri</span>
+                        <span class="px-4 py-1 rounded-full bg-emerald-100 text-emerald-700 font-medium">#KualitasDunia</span>
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight reveal-on-scroll">
+                        Universitas<br/><span class="text-primary-600">Terbuka Jambi</span>
                     </h1>
-                    <p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                    <p class="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl">
                         PTN dengan sistem pembelajaran jarak jauh terbaik di Indonesia, kini hadir di Provinsi Jambi.
                     </p>
                 </div>
 
-                <!-- Countdown -->
-                {{-- <div class="space-y-4">
-                    <div class="text-lg font-semibold text-primary-600">
-                        Pendaftaran Batch 1 ditutup dalam:
-                    </div>
-                    <div id="countdown" class="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-lg text-primary-700 font-mono text-xl"></div>
-                </div> --}}
-
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4">
+                <div class="flex flex-col sm:flex-row gap-4 fade-in fade-in-delay-1">
                     <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/v2" target="_blank"
-                        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 shadow-lg hover:shadow-xl transition duration-300">
+                        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 shadow-lg hover:shadow-xl transition duration-300 btn-hover">
                         <svg class="mr-2 w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/>
                         </svg>
                         Daftar Sekarang
                     </a>
                     <a href="https://web.whatsapp.com/send?text=&phone=6282259528388" target="_blank"
-                        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-700 bg-white rounded-xl border-2 border-gray-200 hover:bg-gray-50 shadow-lg hover:shadow-xl transition duration-300">
+                        class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-700 bg-white rounded-xl border-2 border-gray-200 hover:bg-gray-50 shadow-lg hover:shadow-xl transition duration-300 btn-hover">
                         <svg class="mr-2 w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
                         </svg>
@@ -61,9 +42,11 @@
             </div>
 
             <!-- Hero Image -->
-            <div class="hidden lg:block relative w-full">
-                <img class="w-full max-w-md ml-auto rounded-2xl shadow-2xl bg-gradient-to-b from-primary-50 via-primary-200 to-primary-400 animate-float" src="{{asset('/images/mahasiswi-min.webp')}}" alt="Mahasiswi UT">
-                <div class="absolute top-1/4 transform -translate-y-1/2 bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-xl animate-float-delayed">
+            <div class="hidden lg:block relative w-full fade-in fade-in-delay-2">
+                <div class="absolute -top-20 -right-20 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+                <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+                <img class="relative w-full max-w-md ml-auto rounded-2xl shadow-2xl bg-gradient-to-b from-primary-50 via-primary-100 to-primary-200 animate-float" src="{{asset('/images/mahasiswi-min.webp')}}" alt="Mahasiswi UT">
+                <div class="absolute top-1/4 -left-8 transform -translate-y-1/2 bg-white p-6 rounded-2xl shadow-xl animate-float-delayed backdrop-blur-sm border border-gray-100">
                     <h3 class="text-lg font-bold text-primary-700 mb-2">Biaya Terjangkau!</h3>
                     <p class="text-gray-700">SPP Mulai Dari <span class="font-bold text-red-600">Rp. 1,3 Jt</span></p>
                 </div>
@@ -72,24 +55,25 @@
     </div>
 </section>
 
-<section class="border-b-8 border-b-yellow-300 bg-cover bg-fixed bg-no-repeat" style="background-image: url('{{asset("images/background/blue1.webp")}}')">
-    <div>
+<section class="border-b-8 border-b-yellow-300 relative overflow-hidden">
+    <div class="absolute inset-0 bg-primary-600 opacity-95"></div>
+    <div class="relative">
         <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
             <dl class="grid max-w-screen-lg gap-8 mx-auto text-white sm:grid-cols-2 md:grid-cols-4 dark:text-white">
-                <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">2,078,192</dt>
+                <div class="flex flex-col items-center justify-center fade-in stat-count reveal-on-scroll">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold" data-target="2078192" data-increment="10000">0</dt>
                     <dd class="font-medium text-gray-100 dark:text-gray-100">Alumni</dd>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">551,030</dt>
+                <div class="flex flex-col items-center justify-center fade-in stat-count reveal-on-scroll">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold" data-target="551030" data-increment="1000">0</dt>
                     <dd class="font-medium text-gray-100 dark:text-gray-100">Mahasiswa Aktif</dd>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">50</dt>
+                <div class="flex flex-col items-center justify-center fade-in stat-count reveal-on-scroll">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold" data-target="50" data-increment="1">0</dt>
                     <dd class="font-medium text-gray-100 dark:text-gray-100">Program Studi</dd>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold">40</dt>
+                <div class="flex flex-col items-center justify-center fade-in stat-count reveal-on-scroll">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold" data-target="40" data-increment="1">0</dt>
                     <dd class="font-medium text-gray-100 dark:text-gray-100">UT Daerah</dd>
                 </div>
             </dl>
@@ -107,7 +91,7 @@
         </div>
         <div class="space-y-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:space-y-0">
             <div
-                class="border border-primary-600 flex flex-col justify-center items-center bg-primary-100   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-primary-600 flex flex-col justify-center items-center bg-primary-100   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition card-hover feature-card">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
@@ -121,7 +105,7 @@
                     dengan nilai A (unggul) & B (sangat baik).</p>
             </div>
             <div
-                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition card-hover feature-card">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-yellow-500 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
@@ -135,7 +119,7 @@
                     kampus lama kamu sehingga kamu tidak perlu mengulang perkuliahan dari awal lagi.</p>
             </div>
             <div
-                class="border border-primary-700 flex flex-col justify-center items-center bg-primary-100 p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-primary-700 flex flex-col justify-center items-center bg-primary-100 p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition card-hover feature-card">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -149,7 +133,7 @@
                     sehingga tidak membuat kantong kering.</p>
             </div>
             <div
-                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition card-hover feature-card">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-yellow-500 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
@@ -163,7 +147,7 @@
                     menentukan waktu perkuliahan sehingga kamu bisa kuliah sesuai gayamu.</p>
             </div>
             <div
-                class="border border-primary-700 flex flex-col justify-center items-center bg-primary-100 p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-primary-700 flex flex-col justify-center items-center bg-primary-100 p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition card-hover feature-card">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
@@ -179,7 +163,7 @@
                     darimana saja.</p>
             </div>
             <div
-                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition">
+                class="border border-yellow-500 flex flex-col justify-center items-center bg-yellow-50   p-4 rounded-lg hover:shadow-lg hover:cursor-pointer hover:scale-105 transition card-hover feature-card">
                 <div
                     class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-yellow-500 lg:h-12 lg:w-12 dark:bg-primary-900">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"><path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9l0 57.1c0 70.7-57.3 128-128 128s-128-57.3-128-128l0-57.1L48 93.3l0 65.1 15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9l-32 0c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4l0-71.8C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7L30.7 512C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/></svg>
@@ -187,115 +171,6 @@
                 <h3 class="mb-2 text-xl text-yellow-700 font-bold dark:text-white">Tanpa Batasan Usia</h3>
                 <p class="text-yellow-500 dark:text-gray-400">Universitas Terbuka memberi kesempatan kepada siapa saja
                     yang ingin melanjutkan pendidikan tanpa memandang usia.</p>
-            </div>
-        </div>
-    </div>
-    <div class="py-8 px-4 mx-auto block lg:flex gap-5 justify-center items-center max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="max-w-md text-center p-8">
-            <img class="mb-2" src="{{asset('images/dies40.png')}}">
-            <h2 class="mb-4 text-2xl lg:text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-                Fakultas & Prodi</h2>
-            <p class="text-gray-500 dark:text-gray-400">UT memiliki 4 Fakultas Program Sarjana/Diploma dan Sekolah Pascasarjana S2 Serta Doktoral S3 dengan jumlah total lebih dari 46 Program Studi yang Terakreditasi A & B.</p>
-        </div>
-        <div class="flex flex-col gap-5">
-            <div class="space-y-2 grid gap-2 grid-cols-2 lg:grid-cols-3 md:gap-4">
-                <a href="https://fkip.ut.ac.id" target="_blank"
-                    class="flex flex-col  bg-white border border-purple-300  p-4 rounded-lg hover:bg-purple-50 hover:cursor-pointer hover:scale-105 transition">
-                    <div class="flex justify-between items-start">
-                        <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-purple-100 lg:h-12 lg:w-12 dark:bg-purple-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-purple-600 lg:w-6 lg:h-6 dark:text-purple-300" fill="currentColor">
-                            <path
-                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
-                        </svg>
-                    </div>
-                    <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">12 Prodi</span>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">FKIP</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Fakultas Keguruan dan Ilmu Pendidikan.</p>
-                </a>
-                <a href="https://fhisip.ut.ac.id" target="_blank"
-                    class="flex flex-col  bg-white border border-orange-300  p-4 rounded-lg hover:bg-orange-50 hover:cursor-pointer hover:scale-105 transition">
-                    <div class="flex justify-between items-start">
-                        <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-orange-100 lg:h-12 lg:w-12 dark:bg-orange-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-orange-600 lg:w-6 lg:h-6 dark:text-orange-300" fill="currentColor">
-                            <path
-                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
-                        </svg>
-                    </div>
-                    <span class="bg-orange-100 text-orange-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-orange-900 dark:text-orange-300">11 Prodi</span>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">FHISIP</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Fakultas Hukum, Ilmu Sosial, dan Ilmu Politik.</p>
-                </a>
-                <a href="https://fst.ut.ac.id" target="_blank"
-                    class="flex flex-col  bg-white border border-primary-300  p-4 rounded-lg hover:bg-primary-50 hover:cursor-pointer hover:scale-105 transition">
-                    <div class="flex justify-between items-start">
-                        <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-700 lg:h-12 lg:w-12 dark:bg-primary-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-white lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor">
-                            <path
-                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
-                        </svg>
-                    </div>
-                    <span class="bg-primary-100 text-primary-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-primary-900 dark:text-primary-300">7 Prodi</span>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">FST</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Fakultas Sains dan Teknologi</p>
-                </a>
-                <a href="https://feb.ut.ac.id" target="_blank"
-                    class="flex flex-col  bg-white border border-gray-300  p-4 rounded-lg hover:bg-gray-50 hover:cursor-pointer hover:scale-105 transition">
-                    <div class="flex justify-between items-start">
-                        <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gray-100 lg:h-12 lg:w-12 dark:bg-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-gray-600 lg:w-6 lg:h-6 dark:text-gray-300" fill="currentColor">
-                            <path
-                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
-                        </svg>
-                    </div>
-                    <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-900 dark:text-gray-300">6 Prodi</span>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">FEB</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Fakultas Ekonomi dan Bisnis</p>
-                </a>
-                <a
-                href="https://pascasarjana.ut.ac.id" target="_blank"
-                    class="flex flex-col  bg-white border border-cyan-300  p-4 rounded-lg hover:bg-cyan-50 hover:cursor-pointer hover:scale-105 transition">
-                    <div class="flex justify-between items-start">
-                        <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-cyan-100 lg:h-12 lg:w-12 dark:bg-cyan-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-cyan-600 lg:w-6 lg:h-6 dark:text-cyan-300" fill="currentColor">
-                            <path
-                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
-                        </svg>
-                    </div>
-                    <span class="bg-cyan-100 text-cyan-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-cyan-900 dark:text-cyan-300">7 Prodi</span>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">Pascasarjana</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Magister S2</p>
-                </a>
-                <a href="https://lppm.ut.ac.id/" target="_blank"
-                    class="flex flex-col  bg-white border border-lime-300  p-4 rounded-lg hover:bg-lime-50 hover:cursor-pointer hover:scale-105 transition">
-                    <div class="flex justify-between items-start">
-                        <div
-                        class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-lime-100 lg:h-12 lg:w-12 dark:bg-lime-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                            class="w-5 h-5  text-lime-600 lg:w-6 lg:h-6 dark:text-lime-300" fill="currentColor">
-                            <path
-                                d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
-                        </svg>
-                    </div>
-                    <span class="bg-lime-100 text-lime-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-lime-900 dark:text-lime-300">5 Program</span>
-                    </div>
-                    <h3 class="mb-2 text-xl font-bold dark:text-white">Program</h3>
-                    <p class="text-gray-500 dark:text-gray-400">Sertifikat</p>
-                </a>
             </div>
         </div>
     </div>
@@ -319,7 +194,7 @@
                 </div>
                 <div class="">
                     <button type="submit"
-                    class="w-full py-2.5 px-5 me-2 text-sm font-medium flex items-center justify-center text-primary-700 focus:outline-none bg-white rounded-lg  hover:bg-gray-300   focus:z-10 focus:ring-4 focus:ring-gray-100 hover:scale-105 transition">
+                    class="w-full py-2.5 px-5 me-2 text-sm font-medium flex items-center justify-center text-primary-700 focus:outline-none bg-white rounded-lg  hover:bg-gray-300   focus:z-10 focus:ring-4 focus:ring-gray-100 hover:scale-105 transition btn-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="mr-2 -ml-1 w-5 h-5"
                         fill="currentColor">
                         <path
@@ -335,9 +210,9 @@
                     Jalur Pendaftaran<br/>Universitas Terbuka Melalui:
                 <h5>
                 <div class="grid grid-cols-3 gap-8 p-4">
-                    <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Online</a>
-                    <a href="https://maps.app.goo.gl/UKnAiiMB3CDAU3Aj9" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Kantor UT Jambi</a>
-                    <a href="#" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">SALUT</a>
+                    <a href="https://admisi-sia.ut.ac.id/auth/registrasi/mahasiswa-baru/" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-hover">Online</a>
+                    <a href="https://maps.app.goo.gl/UKnAiiMB3CDAU3Aj9" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-hover">Kantor UT Jambi</a>
+                    <a href="#" target="_blank" class="flex justify-center items-center text-white bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center btn-hover">SALUT</a>
                 </div>
             </div>
         </div>
@@ -370,7 +245,7 @@
                 }
             @endphp
             <a href="{{route('show_post_detail', [$row->category->name ,$row->slug])}}">
-            <article class="max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 group transition duration-500 hover:bg-primary-50">
+            <article class="max-w-md bg-white rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 group transition duration-500 hover:bg-primary-50 card-hover">
                 <div class="h-52 overflow-hidden rounded-t-lg">
                     <img src="{{$firstImageSrc}}" alt="" class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110">
                 </div>
@@ -410,7 +285,7 @@
           Karunika UT Jambi Store Telah Dibuka!
         </h1>
         <p class="mb-6 text-yellow-800">Merchandise Universitas Terbuka kini dapat kamu miliki dengan berbelanja di Karunika UT Jambi Store, kunjungi kami sekarang juga!</p>
-        <a href="https://www.instagram.com/karunika.utjambi/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"> Shop Now! </a>
+        <a href="https://www.instagram.com/karunika.utjambi/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-orange-500 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 btn-hover"> Shop Now! </a>
       </div>
     </div>
 </section>
@@ -433,7 +308,7 @@
 <!-- Floating Buttons -->
 <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-4">
     <!-- Back to Top Button -->
-    <button id="backToTop" class="p-3 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 translate-y-10">
+    <button id="backToTop" class="p-3 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 transition-all duration-300 opacity-0 translate-y-10 btn-hover">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
@@ -441,9 +316,9 @@
     
     <!-- AI Chat Button -->
     <a href="https://sl.ut.ac.id/TanyaUTJambi" target="_blank" 
-        class="group p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center relative">
+        class="group p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center relative btn-hover">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 640 512">
-            <path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/>
+            <path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2-72-72-72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/>
         </svg>
         <!-- Tooltip -->
         <span class="absolute right-full mr-2 py-1 px-2 text-sm text-white bg-gray-900 rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap">
@@ -485,19 +360,104 @@
         animation: float-delayed 3s ease-in-out infinite;
         animation-delay: 0.5s;
     }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.appear {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .fade-in-delay-1 {
+        transition-delay: 0.2s;
+    }
+
+    .fade-in-delay-2 {
+        transition-delay: 0.4s;
+    }
+
+    .fade-in-delay-3 {
+        transition-delay: 0.6s;
+    }
+
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .btn-hover {
+        transition: all 0.3s ease;
+    }
+
+    .btn-hover:hover {
+        transform: scale(1.05);
+    }
+
+    .stat-count {
+        transition: color 0.3s ease;
+    }
+
+    .stat-count:hover {
+        color: #FCD34D;
+    }
+
+    /* Enhance animations */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Glass effect */
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Gradient text */
+    .gradient-text {
+        background: linear-gradient(to right, #2F77F1, #1d4ed8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* Enhanced cards */
+    .feature-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
 </style>
 
 @endsection
 
 @section('script')
 <script>
+    function CountDownTimer(dt, id) {
+        const element = document.getElementById(id);
+        if (!element) return; // Exit if element doesn't exist
 
-    CountDownTimer('02/13/2025 00:00 AM', 'countdown');
-
-    function CountDownTimer(dt, id)
-    {
         var end = new Date(dt);
-
         var _second = 1000;
         var _minute = _second * 60;
         var _hour = _minute * 60;
@@ -508,10 +468,11 @@
             var now = new Date();
             var distance = end - now;
             if (distance < 0) {
-                
                 clearInterval(timer);
-                document.getElementById('masa-pendaftaran').classList.add("hidden");
-
+                const pendaftaranElement = document.getElementById('masa-pendaftaran');
+                if (pendaftaranElement) {
+                    pendaftaranElement.classList.add("hidden");
+                }
                 return;
             }
             var days = Math.floor(distance / _day);
@@ -519,13 +480,18 @@
             var minutes = Math.floor((distance % _hour) / _minute);
             var seconds = Math.floor((distance % _minute) / _second);
 
-            document.getElementById(id).innerHTML = days + ' hari : ';
-            document.getElementById(id).innerHTML += hours + ' jam : ';
-            document.getElementById(id).innerHTML += minutes + ' menit : ';
-            document.getElementById(id).innerHTML += seconds + ' detik';
+            element.innerHTML = days + ' hari : ';
+            element.innerHTML += hours + ' jam : ';
+            element.innerHTML += minutes + ' menit : ';
+            element.innerHTML += seconds + ' detik';
         }
 
         timer = setInterval(showRemaining, 1000);
+    }
+
+    // Only initialize countdown if element exists
+    if (document.getElementById('countdown')) {
+        CountDownTimer('02/13/2025 00:00 AM', 'countdown');
     }
 
     // Back to Top Button functionality
@@ -545,5 +511,91 @@
             behavior: 'smooth'
         });
     });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+        observer.observe(element);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Enhanced reveal on scroll
+    function reveal() {
+        const reveals = document.querySelectorAll('.reveal-on-scroll');
+        
+        reveals.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Add count-up animation
+    const countUpObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('[data-target]');
+                counters.forEach(counter => {
+                    if (counter.getAttribute('data-counted') === 'true') return;
+                    
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const increment = parseInt(counter.getAttribute('data-increment'));
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        const increment = Math.ceil((target - current) / 20);
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = current.toLocaleString();
+                            setTimeout(updateCounter, 40);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                            counter.setAttribute('data-counted', 'true');
+                        }
+                    };
+
+                    updateCounter();
+                });
+                countUpObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    // Observe the stats section
+    const statsSection = document.querySelector('.stat-count').parentElement.parentElement;
+    if (statsSection) {
+        countUpObserver.observe(statsSection);
+    }
 </script>
 @endsection

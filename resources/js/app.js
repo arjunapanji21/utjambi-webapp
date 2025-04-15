@@ -54,3 +54,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+// Import Flowbite Dropdown
+import { Dropdown } from 'flowbite';
+
+// Initialize Flowbite Dropdowns and Mega Menus
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all dropdowns and mega menus
+    const dropdownElements = document.querySelectorAll('[data-dropdown-toggle]');
+    
+    dropdownElements.forEach(triggerEl => {
+        const targetEl = document.getElementById(triggerEl.getAttribute('data-dropdown-toggle'));
+        if (targetEl) {
+            new Dropdown(targetEl, triggerEl, {
+                placement: 'bottom',
+                offsetDistance: 10,
+                delay: 50,
+                onHide: () => {
+                    targetEl.classList.remove('show');
+                    targetEl.style.opacity = '0';
+                    targetEl.style.transform = 'translateY(15px) scale(0.98)';
+                    setTimeout(() => {
+                        targetEl.classList.add('hidden');
+                    }, 300);
+                },
+                onShow: () => {
+                    targetEl.classList.remove('hidden');
+                    setTimeout(() => {
+                        targetEl.classList.add('show');
+                        targetEl.style.opacity = '1';
+                        targetEl.style.transform = 'translateY(0) scale(1)';
+                    }, 50);
+                }
+            });
+        }
+    });
+});
